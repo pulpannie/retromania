@@ -1,19 +1,27 @@
 package com.retromania.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.retromania.game.shared_abstractions.OrientationManager;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
-public class Retromania extends RetroManiaGame {
+public class RetroMania extends RetroManiaGame {
+
+	public RetroMania(OrientationManager orientationManager){
+		super(orientationManager);
+	}
+
+
 	@Override
 	public void render () {
-//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(0);
 		super.render();
 	}
 
 	@Override
 	public void dispose () {
-		batch.dispose();
+		sb.dispose();
 		img.dispose();
 	}
 

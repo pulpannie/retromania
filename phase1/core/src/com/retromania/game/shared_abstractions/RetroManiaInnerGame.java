@@ -1,11 +1,27 @@
 package com.retromania.game.shared_abstractions;
 
-
+import java.util.List;
 
 public abstract class RetroManiaInnerGame extends RetroManiaScreen {
-    String name;
+  private RetroManiaGame.Orientation orientation;
+  private String name;
 
-    public RetroManiaInnerGame(RetroManiaGame game) {
-        super(game);
-    }
+  public RetroManiaGame.Orientation getOrientation() {
+    return orientation;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public RetroManiaInnerGame(
+      RetroManiaGame game, String name, RetroManiaGame.Orientation orientation) {
+    super(game);
+    this.name = name;
+    this.orientation = orientation;
+  }
+
+  public abstract void save(Object... args);
+
+  public abstract List<Object> retreave();
 }
