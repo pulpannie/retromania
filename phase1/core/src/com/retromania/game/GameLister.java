@@ -22,6 +22,7 @@ import com.retromania.game.shared_abstractions.ButtonMaker;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
+import com.retromania.game.shared_abstractions.UserNameTextInputListener;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.tic_tac_toe.TicTacToeStarter;
 
@@ -33,18 +34,26 @@ public class GameLister extends RetroManiaScreen {
   Stage stage;
   Viewport viewport;
   List<String> list;
-  private ArrayList<RetroManiaInnerGame> game_list ;
-  private RetroManiaInnerGame selected_game;
+  private ArrayList<RetroManiaInnerGame> gameList;
+  private RetroManiaInnerGame selectedGame;
+  private Label bestScore;
 
 
   public GameLister(RetroManiaGame game) {
 
     super(game);
-    game_list = new ArrayList<>();
-    game_list.add(new TicTacToeStarter(game));
-    game_list.add(new SpaceShipShooterStarter(game));
-    game_list.add(new ColourShooterStarter(game));
+    gameList = new ArrayList<>();
+    gameList.add(new TicTacToeStarter(game));
+    gameList.add(new SpaceShipShooterStarter(game));
+    gameList.add(new ColourShooterStarter(game));
 
+  }
+
+  private String getStringBestUserScore(){
+    if (selectedGame!= null){
+      return this.selectedGame.getBestUserName() + " : " + this.selectedGame.getBestUserScore();
+    }
+    return "";
   }
 
   @Override
@@ -53,11 +62,11 @@ public class GameLister extends RetroManiaScreen {
     Skin skin = new Skin(Gdx.files.internal("list_skin.json"), atlas);
 
     list = new List<>(skin);
-    String[] names = new String[game_list.size()];
-    for (int i = 0; i < game_list.size(); i++) {
-      names[i] = game_list.get(i).getName();
+    String[] gameAndScores = new String[gameList.size()];
+    for (int i = 0; i < gameList.size(); i+=1) {
+      gameAndScores[i] = gameList.get(i).getName() ;
     }
-    list.setItems(names);
+    list.setItems(gameAndScores);
     ScrollPane scrollPane = new ScrollPane(list);
     scrollPane.setSmoothScrolling(true);
 
@@ -79,6 +88,7 @@ public class GameLister extends RetroManiaScreen {
     table.add().width(table.getWidth() / 3);
     table.add(brand).width(table.getWidth() / 3).expandX().row();
 
+
 //    scrollPane.setPosition(
 //            table.getWidth() / 2 - scrollPane.getWidth() / 4,
 //            table.getWidth() / 2 - scrollPane.getHeight() / 4);
@@ -86,14 +96,23 @@ public class GameLister extends RetroManiaScreen {
     table.padTop(20);
     table.add(scrollPane);
     TextButton button = ButtonMaker.makeButton("Play Game", 10);
+
+
+    Table table2 = new Table();
     button.addListener( new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        game.setOrientation(selected_game.getOrientation());
-        game.setScreen(selected_game);
+        UserNameTextInputListener userNameTextInputListener = new UserNameTextInputListener(game, selectedGame);
+        Gdx.input.getTextInput(userNameTextInputListener, "User Name", "", "");
       }
     } );
-    table.add(button).expandX().center();
+    bestScore =
+            new Label(getStringBestUserScore(), new Label.LabelStyle(new BitmapFont(), Color.RED));
+    table2.add(button).expandX().center().row();
+    table2.add(bestScore).expandX().center().row();
+    table.add(table2).expandX().center().row();
+//
+//    table.add(brand1);
     Gdx.input.setInputProcessor(stage);
   }
 
@@ -103,7 +122,8 @@ public class GameLister extends RetroManiaScreen {
 
   @Override
   public void update() {
-    selected_game = game_list.get(list.getSelectedIndex());
+    selectedGame = gameList.get(list.getSelectedIndex());
+    bestScore.setText(getStringBestUserScore());
   }
 
   @Override

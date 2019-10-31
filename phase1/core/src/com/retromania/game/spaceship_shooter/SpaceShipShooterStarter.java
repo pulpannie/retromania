@@ -1,6 +1,7 @@
 package com.retromania.game.spaceship_shooter;
 
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.spaceship_shooter.individuals.GameStats;
 import com.retromania.game.spaceship_shooter.screens.MenuScreen;
@@ -44,6 +45,18 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame {
         playScreen = new PlayScreen(game);
         pauseScreen = new PauseScreen(game);
         menuScreen = new MenuScreen(game);
+    }
+
+
+    //TODO Override setCurrentUser : Which sets your user and you should use this for checking whether or not you have a personal best
+    @Override
+    public void setCurrentUser(String name) {
+        this.currentUser = new RetroManiaGeneralUser(name);
+    }
+    //	TODO Override setBestUser : this is where you should try and retrieve information for your best user, look at save and retrieve functions
+    @Override
+    public void setBestUser() {
+        this.bestUser = new RetroManiaGeneralUser("POR");
     }
 
     public void save(Object... args) {

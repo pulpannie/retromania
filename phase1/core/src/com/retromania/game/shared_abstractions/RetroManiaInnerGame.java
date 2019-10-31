@@ -8,10 +8,13 @@ import java.util.List;
 public abstract class RetroManiaInnerGame extends RetroManiaScreen {
   private RetroManiaGame.Orientation orientation;
   private String name;
+  protected User currentUser;
+  protected User bestUser;
 
   Preferences preferences;
-  void makeSaveFile(String name){
-    preferences =  Gdx.app.getPreferences(name);
+
+  void makeSaveFile(String name) {
+    preferences = Gdx.app.getPreferences(name);
   }
 
   public RetroManiaGame.Orientation getOrientation() {
@@ -27,6 +30,23 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
     super(game);
     this.name = name;
     this.orientation = orientation;
+    setBestUser();
+  }
+  /**
+   *
+   * @param name a user name with the length less than or equal to 3, if We are to make a general User
+   *
+   * **/
+  public abstract void setCurrentUser(String name);
+
+  public abstract void setBestUser();
+
+  public String getBestUserName() {
+    return bestUser.getUserName();
+  }
+
+  public Integer getBestUserScore() {
+    return bestUser.getScore();
   }
 
   public abstract void save(Object... args);

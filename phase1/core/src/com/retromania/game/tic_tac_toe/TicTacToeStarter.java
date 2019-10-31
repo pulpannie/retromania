@@ -14,7 +14,9 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
+import com.retromania.game.shared_abstractions.User;
 
 import java.util.List;
 
@@ -135,6 +137,17 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
         boardRenderer.line(start, end);
         boardRenderer.end();
 
+    }
+
+    //TODO Override setCurrentUser : Which sets your user and you should use this for checking whether or not you have a personal best
+    @Override
+    public void setCurrentUser(String name) {
+        this.currentUser = new RetroManiaGeneralUser(name);
+    }
+    //	TODO Override setBestUser : this is where you should try and retrieve information for your best user, look at save and retrieve functions
+    @Override
+    public void setBestUser() {
+        this.bestUser = new RetroManiaGeneralUser("POR");
     }
 
     @Override
