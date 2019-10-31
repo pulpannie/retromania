@@ -23,13 +23,12 @@ public class Background extends Actor {
         batch.end();
         if(!projectionMatrixSet){
             shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
-            projectionMatrixSet = true;
         }
 
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.SKY);
-        shapeRenderer.rect(0, width/8, width, height);
+        shapeRenderer.rect(0, height/8, width, 7*height/8);
         shapeRenderer.setColor(Color.CORAL);
         shapeRenderer.rect(0,0, width, height/8);
         shapeRenderer.end();
