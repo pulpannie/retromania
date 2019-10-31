@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
@@ -20,7 +21,6 @@ public class PauseScreen implements Screen {
     private OrthographicCamera gamecam;
     private Viewport gamePort;
     private ImageButton resumeButton;
-    private ImageButton exitButton;
     private ImageButton restartButton;
     private Background background;
     public Stage stage;
@@ -28,7 +28,7 @@ public class PauseScreen implements Screen {
     public PauseScreen(RetroManiaGame game){
         this.game = game;
         gamecam = new OrthographicCamera();
-        gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
+        gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
 
         stage = new Stage(gamePort, game.sb);
         background = new Background();
@@ -46,8 +46,8 @@ public class PauseScreen implements Screen {
         TextureRegion restartTextureRegion =  new TextureRegion(restartTexture);
         TextureRegionDrawable restartTextureRegionDrawable = new TextureRegionDrawable(restartTextureRegion);
         restartButton = new ImageButton(restartTextureRegionDrawable);
-        restartButton.setPosition(Gdx.graphics.getWidth()/2-225, Gdx.graphics.getHeight()/2 - 400);
-        restartButton.setSize(450, 450);
+        restartButton.setPosition(Gdx.graphics.getWidth()/2-150, Gdx.graphics.getHeight()/2 - 400);
+        restartButton.setSize(300, 300);
         stage.addActor(restartButton);
 
 
