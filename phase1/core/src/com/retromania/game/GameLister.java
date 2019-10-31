@@ -17,10 +17,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.shared_abstractions.ButtonMaker;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
+import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.tic_tac_toe.TicTacToeStarter;
 
 import java.util.ArrayList;
@@ -40,6 +42,8 @@ public class GameLister extends RetroManiaScreen {
     super(game);
     game_list = new ArrayList<>();
     game_list.add(new TicTacToeStarter(game));
+    game_list.add(new SpaceShipShooterStarter(game));
+    game_list.add(new ColourShooterStarter(game));
 
   }
 
