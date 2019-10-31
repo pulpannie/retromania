@@ -1,10 +1,18 @@
 package com.retromania.game.shared_abstractions;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
+
 import java.util.List;
 
 public abstract class RetroManiaInnerGame extends RetroManiaScreen {
   private RetroManiaGame.Orientation orientation;
   private String name;
+
+  Preferences preferences;
+  void makeSaveFile(String name){
+    preferences =  Gdx.app.getPreferences(name);
+  }
 
   public RetroManiaGame.Orientation getOrientation() {
     return orientation;
@@ -23,5 +31,5 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
 
   public abstract void save(Object... args);
 
-  public abstract List<Object> retreave();
+  public abstract List<Object> retrieve();
 }

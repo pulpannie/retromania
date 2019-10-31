@@ -74,7 +74,7 @@ public class ColourShooterStarter extends RetroManiaInnerGame {
 	}
 
 	@Override
-	public List<Object> retreave() {
+	public List<Object> retrieve() {
 		return null;
 	}
 

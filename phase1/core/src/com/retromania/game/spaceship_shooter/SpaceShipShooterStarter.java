@@ -51,7 +51,7 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame {
     }
 
     @Override
-    public List<Object> retreave() {
+    public List<Object> retrieve() {
         return null;
     }
 
