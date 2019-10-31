@@ -42,7 +42,7 @@ public class MenuScreen implements Screen {
 
         stage = new Stage(gamePort, game.sb);
         background = new Background();
-        temp = SpaceShipShooterStarter.gameStats;
+        temp = SpaceShipShooterStarter.getGameStats();
         table = new Table();
         table.top();
         table.setFillParent(true);

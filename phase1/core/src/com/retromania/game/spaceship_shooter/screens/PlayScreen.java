@@ -59,7 +59,7 @@ public class PlayScreen implements Screen{
         TextureRegionDrawable rigthTextureRegionDrawable =
                 new TextureRegionDrawable(rightTextureRegion);
         rightButton = new ImageButton(rigthTextureRegionDrawable);
-        rightButton.setPosition(MyGdxGame.V_WIDTH - 250, 0);
+        rightButton.setPosition(Gdx.graphics.getWidth()- 250, 0);
         rightButton.setSize(250, 250);
         stage.addActor(rightButton);
 
@@ -68,7 +68,7 @@ public class PlayScreen implements Screen{
         TextureRegionDrawable pauseTextureRegionDrawable =
                 new TextureRegionDrawable(pauseTextureRegion);
         pauseButton = new ImageButton(pauseTextureRegionDrawable);
-        pauseButton.setPosition(MyGdxGame.V_WIDTH - 200, MyGdxGame.V_HEIGHT - 350);
+        pauseButton.setPosition(Gdx.graphics.getWidth() - 200, Gdx.graphics.getHeight() - 350);
         pauseButton.setSize(180, 180);
         stage.addActor(pauseButton);
 
@@ -159,7 +159,7 @@ public class PlayScreen implements Screen{
 
     public void endGame() {
         stage.dispose();
-        SpaceShipShooterStarter.gameStats.update(hud.getScore());
+        SpaceShipShooterStarter.getGameStats().update(hud.getScore());
         game.setScreen(SpaceShipShooterStarter.getMenuScreen());
     }
 
