@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.retromania.game.shared_abstractions.OrientationManager;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-
+//test commit
 public class RetroMania extends RetroManiaGame {
 
 	public RetroMania(OrientationManager orientationManager){
