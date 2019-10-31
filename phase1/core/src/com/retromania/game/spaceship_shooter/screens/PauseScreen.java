@@ -38,16 +38,16 @@ public class PauseScreen implements Screen {
         TextureRegion resumeTextureRegion =  new TextureRegion(resumeTexture);
         TextureRegionDrawable resumeTextureRegionDrawable = new TextureRegionDrawable(resumeTextureRegion);
         resumeButton = new ImageButton(resumeTextureRegionDrawable);
-        resumeButton.setPosition(Gdx.graphics.getWidth()/2-225, Gdx.graphics.getHeight()/2+200);
-        resumeButton.setSize(450, 450);
+        resumeButton.setPosition(Gdx.graphics.getWidth()/2-200, Gdx.graphics.getHeight()/2);
+        resumeButton.setSize(400, 400);
         stage.addActor(resumeButton);
 
         Texture restartTexture = new Texture("restart.png");
         TextureRegion restartTextureRegion =  new TextureRegion(restartTexture);
         TextureRegionDrawable restartTextureRegionDrawable = new TextureRegionDrawable(restartTextureRegion);
         restartButton = new ImageButton(restartTextureRegionDrawable);
-        restartButton.setPosition(Gdx.graphics.getWidth()/2-150, Gdx.graphics.getHeight()/2 - 400);
-        restartButton.setSize(300, 300);
+        restartButton.setPosition(Gdx.graphics.getWidth()/2-125, Gdx.graphics.getHeight()/2 - 200);
+        restartButton.setSize(250, 250);
         stage.addActor(restartButton);
 
 
