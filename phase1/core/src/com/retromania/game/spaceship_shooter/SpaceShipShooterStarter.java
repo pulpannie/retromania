@@ -62,7 +62,7 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame {
 
     @Override
     public void show() {
-
+        game.setScreen(menuScreen);
     }
 
     @Override

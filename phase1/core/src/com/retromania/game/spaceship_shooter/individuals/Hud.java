@@ -31,7 +31,7 @@ public class Hud {
     }
 
     public Hud(SpriteBatch sb){
-        worldTimer = 10;
+        worldTimer = 60;
         timeCount = 0;
         score = 0;
         int width = Gdx.graphics.getWidth();
