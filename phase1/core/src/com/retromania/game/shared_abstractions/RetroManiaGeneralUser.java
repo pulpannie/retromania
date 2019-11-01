@@ -2,7 +2,7 @@ package com.retromania.game.shared_abstractions;
 
 public class RetroManiaGeneralUser implements User {
     private String name;
-
+    @Override
     public void setScore(int score) {
         this.score = score;
     }
