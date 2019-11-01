@@ -103,7 +103,6 @@ public class GameLister extends RetroManiaScreen {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         UserNameTextInputListener userNameTextInputListener = new UserNameTextInputListener(game, selectedGame);
-
         Gdx.input.getTextInput(userNameTextInputListener, "User Name", "", "");
       }
     } );
@@ -114,6 +113,7 @@ public class GameLister extends RetroManiaScreen {
     table.add(table2).expandX().center().row();
 //
 //    table.add(brand1);
+    table.debug();
     Gdx.input.setInputProcessor(stage);
   }
 
