@@ -73,13 +73,6 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     DrawBoardLine(new Vector2(0, gameHeight / 3), new Vector2(gameWidth, gameHeight / 3), gamecam.combined);
     DrawBoardLine(new Vector2(0, gameHeight * 2 / 3), new Vector2(gameWidth, gameHeight * 2 / 3), gamecam.combined);
 
-    for (int i = 0; i < 9; i++) {
-      batch.begin();
-      font.getData().setScale(5, 5);
-      font.draw(batch, String.valueOf(i), board[i].X, board[i].Y);
-      batch.end();
-    }
-
     if (Gdx.input.isTouched()) {
       Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
       Vector3 worldCoordinates = gamecam.unproject(mousePos);

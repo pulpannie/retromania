@@ -12,7 +12,7 @@ public class Cell extends Individual {
     public String player;
     int X,Y,W,H;
 
-  public Cell(RetroManiaScreen screen, int type, float gameWidth, float gameHeight) {
+    public Cell(RetroManiaScreen screen, int type, float gameWidth, float gameHeight) {
         isTouched = false;
         this.screen = screen;
         this.type = type;
@@ -28,15 +28,15 @@ public class Cell extends Individual {
             this.X = (int)gameWidth*2/3;
         }
         if(type/3 == 0){
-            this.Y = 0;
+            this.Y = (int)0;
         }
         else if(type/3 == 1){
-            this.Y = (int)gameHeight*2/3;
+            this.Y = (int)gameHeight/3;
         }
         else{
-            this.Y = (int)gameHeight/3;;
+            this.Y = (int)gameHeight*2/3;;
         }
-    System.out.println("made!");
+        System.out.println("made!");
     }
     public void setCell(Texture shape){
         this.shape = shape;
@@ -49,21 +49,21 @@ public class Cell extends Individual {
     }
 
     public boolean inCell(float X, float Y){
-      if( X >= this.X && X < this.X + this.W){
-          if(Y >= this.Y && Y < this.Y + this.H){
-              return true;
-          }
-      }
-      return false;
+        if( X >= this.X && X < this.X + this.W){
+            if(Y >= this.Y && Y < this.Y + this.H){
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean equal(Cell other){
-      if (this.getCell() != null && other.getCell() != null){
-          if (this.getCell() == other.getCell()){
-              return true;
-          }
-      }
-      return false;
+        if (this.getCell() != null && other.getCell() != null){
+            if (this.getCell() == other.getCell()){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

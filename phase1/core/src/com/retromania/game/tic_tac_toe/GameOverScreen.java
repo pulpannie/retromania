@@ -28,8 +28,11 @@ public class GameOverScreen extends RetroManiaScreen {
 
     @Override
     public void show() {
+        gamecam = new OrthographicCamera();
+        gamecam.setToOrtho(false, gameWidth, gameHeight);
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
+
         stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
         Gdx.input.setInputProcessor(stage);
         batch = new SpriteBatch();
