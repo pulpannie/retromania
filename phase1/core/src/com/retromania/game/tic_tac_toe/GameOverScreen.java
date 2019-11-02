@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.retromania.game.GameLister;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.screens.PlayScreen;
 
 public class GameOverScreen extends RetroManiaScreen {
     public SpriteBatch batch;
@@ -23,10 +22,10 @@ public class GameOverScreen extends RetroManiaScreen {
     BitmapFont font = new BitmapFont();
     String winner;
     public OrthographicCamera gamecam;
-    Texture replayTexture;
-    ImageButton replayButton;
-    Texture menuTexture;
-    ImageButton menuButton;
+//    Texture replayTexture;
+//    ImageButton replayButton;
+//    Texture menuTexture;
+//    ImageButton menuButton;
 
 
     public GameOverScreen(RetroManiaGame game, String winner) {
@@ -45,42 +44,43 @@ public class GameOverScreen extends RetroManiaScreen {
         Gdx.input.setInputProcessor(stage);
         batch = new SpriteBatch();
 
-        replayTexture= new Texture(Gdx.files.internal("replay_tictactoe.png"));
-        TextureRegion replayTextureRegion = new TextureRegion(replayTexture);
-        TextureRegionDrawable replayTextureRegionDrawable =
-                new TextureRegionDrawable(replayTextureRegion);
-        replayButton = new ImageButton(replayTextureRegionDrawable);
-        replayButton.setSize(400, 400);
-        replayButton.setPosition(200, 500);
-        stage.addActor(replayButton);
-        menuTexture= new Texture(Gdx.files.internal("menu_tictactoe.png"));
-        TextureRegion menuTextureRegion = new TextureRegion(menuTexture);
-        TextureRegionDrawable menuTextureRegionDrawable =
-                new TextureRegionDrawable(menuTextureRegion);
-        menuButton = new ImageButton(menuTextureRegionDrawable);
-        menuButton.setSize(200, 200);
-        menuButton.setPosition(600, 200);
-        stage.addActor(menuButton);
+//        replayTexture= new Texture(Gdx.files.internal("replay_tictactoe.png"));
+//        TextureRegion replayTextureRegion = new TextureRegion(replayTexture);
+//        TextureRegionDrawable replayTextureRegionDrawable =
+//                new TextureRegionDrawable(replayTextureRegion);
+//        replayButton = new ImageButton(replayTextureRegionDrawable);
+//        replayButton.setSize(400, 400);
+//        replayButton.setPosition(200, 500);
+//        stage.addActor(replayButton);
+//        menuTexture= new Texture(Gdx.files.internal("menu_tictactoe.png"));
+//        TextureRegion menuTextureRegion = new TextureRegion(menuTexture);
+//        TextureRegionDrawable menuTextureRegionDrawable =
+//                new TextureRegionDrawable(menuTextureRegion);
+//        menuButton = new ImageButton(menuTextureRegionDrawable);
+//        menuButton.setSize(200, 200);
+//        menuButton.setPosition(600, 200);
+//        stage.addActor(menuButton);
     }
 
-    @Override
-    public void render(float delta) {
+  @Override
+  public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
         stage.draw();
         batch.begin();
         font.getData().setScale(5, 5);
-        font.draw(batch, this.winner + "wins!", gameWidth/2, gameHeight/2);
+        font.draw(batch, this.winner + "wins!", gameWidth / 2, gameHeight / 2);
         batch.end();
-        if (replayButton.isPressed()){
-            stage.dispose();
-            game.setScreen(new TicTacToeStarter(game));
-        }
-        if (menuButton.isPressed()){
-            stage.dispose();
-            game.setScreen(new GameLister(game));
-        }
+//        if (replayButton.isPressed()) {
+//          stage.dispose();
+//          game.setScreen(new TicTacToeStarter(game));
+//
+//          if (menuButton.isPressed()) {
+//            stage.dispose();
+//            game.setScreen(new GameLister(game));
+//          }
+//        }
     }
 
     @Override

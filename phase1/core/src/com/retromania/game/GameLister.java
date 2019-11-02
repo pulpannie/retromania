@@ -24,7 +24,7 @@ import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.shared_abstractions.UserNameTextInputListener;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.tic_tac_toe.TicTacToeStarter;
+import com.retromania.game.tic_tac_toe.TicTacToe;
 
 import java.util.ArrayList;
 
@@ -43,7 +43,7 @@ public class GameLister extends RetroManiaScreen {
 
     super(game);
     gameList = new ArrayList<>();
-    gameList.add(new TicTacToeStarter(game));
+    gameList.add(new TicTacToe(game));
     gameList.add(new SpaceShipShooterStarter(game));
     gameList.add(new ColourShooterStarter(game));
 
