@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.Car;
@@ -34,14 +35,15 @@ public class PlayScreen implements Screen{
     static ImageButton leftButton;
     static ImageButton rightButton;
     static ImageButton pauseButton;
+    MainScreenInterface mainscreen;
 
-    public PlayScreen(RetroManiaGame game){
+    public PlayScreen(RetroManiaGame game, MainScreenInterface mainscreen){
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
         hud = new Hud(game.sb);
         player = new Car();
-
+        this.mainscreen = mainscreen;
 
         stage = new Stage(gamePort, game.sb);
 
@@ -160,7 +162,9 @@ public class PlayScreen implements Screen{
     public void endGame() {
         stage.dispose();
         SpaceShipShooterStarter.getGameStats().update(hud.getScore());
+        this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
         game.setScreen(SpaceShipShooterStarter.getMenuScreen());
+        mainscreen.save();
     }
 
     @Override

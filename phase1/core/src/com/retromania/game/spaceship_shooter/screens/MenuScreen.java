@@ -34,11 +34,13 @@ public class MenuScreen implements Screen {
     Label latestScoreLabel;
     GameStats temp;
     Table table;
+    MainScreenInterface mainscreen;
 
-    public MenuScreen(RetroManiaGame game){
+    public MenuScreen(RetroManiaGame game, MainScreenInterface mainscreen){
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
+        this.mainscreen = mainscreen;
 
         stage = new Stage(gamePort, game.sb);
         background = new Background();
@@ -130,7 +132,7 @@ public class MenuScreen implements Screen {
 
     public void start(){
         stage.dispose();
-        SpaceShipShooterStarter.setPlayScreen(new PlayScreen(game));
+        SpaceShipShooterStarter.setPlayScreen(new PlayScreen(game, mainscreen));
         game.setScreen(SpaceShipShooterStarter.getPlayScreen());
     }
     @Override

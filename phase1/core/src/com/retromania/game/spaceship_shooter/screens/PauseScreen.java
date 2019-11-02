@@ -16,6 +16,7 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 
+
 public class PauseScreen implements Screen {
     private RetroManiaGame game;
     private OrthographicCamera gamecam;
@@ -24,12 +25,12 @@ public class PauseScreen implements Screen {
     private ImageButton restartButton;
     private Background background;
     public Stage stage;
-
-    public PauseScreen(RetroManiaGame game){
+    MainScreenInterface mainscreen;
+    public PauseScreen(RetroManiaGame game, MainScreenInterface mainscreen){
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
-
+        this.mainscreen = mainscreen;
         stage = new Stage(gamePort, game.sb);
         background = new Background();
 
@@ -112,7 +113,7 @@ public class PauseScreen implements Screen {
 
     public void restart(){
         stage.dispose();
-        SpaceShipShooterStarter.setPlayScreen(new PlayScreen(game));
+        SpaceShipShooterStarter.setPlayScreen(new PlayScreen(game, mainscreen));
         game.setScreen(SpaceShipShooterStarter.getPlayScreen());
     }
     @Override
