@@ -108,13 +108,12 @@ public class PauseScreen implements Screen {
     @Override
     public void resume() {
         stage.dispose();
-        game.setScreen(SpaceShipShooterStarter.getPlayScreen());
+        mainscreen.resume();
     }
 
     public void restart(){
         stage.dispose();
-        SpaceShipShooterStarter.setPlayScreen(new PlayScreen(game, mainscreen));
-        game.setScreen(SpaceShipShooterStarter.getPlayScreen());
+        mainscreen.restart();
     }
     @Override
     public void hide() {

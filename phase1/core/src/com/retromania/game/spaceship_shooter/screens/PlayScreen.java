@@ -151,7 +151,7 @@ public class PlayScreen implements Screen{
     @Override
     public void pause() {
         stage.dispose();
-        game.setScreen(SpaceShipShooterStarter.getPauseScreen());
+        mainscreen.pause();
     }
 
     @Override

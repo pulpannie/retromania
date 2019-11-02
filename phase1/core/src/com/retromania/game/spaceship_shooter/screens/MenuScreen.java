@@ -132,8 +132,7 @@ public class MenuScreen implements Screen {
 
     public void start(){
         stage.dispose();
-        SpaceShipShooterStarter.setPlayScreen(new PlayScreen(game, mainscreen));
-        game.setScreen(SpaceShipShooterStarter.getPlayScreen());
+        mainscreen.restart();
     }
     @Override
     public void hide() {

@@ -56,7 +56,6 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     }
 
 
-    //TODO Override setCurrentUser : Which sets your user and you should use this for checking whether or not you have a personal best
     @Override
     public void setCurrentUser(String name) {
         this.currentUser = new RetroManiaGeneralUser(name);
@@ -64,7 +63,6 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
             this.currentUser.setScore(preferences.getInteger(currentUser.getUserName()));
         }
     }
-    //	TODO Override setBestUser : this is where you should try and retrieve information for your best user, look at save and retrieve functions
     @Override
     public void setBestUser() {
         preferences = game.getPrefrences(Configuration.spaceshipDestroyerPreference);
@@ -120,12 +118,12 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
 
     @Override
     public void pause() {
-
+        game.setScreen(pauseScreen);
     }
 
     @Override
     public void resume() {
-
+        game.setScreen(playScreen);
     }
 
     @Override
@@ -138,7 +136,10 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
 
     }
 
-    public void restart(){}
+    public void restart(){
+        setPlayScreen(new PlayScreen(game, this));
+        game.setScreen(getPlayScreen());
+    }
 
     public User getUser(){return currentUser;}
 }
