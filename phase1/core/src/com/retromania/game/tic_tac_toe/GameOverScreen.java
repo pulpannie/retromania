@@ -6,10 +6,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.retromania.game.GameLister;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
+import com.retromania.game.spaceship_shooter.screens.PlayScreen;
 
 public class GameOverScreen extends RetroManiaScreen {
     public SpriteBatch batch;
@@ -18,7 +23,10 @@ public class GameOverScreen extends RetroManiaScreen {
     BitmapFont font = new BitmapFont();
     String winner;
     public OrthographicCamera gamecam;
-
+    Texture replayTexture;
+    ImageButton replayButton;
+    Texture menuTexture;
+    ImageButton menuButton;
 
 
     public GameOverScreen(RetroManiaGame game, String winner) {
@@ -36,6 +44,23 @@ public class GameOverScreen extends RetroManiaScreen {
         stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
         Gdx.input.setInputProcessor(stage);
         batch = new SpriteBatch();
+
+        replayTexture= new Texture(Gdx.files.internal("replay_tictactoe.png"));
+        TextureRegion replayTextureRegion = new TextureRegion(replayTexture);
+        TextureRegionDrawable replayTextureRegionDrawable =
+                new TextureRegionDrawable(replayTextureRegion);
+        replayButton = new ImageButton(replayTextureRegionDrawable);
+        replayButton.setSize(400, 400);
+        replayButton.setPosition(200, 500);
+        stage.addActor(replayButton);
+        menuTexture= new Texture(Gdx.files.internal("menu_tictactoe.png"));
+        TextureRegion menuTextureRegion = new TextureRegion(menuTexture);
+        TextureRegionDrawable menuTextureRegionDrawable =
+                new TextureRegionDrawable(menuTextureRegion);
+        menuButton = new ImageButton(menuTextureRegionDrawable);
+        menuButton.setSize(200, 200);
+        menuButton.setPosition(600, 200);
+        stage.addActor(menuButton);
     }
 
     @Override
@@ -48,6 +73,14 @@ public class GameOverScreen extends RetroManiaScreen {
         font.getData().setScale(5, 5);
         font.draw(batch, this.winner + "wins!", gameWidth/2, gameHeight/2);
         batch.end();
+        if (replayButton.isPressed()){
+            stage.dispose();
+            game.setScreen(new PlayScreen(game));
+        }
+        if (menuButton.isPressed()){
+            stage.dispose();
+            game.setScreen(new GameLister(game));
+        }
     }
 
     @Override

@@ -1,7 +1,8 @@
 package com.retromania.game.shared_abstractions;
 
 public class Configuration {
-    static String spaceshipDestroyerPrefrence;
+    public static String spaceshipDestroyerPreference;
+    public static String tictactoePreference;
     static {
 
     }
