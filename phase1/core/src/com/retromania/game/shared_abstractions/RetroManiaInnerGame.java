@@ -21,7 +21,7 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
 
   private Preferences preferences;
 
-  void makeSaveFile(String name) {
+  public void makeSaveFile(String name) {
     preferences = Gdx.app.getPreferences(name);
   }
 
