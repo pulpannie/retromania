@@ -5,5 +5,6 @@ public class Configuration {
     public static String tictactoePreference;
     static {
         tictactoePreference = "Tic Tac Toe";
+        spaceshipDestroyerPreference = "spaceshipDestroyerStorage";
     }
 }
