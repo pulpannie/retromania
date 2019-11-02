@@ -59,6 +59,11 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame {
         this.bestUser = new RetroManiaGeneralUser("POR");
     }
 
+    @Override
+    public Integer getBestUserScore() {
+        return 0;
+    }
+
     public void save(Object... args) {
 
     }

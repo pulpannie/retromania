@@ -81,6 +81,11 @@ public class ColourShooterStarter extends RetroManiaInnerGame {
 	}
 
 	@Override
+	public Integer getBestUserScore() {
+		return 0;
+	}
+
+	@Override
 	public void save(Object... args) {
 
 	}

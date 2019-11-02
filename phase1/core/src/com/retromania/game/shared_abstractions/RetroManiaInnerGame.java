@@ -42,9 +42,7 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
     return bestUser.getUserName();
   }
 
-  public Integer getBestUserScore() {
-    return bestUser.getScore();
-  }
+  abstract public Integer getBestUserScore();
 
   public abstract void save(Object... args);
 

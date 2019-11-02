@@ -9,7 +9,7 @@ public class RetroManiaGeneralUser implements User {
 
     private int score = 0;
     public RetroManiaGeneralUser(String name){
-        if (name.length()>3||name.length()<=0){
+        if (name.length()>3){
             throw new RuntimeException("Size is not standard");
         }
         this.name = name;

@@ -1,6 +1,7 @@
 package com.retromania.game.tic_tac_toe;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -20,6 +21,7 @@ import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
 
 import java.util.List;
+import java.util.Map;
 
 public class TicTacToeStarter extends RetroManiaInnerGame {
     public Stage stage;
@@ -103,6 +105,28 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
               }
           else if(logic.winner() == cross){
               System.out.println("CROSS");
+
+
+              Preferences preferences = game.getPrefrences(Configuration.tictactoePreference);
+              int currScore =  preferences.getInteger(currentUser.getUserName());
+              currScore += 1;
+              currentUser.setScore(currScore);
+              preferences.putInteger(currentUser.getUserName(), currScore);
+              int bestUserScore = preferences.getInteger(Configuration.bestUserScore);
+              if (bestUserScore <= currScore){
+                  System.out.println("Light");
+                  System.out.println(currScore);
+                  preferences.putInteger(currentUser.getUserName(), currScore);
+                  preferences.putString(Configuration.bestUserUserName, currentUser.getUserName());
+                  preferences.putInteger(Configuration.bestUserScore, currScore);
+                  bestUser = currentUser;
+              }
+              preferences.flush();
+
+
+
+              System.out.println("Check me here !!");
+              System.out.println(preferences.getString("bestUser"));
               game.setScreen(new GameOverScreen(game, "Cross"));
 
           }
@@ -141,8 +165,17 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     //	TODO Override setBestUser : this is where you should try and retrieve information for your best user, look at save and retrieve functions
     @Override
     public void setBestUser() {
-        this.bestUser = new RetroManiaGeneralUser("POR");
+        Preferences preferences = game.getPrefrences(Configuration.tictactoePreference);
+        User user = new RetroManiaGeneralUser(preferences.getString(Configuration.bestUserUserName));
+        user.setScore(preferences.getInteger(Configuration.bestUserScore));
+        bestUser = user;
     }
+
+    @Override
+    public Integer getBestUserScore() {
+        return bestUser.getScore();
+    }
+
 
     @Override
     public void save(Object... args) {
