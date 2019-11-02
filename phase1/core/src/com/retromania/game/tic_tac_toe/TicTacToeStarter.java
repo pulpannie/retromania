@@ -124,8 +124,6 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
               preferences.flush();
 
 
-
-              System.out.println("Check me here !!");
               System.out.println(preferences.getString("bestUser"));
               game.setScreen(new GameOverScreen(game, "Cross"));
 
