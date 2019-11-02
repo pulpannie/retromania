@@ -75,7 +75,7 @@ public class GameOverScreen extends RetroManiaScreen {
         batch.end();
         if (replayButton.isPressed()){
             stage.dispose();
-            game.setScreen(new PlayScreen(game));
+            game.setScreen(new TicTacToeStarter(game));
         }
         if (menuButton.isPressed()){
             stage.dispose();
