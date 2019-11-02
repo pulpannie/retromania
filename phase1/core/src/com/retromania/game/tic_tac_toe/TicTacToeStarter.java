@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.retromania.game.shared_abstractions.Configuration;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;

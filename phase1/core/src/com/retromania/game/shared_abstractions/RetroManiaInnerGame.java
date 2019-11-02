@@ -11,19 +11,8 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
   protected User currentUser;
   protected User bestUser;
 
-  public Preferences getPreferences() {
-    return preferences;
-  }
 
-  public void setPreferences(Preferences preferences) {
-    this.preferences = preferences;
-  }
 
-  private Preferences preferences;
-
-  public void makeSaveFile(String name) {
-    preferences = Gdx.app.getPreferences(name);
-  }
 
   public RetroManiaGame.Orientation getOrientation() {
     return orientation;

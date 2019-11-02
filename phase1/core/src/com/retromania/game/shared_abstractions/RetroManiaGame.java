@@ -1,6 +1,8 @@
 package com.retromania.game.shared_abstractions;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -33,6 +35,10 @@ public abstract class RetroManiaGame extends Game {
 
 
     OrientationManager orientationManager;
+
+    public Preferences getPrefrences(String name){
+        return Gdx.app.getPreferences(name);
+    }
 
     public RetroManiaGame(OrientationManager orientationManager) {
         this.orientationManager = orientationManager;
