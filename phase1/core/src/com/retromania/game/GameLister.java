@@ -111,7 +111,7 @@ public class GameLister extends RetroManiaScreen {
     table2.add(button).expandX().center().row();
     table2.add(bestScore).expandX().center().row();
     table.add(table2).expandX().center().row();
-//
+
 //    table.add(brand1);
 //    table.debug();
     Gdx.input.setInputProcessor(stage);
