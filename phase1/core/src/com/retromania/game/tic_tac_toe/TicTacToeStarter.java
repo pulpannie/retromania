@@ -158,7 +158,9 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     //TODO Override setCurrentUser : Which sets your user and you should use this for checking whether or not you have a personal best
     @Override
     public void setCurrentUser(String name) {
+        Preferences preferences = game.getPrefrences(Configuration.tictactoePreference);
         this.currentUser = new RetroManiaGeneralUser(name);
+        this.currentUser.setScore(preferences.getInteger(currentUser.getUserName()));
     }
     //	TODO Override setBestUser : this is where you should try and retrieve information for your best user, look at save and retrieve functions
     @Override
