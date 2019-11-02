@@ -82,7 +82,7 @@ public class ColourShooterStarter extends RetroManiaInnerGame {
 
 	@Override
 	public Integer getBestUserScore() {
-		return 0;
+		return null;
 	}
 
 	@Override
