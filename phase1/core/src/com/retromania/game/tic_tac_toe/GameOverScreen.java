@@ -72,15 +72,7 @@ public class GameOverScreen extends RetroManiaScreen {
         font.getData().setScale(5, 5);
         font.draw(batch, this.winner + "wins!", gameWidth / 2, gameHeight / 2);
         batch.end();
-//        if (replayButton.isPressed()) {
-//          stage.dispose();
-//          game.setScreen(new TicTacToeStarter(game));
-//
-//          if (menuButton.isPressed()) {
-//            stage.dispose();
-//            game.setScreen(new GameLister(game));
-//          }
-//        }
+
     }
 
     @Override
