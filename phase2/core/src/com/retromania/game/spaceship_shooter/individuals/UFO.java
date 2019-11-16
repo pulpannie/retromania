@@ -44,7 +44,7 @@ public class UFO {
     }
 
     public void recreate(){
-        x =(int) (Math.random() * 8)*-10;
+        x =(int) (Math.random() * -80);
         y = (int) (Math.random() * (Gdx.graphics.getHeight()/2 + 1) + Gdx.graphics.getHeight()/4);
     }
 }

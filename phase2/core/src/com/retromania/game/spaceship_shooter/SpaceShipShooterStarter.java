@@ -1,6 +1,7 @@
 package com.retromania.game.spaceship_shooter;
 
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.Screen;
 import com.retromania.game.shared_abstractions.Configuration;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
@@ -11,6 +12,7 @@ import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
 import com.retromania.game.spaceship_shooter.screens.MenuScreen;
 import com.retromania.game.spaceship_shooter.screens.PauseScreen;
 import com.retromania.game.spaceship_shooter.screens.PlayScreen;
+import com.retromania.game.spaceship_shooter.screens.StateFactory;
 
 import java.util.List;
 
@@ -23,15 +25,15 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
         return gameStats;
     }
 
-    public static PlayScreen getPlayScreen() {
+    public static Screen getPlayScreen() {
         return playScreen;
     }
 
-    public static PauseScreen getPauseScreen() {
+    public static Screen getPauseScreen() {
         return pauseScreen;
     }
 
-    public static MenuScreen getMenuScreen() {
+    public static Screen getMenuScreen() {
         return menuScreen;
     }
 
@@ -39,9 +41,9 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
         SpaceShipShooterStarter.playScreen = playScreen;
     }
 
-    static PlayScreen playScreen;
-    static PauseScreen pauseScreen;
-    static MenuScreen menuScreen;
+    static Screen playScreen;
+    static Screen pauseScreen;
+    static Screen menuScreen;
 
 
     private Preferences preferences;
@@ -49,9 +51,9 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     public SpaceShipShooterStarter(RetroManiaGame game){
         super(game, "Spaceship shooter", RetroManiaGame.Orientation.HORIZONTAL);
         gameStats = new GameStats();
-        playScreen = new PlayScreen(game, this);
-        pauseScreen = new PauseScreen(game, this);
-        menuScreen = new MenuScreen(game, this);
+        playScreen = StateFactory.getScreen("play screen", game, this);
+        pauseScreen = StateFactory.getScreen("pause screen", game, this);
+        menuScreen = StateFactory.getScreen("menu screen", game, this);
         preferences = game.getPrefrences(Configuration.spaceshipDestroyerPreference);
     }
 

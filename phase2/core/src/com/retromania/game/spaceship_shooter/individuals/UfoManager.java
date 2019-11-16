@@ -8,40 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UfoManager extends Actor {
-    int height;
-    private int numOfUfos;
-    private List<UFO> UFOList;
+    private UfoManagerFacade facade;
 
     public UfoManager(int numOfUfos){
-        this.numOfUfos = numOfUfos;
-        UFOList = new ArrayList<UFO>();
-        height = Gdx.graphics.getHeight();
-
-        double tempy;
-        for(int i = 0; i< numOfUfos; i++){
-            tempy= Math.random() * (height/2 + 1) + height/4;
-            UFOList.add(new UFO(-200*i,(int) tempy));
-
-        }
+        facade = (new UfoManagerFacadeBuilder()).buildMover().buildRepo(numOfUfos).buildDrawer().buildFacade();
     }
 
     public void update(Rocket rocket, Hud hud){
-        for (UFO i : UFOList)
-            i.moveRight();
-
-        if (rocket != null && !rocket.reach_top() ){
-            for (UFO i: UFOList){
-                if(i.isRocketTouches(rocket)){
-                    hud.addScore(10);
-                    i.recreate();
-                }
-            }
-        }
-
+        facade.mover.moveUfos(facade.repo.getUfos());
+        facade.mover.moveRocket(rocket, facade.repo.getUfos(), hud);
     }
 
     public void draw(Batch batch, float delta){
-        for (UFO i: UFOList)
-            i.draw(batch, delta);
+        facade.drawer.drawUfos(batch, facade.repo.getUfos(), delta);
     }
 }

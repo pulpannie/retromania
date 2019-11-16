@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
+import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 
 
 public class PauseScreen implements Screen {
@@ -35,18 +36,14 @@ public class PauseScreen implements Screen {
         background = new Background();
 
 
-        Texture resumeTexture = new Texture("resume.png");
-        TextureRegion resumeTextureRegion =  new TextureRegion(resumeTexture);
-        TextureRegionDrawable resumeTextureRegionDrawable = new TextureRegionDrawable(resumeTextureRegion);
-        resumeButton = new ImageButton(resumeTextureRegionDrawable);
+
+        resumeButton = (new ImageButtonBuilder()).buildTexture("resume.png").buildButton();
         resumeButton.setPosition(Gdx.graphics.getWidth()/2-200, Gdx.graphics.getHeight()/2);
         resumeButton.setSize(400, 400);
         stage.addActor(resumeButton);
 
-        Texture restartTexture = new Texture("restart.png");
-        TextureRegion restartTextureRegion =  new TextureRegion(restartTexture);
-        TextureRegionDrawable restartTextureRegionDrawable = new TextureRegionDrawable(restartTextureRegion);
-        restartButton = new ImageButton(restartTextureRegionDrawable);
+
+        restartButton = (new ImageButtonBuilder()).buildTexture("restart.png").buildButton();
         restartButton.setPosition(Gdx.graphics.getWidth()/2-125, Gdx.graphics.getHeight()/2 - 200);
         restartButton.setSize(250, 250);
         stage.addActor(restartButton);

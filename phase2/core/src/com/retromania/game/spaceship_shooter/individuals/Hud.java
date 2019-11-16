@@ -43,15 +43,15 @@ public class Hud {
         table.top();
         table.setFillParent(true);
 
-        BitmapFont sampleFont = new BitmapFont();
-        sampleFont.getData().setScale(3.0f);
-        Color sampleColor = Color.WHITE;
-        countDownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(sampleFont, sampleColor));
-        scoreLabel = new Label(String.format("%06d", score), new Label.LabelStyle(sampleFont, sampleColor));
-        timeLabel = new Label("TIMER", new Label.LabelStyle(sampleFont, sampleColor));
-        worldLabel = new Label("DESERT", new Label.LabelStyle(sampleFont, sampleColor));
-        scoreNameLabel = new Label("SCORE", new Label.LabelStyle(sampleFont, sampleColor));
-        areaLabel = new Label("AREA", new Label.LabelStyle(sampleFont, sampleColor));
+        LabelBuilder labelBuilder = new LabelBuilder();
+        labelBuilder.buildFont(3.0f).buildColor().buildLabelStyle();
+        countDownLabel = labelBuilder.buildText(String.format("%03d", worldTimer)).buildLabel();
+        scoreLabel = labelBuilder.buildText(String.format("%06d", score)).buildLabel();
+        timeLabel = labelBuilder.buildText("TIMER").buildLabel();
+        worldLabel = labelBuilder.buildText("DESERT").buildLabel();
+        scoreNameLabel = labelBuilder.buildText("SCORE").buildLabel();
+        areaLabel = labelBuilder.buildText("AREA").buildLabel();
+
 
         table.add(timeLabel).expandX().pad(10);
         table.add(scoreNameLabel).expandX().pad(10);

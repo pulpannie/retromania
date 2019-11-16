@@ -20,6 +20,8 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.GameStats;
+import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
+import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
 
 public class MenuScreen implements Screen {
     private RetroManiaGame game;
@@ -49,14 +51,15 @@ public class MenuScreen implements Screen {
         table.top();
         table.setFillParent(true);
 
-        BitmapFont sampleFont = new BitmapFont();
-        sampleFont.getData().setScale(6.0f);
-        Color sampleColor = Color.WHITE;
 
-        highScoreTextLabel = new Label("High Score", new Label.LabelStyle(sampleFont, sampleColor));
-        latestScoreTextLabel = new Label("Latest Score", new Label.LabelStyle(sampleFont, sampleColor));
-        highScoreLabel = new Label(String.format("%03d", temp.getHighScore()), new Label.LabelStyle(sampleFont, sampleColor));
-        latestScoreLabel = new Label(String.format("%06d", temp.getLatestScore()), new Label.LabelStyle(sampleFont, sampleColor));
+        LabelBuilder labelBuilder = new LabelBuilder();
+        labelBuilder.buildFont(6.0f).buildColor().buildLabelStyle();
+
+        highScoreTextLabel = labelBuilder.buildText("High Score").buildLabel();
+        latestScoreTextLabel = labelBuilder.buildText("Latest Score").buildLabel();
+        highScoreLabel = labelBuilder.buildText(String.format("%03d", temp.getHighScore())).buildLabel();
+        latestScoreLabel = labelBuilder.buildText(String.format("%06d", temp.getLatestScore())).buildLabel();
+
 
         table.add(highScoreTextLabel).expandX().pad(10);
         table.add(highScoreLabel).expandX();
@@ -65,12 +68,11 @@ public class MenuScreen implements Screen {
         table.add(latestScoreLabel).expandX().pad(10);
 
 
-        Texture startTexture = new Texture("start_button.png");
-        TextureRegion startTextureRegion =  new TextureRegion(startTexture);
-        TextureRegionDrawable startTextureRegionDrawable = new TextureRegionDrawable(startTextureRegion);
-        startButton = new ImageButton(startTextureRegionDrawable);
+
+        startButton = (new ImageButtonBuilder()).buildTexture("start_button.png").buildButton();
         startButton.setPosition(Gdx.graphics.getWidth()/2-400, Gdx.graphics.getHeight()/2 - 600);
         startButton.setSize(800, 800);
+
         stage.addActor(startButton);
         stage.addActor(table);
 

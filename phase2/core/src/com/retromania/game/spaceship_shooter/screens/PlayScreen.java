@@ -1,8 +1,6 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -14,11 +12,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.Car;
 import com.retromania.game.spaceship_shooter.individuals.Hud;
+import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.UfoManager;
 
 
@@ -47,34 +45,23 @@ public class PlayScreen implements Screen{
 
         stage = new Stage(gamePort, game.sb);
 
-        Texture leftTexture = new Texture("left_button_big.png");
-        TextureRegion leftTextureRegion = new TextureRegion(leftTexture);
-        TextureRegionDrawable leftTextureRegionDrawable =
-                new TextureRegionDrawable(leftTextureRegion);
-        leftButton = new ImageButton(leftTextureRegionDrawable);
+
+        leftButton = (new ImageButtonBuilder()).buildTexture("left_button_big.png").buildButton();
         leftButton.setPosition(0, 0);
         leftButton.setSize(250, 250);
         stage.addActor(leftButton);
 
-        Texture rightTexture = new Texture("right_button_big.png");
-        TextureRegion rightTextureRegion = new TextureRegion(rightTexture);
-        TextureRegionDrawable rigthTextureRegionDrawable =
-                new TextureRegionDrawable(rightTextureRegion);
-        rightButton = new ImageButton(rigthTextureRegionDrawable);
+        rightButton = (new ImageButtonBuilder()).buildTexture("right_button_big.png").buildButton();
         rightButton.setPosition(Gdx.graphics.getWidth()- 250, 0);
         rightButton.setSize(250, 250);
         stage.addActor(rightButton);
 
-        Texture pauseTexture = new Texture("pause.png");
-        TextureRegion pauseTextureRegion = new TextureRegion(pauseTexture);
-        TextureRegionDrawable pauseTextureRegionDrawable =
-                new TextureRegionDrawable(pauseTextureRegion);
-        pauseButton = new ImageButton(pauseTextureRegionDrawable);
+        pauseButton = (new ImageButtonBuilder()).buildTexture("pause.png").buildButton();
         pauseButton.setPosition(Gdx.graphics.getWidth() - 200, Gdx.graphics.getHeight() - 350);
         pauseButton.setSize(180, 180);
         stage.addActor(pauseButton);
-
         Gdx.input.setInputProcessor(stage);
+
         background = new Background();
         ufoManager = new UfoManager(4);
 
@@ -111,10 +98,6 @@ public class PlayScreen implements Screen{
 
     public void update(float dt){
         handleInput(dt);
-
-        if (player.shooted()){
-            player.getiRocket().moveUp();
-        }
 
         ufoManager.update(player.getiRocket(), hud);
         gamecam.update();
