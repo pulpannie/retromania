@@ -5,182 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d76e4ddc-9db4-4e22-9299-fb6353c458d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.4.1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_1_9_10_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_backend_android_1_9_10_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_box2d_1_9_10_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__gdx_1_9_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__gdx_backend_lwjgl_1_9_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__gdx_box2d_1_9_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__gdx_box2d_platform_1_9_10_natives_desktop.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__gdx_platform_1_9_10_natives_desktop.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jinput_2_0_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_linux.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_osx.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jinput_platform_2_0_5_natives_windows.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jlayer_1_0_1_gdx.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jorbis_0_0_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jutils_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__lwjgl_2_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__lwjgl_platform_2_9_3_natives_linux.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__lwjgl_platform_2_9_3_natives_osx.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__lwjgl_platform_2_9_3_natives_windows.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__lwjgl_util_2_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/android.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/back_text.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/badlogic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/black.fnt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/black_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/black_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/black_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/black_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/buttons.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/buttons.pack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/cannon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/circle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/cross.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/gray_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/instructions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/left_button_big.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/list_skin.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/m1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/m2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/m3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/m4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/menu_tictactoe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/pause.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/playButton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/replay_tictactoe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/restart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/resume.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/right_button_big.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/rocket_fire.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/rules.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/s1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/s2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/s3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/s4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/sampleMenu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/selection.pack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/selection.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/skins.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/square.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/start_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/text_instructions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/title.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/ufo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/ufo_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/white.fnt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/white_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/white_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/white_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/assets/white_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/generated/source/buildConfig/androidTest/debug/com/retromania/game/test/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/generated/source/buildConfig/debug/com/retromania/game/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/apk_list/debug/mainApkListPersistenceDebug/apk-list.gson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/compatible_screen_manifest/debug/createDebugCompatibleScreenManifests/out/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/instant_app_manifest/debug/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/merged_manifests/debug/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/merged_manifests/debugAndroidTest/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/merged_manifests/debugAndroidTest/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/intermediates/metadata_feature_manifest/debug/processDebugManifest/metadata-feature/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/ic_launcher-web.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/project.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/drawable-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/drawable-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/drawable-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/drawable-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/drawable-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/values/color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/com/retromania/game/OrientationManagerAndroid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/RetroMania.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/ColourShooterStarter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/states/Bullet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/states/GameStateManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/states/InstructionState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/states/MenuState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/states/PlayState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/states/SkinsState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/states/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/ButtonMaker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/Individual.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/OrientationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaGeneralUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaInnerGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/UserNameTextInputListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/SpaceShipShooterStarter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/individuals/Background.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/individuals/Car.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/individuals/GameStats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/individuals/Hud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/individuals/Rocket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/individuals/UFO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/individuals/UfoManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/screens/MainScreenInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/screens/MenuScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/screens/PauseScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/screens/PlayScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/Cell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/GameOverScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/TicTacToeLogic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/TicTacToeStarter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/notes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/desktop.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/src/com/retromania/game/desktop/DesktopLauncher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/src/com/retromania/game/desktop/OrientationManagerPC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/assets/colour_shooter/description.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/assets/spaceship_shooter/description.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/assets/tic_tac_toe/description.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/notes.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -203,42 +32,6 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/RetroMania.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/Configuration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/src/com/retromania/game/OrientationManagerAndroid.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -250,19 +43,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/TicTacToeStarter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+            <state relative-caret-position="227">
+              <caret line="169" column="24" selection-start-line="169" selection-start-column="24" selection-end-line="169" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/android/assets/tic_tac_toe/description.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android/assets/spaceship_shooter/description.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android/assets/colour_shooter/description.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -286,8 +85,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/notes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="364">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android/assets/list_skin.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="39" lean-forward="true" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/ColourShooterStarter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -333,21 +150,6 @@
           <expand>
             <path>
               <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="android" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="android" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="android" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="game" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
               <item name="core" type="e9137016:NonAndroidModuleNode" />
             </path>
             <path>
@@ -360,21 +162,6 @@
               <item name="core" type="e9137016:NonAndroidModuleNode" />
               <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="desktop" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="desktop" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="desktop" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="desktop" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -477,7 +264,24 @@
       <option name="presentableId" value="Default" />
       <updated>1573866300012</updated>
     </task>
+    <task id="LOCAL-00001" summary="PHASE 2 STEP 1 ADDED, DECOUPLED GAME AND SCREENS">
+      <created>1573869070116</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573869070116</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -493,20 +297,26 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Run" weight="0.3286119" />
-      <window_info anchor="bottom" id="Logcat" visible="true" weight="0.4036827" />
+      <window_info anchor="bottom" id="Logcat" weight="0.4036827" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="TODO" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" />
       <window_info anchor="bottom" id="Debug" />
       <window_info anchor="bottom" id="Terminal" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Build" weight="0.3286119" />
+      <window_info anchor="bottom" id="Find" />
+      <window_info anchor="bottom" id="Messages" weight="0.3286119" />
       <window_info anchor="right" id="Device File Explorer" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="right" id="Gradle" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Palette&#9;" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="PHASE 2 STEP 1 ADDED, DECOUPLED GAME AND SCREENS" />
+    <option name="LAST_COMMIT_MESSAGE" value="PHASE 2 STEP 1 ADDED, DECOUPLED GAME AND SCREENS" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/SpaceShipShooterStarter.java">
@@ -538,13 +348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/TicTacToeStarter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -583,6 +386,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/android/assets/list_skin.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="39" lean-forward="true" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/colour_shooter/ColourShooterStarter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/TicTacToeStarter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="169" column="24" selection-start-line="169" selection-start-column="24" selection-end-line="169" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/assets/tic_tac_toe/description.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/assets/spaceship_shooter/description.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/assets/colour_shooter/description.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/desktop/src/com/retromania/game/desktop/DesktopLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -592,8 +425,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/notes.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="364">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>

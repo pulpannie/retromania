@@ -12,3 +12,14 @@ Fix: so we used anonymous class and dependency injection in the backend
 which is one of our highest abstractions in our application,
 is no longer dependant on the screen classes.
 
+
+# Step 2
+
+Code affected: RetroManiaGame.create, android/assets,
+desktop/assets
+
+Flaw : All the assets where in one folder and the management of the said folder was getting out of
+hand.
+Fix: Directories with the name of the projects where added to each asset folder, and a description
+file was added to each folder for the description of the assets.
+
