@@ -26,36 +26,7 @@ file was added to each folder for the description of the assets.
 
 # Step 3
 
-Code affected: MenuScreen, PauseScreen, PLayScreen, Hud
+Code affected: Special_mario
 
-Flaw: The mentioned classes should not create their buttons and labels by itself according to Single Responsibility Rule.
-
-Fix: creation of buttons and labels are seperated from their usage by introducing ImageButtonBuilder, LabelBuilder classes (apply Builder design pattern)
-
-
-#Step 4
-
-Code affected: UfoManager
-
-Flaw: UfoManager is currently responsibe to multiple "actors" such as: moving UFO and checking if the rocket hit UFO, drawing UFO, storing all the UFOs.
-
-Fix: Create UfoManagerFacade that contains the same responsibilities as the UfoManager through the help of different classes: UfoDrawer, UfoMover, UfoRepo (apply facade design pattern) and having an instance variable of UfoManagerFacade in UfoManager class.
-
-
-# Step 5
-
-Code affected: UfoManager
-
-Flaw: The mentioned class should not create its facade by itself according to Single Responsibility Rule.
-
-Fix: creation of facade is seperated from its usage by introducing UfoManagerFacadeBuilder class(apply Builder design pattern)
-
-
-#Step 6
-
-Code affected: SpaceShipShooterStarter
-
-Flaw: SpaceShipShooterStarter has to interact with many different subclasses of Screen. We want to obscure the creation process for those classes
-
-Fix: Created StateFactory to encapsulate constructor call to get instance of those screens on the SpaceShipShooterStarter without it knowing which constructor was called. (apply Simple Factory Design Pattern).
+A new game was added to demonstrate the flexibility of our model in adding new games.
 

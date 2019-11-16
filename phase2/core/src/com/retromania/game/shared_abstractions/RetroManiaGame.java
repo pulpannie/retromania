@@ -21,6 +21,7 @@ public abstract class RetroManiaGame extends Game {
         switch (orientation){
             case HORIZONTAL:
                 orientationManager.makeHorizontal();
+                break;
             default:
                 orientationManager.makeVertical();
         }
