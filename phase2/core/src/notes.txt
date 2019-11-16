@@ -1,0 +1,14 @@
+PHASE 2 :
+# Step 1
+
+Code affected: RetroManiaGame.create, android/java/AndroidLauncher,
+desktop/com.retromania.game.desktop/DesktopLauncher
+
+Flaw : The code was instantiating a new screen, so we tried to use setScreen to set the screen
+outside the class, but we couldn't do that because setScreen should be called after
+"create" method is called.
+Fix: so we used anonymous class and dependency injection in the backend
+(pc and android implementation) to set the screen, because of this the RetroManiaGame,
+which is one of our highest abstractions in our application,
+is no longer dependant on the screen classes.
+
