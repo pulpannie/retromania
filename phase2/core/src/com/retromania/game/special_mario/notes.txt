@@ -1,0 +1,5 @@
+# Step 1
+
+Code affected: SpecialMarioStarter
+
+The environment of the first level Of the game was made, added, and shown on the device

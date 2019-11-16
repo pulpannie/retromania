@@ -72,7 +72,9 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
     @Override
     public void handleInput() {
-
+        if (Gdx.input.isTouched()){
+            gamecam.position.x += 10;
+        }
     }
 
     @Override
@@ -80,12 +82,20 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     }
 
     @Override
+    public void update(){
+        gamecam.update();
+        renderer.setView(gamecam);
+        handleInput();
+    }
+
+    @Override
     public void render(float delta) {
+
+        update();
+
         Gdx.gl.glClearColor(0,0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        gamecam.update();
-        renderer.setView(gamecam);
         renderer.render();
         game.sb.setProjectionMatrix(gamecam.combined);
 
