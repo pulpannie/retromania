@@ -40,14 +40,14 @@ public class GameLister extends RetroManiaScreen {
   private Label bestScore;
 
 
-  public GameLister(RetroManiaGame game) {
+  public GameLister() {
 
-    super(game);
+    super(RetroMania.getRetroManiaInstance());
     gameList = new ArrayList<>();
-    gameList.add(new TicTacToeStarter(game));
-    gameList.add(new SpaceShipShooterStarter(game));
-    gameList.add(new ColourShooterStarter(game));
-    gameList.add(new SpecialMarioStarter(game));
+    gameList.add(new TicTacToeStarter(RetroMania.getRetroManiaInstance()));
+    gameList.add(new SpaceShipShooterStarter(RetroMania.getRetroManiaInstance()));
+    gameList.add(new ColourShooterStarter(RetroMania.getRetroManiaInstance()));
+    gameList.add(new SpecialMarioStarter(RetroMania.getRetroManiaInstance()));
   }
 
   private String getStringBestUserScore(){

@@ -30,3 +30,18 @@ Code affected: Special_mario
 
 A new game was added to demonstrate the flexibility of our model in adding new games.
 
+# Step 4
+
+Code affected: RetroMania, RetroManiaGame, Creatable
+
+Flaw : We will have at most one instance of RetroMania, and RetroManiaGame class. we also need its
+instance in all of our screens, therefore we can use the SINGLETON design pattern.
+Fix: We made the constructors for the said classes private and made the new interface Creatable<T>.
+This is because we want to keep the use of anonymous classes introduced to step 2, while still using
+SINGLETON design pattern. This is in a way close to Facade design pattern. the Creatable object is
+responsible for creating the object T. This way the RetroMania class doesn't have to worry about what,
+class it need to be showing in the beginning and this will be done in the backend.
+
+
+
+

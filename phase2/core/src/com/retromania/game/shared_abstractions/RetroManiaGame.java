@@ -7,10 +7,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.retromania.game.GameLister;
+import com.retromania.game.RetroMania;
 
 import java.util.Observable;
 
 public abstract class RetroManiaGame extends Game {
+
+    private OrientationManager orientationManager;
+
+    public RetroManiaGame setOrientationManager(OrientationManager orientationManager) {
+        this.orientationManager = orientationManager;
+        return this;
+    }
 
     public enum Orientation{
         HORIZONTAL,
@@ -37,15 +45,11 @@ public abstract class RetroManiaGame extends Game {
     protected Texture img;
 
 
-    OrientationManager orientationManager;
 
     public Preferences getPrefrences(String name){
         return Gdx.app.getPreferences(name);
     }
 
-    public RetroManiaGame(OrientationManager orientationManager) {
-        this.orientationManager = orientationManager;
-    }
 
 
 }

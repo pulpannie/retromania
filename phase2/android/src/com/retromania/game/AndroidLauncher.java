@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
 public class AndroidLauncher extends AndroidApplication {
@@ -12,13 +13,15 @@ public class AndroidLauncher extends AndroidApplication {
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		RetroManiaGame game = new RetroMania(new OrientationManagerAndroid(this)) {
+		Creatable c = new Creatable<RetroMania>() {
 			@Override
-			public void create() {
-				sb = new SpriteBatch();
-				setScreen(new GameLister(this));
+			public void create(RetroMania r) {
+				r.sb = new SpriteBatch();
+				r.setScreen(new GameLister());
 			}
 		};
+		RetroManiaGame game = RetroMania.getRetroManiaInstance().setCreatable(c);
+		game.setOrientationManager(new OrientationManagerAndroid(this));
 		initialize(game, config);
 	}
 }
