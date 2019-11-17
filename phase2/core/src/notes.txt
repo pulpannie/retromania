@@ -42,6 +42,16 @@ SINGLETON design pattern. This is in a way close to Facade design pattern. the C
 responsible for creating the object T. This way the RetroMania class doesn't have to worry about what,
 class it need to be showing in the beginning and this will be done in the backend.
 
+# Step 5
+
+Code affected: RetroManiaInnerGame, RetroManiaScreen
+
+Flaw : All the inner games and screens are still passing around the game instance, which is
+unnecessary and repetitive and sometimes even useless.
+Fix: All the high level classes mentioned in steps gained new constructors which don't take in the
+game it self, because the instance of the game can be reached during runtime, see step 4. The old
+methods are now deprecated and the refactoring of the lower level classes was added to TODO list.
+
 
 
 

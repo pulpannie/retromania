@@ -3,6 +3,7 @@ package com.retromania.game.shared_abstractions;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.RetroMania;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public abstract class RetroManiaScreen implements Screen {
     public RetroManiaScreen(RetroManiaGame game){
         this.game = game;
     }
+    public RetroManiaScreen(){}
 
     public void update(){
         handleInput();
