@@ -22,7 +22,7 @@ public abstract class RetroManiaScreen implements Screen {
     public RetroManiaScreen(RetroManiaGame game){
         this.game = game;
     }
-    public RetroManiaScreen(){}
+    public RetroManiaScreen(){game = RetroMania.getRetroManiaInstance();}
 
     public void update(){
         handleInput();

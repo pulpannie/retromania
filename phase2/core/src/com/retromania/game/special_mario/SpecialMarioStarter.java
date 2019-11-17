@@ -21,6 +21,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.Configuration;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
@@ -34,6 +35,9 @@ import static com.badlogic.gdx.Gdx.gl;
 public class SpecialMarioStarter extends RetroManiaInnerGame {
 
 
+    private static SpecialMarioStarter specialMarioStarter = new SpecialMarioStarter();
+
+
 
     private TmxMapLoader mapLoader;
     private TiledMap tiledMap;
@@ -42,6 +46,10 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
     private World world;
     private Box2DDebugRenderer b2ddr;
+
+    public static SpecialMarioStarter getSpecialMarioStarter() {
+        return specialMarioStarter;
+    }
 
 
     private void initWorld(){
@@ -70,8 +78,8 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
     }
 
-    public SpecialMarioStarter(RetroManiaGame game) {
-        super(game, "MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
+    private SpecialMarioStarter() {
+        super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, gamecam);
 
@@ -92,7 +100,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
     @Override
     public void setBestUser() {
-        Preferences preferences = game.getPrefrences(Configuration.tictactoePreference);
+        Preferences preferences = game.getPrefrences("Mario");
         User user = new RetroManiaGeneralUser(preferences.getString(Configuration.bestUserUserName));
         user.setScore(preferences.getInteger(Configuration.bestUserScore));
         bestUser = user;

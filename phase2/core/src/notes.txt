@@ -53,5 +53,33 @@ game it self, because the instance of the game can be reached during runtime, se
 methods are now deprecated and the refactoring of the lower level classes was added to TODO list.
 
 
+# Step 6
+
+Code affected: GameLister, UserNameTextInputListener
+
+Flaw : There was a bug, we had a leakage of our resources made in GameLister, because when we called,
+the setScreen we didn't call the dispose method.
+Fix: Dispose method was called properly and the invisible button was destroyed.
+
+# Step 7
+
+Code affected: RetroManiaScreen
+
+Flaw : game instance was set manually by the developer each time there was a instantiation of the
+RetroManiaScreen but we made a constructor which takes no argument, but there were errors because,
+the subclasses where still using the variable that referenced to the game.
+Fix: Used the function made in step 4 to get the game in the empty constructor.
+
+
+# Step 8
+
+Code affected: GameLister, SpecialMarioStarter
+
+Flaw : Old use of constructor for SpecialMarioStarter.
+Fix: The use was updated, as requested by the TODO list added in step 5.
+
+
+
+
 
 

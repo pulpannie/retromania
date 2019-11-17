@@ -47,7 +47,7 @@ public class GameLister extends RetroManiaScreen {
     gameList.add(new TicTacToeStarter(RetroMania.getRetroManiaInstance()));
     gameList.add(new SpaceShipShooterStarter(RetroMania.getRetroManiaInstance()));
     gameList.add(new ColourShooterStarter(RetroMania.getRetroManiaInstance()));
-    gameList.add(new SpecialMarioStarter(RetroMania.getRetroManiaInstance()));
+    gameList.add(SpecialMarioStarter.getSpecialMarioStarter());
   }
 
   private String getStringBestUserScore(){
@@ -100,13 +100,16 @@ public class GameLister extends RetroManiaScreen {
 
 
     Table table2 = new Table();
-    button.addListener( new ClickListener() {
-      @Override
-      public void clicked(InputEvent event, float x, float y) {
-        UserNameTextInputListener userNameTextInputListener = new UserNameTextInputListener(game, selectedGame);
-        Gdx.input.getTextInput(userNameTextInputListener, "User Name", "", "");
-      }
-    } );
+    ClickListener c;
+    button.addListener(
+        new ClickListener() {
+          @Override
+          public void clicked(InputEvent event, float x, float y) {
+            UserNameTextInputListener userNameTextInputListener =
+                new UserNameTextInputListener(game, selectedGame);
+            Gdx.input.getTextInput(userNameTextInputListener, "User Name", "", "");
+          }
+        });
     bestScore =
             new Label(getStringBestUserScore(), new Label.LabelStyle(new BitmapFont(), Color.RED));
     table2.add(button).expandX().center().row();
@@ -116,6 +119,7 @@ public class GameLister extends RetroManiaScreen {
 //    table.add(brand1);
 //    table.debug();
     Gdx.input.setInputProcessor(stage);
+
   }
 
   @Override
@@ -153,6 +157,7 @@ public class GameLister extends RetroManiaScreen {
 
   @Override
   public void dispose() {
+    System.out.println("pleaseee");
     stage.dispose();
   }
 }

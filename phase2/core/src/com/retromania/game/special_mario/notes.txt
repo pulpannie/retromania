@@ -3,3 +3,24 @@
 Code affected: SpecialMarioStarter
 
 The environment of the first level Of the game was made, added, and shown on the device
+
+
+# Step 2
+
+Code affected: SpecialMarioStarter
+
+Flaw : The code used to use the old constructors of RetroManiaInnerGame which required the use of
+RetroManiaInnerGame, but we didn't need that instance in our code.
+Fix: Used the new
+
+
+# Step 3
+
+Code affected: SpecialMarioStarter
+
+Flaw : There only needs to be one instance of the inner game, therefore it is best to use the
+singleton design pattern, this also helps with removing the passing around of the value of the inner
+game.
+Fix: Used Singleton design pattern for the said class.
+
+

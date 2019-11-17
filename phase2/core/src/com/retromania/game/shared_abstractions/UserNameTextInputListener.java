@@ -1,6 +1,7 @@
 package com.retromania.game.shared_abstractions;
 
 import com.badlogic.gdx.Input;
+import com.retromania.game.GameLister;
 
 public class UserNameTextInputListener implements Input.TextInputListener {
 
@@ -19,6 +20,7 @@ public class UserNameTextInputListener implements Input.TextInputListener {
         if(!this.userName.equals("")&&this.userName.length()<=3){
             game.setOrientation(selectedGame.getOrientation());
             selectedGame.setCurrentUser(this.userName);
+            game.getScreen().dispose();
             game.setScreen(selectedGame);
         }
     }
