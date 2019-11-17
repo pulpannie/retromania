@@ -1,2 +1,5 @@
 firstLevel.tmx : the first trial of maps that was used for the mario game
 tileset_gutter.png : tileset for the first level
+mario_small.pack : texture atlas for main player texture
+mario_small.png : the actual texture for the main character
+tileset_gutter.tsx : the resources for the first levels textures

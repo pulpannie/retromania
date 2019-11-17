@@ -86,5 +86,11 @@ Code affected: Individual
 Individual is now and interface, because we didn't use any of it's members.
 
 
+# Step 10
+
+Code affected: assets/special_mario/description.txt
+
+Assets description file was updated.
+
 
 
