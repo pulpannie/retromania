@@ -24,3 +24,11 @@ game.
 Fix: Used Singleton design pattern for the said class.
 
 
+# Step 4
+
+Code affected: MainPlayer
+
+MainPlayer class added. This class is going to be responsible for the behaviour, posture and
+presentation of the main player. TODO : Use Facade design pattern in the future inorder to,
+divide these responsibilities.
+

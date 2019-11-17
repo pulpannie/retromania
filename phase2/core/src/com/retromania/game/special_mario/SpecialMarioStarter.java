@@ -8,25 +8,22 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.Configuration;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
+import com.retromania.game.special_mario.individuals.MainPlayer;
 
 import java.util.List;
 
@@ -38,14 +35,30 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     private static SpecialMarioStarter specialMarioStarter = new SpecialMarioStarter();
 
 
+    public static float convertPixelToMeter(float meter){
+        return meter * getPixelToMeterConversionRate();
+    }
+    public static float getPixelToMeterConversionRate(){
+        return 1/100f;
+    }
+
+    private MainPlayer mainPlayer;
+
+
 
     private TmxMapLoader mapLoader;
     private TiledMap tiledMap;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera gamecam;
 
+    public World getWorld() {
+        return world;
+    }
+
     private World world;
     private Box2DDebugRenderer b2ddr;
+
+
 
     public static SpecialMarioStarter getSpecialMarioStarter() {
         return specialMarioStarter;
@@ -53,7 +66,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
 
     private void initWorld(){
-        world = new World(new Vector2(0, 0), true);
+        world = new World(new Vector2(0, -10), true);
         b2ddr = new Box2DDebugRenderer();
 
         BodyDef bodyDef = new BodyDef();
@@ -66,14 +79,16 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
         for (MapObject object : tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
             bodyDef.type = BodyDef.BodyType.StaticBody;
-            bodyDef.position.set(rectangle.getX() + rectangle.getWidth()/2, rectangle.getY() +rectangle.getHeight()/2);
+            bodyDef.position.set(convertPixelToMeter(rectangle.getX() + rectangle.getWidth()/2),
+                    convertPixelToMeter(rectangle.getY() +rectangle.getHeight()/2));
             body = world.createBody(bodyDef);
 
-            shape.setAsBox(rectangle.getWidth()/2, rectangle.getHeight()/2);
+            shape.setAsBox(convertPixelToMeter(rectangle.getWidth()/2), convertPixelToMeter(rectangle.getHeight()/2));
             fixtureDef.shape = shape;
             body.createFixture(fixtureDef);
         }
 
+        mainPlayer = new MainPlayer(this);
 
 
     }
@@ -81,11 +96,11 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     private SpecialMarioStarter() {
         super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
         gamecam = new OrthographicCamera();
-        gamePort = new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, gamecam);
+        gamePort = new FitViewport(convertPixelToMeter(RetroManiaGame.V_WIDTH), convertPixelToMeter(RetroManiaGame.V_HEIGHT), gamecam);
 
         mapLoader = new TmxMapLoader();
         tiledMap = mapLoader.load("special_mario/firstLevel.tmx");
-        renderer = new OrthogonalTiledMapRenderer(tiledMap);
+        renderer = new OrthogonalTiledMapRenderer(tiledMap, getPixelToMeterConversionRate());
 
         gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
         initWorld();
@@ -124,7 +139,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     @Override
     public void handleInput() {
         if (Gdx.input.isTouched()){
-            gamecam.position.x += 10;
+            gamecam.position.x += convertPixelToMeter(10);
         }
     }
 
@@ -135,6 +150,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     @Override
     public void update(){
         gamecam.update();
+        world.step(1/60f, 6, 2);
         renderer.setView(gamecam);
         handleInput();
     }

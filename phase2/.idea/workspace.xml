@@ -4,10 +4,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" line="37" />
+    <bookmark url="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" line="34" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76e4ddc-9db4-4e22-9299-fb6353c458d8" name="Default Changelist" comment="ADDED UNIVERSAL STEP 6 -  : RetroManiaInnerGame and RetroManiaScreen now don't &#10;require the game instance, refactor lower level classes">
+    <list default="true" id="d76e4ddc-9db4-4e22-9299-fb6353c458d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -15,11 +15,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/UserNameTextInputListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/UserNameTextInputListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/MainPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/notes.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,10 +41,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-226">
-              <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+            <state relative-caret-position="896">
+              <caret line="125" column="9" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1651#1652#0" expanded="true" />
+                <element signature="e#1671#1672#0" expanded="true" />
+                <element signature="e#1812#1813#0" expanded="true" />
+                <element signature="e#1840#1841#0" expanded="true" />
                 <element signature="e#1911#1912#0" expanded="true" />
                 <element signature="e#1953#1954#0" expanded="true" />
               </folding>
@@ -54,11 +56,41 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/MainPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1">
+              <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.10/384a26163490e0dca4e3a1c00d4ae6284d785da5/gdx-box2d-1.9.10-sources.jar!/com/badlogic/gdx/physics/box2d/CircleShape.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.10/384a26163490e0dca4e3a1c00d4ae6284d785da5/gdx-box2d-1.9.10-sources.jar!/com/badlogic/gdx/physics/box2d/BodyDef.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="328">
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -73,31 +105,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.10/37e7ec91522313dabc753c72196dd665ea4a9332/gdx-1.9.10-sources.jar!/com/badlogic/gdx/Screen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaInnerGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="45" />
+            <state relative-caret-position="-340">
+              <caret line="46" column="2" selection-start-line="46" selection-start-column="2" selection-end-line="46" selection-end-column="2" />
               <folding>
                 <element signature="e#3758#4140#0" expanded="true" />
                 <element signature="e#4139#4140#0" expanded="true" />
+                <element signature="e#5179#5180#0" expanded="true" />
+                <element signature="e#5204#5205#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,19 +126,6 @@
               <caret line="11" column="91" selection-start-line="11" selection-start-column="91" selection-end-line="11" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="e#624#782#0" expanded="true" />
-                <element signature="e#781#782#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/notes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+            <state relative-caret-position="136">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
             </state>
           </provider>
         </entry>
@@ -168,15 +171,19 @@
       <find>set</find>
       <find>null</find>
       <find>poori</find>
-      <find>update</find>
       <find>source</find>
       <find>.tmx</find>
       <find>marioSpecial</find>
       <find>game</find>
       <find>game</find>
       <find>game</find>
-      <find>input</find>
+      <find>pleaseee</find>
       <find>shiiiit</find>
+      <find>update</find>
+      <find>new Wo</find>
+      <find>fitV</find>
+      <find>input</find>
+      <find>hand</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,7 +195,6 @@
       <list>
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/tic_tac_toe/TicTacToeStarter.java" />
         <option value="$PROJECT_DIR$/android/assets/special_mario/firstLevel.tmx" />
-        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Player.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/Createable.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/Creatable.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/RetroMania.java" />
@@ -197,10 +203,12 @@
         <option value="$PROJECT_DIR$/desktop/src/com/retromania/game/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaInnerGame.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/RetroManiaScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/UserNameTextInputListener.java" />
-        <option value="$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java" />
         <option value="$PROJECT_DIR$/core/src/notes.txt" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Player.java" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/MainPlayer.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt" />
       </list>
     </option>
@@ -242,7 +250,7 @@
               <item name="core" type="e9137016:NonAndroidModuleNode" />
               <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="shared_abstractions" type="462c0819:PsiDirectoryNode" />
+              <item name="special_mario" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="phase2" type="1abcf292:AndroidViewProjectNode" />
@@ -250,6 +258,7 @@
               <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
               <item name="special_mario" type="462c0819:PsiDirectoryNode" />
+              <item name="individuals" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -387,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573975393474</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ADDED UNIVERSAL STEP 6 - 8, SPECIAL MARIO STEP 3">
+      <created>1573981147824</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1573981147824</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -486,7 +502,8 @@
     <MESSAGE value="ADDED SPECIAL MARIO STEP 1 : First level environment added" />
     <MESSAGE value="ADDED UNIVERSAL STEP 4 : Singleton and facade pattern used, Creatable interface added" />
     <MESSAGE value="ADDED UNIVERSAL STEP 5 : RetroManiaInnerGame and RetroManiaScreen now don't &#10;require the game instance, refactor lower level classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADDED UNIVERSAL STEP 5 : RetroManiaInnerGame and RetroManiaScreen now don't &#10;require the game instance, refactor lower level classes" />
+    <MESSAGE value="ADDED UNIVERSAL STEP 6 - 8, SPECIAL MARIO STEP 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADDED UNIVERSAL STEP 6 - 8, SPECIAL MARIO STEP 3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/spaceship_shooter/SpaceShipShooterStarter.java">
@@ -673,13 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/shared_abstractions/Creatable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -747,17 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="45" />
-          <folding>
-            <element signature="e#3758#4140#0" expanded="true" />
-            <element signature="e#4139#4140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/RetroMania.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -771,29 +770,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.10/384a26163490e0dca4e3a1c00d4ae6284d785da5/gdx-box2d-1.9.10-sources.jar!/com/badlogic/gdx/physics/box2d/BodyDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.10/384a26163490e0dca4e3a1c00d4ae6284d785da5/gdx-box2d-1.9.10-sources.jar!/com/badlogic/gdx/physics/box2d/CircleShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/GameLister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="46" column="2" selection-start-line="46" selection-start-column="2" selection-end-line="46" selection-end-column="2" />
+          <folding>
+            <element signature="e#3758#4140#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#5179#5180#0" expanded="true" />
+            <element signature="e#5204#5205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-226">
-          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+        <state relative-caret-position="896">
+          <caret line="125" column="9" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1812#1813#0" expanded="true" />
+            <element signature="e#1840#1841#0" expanded="true" />
             <element signature="e#1911#1912#0" expanded="true" />
             <element signature="e#1953#1954#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/notes.txt">
+    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/MainPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+        <state relative-caret-position="-1">
+          <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="328">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
         </state>
       </provider>
     </entry>

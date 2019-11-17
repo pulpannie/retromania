@@ -157,7 +157,6 @@ public class GameLister extends RetroManiaScreen {
 
   @Override
   public void dispose() {
-    System.out.println("pleaseee");
     stage.dispose();
   }
 }
