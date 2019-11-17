@@ -32,3 +32,8 @@ MainPlayer class added. This class is going to be responsible for the behaviour,
 presentation of the main player. TODO : Use Facade design pattern in the future inorder to,
 divide these responsibilities.
 
+# Step 5
+
+Code affected: MainPlayer
+
+MainPlayer View And Figure are now attached to each other.

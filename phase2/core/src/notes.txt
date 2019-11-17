@@ -79,6 +79,11 @@ Flaw : Old use of constructor for SpecialMarioStarter.
 Fix: The use was updated, as requested by the TODO list added in step 5.
 
 
+# Step 9
+
+Code affected: Individual
+
+Individual is now and interface, because we didn't use any of it's members.
 
 
 

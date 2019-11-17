@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -27,172 +28,167 @@ import com.retromania.game.special_mario.individuals.MainPlayer;
 
 import java.util.List;
 
-import static com.badlogic.gdx.Gdx.gl;
-
 public class SpecialMarioStarter extends RetroManiaInnerGame {
 
+  private TextureAtlas textureAtlas = new TextureAtlas("special_mario/mario_small.pack");
 
-    private static SpecialMarioStarter specialMarioStarter = new SpecialMarioStarter();
+  private static SpecialMarioStarter specialMarioStarter = new SpecialMarioStarter();
 
+  public static float convertPixelToMeter(float meter) {
+    return meter * getPixelToMeterConversionRate();
+  }
 
-    public static float convertPixelToMeter(float meter){
-        return meter * getPixelToMeterConversionRate();
+  public static float getPixelToMeterConversionRate() {
+    return 1 / 100f;
+  }
+
+  private MainPlayer mainPlayer;
+
+  private TmxMapLoader mapLoader;
+  private TiledMap tiledMap;
+  private OrthogonalTiledMapRenderer renderer;
+  private OrthographicCamera gamecam;
+
+  public World getWorld() {
+    return world;
+  }
+
+  private World world;
+  private Box2DDebugRenderer b2ddr;
+
+  public static SpecialMarioStarter getSpecialMarioStarter() {
+    return specialMarioStarter;
+  }
+
+  private void initWorld() {
+    world = new World(new Vector2(0, -10), true);
+    b2ddr = new Box2DDebugRenderer();
+
+    BodyDef bodyDef = new BodyDef();
+    PolygonShape shape = new PolygonShape();
+    FixtureDef fixtureDef = new FixtureDef();
+
+    Body body;
+
+    for (MapObject object :
+        tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)) {
+      Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
+      bodyDef.type = BodyDef.BodyType.StaticBody;
+      bodyDef.position.set(
+          convertPixelToMeter(rectangle.getX() + rectangle.getWidth() / 2),
+          convertPixelToMeter(rectangle.getY() + rectangle.getHeight() / 2));
+      body = world.createBody(bodyDef);
+
+      shape.setAsBox(
+          convertPixelToMeter(rectangle.getWidth() / 2),
+          convertPixelToMeter(rectangle.getHeight() / 2));
+      fixtureDef.shape = shape;
+      body.createFixture(fixtureDef);
     }
-    public static float getPixelToMeterConversionRate(){
-        return 1/100f;
+    mainPlayer = new MainPlayer(this);
+  }
+
+  private SpecialMarioStarter() {
+    super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
+    gamecam = new OrthographicCamera();
+    gamePort =
+        new FitViewport(
+            convertPixelToMeter(RetroManiaGame.V_WIDTH),
+            convertPixelToMeter(RetroManiaGame.V_HEIGHT),
+            gamecam);
+
+    mapLoader = new TmxMapLoader();
+    tiledMap = mapLoader.load("special_mario/firstLevel.tmx");
+    renderer = new OrthogonalTiledMapRenderer(tiledMap, getPixelToMeterConversionRate());
+
+    gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+    initWorld();
+  }
+
+  @Override
+  public void setCurrentUser(String name) {
+    Preferences preferences = game.getPrefrences("Mario");
+    this.currentUser = new RetroManiaGeneralUser(name);
+    this.currentUser.setScore(preferences.getInteger(currentUser.getUserName()));
+  }
+
+  @Override
+  public void setBestUser() {
+    Preferences preferences = game.getPrefrences("Mario");
+    User user = new RetroManiaGeneralUser(preferences.getString(Configuration.bestUserUserName));
+    user.setScore(preferences.getInteger(Configuration.bestUserScore));
+    bestUser = user;
+  }
+
+  @Override
+  public Integer getBestUserScore() {
+    return bestUser.getScore();
+  }
+
+  @Override
+  public void save(Object... args) {}
+
+  @Override
+  public List<Object> retrieve() {
+    return null;
+  }
+
+  @Override
+  public void handleInput() {
+    if (Gdx.input.isTouched()) {
+      gamecam.position.x += convertPixelToMeter(10);
     }
+  }
 
-    private MainPlayer mainPlayer;
+  @Override
+  public void show() {}
 
+  @Override
+  public void update() {
+    gamecam.update();
+    world.step(1 / 60f, 6, 2);
+    renderer.setView(gamecam);
+    mainPlayer.update();
+    handleInput();
+  }
 
+  @Override
+  public void render(float delta) {
 
-    private TmxMapLoader mapLoader;
-    private TiledMap tiledMap;
-    private OrthogonalTiledMapRenderer renderer;
-    private OrthographicCamera gamecam;
+    update();
 
-    public World getWorld() {
-        return world;
-    }
+    Gdx.gl.glClearColor(0, 0, 0, 1);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-    private World world;
-    private Box2DDebugRenderer b2ddr;
+    renderer.render();
 
+    b2ddr.render(world, gamecam.combined);
 
+    game.sb.setProjectionMatrix(gamecam.combined);
 
-    public static SpecialMarioStarter getSpecialMarioStarter() {
-        return specialMarioStarter;
-    }
+    game.sb.begin();
+    mainPlayer.draw(game.sb);
+    game.sb.end();
+  }
 
+  @Override
+  public void resize(int width, int height) {
+    gamePort.update(width, height);
+  }
 
-    private void initWorld(){
-        world = new World(new Vector2(0, -10), true);
-        b2ddr = new Box2DDebugRenderer();
+  @Override
+  public void pause() {}
 
-        BodyDef bodyDef = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        FixtureDef fixtureDef = new FixtureDef();
+  @Override
+  public void resume() {}
 
-        Body body;
+  @Override
+  public void hide() {}
 
+  @Override
+  public void dispose() {}
 
-        for (MapObject object : tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
-            bodyDef.type = BodyDef.BodyType.StaticBody;
-            bodyDef.position.set(convertPixelToMeter(rectangle.getX() + rectangle.getWidth()/2),
-                    convertPixelToMeter(rectangle.getY() +rectangle.getHeight()/2));
-            body = world.createBody(bodyDef);
-
-            shape.setAsBox(convertPixelToMeter(rectangle.getWidth()/2), convertPixelToMeter(rectangle.getHeight()/2));
-            fixtureDef.shape = shape;
-            body.createFixture(fixtureDef);
-        }
-
-        mainPlayer = new MainPlayer(this);
-
-
-    }
-
-    private SpecialMarioStarter() {
-        super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
-        gamecam = new OrthographicCamera();
-        gamePort = new FitViewport(convertPixelToMeter(RetroManiaGame.V_WIDTH), convertPixelToMeter(RetroManiaGame.V_HEIGHT), gamecam);
-
-        mapLoader = new TmxMapLoader();
-        tiledMap = mapLoader.load("special_mario/firstLevel.tmx");
-        renderer = new OrthogonalTiledMapRenderer(tiledMap, getPixelToMeterConversionRate());
-
-        gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
-        initWorld();
-    }
-
-    @Override
-    public void setCurrentUser(String name) {
-        Preferences preferences = game.getPrefrences("Mario");
-        this.currentUser = new RetroManiaGeneralUser(name);
-        this.currentUser.setScore(preferences.getInteger(currentUser.getUserName()));
-    }
-
-    @Override
-    public void setBestUser() {
-        Preferences preferences = game.getPrefrences("Mario");
-        User user = new RetroManiaGeneralUser(preferences.getString(Configuration.bestUserUserName));
-        user.setScore(preferences.getInteger(Configuration.bestUserScore));
-        bestUser = user;
-    }
-
-    @Override
-    public Integer getBestUserScore() {
-        return bestUser.getScore();
-    }
-
-    @Override
-    public void save(Object... args) {
-
-    }
-
-    @Override
-    public List<Object> retrieve() {
-        return null;
-    }
-
-    @Override
-    public void handleInput() {
-        if (Gdx.input.isTouched()){
-            gamecam.position.x += convertPixelToMeter(10);
-        }
-    }
-
-    @Override
-    public void show() {
-    }
-
-    @Override
-    public void update(){
-        gamecam.update();
-        world.step(1/60f, 6, 2);
-        renderer.setView(gamecam);
-        handleInput();
-    }
-
-    @Override
-    public void render(float delta) {
-
-        update();
-
-        Gdx.gl.glClearColor(0,0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        renderer.render();
-
-        b2ddr.render(world, gamecam.combined);
-
-        game.sb.setProjectionMatrix(gamecam.combined);
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        gamePort.update(width, height);
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
+  public TextureAtlas getTextureAtlas() {
+    return textureAtlas;
+  }
 }
