@@ -81,4 +81,12 @@ initialization that all tiled map individuals need. Obstacle, was added as it's 
 which includes barriers, such as walls, ground and etc.
 
 
+# Step 10
+
+Code affected: Layers
+
+Made an enum that encapsulates the process of making the objects of a layer and retrieving the
+information of the layer from the tmx file.
+
+
 

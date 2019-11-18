@@ -46,6 +46,11 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   private MainPlayer mainPlayer;
 
   private TmxMapLoader mapLoader;
+
+  public TiledMap getTiledMap() {
+    return tiledMap;
+  }
+
   private TiledMap tiledMap;
   private OrthogonalTiledMapRenderer renderer;
   private OrthographicCamera gamecam;
@@ -65,12 +70,10 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     world = new World(new Vector2(0, -10), true);
     b2ddr = new Box2DDebugRenderer();
 
-
-
     for (MapObject object :
         tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)) {
-      new Obstacle(object);
-    }
+        new Obstacle(object);
+      }
 
     mainPlayer = new MainPlayer();
   }
