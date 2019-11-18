@@ -25,6 +25,7 @@ import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.special_mario.individuals.MainPlayer;
+import com.retromania.game.special_mario.individuals.Obstacle;
 
 import java.util.List;
 
@@ -64,33 +65,18 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     world = new World(new Vector2(0, -10), true);
     b2ddr = new Box2DDebugRenderer();
 
-    BodyDef bodyDef = new BodyDef();
-    PolygonShape shape = new PolygonShape();
-    FixtureDef fixtureDef = new FixtureDef();
 
-    Body body;
 
     for (MapObject object :
         tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)) {
-      Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
-      bodyDef.type = BodyDef.BodyType.StaticBody;
-      bodyDef.position.set(
-          convertPixelToMeter(rectangle.getX() + rectangle.getWidth() / 2),
-          convertPixelToMeter(rectangle.getY() + rectangle.getHeight() / 2));
-      body = world.createBody(bodyDef);
-
-      shape.setAsBox(
-          convertPixelToMeter(rectangle.getWidth() / 2),
-          convertPixelToMeter(rectangle.getHeight() / 2));
-      fixtureDef.shape = shape;
-      body.createFixture(fixtureDef).setUserData("something");
+      new Obstacle(object);
     }
+
     mainPlayer = new MainPlayer();
   }
 
   private SpecialMarioStarter() {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
-
   }
 
   @Override

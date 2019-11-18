@@ -68,3 +68,17 @@ our singleton object is initialized and the constructor of MainPlayer has been a
 so we can use our singleton design pattern.
 
 
+
+# Step 9
+
+Code affected: SpecialMarioStarter, Obstacle, TiledMapIndividual
+
+Flaw : SpecialMarioStarter had the responsibility to make individuals from the tile map, while that
+is not on of it's concerns, this broke the single responsibility rule.
+
+Fix: An abstract class, called TiledMapIndividual was made in order to take care of any type of
+initialization that all tiled map individuals need. Obstacle, was added as it's first subclass,
+which includes barriers, such as walls, ground and etc.
+
+
+
