@@ -2,6 +2,8 @@ package com.retromania.game.special_mario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -49,6 +51,8 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   private OrthogonalTiledMapRenderer renderer;
   private OrthographicCamera gamecam;
 
+  private AssetManager assetManager;
+
   public World getWorld() {
     return world;
   }
@@ -67,10 +71,16 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     TiledMapIndividualFactory.getAllLayers();
     world.setContactListener(new MarioWorldListener());
     mainPlayer = new MainPlayer();
+    assetManager.load("special_mario/marioFirstLevelMusic.ogg", Music.class);
+    assetManager.finishLoading();
+    Music music = assetManager.get("special_mario/marioFirstLevelMusic.ogg");
+    music.setLooping(true);
+    music.play();
   }
 
   private SpecialMarioStarter() {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
+    assetManager = new AssetManager();
   }
 
   @Override
