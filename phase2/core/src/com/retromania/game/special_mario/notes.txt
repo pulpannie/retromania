@@ -47,3 +47,11 @@ Basic movement was added to the main player, it can move along the x axis and al
 also the gameCam now follows the mario around.
 
 
+# Step 7
+
+Code affected: MainPlayer
+
+A Hat was added to the player that acts as a sensor for allowing us to recognise collisions with the
+top of our character.
+
+

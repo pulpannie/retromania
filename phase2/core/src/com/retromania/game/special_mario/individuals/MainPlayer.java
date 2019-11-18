@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Individual;
@@ -19,6 +20,8 @@ public class MainPlayer extends Sprite implements Individual {
     private Body body;
     private TextureRegion playerIdle;
 
+    public final static String HAT = "HAT";
+
 
     public void createMainPlayer(){
 
@@ -30,11 +33,27 @@ public class MainPlayer extends Sprite implements Individual {
 
         FixtureDef fixtureDef = new FixtureDef();
         CircleShape circleShape = new CircleShape();
-        circleShape.setRadius(convertPixelToMeter(7));
+        float radius = 7;
+        circleShape.setRadius(convertPixelToMeter(radius));
+
 
         fixtureDef.shape = circleShape;
 
         body.createFixture(fixtureDef);
+
+        float lengthHat = 4;
+
+        EdgeShape hat = new EdgeShape();
+        hat.set(new Vector2(convertPixelToMeter(-lengthHat/2), convertPixelToMeter(radius)),
+                new Vector2(convertPixelToMeter(lengthHat/2), convertPixelToMeter(radius)));
+
+        fixtureDef.shape = hat;
+        fixtureDef.isSensor = true;
+        body.createFixture(fixtureDef).setUserData(HAT);
+
+
+
+
     }
 
 //  TODO figure out a way to omit the pass of the inner game

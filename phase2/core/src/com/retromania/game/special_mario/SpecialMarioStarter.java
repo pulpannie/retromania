@@ -83,7 +83,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
           convertPixelToMeter(rectangle.getWidth() / 2),
           convertPixelToMeter(rectangle.getHeight() / 2));
       fixtureDef.shape = shape;
-      body.createFixture(fixtureDef);
+      body.createFixture(fixtureDef).setUserData("something");
     }
     mainPlayer = new MainPlayer(this);
   }
