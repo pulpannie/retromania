@@ -3,8 +3,8 @@ package com.retromania.game.special_mario.individuals;
 import com.badlogic.gdx.maps.MapObject;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 
-public class FrizingBlock extends TiledMapIndividual {
-    public FrizingBlock(MapObject object) {
+public class FriezingBlock extends TiledMapIndividual {
+    public FriezingBlock(MapObject object) {
         super(object);
     }
 

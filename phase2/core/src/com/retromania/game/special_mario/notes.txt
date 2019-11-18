@@ -86,7 +86,18 @@ which includes barriers, such as walls, ground and etc.
 Code affected: Layers
 
 Made an enum that encapsulates the process of making the objects of a layer and retrieving the
-information of the layer from the tmx file.
+information of the layer from the tmx file. This enum uses java reflection in order to grab the
+right constructor and class for each type of layer.
+
+
+# Step 11
+
+Code affected: TiledMapIndividualFactory, Fire, FriezingBlock, Obstacle, Reward, Water
+
+Made a factory class that uses the Layers to class inorder to construct all the different types of
+layers from the ground up.
+
+
 
 
 

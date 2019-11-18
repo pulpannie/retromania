@@ -2,7 +2,7 @@ package com.retromania.game.special_mario.utils;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.retromania.game.special_mario.individuals.Fire;
-import com.retromania.game.special_mario.individuals.FrizingBlock;
+import com.retromania.game.special_mario.individuals.FriezingBlock;
 import com.retromania.game.special_mario.individuals.Obstacle;
 import com.retromania.game.special_mario.individuals.Reward;
 import com.retromania.game.special_mario.individuals.Water;
@@ -19,7 +19,7 @@ import java.lang.reflect.InvocationTargetException;
  * */
 public enum Layers {
   OBSTACLE(2, Obstacle.class),
-  FRIZING_BLOCK(3, FrizingBlock.class),
+  FRIZING_BLOCK(3, FriezingBlock.class),
   REWARD(4, Reward.class),
   WATER(5, Water.class),
   FIRE(6, Fire.class);

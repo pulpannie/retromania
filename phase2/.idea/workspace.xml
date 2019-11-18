@@ -4,23 +4,18 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76e4ddc-9db4-4e22-9299-fb6353c458d8" name="Default Changelist" comment="ADDED SPECIAL MARIO STEP 10 :">
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Fire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FrizingBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Reward.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Water.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/Layers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java" afterDir="false" />
+    <list default="true" id="d76e4ddc-9db4-4e22-9299-fb6353c458d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/assets/special_mario/firstLevel.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/android/assets/special_mario/firstLevel.tmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FrizingBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FriezingBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/Layers.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/Layers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,19 +39,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="73" column="34" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+            <state relative-caret-position="119">
+              <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1951#1952#0" expanded="true" />
                 <element signature="e#1976#1977#0" expanded="true" />
                 <element signature="e#2120#2121#0" expanded="true" />
                 <element signature="e#2142#2143#0" expanded="true" />
-                <element signature="e#2717#2718#0" expanded="true" />
-                <element signature="e#3359#3360#0" expanded="true" />
-                <element signature="e#3479#3480#0" expanded="true" />
-                <element signature="e#4836#4837#0" expanded="true" />
-                <element signature="e#5062#5063#0" expanded="true" />
+                <element signature="e#2683#2684#0" expanded="true" />
+                <element signature="e#3325#3326#0" expanded="true" />
+                <element signature="e#3445#3446#0" expanded="true" />
+                <element signature="e#4802#4803#0" expanded="true" />
+                <element signature="e#5028#5029#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="153">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
+            <state relative-caret-position="287">
+              <caret line="97" column="26" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -119,10 +114,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FrizingBlock.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FriezingBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+            <state relative-caret-position="255">
+              <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#273#274#0" expanded="true" />
@@ -132,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+            <state relative-caret-position="196">
+              <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -229,15 +224,16 @@
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/abstractions/TiledMapIndividual.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Obstacle.java" />
         <option value="$PROJECT_DIR$/core/src/notes.txt" />
-        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FrizingBlock.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Reward.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Water.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/Fire.java" />
-        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt" />
-        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/Layers.java" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java" />
         <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java" />
         <option value="$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FrizingBlock.java" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FriezingBlock.java" />
+        <option value="$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt" />
       </list>
     </option>
   </component>
@@ -515,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574051189844</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ADDED SPECIAL MARIO STEP 10 : Layers added">
+      <created>1574058195099</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1574058195099</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -622,7 +625,8 @@
     <MESSAGE value="ADDED SPECIAL MARIO STEP 7 : Hat sensor added" />
     <MESSAGE value="ADDED SPECIAL MARIO STEP 8" />
     <MESSAGE value="ADDED SPECIAL MARIO STEP 9 : TiledMapIndividual added" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADDED SPECIAL MARIO STEP 9 : TiledMapIndividual added" />
+    <MESSAGE value="ADDED SPECIAL MARIO STEP 10 : Layers added" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADDED SPECIAL MARIO STEP 10 : Layers added" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/build.gradle">
@@ -959,32 +963,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FrizingBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/RetroMania.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -997,13 +979,6 @@
             <element signature="e#612#613#0" expanded="true" />
             <element signature="e#631#632#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1024,29 +999,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/utils/TiledMapIndividualFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/SpecialMarioStarter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="73" column="34" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+        <state relative-caret-position="119">
+          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1951#1952#0" expanded="true" />
             <element signature="e#1976#1977#0" expanded="true" />
             <element signature="e#2120#2121#0" expanded="true" />
             <element signature="e#2142#2143#0" expanded="true" />
-            <element signature="e#2717#2718#0" expanded="true" />
-            <element signature="e#3359#3360#0" expanded="true" />
-            <element signature="e#3479#3480#0" expanded="true" />
-            <element signature="e#4836#4837#0" expanded="true" />
-            <element signature="e#5062#5063#0" expanded="true" />
+            <element signature="e#2683#2684#0" expanded="true" />
+            <element signature="e#3325#3326#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#4802#4803#0" expanded="true" />
+            <element signature="e#5028#5029#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/android/src/com/retromania/game/AndroidLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+        <state relative-caret-position="196">
+          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/individuals/FriezingBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#273#274#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/retromania/game/special_mario/notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="97" column="26" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
         </state>
       </provider>
     </entry>

@@ -26,6 +26,7 @@ import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.special_mario.individuals.MainPlayer;
 import com.retromania.game.special_mario.individuals.Obstacle;
+import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
 
 import java.util.List;
 
@@ -70,10 +71,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     world = new World(new Vector2(0, -10), true);
     b2ddr = new Box2DDebugRenderer();
 
-    for (MapObject object :
-        tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)) {
-        new Obstacle(object);
-      }
+    TiledMapIndividualFactory.getAllLayers();
 
     mainPlayer = new MainPlayer();
   }
