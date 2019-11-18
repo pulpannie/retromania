@@ -55,3 +55,16 @@ A Hat was added to the player that acts as a sensor for allowing us to recognise
 top of our character.
 
 
+# Step 8
+
+Code affected: MainPlayer, SpecialMarioStarter
+
+Flaw : Even though that SpecialMarioStarter was using the singleton design pattern, we still had to
+pass it around to MainPlayer because it was being instantiated in our constructor.
+
+Fix: We made use of our "show" method, which is called by Libgdx whenever the screen is about to be
+shown for the first time. We instantiated the value of SpecialMarioStarter here, because by here
+our singleton object is initialized and the constructor of MainPlayer has been already called,
+so we can use our singleton design pattern.
+
+

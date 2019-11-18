@@ -85,24 +85,12 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
       fixtureDef.shape = shape;
       body.createFixture(fixtureDef).setUserData("something");
     }
-    mainPlayer = new MainPlayer(this);
+    mainPlayer = new MainPlayer();
   }
 
   private SpecialMarioStarter() {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
-    gamecam = new OrthographicCamera();
-    gamePort =
-        new FitViewport(
-            convertPixelToMeter(RetroManiaGame.V_WIDTH),
-            convertPixelToMeter(RetroManiaGame.V_HEIGHT),
-            gamecam);
 
-    mapLoader = new TmxMapLoader();
-    tiledMap = mapLoader.load("special_mario/firstLevel.tmx");
-    renderer = new OrthogonalTiledMapRenderer(tiledMap, getPixelToMeterConversionRate());
-
-    gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-    initWorld();
   }
 
   @Override
@@ -139,7 +127,21 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   }
 
   @Override
-  public void show() {}
+  public void show() {
+    gamecam = new OrthographicCamera();
+    gamePort =
+            new FitViewport(
+                    convertPixelToMeter(RetroManiaGame.V_WIDTH),
+                    convertPixelToMeter(RetroManiaGame.V_HEIGHT),
+                    gamecam);
+
+    mapLoader = new TmxMapLoader();
+    tiledMap = mapLoader.load("special_mario/firstLevel.tmx");
+    renderer = new OrthogonalTiledMapRenderer(tiledMap, getPixelToMeterConversionRate());
+
+    gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+    initWorld();
+  }
 
   @Override
   public void update() {

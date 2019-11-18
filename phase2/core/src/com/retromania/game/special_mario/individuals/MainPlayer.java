@@ -57,9 +57,10 @@ public class MainPlayer extends Sprite implements Individual {
     }
 
 //  TODO figure out a way to omit the pass of the inner game
-    public MainPlayer(SpecialMarioStarter specialMarioStarter){
-        super(specialMarioStarter.getTextureAtlas().findRegion("mario_small"));
-        this.world = specialMarioStarter.getWorld();
+    public MainPlayer(){
+        super(SpecialMarioStarter.getSpecialMarioStarter().getTextureAtlas().findRegion("mario_small"));
+        SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
+        this.world = innerGame.getWorld();
         createMainPlayer();
         createMainPlayerView();
     }
