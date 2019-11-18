@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.SpecialMarioStarter;
+import com.retromania.game.special_mario.individuals.MainPlayer;
 
 import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
 
@@ -45,6 +46,6 @@ public abstract class TiledMapIndividual implements Individual {
         fixture.setUserData(this);
     }
 
-    public abstract void hatHit();
+    public abstract void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo);
 
 }

@@ -13,15 +13,28 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.SpecialMarioStarter;
 
+import sun.applet.Main;
+
 import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
+import static com.retromania.game.special_mario.individuals.MainPlayer.BodyPart.HEAD;
 
 public class MainPlayer extends Sprite implements Individual {
     private World world;
     private Body body;
     private TextureRegion playerIdle;
 
-    public final static String HAT = "HAT";
+    public enum BodyPart{
+        HEAD,
+    }
 
+    public class MainPlayerCollisionInfo{
+        MainPlayer player;
+        BodyPart bodyPart;
+        MainPlayerCollisionInfo(MainPlayer player, BodyPart bodyPart){
+            this.player = player;
+            this.bodyPart = bodyPart;
+        }
+    }
 
     public void createMainPlayer(){
 
@@ -43,13 +56,13 @@ public class MainPlayer extends Sprite implements Individual {
 
         float lengthHat = 4;
 
-        EdgeShape hat = new EdgeShape();
-        hat.set(new Vector2(convertPixelToMeter(-lengthHat/2), convertPixelToMeter(radius)),
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(convertPixelToMeter(-lengthHat/2), convertPixelToMeter(radius)),
                 new Vector2(convertPixelToMeter(lengthHat/2), convertPixelToMeter(radius)));
 
-        fixtureDef.shape = hat;
+        fixtureDef.shape = head;
         fixtureDef.isSensor = true;
-        body.createFixture(fixtureDef).setUserData(HAT);
+        body.createFixture(fixtureDef).setUserData(new MainPlayerCollisionInfo(this, HEAD));
 
 
 

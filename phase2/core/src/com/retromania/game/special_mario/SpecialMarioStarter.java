@@ -5,18 +5,11 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.retromania.game.shared_abstractions.Configuration;
@@ -25,7 +18,7 @@ import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.special_mario.individuals.MainPlayer;
-import com.retromania.game.special_mario.individuals.Obstacle;
+import com.retromania.game.special_mario.utils.MarioWorldListener;
 import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
 
 import java.util.List;
@@ -72,7 +65,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     b2ddr = new Box2DDebugRenderer();
 
     TiledMapIndividualFactory.getAllLayers();
-
+    world.setContactListener(new MarioWorldListener());
     mainPlayer = new MainPlayer();
   }
 

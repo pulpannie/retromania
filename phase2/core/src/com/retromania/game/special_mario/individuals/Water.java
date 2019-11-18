@@ -10,7 +10,7 @@ public class Water extends TiledMapIndividual {
     }
 
     @Override
-    public void hatHit() {
+    public void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo) {
 
     }
 

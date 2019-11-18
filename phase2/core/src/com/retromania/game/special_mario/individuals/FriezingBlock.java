@@ -9,8 +9,8 @@ public class FriezingBlock extends TiledMapIndividual {
     }
 
     @Override
-    public void hatHit() {
-
+    public void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo) {
+        System.out.println("things are about to go down");
     }
 
     @Override

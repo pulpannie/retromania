@@ -18,8 +18,9 @@ import java.lang.reflect.InvocationTargetException;
  *
  * */
 public enum Layers {
+
   OBSTACLE(2, Obstacle.class),
-  FRIZING_BLOCK(3, FriezingBlock.class),
+  FRIEZING_BLOCK(3, FriezingBlock.class),
   REWARD(4, Reward.class),
   WATER(5, Water.class),
   FIRE(6, Fire.class);

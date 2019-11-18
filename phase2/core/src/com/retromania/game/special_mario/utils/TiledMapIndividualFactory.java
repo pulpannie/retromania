@@ -9,7 +9,7 @@ public class TiledMapIndividualFactory {
 
   public static void getAllLayers() {
     getLayer(Layers.OBSTACLE);
-    getLayer(Layers.FRIZING_BLOCK);
+    getLayer(Layers.FRIEZING_BLOCK);
     getLayer(Layers.REWARD);
     getLayer(Layers.WATER);
     getLayer(Layers.FIRE);
