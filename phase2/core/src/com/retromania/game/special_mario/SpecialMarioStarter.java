@@ -135,9 +135,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
   @Override
   public void handleInput() {
-    if (Gdx.input.isTouched()) {
-      gamecam.position.x += convertPixelToMeter(10);
-    }
+    gamecam.position.x = gamePort.getWorldWidth()/2 > mainPlayer.getX() ?  gamecam.position.x : mainPlayer.getX();
   }
 
   @Override

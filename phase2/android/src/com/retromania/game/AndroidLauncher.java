@@ -7,6 +7,7 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.special_mario.SpecialMarioStarter;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
@@ -18,6 +19,7 @@ public class AndroidLauncher extends AndroidApplication {
 			public void create(RetroMania r) {
 				r.sb = new SpriteBatch();
 				r.setScreen(new GameLister());
+//				r.setScreen(SpecialMarioStarter.getSpecialMarioStarter());
 			}
 		};
 		RetroManiaGame game = RetroMania.getRetroManiaInstance().setCreatable(c);

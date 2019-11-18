@@ -37,3 +37,13 @@ divide these responsibilities.
 Code affected: MainPlayer
 
 MainPlayer View And Figure are now attached to each other.
+
+
+# Step 6
+
+Code affected: MainPlayer, SpecialMarioStarter
+
+Basic movement was added to the main player, it can move along the x axis and also jump,
+also the gameCam now follows the mario around.
+
+

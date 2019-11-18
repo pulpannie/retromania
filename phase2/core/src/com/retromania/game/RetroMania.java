@@ -35,6 +35,7 @@ public class RetroMania extends RetroManiaGame {
   @Override
   public void dispose() {
     sb.dispose();
+    if (img != null)
     img.dispose();
   }
 
