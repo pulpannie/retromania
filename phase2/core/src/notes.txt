@@ -92,6 +92,13 @@ Code affected: assets/special_mario/description.txt
 
 Assets description file was updated.
 
+# Step 11
+
+Code affected: Gradle Scripts
+
+We were not able to use java 1.8 features like default, so we changed the Source and Target
+Compatibility to java 1.8.
+
 
 
 
