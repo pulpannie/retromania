@@ -25,35 +25,10 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   private SpecialMarioStarter() {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
     setUpMusic();
+    gameSaver.setCurrentUser("som");
+    gameSaver.setScore(10);
   }
 
-  @Override
-  public void setCurrentUser(String name) {
-    Preferences preferences = game.getPrefrences("Mario");
-    this.currentUser = new RetroManiaGeneralUser(name);
-    this.currentUser.setScore(preferences.getInteger(currentUser.getUserName()));
-  }
-
-  @Override
-  public void setBestUser() {
-    Preferences preferences = game.getPrefrences("Mario");
-    User user = new RetroManiaGeneralUser(preferences.getString(Configuration.bestUserUserName));
-    user.setScore(preferences.getInteger(Configuration.bestUserScore));
-    bestUser = user;
-  }
-
-  @Override
-  public Integer getBestUserScore() {
-    return bestUser.getScore();
-  }
-
-  @Override
-  public void save(Object... args) {}
-
-  @Override
-  public List<Object> retrieve() {
-    return null;
-  }
 
   @Override
   public void handleInput() {
