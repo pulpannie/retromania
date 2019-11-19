@@ -23,3 +23,7 @@ Code Affected: Cell, CellManager
 Flaw: CellManager class has a logical flaw in calculating whether there is a win pattern.
 Fix: Fixed the logic by removing for loops, readjusting indices. While trying to fix this Cell class was also modified.
 
+#Step 5
+Code Affected: TicTacToe, TicTacToeLogic, TicTacToeStarter
+Flaw: TicTacToeLogic is a dispensible class. Function clashes with TicTacToe class.
+Fix: By removing TicTacToeLogic, moving methods into TicTacToe. Also cleaned up TicTacToe code.

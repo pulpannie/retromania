@@ -21,7 +21,6 @@ import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
 
 import java.util.List;
-import java.util.Map;
 
 public class TicTacToeStarter extends RetroManiaInnerGame {
     public Stage stage;
@@ -33,10 +32,9 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     public OrthographicCamera gamecam;
     BitmapFont font = new BitmapFont();
     TicTacToe ticTacToe;
-
     public float gameWidth, gameHeight;
     CellManager cellManager;
-    public TicTacToeLogic logic;
+    String winner;
 
     @Override
     public void handleInput() {
@@ -53,8 +51,8 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
         gamecam.setToOrtho(false, gameWidth, gameHeight);
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
-        cellManager = new CellManager((int)gameWidth, (int)gameHeight);
-        logic = new TicTacToeLogic(cellManager);
+        ticTacToe = new TicTacToe((int)gameWidth, (int)gameHeight);
+        cellManager = ticTacToe.getCellManager();
         stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
         Gdx.input.setInputProcessor(stage);
         cross = new Texture(Gdx.files.internal("cross.jpg"));
@@ -62,7 +60,6 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
         currentTurn = "Cross";
         batch = new SpriteBatch();
         batch.setProjectionMatrix(gamecam.combined);
-        this.ticTacToe = new TicTacToe(cellManager);
     }
 
   @Override
@@ -90,7 +87,7 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
       Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
       System.out.println(mousePos);
       Vector3 worldCoordinates = gamecam.unproject(mousePos);
-      ticTacToe.clickCell((int) worldCoordinates.x, (int) worldCoordinates.y);
+      ticTacToe.selectCell((int) worldCoordinates.x, (int) worldCoordinates.y);
       this.currentTurn = ticTacToe.currentTurn;
       }
         for (int i = 0; i < 3; i++) {
@@ -102,11 +99,12 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
                 }
             }
         }
-      if(logic.isEnd()){
-          if(logic.nowinner){
+      if(ticTacToe.isEnd()){
+          winner = ticTacToe.getWinner();
+          if(winner.equals("None")){
               game.setScreen(new GameOverScreen(game, "No one"));
               }
-          else if(logic.winner().equals("Cross")){
+          else if(winner.equals("Cross")){
               Preferences preferences = game.getPrefrences(Configuration.tictactoePreference);
               int currScore =  preferences.getInteger(currentUser.getUserName());
               currScore += 1;
@@ -125,7 +123,7 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
               game.setScreen(new GameOverScreen(game, "Cross"));
 
           }
-          else if (logic.winner().equals("Circle")){
+          else if (winner.equals("Circle")){
               game.setScreen(new GameOverScreen(game, "Circle"));
           }
       }
