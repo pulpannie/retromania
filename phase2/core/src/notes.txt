@@ -105,7 +105,10 @@ Compatibility to java 1.8.
 Code affected: RetroManiaInnerGame, GameSaver
 
 Flaw : RetroManiaInnerGame shouldn't be concerned with the way that things are saved and that's why
-RetroManiaGame has become so huge, the same fate is awaiting its subclasses.
+RetroManiaGame has become so huge, the same fate is awaiting its subclasses. Also we had to ask
+the developers to check whether or not the name of their game for saving had been used previously
+or not, and they had to do that manually but from now on there is a check called alreadyContainsGame
+in the GameSaver class.
 Fix: We made a class called GameSaver responsible for making the saves, for now the subclasses don't
 have to implement the functions themselves any more. This class is Instantiated in
 RetroManiaInnerGame class based on the information that we have about the name of the game.

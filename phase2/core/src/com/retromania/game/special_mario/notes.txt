@@ -188,3 +188,13 @@ that this class is trying to implement.
 
 Fix: Added GameRenderer class, which has the responsibility to render our game, this includes having
 the necessary members and game cams inorder to be able to show all of the game.
+
+
+# Step 20
+
+Code affected: MusicManager, SpecialMarioStarter
+
+Flaw : The SpecialStarter was managing songs while it only has the duty of starting the innerGame
+and save information about it.
+
+Fix: Added MusicManager class that manages the music.

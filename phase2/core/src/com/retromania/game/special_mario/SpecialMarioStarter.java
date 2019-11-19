@@ -1,19 +1,14 @@
 package com.retromania.game.special_mario;
 
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.retromania.game.shared_abstractions.Configuration;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
-import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.special_mario.utils.GameRenderer;
+import com.retromania.game.special_mario.utils.MusicManager;
 import com.retromania.game.special_mario.utils.WorldInformation;
-
-import java.util.List;
 
 public class SpecialMarioStarter extends RetroManiaInnerGame {
 
@@ -24,11 +19,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
   private SpecialMarioStarter() {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
-    setUpMusic();
-    gameSaver.setCurrentUser("som");
-    gameSaver.setScore(10);
   }
-
 
   @Override
   public void handleInput() {
@@ -36,20 +27,6 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
         gamePort.getWorldWidth() / 2 > worldInformation.getMainPlayer().getX()
             ? gamecam.position.x
             : worldInformation.getMainPlayer().getX();
-  }
-
-  @Override
-  public void show() {
-    worldInformation = new WorldInformation();
-
-    gamecam = new OrthographicCamera();
-    gamePort =
-        new FitViewport(
-            SpecialMarioConfiguration.convertPixelToMeter(RetroManiaGame.V_WIDTH),
-            SpecialMarioConfiguration.convertPixelToMeter(RetroManiaGame.V_HEIGHT),
-            gamecam);
-    gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-    renderer = new GameRenderer(worldInformation, gamecam);
   }
 
   @Override
@@ -71,21 +48,32 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     gamePort.update(width, height);
   }
 
-
   public static SpecialMarioStarter getSpecialMarioStarter() {
     return specialMarioStarter;
   }
-
-  void setUpMusic() {
-    AssetManager assetManager = new AssetManager();
-    assetManager.load("special_mario/marioFirstLevelMusic.ogg", Music.class);
-    assetManager.finishLoading();
-    Music music = assetManager.get("special_mario/marioFirstLevelMusic.ogg");
-    music.setLooping(true);
-    music.play();
-  }
-
   public WorldInformation getWorldInformation() {
     return worldInformation;
   }
+
+  @Override
+  public void show() {
+    worldInformation = new WorldInformation();
+    setUpGamecam();
+    setUpGamePort();
+    renderer = new GameRenderer(worldInformation, gamecam);
+    MusicManager.addSong("special_mario/marioFirstLevelMusic.ogg");
+  }
+  private void setUpGamePort() {
+    gamePort =
+            new FitViewport(
+                    SpecialMarioConfiguration.convertPixelToMeter(RetroManiaGame.V_WIDTH),
+                    SpecialMarioConfiguration.convertPixelToMeter(RetroManiaGame.V_HEIGHT),
+                    gamecam);
+    gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+  }
+  private void setUpGamecam(){
+    gamecam = new OrthographicCamera();
+  }
+
+
 }
