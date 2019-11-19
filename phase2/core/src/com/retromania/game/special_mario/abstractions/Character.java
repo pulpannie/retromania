@@ -7,11 +7,11 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-import com.retromania.game.special_mario.SpecialMarioStarter;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 import com.retromania.game.special_mario.utils.BodyPart;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
-import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
 
 public abstract class Character extends CharacterSprite implements Collidable {
 
@@ -20,10 +20,9 @@ public abstract class Character extends CharacterSprite implements Collidable {
     protected FixtureDef fixtureDef;
 
 
-    public Character(){
-        super();
-        SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
-        this.world = innerGame.getWorld();
+    public Character(WorldInformation worldInformation){
+        super(worldInformation);
+        this.world = worldInformation.getWorld();
         createMainPlayer();
     }
 

@@ -3,13 +3,14 @@ package com.retromania.game.special_mario.abstractions;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.retromania.game.special_mario.SpecialMarioStarter;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
-import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
 
 class CharacterSprite extends Sprite {
 
-  CharacterSprite() {
-    super(SpecialMarioStarter.getSpecialMarioStarter().getTextureAtlas().findRegion("mario_small"));
+  CharacterSprite(WorldInformation worldInformation) {
+    super(worldInformation.getTextureAtlas().findRegion("mario_small"));
     createMainPlayerView();
   }
 

@@ -3,10 +3,11 @@ package com.retromania.game.special_mario.individuals;
 import com.badlogic.gdx.maps.MapObject;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
 public class FriezingBlock extends TiledMapIndividual {
-    public FriezingBlock(MapObject object) {
-        super(object);
+    public FriezingBlock(MapObject object, WorldInformation worldInformation) {
+        super(object, worldInformation);
     }
 
     @Override

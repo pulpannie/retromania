@@ -11,8 +11,9 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.SpecialMarioStarter;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
-import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
 
 public abstract class TiledMapIndividual implements Individual, Collidable {
 
@@ -20,10 +21,10 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   private Body body;
   private FixtureDef fixtureDef;
 
-  public TiledMapIndividual(MapObject object) {
+  public TiledMapIndividual(MapObject object, WorldInformation worldInformation) {
     SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
     rectangleBound = setUpBound(object);
-    body = setUpBodyDef(innerGame);
+    body = setUpBodyDef(innerGame, worldInformation);
     PolygonShape shape = setUpShape();
     Fixture fixture = createFixture(shape);
     fixture.setUserData(this);
@@ -47,13 +48,13 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
     return ((RectangleMapObject) object).getRectangle();
   }
 
-  private Body setUpBodyDef(SpecialMarioStarter innerGame) {
+  private Body setUpBodyDef(SpecialMarioStarter innerGame, WorldInformation worldInformation) {
     BodyDef bodyDef = new BodyDef();
     bodyDef.type = BodyDef.BodyType.StaticBody;
     float x = rectangleBound.getX() + rectangleBound.getWidth() / 2;
     float y = rectangleBound.getY() + rectangleBound.getHeight() / 2;
     bodyDef.position.set(convertPixelToMeter(x), convertPixelToMeter(y));
-    return innerGame.getWorld().createBody(bodyDef);
+    return worldInformation.getWorld().createBody(bodyDef);
   }
 
   @Override

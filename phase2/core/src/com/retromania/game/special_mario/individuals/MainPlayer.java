@@ -6,13 +6,13 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.SpecialMarioStarter;
 import com.retromania.game.special_mario.abstractions.Character;
-
+import com.retromania.game.special_mario.utils.WorldInformation;
 
 
 public class MainPlayer extends Character implements Individual{
 
-    public MainPlayer(){
-        super();
+    public MainPlayer(WorldInformation worldInformation){
+        super(worldInformation);
     }
 
     public void handleInput(){

@@ -22,65 +22,33 @@ import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.special_mario.individuals.MainPlayer;
 import com.retromania.game.special_mario.utils.MarioWorldListener;
 import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
 import java.util.List;
 
 public class SpecialMarioStarter extends RetroManiaInnerGame {
 
-  private TextureAtlas textureAtlas = new TextureAtlas("special_mario/mario_small.pack");
 
-  private static SpecialMarioStarter specialMarioStarter = new SpecialMarioStarter();
 
-  public static float convertPixelToMeter(float meter) {
-    return meter * getPixelToMeterConversionRate();
-  }
 
-  public static float getPixelToMeterConversionRate() {
-    return 1 / 100f;
-  }
-
-  private MainPlayer mainPlayer;
-
-  private TmxMapLoader mapLoader;
-
-  public TiledMap getTiledMap() {
-    return tiledMap;
-  }
-
-  private TiledMap tiledMap;
   private OrthogonalTiledMapRenderer renderer;
   private OrthographicCamera gamecam;
-
   private AssetManager assetManager;
-
-  public World getWorld() {
-    return world;
-  }
-
-  private World world;
   private Box2DDebugRenderer b2ddr;
 
-  public static SpecialMarioStarter getSpecialMarioStarter() {
-    return specialMarioStarter;
+
+
+
+  public WorldInformation getWorldInformation() {
+    return worldInformation;
   }
 
-  private void initWorld() {
-    world = new World(new Vector2(0, -10), true);
-    b2ddr = new Box2DDebugRenderer();
+  private WorldInformation worldInformation ;
 
-    TiledMapIndividualFactory.getAllLayers();
-    world.setContactListener(new MarioWorldListener());
-    mainPlayer = new MainPlayer();
-    assetManager.load("special_mario/marioFirstLevelMusic.ogg", Music.class);
-    assetManager.finishLoading();
-    Music music = assetManager.get("special_mario/marioFirstLevelMusic.ogg");
-    music.setLooping(true);
-    music.play();
-  }
 
   private SpecialMarioStarter() {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
-    assetManager = new AssetManager();
+    setUpMusic();
   }
 
   @Override
@@ -113,53 +81,54 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
   @Override
   public void handleInput() {
-    gamecam.position.x = gamePort.getWorldWidth()/2 > mainPlayer.getX() ?  gamecam.position.x : mainPlayer.getX();
+    gamecam.position.x = gamePort.getWorldWidth()/2 > worldInformation.getMainPlayer().getX() ?
+            gamecam.position.x : worldInformation.getMainPlayer().getX();
   }
 
   @Override
   public void show() {
+    worldInformation = new WorldInformation();
+    b2ddr = new Box2DDebugRenderer();
+
     gamecam = new OrthographicCamera();
     gamePort =
             new FitViewport(
-                    convertPixelToMeter(RetroManiaGame.V_WIDTH),
-                    convertPixelToMeter(RetroManiaGame.V_HEIGHT),
-                    gamecam);
+                    SpecialMarioConfiguration.convertPixelToMeter(RetroManiaGame.V_WIDTH),
+                    SpecialMarioConfiguration.convertPixelToMeter(RetroManiaGame.V_HEIGHT), gamecam);
 
-    mapLoader = new TmxMapLoader();
-    tiledMap = mapLoader.load("special_mario/firstLevel.tmx");
-    renderer = new OrthogonalTiledMapRenderer(tiledMap, getPixelToMeterConversionRate());
-
+    renderer = new OrthogonalTiledMapRenderer(worldInformation.getTiledMap(), SpecialMarioConfiguration.getPixelToMeterConversionRate());
     gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-    initWorld();
   }
 
   @Override
   public void update() {
     gamecam.update();
-    world.step(1 / 60f, 6, 2);
+    worldInformation.getWorld().step(1 / 60f, 6, 2);
     renderer.setView(gamecam);
-    mainPlayer.update();
+    worldInformation.getMainPlayer().update();
     handleInput();
   }
 
   @Override
   public void render(float delta) {
-
     update();
-
     Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
     renderer.render();
-
-    b2ddr.render(world, gamecam.combined);
-
+    b2ddr.render(worldInformation.getWorld(), gamecam.combined);
     game.sb.setProjectionMatrix(gamecam.combined);
-
     game.sb.begin();
-    mainPlayer.draw(game.sb);
+    worldInformation.getMainPlayer().draw(game.sb);
     game.sb.end();
   }
+
+
+  private static SpecialMarioStarter specialMarioStarter = new SpecialMarioStarter();
+
+
+
+
+
 
   @Override
   public void resize(int width, int height) {
@@ -178,7 +147,17 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   @Override
   public void dispose() {}
 
-  public TextureAtlas getTextureAtlas() {
-    return textureAtlas;
+  public static SpecialMarioStarter getSpecialMarioStarter() {
+    return specialMarioStarter;
+  }
+
+  void setUpMusic(){
+
+    assetManager = new AssetManager();
+    assetManager.load("special_mario/marioFirstLevelMusic.ogg", Music.class);
+    assetManager.finishLoading();
+    Music music =    assetManager.get("special_mario/marioFirstLevelMusic.ogg");
+    music.setLooping(true);
+    music.play();
   }
 }

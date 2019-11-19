@@ -3,10 +3,11 @@ package com.retromania.game.special_mario.individuals;
 import com.badlogic.gdx.maps.MapObject;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
 public class Obstacle extends TiledMapIndividual {
-    public Obstacle(MapObject object) {
-        super(object);
+    public Obstacle(MapObject object, WorldInformation worldInformation) {
+        super(object, worldInformation);
     }
 
     @Override

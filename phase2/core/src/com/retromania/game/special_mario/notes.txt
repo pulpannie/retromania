@@ -166,3 +166,16 @@ can be used in the future for other classes such as enemies.
 
 
 
+
+# Step 18
+
+Code affected: SpecialMarioStarter, WorldInformation
+
+Flaw : There was too many functions in SpecialMarioStarter because there is more than one thing
+that this class is trying to implement.
+
+Fix: Added WorldInformation class, which has the box2d world, the tiles that are loaded into the
+world, and also the atlas that will be used in the world to show things and anything that might be
+used to initialize the whole world.
+
+
