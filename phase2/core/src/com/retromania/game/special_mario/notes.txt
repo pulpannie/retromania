@@ -179,3 +179,12 @@ world, and also the atlas that will be used in the world to show things and anyt
 used to initialize the whole world.
 
 
+# Step 19
+
+Code affected: SpecialMarioStarter, GameRenderer
+
+Flaw : There was too many functions in SpecialMarioStarter because there is more than one thing
+that this class is trying to implement.
+
+Fix: Added GameRenderer class, which has the responsibility to render our game, this includes having
+the necessary members and game cams inorder to be able to show all of the game.
