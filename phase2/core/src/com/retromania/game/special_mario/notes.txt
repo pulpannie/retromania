@@ -126,6 +126,16 @@ Made an interface that takes care of setting up what can collide with a fixture 
 mask of the fixture.
 
 
+# Step 15
+
+Code affected: TiledMapIndividual
+
+Flaw : Constructor of the class had more than one concern and there fore it was becoming a
+behemoth.
+
+Fix: Four helper functions were made inside the class to help preserve the rules introduced by
+Uncle Bob about functions in https://youtu.be/QedpQjxBPMA?list=PLlu0CT-JnSasQzGrGzddSczJQQU7295D2.
+
 
 
 

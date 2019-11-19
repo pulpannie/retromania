@@ -8,6 +8,8 @@ public interface Collidable {
     short getDefaultMask();
     short getDefaultTarget();
 
+
+
     default void setCollidableWith(short othersCategory){
         getFixtureDef().filter.maskBits = othersCategory;
     }

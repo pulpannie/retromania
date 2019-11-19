@@ -16,58 +16,60 @@ import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixel
 
 public abstract class TiledMapIndividual implements Individual, Collidable {
 
-    @Override
-    public FixtureDef getFixtureDef() {
-        return fixtureDef;
-    }
+  private Rectangle rectangleBound;
+  private Body body;
+  private FixtureDef fixtureDef;
 
-    @Override
-    public short getDefaultMask() {
-        return 4;
-    }
+  public TiledMapIndividual(MapObject object) {
+    SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
+    rectangleBound = setUpBound(object);
+    body = setUpBodyDef(innerGame);
+    PolygonShape shape = setUpShape();
+    Fixture fixture = createFixture(shape);
+    fixture.setUserData(this);
+  }
 
-    @Override
-    public short getDefaultTarget() {
-        return -1;
-    }
+  private Fixture createFixture(PolygonShape shape) {
+    fixtureDef = new FixtureDef();
+    setDefaultCategoryMask();
+    fixtureDef.shape = shape;
+    return body.createFixture(fixtureDef);
+  }
 
-    private Rectangle bound;
-    private Body body;
-    private Fixture fixture;
-    private FixtureDef fixtureDef;
+  private PolygonShape setUpShape() {
+    PolygonShape shape = new PolygonShape();
+    shape.setAsBox(
+        convertPixelToMeter(rectangleBound.getWidth() / 2), convertPixelToMeter(rectangleBound.getHeight() / 2));
+    return shape;
+  }
 
+  private Rectangle setUpBound(MapObject object) {
+    return ((RectangleMapObject) object).getRectangle();
+  }
 
-    public TiledMapIndividual(MapObject object){
+  private Body setUpBodyDef(SpecialMarioStarter innerGame) {
+    BodyDef bodyDef = new BodyDef();
+    bodyDef.type = BodyDef.BodyType.StaticBody;
+    float x = rectangleBound.getX() + rectangleBound.getWidth() / 2;
+    float y = rectangleBound.getY() + rectangleBound.getHeight() / 2;
+    bodyDef.position.set(convertPixelToMeter(x), convertPixelToMeter(y));
+    return innerGame.getWorld().createBody(bodyDef);
+  }
 
+  @Override
+  public FixtureDef getFixtureDef() {
+    return fixtureDef;
+  }
 
+  @Override
+  public short getDefaultMask() {
+    return 4;
+  }
 
+  @Override
+  public short getDefaultTarget() {
+    return -1;
+  }
 
-
-        BodyDef bodyDef = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        fixtureDef = new FixtureDef();
-
-
-        setDefaultCategoryMask();
-
-
-        SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
-        bound = ((RectangleMapObject) object).getRectangle();
-        bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set(
-                convertPixelToMeter(bound.getX() + bound.getWidth() / 2),
-                convertPixelToMeter(bound.getY() + bound.getHeight() / 2));
-        body = innerGame.getWorld().createBody(bodyDef);
-
-        shape.setAsBox(
-                convertPixelToMeter(bound.getWidth() / 2),
-                convertPixelToMeter(bound.getHeight() / 2));
-        fixtureDef.shape = shape;
-        fixture = body.createFixture(fixtureDef);
-        fixture.setUserData(this);
-//        setDefaultCollidableWith();
-    }
-
-    public abstract void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo);
-
+  public abstract void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo);
 }
