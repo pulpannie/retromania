@@ -22,6 +22,10 @@ public class TicTacToe {
         return newTicTacToe;
     }
 
+    public Cell[][] getCellStates(){
+        return cellManager.cellArray;
+    }
+
     public void selectCell(int x, int y){
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++){
@@ -57,11 +61,6 @@ public class TicTacToe {
 
 
     public String getWinner(){
-        if(cellManager.winnerCell == null){
-            return "None";
-        }
-        else{
             return cellManager.winnerCell.getCell();
-        }
     }
 }

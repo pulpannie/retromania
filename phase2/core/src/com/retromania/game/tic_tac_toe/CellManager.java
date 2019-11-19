@@ -10,7 +10,7 @@ public class CellManager{
         this.gameHeight = gameHeight;
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
-                cellArray[i][j] = new Cell(gameWidth/size, gameHeight/size, gameWidth*j/size, gameHeight*i/size);
+                cellArray[i][j] = new Cell(gameWidth/size, gameHeight/size, gameWidth*i/size, gameHeight*j/size);
             }
         }
     }
@@ -78,7 +78,7 @@ public class CellManager{
     public boolean allTouched(){
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
-                if (cellArray[i][j].getCell() == null){
+                if (cellArray[i][j].getCell().equals("None")){
                     return false;
                 }
             }

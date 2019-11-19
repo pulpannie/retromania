@@ -64,10 +64,11 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
 
   @Override
   public void render(float delta) {
-    Gdx.gl.glClearColor(1, 1, 1, 0);
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    stage.act(delta);
-    stage.draw();
+      Cell[][] cellArray = ticTacToe.getCellStates();
+      Gdx.gl.glClearColor(1, 1, 1, 0);
+      Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+      stage.act(delta);
+      stage.draw();
 
     DrawBoardLine(new Vector2(gameWidth / 3, 0), new Vector2(gameWidth / 3, gameHeight), gamecam.combined);
     DrawBoardLine(new Vector2(gameWidth * 2 / 3, 0), new Vector2(gameWidth * 2 / 3, gameHeight), gamecam.combined);
@@ -78,7 +79,7 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
         for (int j = 0; j <3; j++){
             batch.begin();
             font.getData().setScale(5.0f);
-            font.draw(batch, Integer.toString(i) + Integer.toString(j), cellManager.cellArray[i][j].X, cellManager.cellArray[i][j].Y + 50);
+            font.draw(batch, Integer.toString(i) + Integer.toString(j), gameWidth*i/3, gameHeight*j/3 + 50);
             batch.end();
         }
     }
@@ -92,9 +93,9 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
       }
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++){
-                if (cellManager.cellArray[i][j].isTouched) {
+                if (!cellArray[i][j].getCell().equals("None")) {
                     batch.begin();
-                    batch.draw(this.getCell(cellManager.cellArray[i][j]), cellManager.cellArray[i][j].X, cellManager.cellArray[i][j].Y, gameWidth / 3, gameHeight / 3);
+                    batch.draw(this.getCell(cellArray[i][j].getCell()), gameWidth*i/3, gameHeight*j/3, gameWidth / 3, gameHeight / 3);
                     batch.end();
                 }
             }
@@ -112,7 +113,6 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
               preferences.putInteger(currentUser.getUserName(), currScore);
               int bestUserScore = preferences.getInteger(Configuration.bestUserScore);
               if (bestUserScore <= currScore){
-                  System.out.println("Light");
                   System.out.println(currScore);
                   preferences.putInteger(currentUser.getUserName(), currScore);
                   preferences.putString(Configuration.bestUserUserName, currentUser.getUserName());
@@ -140,11 +140,11 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
 
     }
 
-    public Texture getCell(Cell cell){
-          if (cell.getCell() == "Cross"){
+    public Texture getCell(String string){
+          if (string == "Cross"){
               return cross;
           }
-          else if (cell.getCell() == "Circle"){
+          else if (string == "Circle"){
               return circle;
           }
           return null;

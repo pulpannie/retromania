@@ -6,7 +6,7 @@ import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 public class Cell implements Individual {
     public boolean isTouched;
-    private String shape;
+    private String shape = "None";
     public String player;
     int X,Y,W,H;
 
@@ -54,7 +54,7 @@ public class Cell implements Individual {
     }
 
     public boolean equal(Cell other){
-        if (this.getCell() != null && other.getCell() != null){
+        if (!this.getCell().equals("None")){
             if (this.getCell().equals(other.getCell())){
                 return true;
             }
