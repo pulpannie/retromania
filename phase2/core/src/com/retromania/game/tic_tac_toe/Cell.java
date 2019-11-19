@@ -6,46 +6,42 @@ import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 public class Cell implements Individual {
     public boolean isTouched;
-    RetroManiaScreen screen;
-    int type;
-    private Texture shape;
+    private String shape;
     public String player;
     int X,Y,W,H;
 
-    public Cell(RetroManiaScreen screen, int type, float gameWidth, float gameHeight) {
-        isTouched = false;
-        this.screen = screen;
-        this.type = type;
-        this.W = (int)(gameWidth/3);
-        this.H = (int)(gameHeight/3);
-        if(type % 3 == 0){
-            this.X = 0;
-        }
-        else if (type % 3 == 1){
-            this.X = (int)gameWidth/3;
-        }
-        else{
-            this.X = (int)gameWidth*2/3;
-        }
-        if(type/3 == 0){
-            this.Y = (int)0;
-        }
-        else if(type/3 == 1){
-            this.Y = (int)gameHeight/3;
-        }
-        else{
-            this.Y = (int)gameHeight*2/3;;
-        }
-        System.out.println("made!");
+  public Cell(int cellWidth, int cellHeight, int cellX, int cellY) {
+      isTouched = false;
+      this.W = cellWidth;
+      this.H = cellHeight;
+      this.X = cellX;
+      this.Y = cellY;
+        System.out.println("W" + this.W + "H" + this.H + "X" + this.X + "Y" + this.Y);
     }
-    public void setCell(Texture shape){
+    public void setCell(String shape){
         this.shape = shape;
     }
 
     public void setPlayer(String player) {this.player = player;}
 
-    public Texture getCell(){
-        return shape;
+    public String getCell(){
+        return this.shape;
+    }
+
+    protected void setCellWidth(int width){
+      this.W = width;
+    }
+
+    protected void setCellHeight(int height){
+      this.H = height;
+    }
+
+    protected void setCellX(int x){
+      this.X = x;
+    }
+
+    protected void setCellY(int y){
+      this.Y = y;
     }
 
     public boolean inCell(float X, float Y){
@@ -59,7 +55,7 @@ public class Cell implements Individual {
 
     public boolean equal(Cell other){
         if (this.getCell() != null && other.getCell() != null){
-            if (this.getCell() == other.getCell()){
+            if (this.getCell().equals(other.getCell())){
                 return true;
             }
         }
@@ -68,7 +64,7 @@ public class Cell implements Individual {
 
     @Override
     public void update(Object... args) {
-        setCell((Texture)args[0]);
+        setCell((String)args[0]);
     }
 
 }

@@ -1,0 +1,25 @@
+PHASE 2:
+
+#Step 1
+Code Affected: Cell, CellManager, TicTacToeLogic, TicTacToeStarter
+Flaw: Code Smelled from Change Preventers.
+TicTacToeStarter creates board and manages all Cell instances.
+Fix: CellManager class created to manage Cell instances.
+Delegated row, column, diagonal win checking methods from TicTacToeLogic to CellManager.
+Removed Texture instance dependencies in Cell objects. Added converting method, .getCell() in TicTacToeStarter.
+
+#Step 2
+Code Affected: TicTacToeLogic
+Flaw: nowinner variable in TicTacToeLogic class does not change value to reflect existence of winners.
+Fix: added else if statement to isEnd() method in the class to check for no wins, and change the value accordingly.
+
+#Step 3
+Code Affected: TicTacToeStarter, TicTacToe
+Flaw: TicTacToeStarter also implements TicTacToe interface. Should only implement the UI. Need to separate concern.
+Fix: Create TicTacToe class that is responsible for the implementation of the game.
+
+#Step 4
+Code Affected: Cell, CellManager
+Flaw: CellManager class has a logical flaw in calculating whether there is a win pattern.
+Fix: Fixed the logic by removing for loops, readjusting indices. While trying to fix this Cell class was also modified.
+

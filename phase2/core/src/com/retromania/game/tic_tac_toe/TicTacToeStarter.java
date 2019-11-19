@@ -26,16 +26,17 @@ import java.util.Map;
 public class TicTacToeStarter extends RetroManiaInnerGame {
     public Stage stage;
     public static ShapeRenderer boardRenderer=new ShapeRenderer();
-    public Texture currentTurn;
+    public String currentTurn;
     public SpriteBatch batch;
     public Texture cross;
     public Texture circle;
     public OrthographicCamera gamecam;
     BitmapFont font = new BitmapFont();
+    TicTacToe ticTacToe;
 
     public float gameWidth, gameHeight;
-    Cell[] board = new Cell[9];
-    public TicTacToeLogic logic = new TicTacToeLogic(board);
+    CellManager cellManager;
+    public TicTacToeLogic logic;
 
     @Override
     public void handleInput() {
@@ -52,16 +53,16 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
         gamecam.setToOrtho(false, gameWidth, gameHeight);
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
-        for(int i = 0; i < 9; i++){
-            board[i] = new Cell(this, i, (int)gameWidth, (int)gameHeight);
-        }
+        cellManager = new CellManager((int)gameWidth, (int)gameHeight);
+        logic = new TicTacToeLogic(cellManager);
         stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
         Gdx.input.setInputProcessor(stage);
         cross = new Texture(Gdx.files.internal("cross.jpg"));
         circle = new Texture(Gdx.files.internal("circle.png"));
-        currentTurn = cross;
+        currentTurn = "Cross";
         batch = new SpriteBatch();
         batch.setProjectionMatrix(gamecam.combined);
+        this.ticTacToe = new TicTacToe(cellManager);
     }
 
   @Override
@@ -76,37 +77,36 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     DrawBoardLine(new Vector2(0, gameHeight / 3), new Vector2(gameWidth, gameHeight / 3), gamecam.combined);
     DrawBoardLine(new Vector2(0, gameHeight * 2 / 3), new Vector2(gameWidth, gameHeight * 2 / 3), gamecam.combined);
 
+    for(int i = 0; i < 3; i++){
+        for (int j = 0; j <3; j++){
+            batch.begin();
+            font.getData().setScale(5.0f);
+            font.draw(batch, Integer.toString(i) + Integer.toString(j), cellManager.cellArray[i][j].X, cellManager.cellArray[i][j].Y + 50);
+            batch.end();
+        }
+    }
+
     if (Gdx.input.isTouched()) {
       Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+      System.out.println(mousePos);
       Vector3 worldCoordinates = gamecam.unproject(mousePos);
-      for (int i = 0; i < 9; i++) {
-        if (board[i].inCell(worldCoordinates.x, worldCoordinates.y)) {
-          if (!board[i].isTouched) {
-            board[i].isTouched = true;
-            board[i].setCell(currentTurn);
-            currentTurn = switchTurns(currentTurn);
-          }
+      ticTacToe.clickCell((int) worldCoordinates.x, (int) worldCoordinates.y);
+      this.currentTurn = ticTacToe.currentTurn;
+      }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++){
+                if (cellManager.cellArray[i][j].isTouched) {
+                    batch.begin();
+                    batch.draw(this.getCell(cellManager.cellArray[i][j]), cellManager.cellArray[i][j].X, cellManager.cellArray[i][j].Y, gameWidth / 3, gameHeight / 3);
+                    batch.end();
+                }
+            }
         }
-      }
-
-    }
-    for (int i = 0; i < 9; i++) {
-      if (board[i].isTouched) {
-        batch.begin();
-        batch.draw(board[i].getCell(), board[i].X, board[i].Y, gameWidth / 3, gameHeight / 3);
-        batch.end();
-      }
-    }
       if(logic.isEnd()){
-          System.out.println("END");
           if(logic.nowinner){
-              System.out.println("NOWIN");
               game.setScreen(new GameOverScreen(game, "No one"));
               }
-          else if(logic.winner() == cross){
-              System.out.println("CROSS");
-
-
+          else if(logic.winner().equals("Cross")){
               Preferences preferences = game.getPrefrences(Configuration.tictactoePreference);
               int currScore =  preferences.getInteger(currentUser.getUserName());
               currScore += 1;
@@ -122,28 +122,15 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
                   bestUser = currentUser;
               }
               preferences.flush();
-
-
-              System.out.println(preferences.getString("bestUser"));
               game.setScreen(new GameOverScreen(game, "Cross"));
 
           }
-          else if (logic.winner() == circle){
-              System.out.println("CIRCLE");
+          else if (logic.winner().equals("Circle")){
               game.setScreen(new GameOverScreen(game, "Circle"));
           }
       }
-}
-
-    public Texture switchTurns(Texture currentTurn){
-        if (currentTurn == cross){
-            currentTurn = circle;
-        }
-        else{
-            currentTurn = cross;
-        }
-        return currentTurn;
     }
+
 
     public static void DrawBoardLine(Vector2 start, Vector2 end, Matrix4 projectionMatrix){
         Gdx.gl.glLineWidth(15);
@@ -154,6 +141,16 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
         boardRenderer.end();
 
     }
+
+    public Texture getCell(Cell cell){
+          if (cell.getCell() == "Cross"){
+              return cross;
+          }
+          else if (cell.getCell() == "Circle"){
+              return circle;
+          }
+          return null;
+      }
 
     //TODO Override setCurrentUser : Which sets your user and you should use this for checking whether or not you have a personal best
     @Override
