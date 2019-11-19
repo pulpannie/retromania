@@ -6,7 +6,6 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
-import com.retromania.game.special_mario.individuals.MainPlayer;
 
 public class MarioWorldListener implements ContactListener {
 
@@ -24,9 +23,9 @@ public class MarioWorldListener implements ContactListener {
         if (a == null || b == null){
             return;
         }
-        if(MainPlayer.MainPlayerCollisionInfo.class.isAssignableFrom(a.getClass())){
+        if(MainPlayerCollisionInfo.class.isAssignableFrom(a.getClass())){
             if(TiledMapIndividual.class.isAssignableFrom(b.getClass())){
-                ((TiledMapIndividual)b).hitWithPlayer((MainPlayer.MainPlayerCollisionInfo)a);
+                ((TiledMapIndividual)b).hitWithPlayer((MainPlayerCollisionInfo)a);
             }
         }
     }

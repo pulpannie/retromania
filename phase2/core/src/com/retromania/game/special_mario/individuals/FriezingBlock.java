@@ -2,6 +2,7 @@ package com.retromania.game.special_mario.individuals;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
+import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 
 public class FriezingBlock extends TiledMapIndividual {
     public FriezingBlock(MapObject object) {
@@ -9,10 +10,10 @@ public class FriezingBlock extends TiledMapIndividual {
     }
 
     @Override
-    public void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo) {
+    public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
         System.out.println("things are about to go down");
         System.out.println(getFixtureDef().filter.categoryBits);
-        System.out.println(playerCollisionInfo.player.getFixtureDef().filter.maskBits);
+        System.out.println(playerCollisionInfo.getCharacter().getFixtureDef().filter.maskBits);
     }
 
     @Override

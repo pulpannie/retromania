@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.SpecialMarioStarter;
-import com.retromania.game.special_mario.individuals.MainPlayer;
+import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 
 import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
 
@@ -71,5 +71,5 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
     return -1;
   }
 
-  public abstract void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo);
+  public abstract void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo);
 }

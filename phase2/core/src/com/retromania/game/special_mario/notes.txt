@@ -151,6 +151,18 @@ TODO the number of helper functions is growing so much that maybe this class is 
 for only one concern, try to fix in future.
 
 
+# Step 17
+
+Code affected: MainPlayer, MainPlayerCollisionInfo, BodyPart, Character, CharacterSprite
+
+Flaw : As Described in step 16 the class for MainPlayer was becoming to big and it had different
+concerns such as Creating the texture, handling box2d and the logic of the MainPlayer at the
+same time.
+
+Fix: Class CharacterSprite was made for handling the concern of showing each character, with the
+goal of using it in future for enemies as well. Class Character was made inorder to handle box2d.
+Also the Class BodyPart and MainPlayerCollisionInfo are now classes outside MainPlayer because they
+can be used in the future for other classes such as enemies.
 
 
 

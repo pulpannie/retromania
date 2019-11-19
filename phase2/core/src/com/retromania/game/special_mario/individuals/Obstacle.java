@@ -2,6 +2,7 @@ package com.retromania.game.special_mario.individuals;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
+import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 
 public class Obstacle extends TiledMapIndividual {
     public Obstacle(MapObject object) {
@@ -9,7 +10,7 @@ public class Obstacle extends TiledMapIndividual {
     }
 
     @Override
-    public void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo) {
+    public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
 
     }
 
