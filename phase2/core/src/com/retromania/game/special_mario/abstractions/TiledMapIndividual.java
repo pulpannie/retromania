@@ -14,20 +14,41 @@ import com.retromania.game.special_mario.individuals.MainPlayer;
 
 import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
 
-public abstract class TiledMapIndividual implements Individual {
+public abstract class TiledMapIndividual implements Individual, Collidable {
 
-    protected Rectangle bound;
+    @Override
+    public FixtureDef getFixtureDef() {
+        return fixtureDef;
+    }
+
+    @Override
+    public short getDefaultMask() {
+        return 4;
+    }
+
+    @Override
+    public short getDefaultTarget() {
+        return -1;
+    }
+
+    private Rectangle bound;
     private Body body;
-    protected Fixture fixture;
+    private Fixture fixture;
+    private FixtureDef fixtureDef;
 
 
     public TiledMapIndividual(MapObject object){
 
 
+
+
+
         BodyDef bodyDef = new BodyDef();
         PolygonShape shape = new PolygonShape();
-        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef = new FixtureDef();
 
+
+        setDefaultCategoryMask();
 
 
         SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
@@ -44,6 +65,7 @@ public abstract class TiledMapIndividual implements Individual {
         fixtureDef.shape = shape;
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
+//        setDefaultCollidableWith();
     }
 
     public abstract void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo);

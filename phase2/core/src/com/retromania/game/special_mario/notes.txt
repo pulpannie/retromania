@@ -117,6 +117,14 @@ Code affected: SpecialMarioStarter
 
 Music added to the level of the game.
 
+# Step 14
+
+Code affected: Collidable
+
+
+Made an interface that takes care of setting up what can collide with a fixture and what is the
+mask of the fixture.
+
 
 
 

@@ -11,10 +11,23 @@ public class FriezingBlock extends TiledMapIndividual {
     @Override
     public void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo) {
         System.out.println("things are about to go down");
+        System.out.println(getFixtureDef().filter.categoryBits);
+        System.out.println(playerCollisionInfo.player.getFixtureDef().filter.maskBits);
     }
 
     @Override
     public void update(Object... args) {
 
+    }
+
+
+    @Override
+    public short getDefaultMask() {
+        return 16;
+    }
+
+    @Override
+    public short getDefaultTarget() {
+        return 0;
     }
 }

@@ -12,16 +12,33 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.SpecialMarioStarter;
+import com.retromania.game.special_mario.abstractions.Collidable;
 
 import sun.applet.Main;
 
 import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
 import static com.retromania.game.special_mario.individuals.MainPlayer.BodyPart.HEAD;
 
-public class MainPlayer extends Sprite implements Individual {
+public class MainPlayer extends Sprite implements Individual, Collidable {
     private World world;
     private Body body;
     private TextureRegion playerIdle;
+    private FixtureDef fixtureDef;
+
+    @Override
+    public FixtureDef getFixtureDef() {
+        return fixtureDef;
+    }
+
+    @Override
+    public short getDefaultMask() {
+        return 2;
+    }
+
+    @Override
+    public short getDefaultTarget() {
+        return 4;
+    }
 
     public enum BodyPart{
         HEAD,
@@ -44,11 +61,14 @@ public class MainPlayer extends Sprite implements Individual {
 
         body = world.createBody(bodyDef);
 
-        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef = new FixtureDef();
         CircleShape circleShape = new CircleShape();
         float radius = 7;
         circleShape.setRadius(convertPixelToMeter(radius));
 
+
+        setDefaultCategoryMask();
+        setDefaultCollidableWith();
 
         fixtureDef.shape = circleShape;
 
@@ -63,6 +83,8 @@ public class MainPlayer extends Sprite implements Individual {
         fixtureDef.shape = head;
         fixtureDef.isSensor = true;
         body.createFixture(fixtureDef).setUserData(new MainPlayerCollisionInfo(this, HEAD));
+
+
 
 
 

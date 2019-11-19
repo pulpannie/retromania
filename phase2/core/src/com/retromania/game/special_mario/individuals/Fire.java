@@ -18,4 +18,5 @@ public class Fire extends TiledMapIndividual {
     public void update(Object... args) {
 
     }
+
 }
