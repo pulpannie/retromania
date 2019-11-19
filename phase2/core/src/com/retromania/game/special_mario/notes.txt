@@ -138,6 +138,19 @@ Uncle Bob about functions in https://youtu.be/QedpQjxBPMA?list=PLlu0CT-JnSasQzGr
 
 
 
+# Step 16
+
+Code affected: MainPlayer
+
+Flaw : createMainPlayer function of the class had more than one concern and there fore it was
+becoming a behemoth.
+
+Fix: six helper functions were made inside the class to help preserve the rules introduced by
+Uncle Bob about functions in https://youtu.be/QedpQjxBPMA?list=PLlu0CT-JnSasQzGrGzddSczJQQU7295D2.
+TODO the number of helper functions is growing so much that maybe this class is not responsible
+for only one concern, try to fix in future.
+
+
 
 
 
