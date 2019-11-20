@@ -116,6 +116,13 @@ TODO : is to delete all the functions that used to implement the saving process 
 and use this new object in our game lister.
 
 
+# Step 13
+
+Code affected: GameLister.show
+
+Flaw : The function was so long it was getting hard to change any thing without breaking the code.
+Fix: Broke up the function into new functions.
+
 
 
 
