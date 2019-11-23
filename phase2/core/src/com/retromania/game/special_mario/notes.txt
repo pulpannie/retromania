@@ -214,3 +214,17 @@ that makes the table that holds the buttons that contain the button for navigati
 Code affected: MainPageUtilsTable
 
 Functionality added to menu buttons.
+
+
+# Step 23
+
+Code affected: MenuScreen, SettingScreen, IntroductoryScreen
+
+Flaw : It was hard to do navigation of the menu with one class.
+
+Fix : From now on MenuScreen will have many choices for the screen that it's showing. This class is
+gonna act as the Controller and there will be views that can be plugged in selectedScreen member.
+This is very like the MVC architecture. when a something is clicked, this Controller is called and
+the new view is gonna be set in selectedScreen. The values that selectedScreen can take right now are
+instances from the classes : SettingScreen, IntroductoryScreen which are the settings screen and
+the main menu screen.

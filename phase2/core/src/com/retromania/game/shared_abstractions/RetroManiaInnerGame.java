@@ -32,6 +32,9 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
     gameSaver = new GameSaver(name);
     setBestUser();
   }
+
+
+  @Deprecated
   //  TODO this method should be DEPRECATED and all references to it should be changed
   /**
    * THIS METHOD IS DEPRECATED, PLEASE USE THE STATIC FUNCTION TO GET INSTANCE OF THE

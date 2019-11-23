@@ -5,14 +5,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.retromania.game.shared_abstractions.ButtonMaker;
+import com.retromania.game.special_mario.screens.MenuScreen;
 
 public class MainPageUtilsTable {
 
   private Table table;
   private Button gameStartButton;
   private Button settingButton;
-
-  public MainPageUtilsTable(String gameStartString, String settingString) {
+  private MenuScreen menuScreen;
+  public MainPageUtilsTable(String gameStartString, String settingString, MenuScreen menuScreen) {
+    this.menuScreen = menuScreen;
     makeGameStartButton(gameStartString);
     makeSettingButton(settingString);
     makeTable();
@@ -41,7 +43,7 @@ public class MainPageUtilsTable {
     return new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("go to settings");
+        menuScreen.gotoSettingScreen();
       }
     };
   }
@@ -53,8 +55,8 @@ public class MainPageUtilsTable {
     table = new Table();
 
     table.padTop(10);
-    table.add(gameStartButton).row();
-    table.add(settingButton).row();
+    table.add(gameStartButton).pad(10).row();
+    table.add(settingButton).pad(10).row();
   }
 
   public Table getTable() {
