@@ -92,6 +92,37 @@ Code affected: assets/special_mario/description.txt
 
 Assets description file was updated.
 
+# Step 11
+
+Code affected: Gradle Scripts
+
+We were not able to use java 1.8 features like default, so we changed the Source and Target
+Compatibility to java 1.8.
+
+
+# Step 12
+
+Code affected: RetroManiaInnerGame, GameSaver
+
+Flaw : RetroManiaInnerGame shouldn't be concerned with the way that things are saved and that's why
+RetroManiaGame has become so huge, the same fate is awaiting its subclasses. Also we had to ask
+the developers to check whether or not the name of their game for saving had been used previously
+or not, and they had to do that manually but from now on there is a check called alreadyContainsGame
+in the GameSaver class.
+Fix: We made a class called GameSaver responsible for making the saves, for now the subclasses don't
+have to implement the functions themselves any more. This class is Instantiated in
+RetroManiaInnerGame class based on the information that we have about the name of the game.
+TODO : is to delete all the functions that used to implement the saving process before,
+and use this new object in our game lister.
+
+
+# Step 13
+
+Code affected: GameLister.show
+
+Flaw : The function was so long it was getting hard to change any thing without breaking the code.
+Fix: Broke up the function into new functions.
+
 
 
 

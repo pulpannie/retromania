@@ -2,15 +2,17 @@ package com.retromania.game.special_mario.individuals;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
+import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
 public class Water extends TiledMapIndividual {
 
-    public Water(MapObject object) {
-        super(object);
+    public Water(MapObject object, WorldInformation worldInformation) {
+        super(object, worldInformation);
     }
 
     @Override
-    public void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo) {
+    public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
 
     }
 

@@ -10,42 +10,67 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.SpecialMarioStarter;
-import com.retromania.game.special_mario.individuals.MainPlayer;
+import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
+import com.retromania.game.special_mario.utils.WorldInformation;
 
-import static com.retromania.game.special_mario.SpecialMarioStarter.convertPixelToMeter;
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
 
-public abstract class TiledMapIndividual implements Individual {
+public abstract class TiledMapIndividual implements Individual, Collidable {
 
-    protected Rectangle bound;
-    private Body body;
-    protected Fixture fixture;
+  private Rectangle rectangleBound;
+  private Body body;
+  private FixtureDef fixtureDef;
 
+  public TiledMapIndividual(MapObject object, WorldInformation worldInformation) {
+    SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
+    rectangleBound = setUpBound(object);
+    body = setUpBodyDef(innerGame, worldInformation);
+    PolygonShape shape = setUpShape();
+    Fixture fixture = createFixture(shape);
+    fixture.setUserData(this);
+  }
 
-    public TiledMapIndividual(MapObject object){
+  private Fixture createFixture(PolygonShape shape) {
+    fixtureDef = new FixtureDef();
+    setDefaultCategoryMask();
+    fixtureDef.shape = shape;
+    return body.createFixture(fixtureDef);
+  }
 
+  private PolygonShape setUpShape() {
+    PolygonShape shape = new PolygonShape();
+    shape.setAsBox(
+        convertPixelToMeter(rectangleBound.getWidth() / 2), convertPixelToMeter(rectangleBound.getHeight() / 2));
+    return shape;
+  }
 
-        BodyDef bodyDef = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        FixtureDef fixtureDef = new FixtureDef();
+  private Rectangle setUpBound(MapObject object) {
+    return ((RectangleMapObject) object).getRectangle();
+  }
 
+  private Body setUpBodyDef(SpecialMarioStarter innerGame, WorldInformation worldInformation) {
+    BodyDef bodyDef = new BodyDef();
+    bodyDef.type = BodyDef.BodyType.StaticBody;
+    float x = rectangleBound.getX() + rectangleBound.getWidth() / 2;
+    float y = rectangleBound.getY() + rectangleBound.getHeight() / 2;
+    bodyDef.position.set(convertPixelToMeter(x), convertPixelToMeter(y));
+    return worldInformation.getWorld().createBody(bodyDef);
+  }
 
+  @Override
+  public FixtureDef getFixtureDef() {
+    return fixtureDef;
+  }
 
-        SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
-        bound = ((RectangleMapObject) object).getRectangle();
-        bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set(
-                convertPixelToMeter(bound.getX() + bound.getWidth() / 2),
-                convertPixelToMeter(bound.getY() + bound.getHeight() / 2));
-        body = innerGame.getWorld().createBody(bodyDef);
+  @Override
+  public short getDefaultMask() {
+    return 4;
+  }
 
-        shape.setAsBox(
-                convertPixelToMeter(bound.getWidth() / 2),
-                convertPixelToMeter(bound.getHeight() / 2));
-        fixtureDef.shape = shape;
-        fixture = body.createFixture(fixtureDef);
-        fixture.setUserData(this);
-    }
+  @Override
+  public short getDefaultTarget() {
+    return -1;
+  }
 
-    public abstract void hitWithPlayer(MainPlayer.MainPlayerCollisionInfo playerCollisionInfo);
-
+  public abstract void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo);
 }

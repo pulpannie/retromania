@@ -1,0 +1,36 @@
+PHASE 2:
+
+#Step 1
+Code Affected: Cell, CellManager, TicTacToeLogic, TicTacToeStarter
+Flaw: Code Smelled from Change Preventers.
+TicTacToeStarter creates board and manages all Cell instances.
+Fix: CellManager class created to manage Cell instances.
+Delegated row, column, diagonal win checking methods from TicTacToeLogic to CellManager.
+Removed Texture instance dependencies in Cell objects. Added converting method, .getCell() in TicTacToeStarter.
+
+#Step 2
+Code Affected: TicTacToeLogic
+Flaw: nowinner variable in TicTacToeLogic class does not change value to reflect existence of winners.
+Fix: added else if statement to isEnd() method in the class to check for no wins, and change the value accordingly.
+
+#Step 3
+Code Affected: TicTacToeStarter, TicTacToe
+Flaw: TicTacToeStarter also implements TicTacToe interface. Should only implement the UI. Need to separate concern.
+Fix: Create TicTacToe class that is responsible for the implementation of the game.
+
+#Step 4
+Code Affected: Cell, CellManager
+Flaw: CellManager class has a logical flaw in calculating whether there is a win pattern.
+Fix: Fixed the logic by removing for loops, readjusting indices. While trying to fix this Cell class was also modified.
+
+#Step 5
+Code Affected: TicTacToe, TicTacToeLogic, TicTacToeStarter
+Flaw: TicTacToeLogic is a dispensible class. Function clashes with TicTacToe class.
+Fix: By removing TicTacToeLogic, moving methods into TicTacToe. Also cleaned up TicTacToe code.
+
+#Step 6
+Code Affected: Cell, CellManager, TicTacToe, TicTacToeStarter
+Flaw: TicTacToeStarter calls upon CellManager directly. Any calls should be made through TicTacToe.
+      Similarly, TicTacToeStarter has a too complex UI Drawing system, Cell states should have unified information.
+Fix: Added .getCellStates() method to TicTacToe class in order to pass double array of the state of Cells from TicTacToe class.
+     Edited Cell and CellManager to simplify Cell state information.

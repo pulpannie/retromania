@@ -117,9 +117,114 @@ Code affected: SpecialMarioStarter
 
 Music added to the level of the game.
 
+# Step 14
+
+Code affected: Collidable
+
+
+Made an interface that takes care of setting up what can collide with a fixture and what is the
+mask of the fixture.
+
+
+# Step 15
+
+Code affected: TiledMapIndividual
+
+Flaw : Constructor of the class had more than one concern and there fore it was becoming a
+behemoth.
+
+Fix: Four helper functions were made inside the class to help preserve the rules introduced by
+Uncle Bob about functions in https://youtu.be/QedpQjxBPMA?list=PLlu0CT-JnSasQzGrGzddSczJQQU7295D2.
+
+
+
+# Step 16
+
+Code affected: MainPlayer
+
+Flaw : createMainPlayer function of the class had more than one concern and there fore it was
+becoming a behemoth.
+
+Fix: six helper functions were made inside the class to help preserve the rules introduced by
+Uncle Bob about functions in https://youtu.be/QedpQjxBPMA?list=PLlu0CT-JnSasQzGrGzddSczJQQU7295D2.
+TODO the number of helper functions is growing so much that maybe this class is not responsible
+for only one concern, try to fix in future.
+
+
+# Step 17
+
+Code affected: MainPlayer, MainPlayerCollisionInfo, BodyPart, Character, CharacterSprite
+
+Flaw : As Described in step 16 the class for MainPlayer was becoming to big and it had different
+concerns such as Creating the texture, handling box2d and the logic of the MainPlayer at the
+same time.
+
+Fix: Class CharacterSprite was made for handling the concern of showing each character, with the
+goal of using it in future for enemies as well. Class Character was made inorder to handle box2d.
+Also the Class BodyPart and MainPlayerCollisionInfo are now classes outside MainPlayer because they
+can be used in the future for other classes such as enemies.
 
 
 
 
+# Step 18
+
+Code affected: SpecialMarioStarter, WorldInformation
+
+Flaw : There was too many functions in SpecialMarioStarter because there is more than one thing
+that this class is trying to implement.
+
+Fix: Added WorldInformation class, which has the box2d world, the tiles that are loaded into the
+world, and also the atlas that will be used in the world to show things and anything that might be
+used to initialize the whole world.
 
 
+# Step 19
+
+Code affected: SpecialMarioStarter, GameRenderer
+
+Flaw : There was too many functions in SpecialMarioStarter because there is more than one thing
+that this class is trying to implement.
+
+Fix: Added GameRenderer class, which has the responsibility to render our game, this includes having
+the necessary members and game cams inorder to be able to show all of the game.
+
+
+# Step 20
+
+Code affected: MusicManager, SpecialMarioStarter
+
+Flaw : The SpecialStarter was managing songs while it only has the duty of starting the innerGame
+and save information about it.
+
+Fix: Added MusicManager class that manages the music.
+
+
+# Step 21
+
+Code affected: MainPageUtilsTable, MenuScreen
+
+Made the basic classes that help show the first page : MenuScreen is responsible for showing the
+info about games name and the basic button for navigating game, and MainPageUtilsTable is the class
+that makes the table that holds the buttons that contain the button for navigating the first menu.
+
+
+# Step 22
+
+Code affected: MainPageUtilsTable
+
+Functionality added to menu buttons.
+
+
+# Step 23
+
+Code affected: MenuScreen, SettingScreen, IntroductoryScreen
+
+Flaw : It was hard to do navigation of the menu with one class.
+
+Fix : From now on MenuScreen will have many choices for the screen that it's showing. This class is
+gonna act as the Controller and there will be views that can be plugged in selectedScreen member.
+This is very like the MVC architecture. when a something is clicked, this Controller is called and
+the new view is gonna be set in selectedScreen. The values that selectedScreen can take right now are
+instances from the classes : SettingScreen, IntroductoryScreen which are the settings screen and
+the main menu screen.

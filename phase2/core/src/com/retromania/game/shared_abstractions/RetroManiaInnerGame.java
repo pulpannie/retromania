@@ -3,6 +3,7 @@ package com.retromania.game.shared_abstractions;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.retromania.game.RetroMania;
+import com.retromania.game.utils.GameSaver;
 
 import java.util.List;
 
@@ -11,6 +12,9 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
   private String name;
   protected User currentUser;
   protected User bestUser;
+  protected GameSaver gameSaver;
+
+
 
 
 
@@ -25,8 +29,12 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
   public RetroManiaInnerGame(String name, RetroManiaGame.Orientation orientation){
     this.name = name;
     this.orientation = orientation;
+    gameSaver = new GameSaver(name);
     setBestUser();
   }
+
+
+  @Deprecated
   //  TODO this method should be DEPRECATED and all references to it should be changed
   /**
    * THIS METHOD IS DEPRECATED, PLEASE USE THE STATIC FUNCTION TO GET INSTANCE OF THE
@@ -46,17 +54,29 @@ public abstract class RetroManiaInnerGame extends RetroManiaScreen {
    * @param name a user name with the length less than or equal to 3, if We are to make a general User
    *
    * **/
-  public abstract void setCurrentUser(String name);
 
-  public abstract void setBestUser();
+  public void setCurrentUser(String name){
+    gameSaver.setCurrentUser(name);
+  }
+
+  public void setBestUser(){
+    bestUser = gameSaver.retrieveUser(GameSaver.BEST_USER_USER_NAME_KEY);
+  }
 
   public String getBestUserName() {
     return bestUser.getUserName();
   }
 
-  abstract public Integer getBestUserScore();
+  public Integer getBestUserScore(){
+    setBestUser();
+    return bestUser.getScore();
+  }
 
-  public abstract void save(Object... args);
+  public void save(Object... args){
 
-  public abstract List<Object> retrieve();
+  }
+
+  public List<Object> retrieve(){
+    return null;
+  }
 }
