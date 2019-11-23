@@ -1,0 +1,8 @@
+PHASE 2:
+
+Step 1:
+
+Code Affected: Within the colour_shooter package, made a states package which contains the various states of the game
+such as the menu screen, pause screen, play screen (MenuScreen.java, PauseScreen.java, PlayScreen.java etc)
+This is beneficial as it helps put all states of the game together to incorporate a design pattern such as the StateFactory.java
+class.
