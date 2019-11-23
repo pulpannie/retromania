@@ -198,3 +198,13 @@ Flaw : The SpecialStarter was managing songs while it only has the duty of start
 and save information about it.
 
 Fix: Added MusicManager class that manages the music.
+
+
+# Step 21
+
+Code affected: MainPageUtilsTable, MenuScreen
+
+Made the basic classes that help show the first page : MenuScreen is responsible for showing the
+info about games name and the basic button for navigating game, and MainPageUtilsTable is the class
+that makes the table that holds the buttons that contain the button for navigating the first menu.
+

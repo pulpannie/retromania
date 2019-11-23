@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -15,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.colour_shooter.ColourShooterStarter;
@@ -28,6 +31,8 @@ import com.retromania.game.special_mario.SpecialMarioStarter;
 import com.retromania.game.tic_tac_toe.TicTacToeStarter;
 
 import java.util.ArrayList;
+
+import javax.swing.text.Style;
 
 public class GameLister extends RetroManiaScreen {
 
@@ -92,6 +97,7 @@ public class GameLister extends RetroManiaScreen {
     for (int i = 0; i < gameList.size(); i += 1) {
       gameAndScores[i] = gameList.get(i).getName();
     }
+    System.out.println(list.getStyle().selection.getClass());
     list.setItems(gameAndScores);
   }
 
@@ -114,7 +120,7 @@ public class GameLister extends RetroManiaScreen {
           public void clicked(InputEvent event, float x, float y) {
             UserNameTextInputListener userNameTextInputListener =
                 new UserNameTextInputListener(game, selectedGame);
-            Gdx.input.getTextInput(userNameTextInputListener, "User Name", "", "");
+            Gdx.input.getTextInput(userNameTextInputListener, "User Name (Has to be 3 chars exactly)", "", "");
           }
         });
     table2.add(button).expandX().center().row();
@@ -158,15 +164,6 @@ public class GameLister extends RetroManiaScreen {
   public void resize(int width, int height) {
     viewport.update(width, height);
   }
-
-  @Override
-  public void pause() {}
-
-  @Override
-  public void resume() {}
-
-  @Override
-  public void hide() {}
 
   @Override
   public void dispose() {

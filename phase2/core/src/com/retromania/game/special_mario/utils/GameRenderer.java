@@ -28,15 +28,31 @@ public class GameRenderer {
   }
 
   public void render() {
-    orthogRenderer.setView(gamecam);
-    Gdx.gl.glClearColor(0, 0, 0, 1);
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    orthogRenderer.render();
+    clearDisplay();
+    displayWorld();
+    displayDebugLines();
+    displayMainPlayer();
+  }
+
+  private void displayDebugLines() {
     b2ddr.render(worldInformation.getWorld(), gamecam.combined);
+  }
+
+  private void displayWorld() {
+    orthogRenderer.setView(gamecam);
+    orthogRenderer.render();
     game.sb.setProjectionMatrix(gamecam.combined);
+  }
+
+  private void displayMainPlayer() {
     game.sb.begin();
     worldInformation.getMainPlayer().draw(game.sb);
     game.sb.end();
+  }
+
+  private void clearDisplay() {
+    Gdx.gl.glClearColor(0, 0, 0, 1);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   }
 
   public OrthogonalTiledMapRenderer getOrthogRenderer() {
