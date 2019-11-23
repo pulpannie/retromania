@@ -45,6 +45,7 @@ public class MenuScreen extends RetroManiaScreen {
 //    Button a =  ButtonMaker.makeButton("something");
     table.add(new MainPageUtilsTable("Play Game", "Settings").getTable()).expandX().expandY().row();
     stage.addActor(table);
+    Gdx.input.setInputProcessor(stage);
   }
 
   @Override
