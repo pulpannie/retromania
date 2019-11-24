@@ -28,3 +28,10 @@ Code Affected: Assets folder
 Flaw: Assets folder wasn't organized
 Fix: Added new files and reorganized it.
 
+# Step 5:
+
+Code Affected: Configuration
+
+Flaw: Colour Shooter preference was missing
+Fix: Added colour shooter Preference
+
