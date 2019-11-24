@@ -34,3 +34,8 @@ Flaw: TicTacToeStarter calls upon CellManager directly. Any calls should be made
       Similarly, TicTacToeStarter has a too complex UI Drawing system, Cell states should have unified information.
 Fix: Added .getCellStates() method to TicTacToe class in order to pass double array of the state of Cells from TicTacToe class.
      Edited Cell and CellManager to simplify Cell state information.
+
+#Step 7
+Code Affected: TicTacToeStarter, GameLister
+Flaw: Depreciated constructor
+Fix: Fixed both classes to update to new constructor.

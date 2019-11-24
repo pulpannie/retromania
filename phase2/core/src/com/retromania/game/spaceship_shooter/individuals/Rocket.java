@@ -28,7 +28,7 @@ public class Rocket extends Actor {
 
     private int width;
     private int height;
-    private Texture texture = new Texture("rocket_fire.png");
+    private Texture texture = new Texture("spaceship_shooter/rocket_fire.png");
 
     public Rocket(int x, int y){
         width = Gdx.graphics.getWidth()/10;

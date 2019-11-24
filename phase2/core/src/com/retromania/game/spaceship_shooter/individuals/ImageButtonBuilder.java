@@ -11,6 +11,8 @@ public class ImageButtonBuilder {
     TextureRegionDrawable textureRegionDrawable;
 
     public ImageButtonBuilder buildTexture(String path){
+        path = "spaceship_shooter/" + path;
+        System.out.println(path);
         texture = new Texture(path);
         return this;
     }

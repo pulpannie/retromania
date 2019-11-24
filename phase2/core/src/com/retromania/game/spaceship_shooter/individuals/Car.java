@@ -2,6 +2,7 @@ package com.retromania.game.spaceship_shooter.individuals;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,8 +14,9 @@ public class Car extends Actor {
     private int y;
     private int width;
     private int height;
-    private int rev = -1;
+    private int rev = 1;
     public boolean goingRight = true;
+    private Texture texture;
 
     public Rocket getiRocket() {
         return iRocket;
@@ -26,10 +28,10 @@ public class Car extends Actor {
         shapeRenderer = new ShapeRenderer();
         projectionMatrixSet = false;
         width = Gdx.graphics.getWidth()/3;
-        height= Gdx.graphics.getHeight()/32;
-        y = 200;
+        height= Gdx.graphics.getHeight()/8;
+        y = 320;
         x = Gdx.graphics.getWidth()/2;
-
+        texture = new Texture("spaceship_shooter/car_try.png");
     }
 
     public void turnSide(){
@@ -38,6 +40,10 @@ public class Car extends Actor {
     }
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        batch.draw(texture, x-rev*width/2, y-height/2, rev*width, height);
+    }
+
+    public void draw_2(Batch batch, float parentAlpha) {
         batch.end();
         if(!projectionMatrixSet){
             shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
@@ -72,12 +78,16 @@ public class Car extends Actor {
         batch.begin();
     }
 
+
     public void moveRight(float dt){
-        x += dt * 250;
+        if (x + width/2 <= Gdx.graphics.getWidth())
+            x += dt * 250;
+
     }
 
     public void moveLeft(float dt){
-        x -= dt * 250;
+        if (x - width/2 >= 0)
+            x -= dt * 250;
     }
     public void shoot(){
         if ((iRocket == null) || (iRocket.reach_top())){

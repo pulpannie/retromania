@@ -1,8 +1,23 @@
 PHASE 2:
 
-Step 1:
+# Step 1:
 
 Code Affected: Within the colour_shooter package, made a states package which contains the various states of the game
 such as the menu screen, pause screen, play screen (MenuScreen.java, PauseScreen.java, PlayScreen.java etc)
 This is beneficial as it helps put all states of the game together to incorporate a design pattern such as the StateFactory.java
 class.
+
+# Step 2:
+
+Code Affected: ColourShooterStarter
+
+Flaw: Previously implemented states instead of screens.
+Fix: Made changes to ColourShooterStarer to implement MainScreenInterface.
+
+# Step 3:
+
+Code Affected: MenuScreen, PauseScreen, PlayScreen
+
+Flaw: None of the abstract methods were implemented of Screen class
+Fix: Constructor was added and screen method were implemented.
+

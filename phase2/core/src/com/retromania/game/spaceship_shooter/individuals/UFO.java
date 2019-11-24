@@ -9,7 +9,7 @@ public class UFO {
     private int y;
     private int width;
     private int height;
-    static Texture texture = new Texture("ufo.png");
+    static Texture texture = new Texture("spaceship_shooter/ufo.png");
 
     public UFO(int x, int y){
         this.x = x - Gdx.graphics.getWidth()/8;
