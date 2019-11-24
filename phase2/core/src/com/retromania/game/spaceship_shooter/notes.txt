@@ -1,0 +1,68 @@
+PHASE 2 :
+
+# Step 1
+
+Code affected: MenuScreen, PauseScreen, PLayScreen, Hud
+
+Flaw: The mentioned classes should not create their buttons and labels by itself according to Single Responsibility Rule.
+
+Fix: creation of buttons and labels are seperated from their usage by introducing ImageButtonBuilder, LabelBuilder classes (apply Builder design pattern)
+
+
+#Step 2
+
+Code affected: UfoManager
+
+Flaw: UfoManager is currently responsibe to multiple "actors" such as: moving UFO and checking if the rocket hit UFO, drawing UFO, storing all the UFOs.
+
+Fix: Create UfoManagerFacade that contains the same responsibilities as the UfoManager through the help of different classes: UfoDrawer, UfoMover, UfoRepo (apply facade design pattern) and having an instance variable of UfoManagerFacade in UfoManager class.
+
+
+# Step 3
+
+Code affected: UfoManager
+
+Flaw: The mentioned class should not create its facade by itself according to Single Responsibility Rule.
+
+Fix: creation of facade is seperated from its usage by introducing UfoManagerFacadeBuilder class(apply Builder design pattern)
+
+
+#Step 4
+
+Code affected: SpaceShipShooterStarter
+
+Flaw: SpaceShipShooterStarter has to interact with many different subclasses of Screen. We want to obscure the creation process for those classes
+
+Fix: Created StateFactory to encapsulate constructor call to get instance of those screens on the SpaceShipShooterStarter without it knowing which constructor was called. (apply Simple Factory Design Pattern).
+
+#Step 5:
+
+Code affected: Car, assets folder
+
+Flaw: the Car that we used for the SpaceShipShooterStarter doesn't look realistic and capture the theme that we set up.
+
+Fix: We delete our old car image, find a new car image in the form of an armoured vehicle, pushed it to our asset folder. We then set up approriate starting position and size for it to use in our game.
+
+#Step 6:
+
+Code affected: Car, SpaceShipShooterStarter
+
+Flaw: the Car keep going even if it's out of the screen region.
+
+Fix: Only allows the Car to move if it's still inside the screen region.
+
+#Step 7: 
+
+Code affected:
+
+Flaw: Didn't have notes file to specify details of our changes to the SpaceShipShooter game.
+
+Fix: Add a notes.txt file to the spaceship_shooter folder and notes the detailed changes to the game in the step-by-step format.
+
+#Step 8:
+
+Code affected: Asset folder, ImageButtonBuilder, Car, UFO, Rocket.
+
+Flaw: The image that we used haven't been put to the specific folder spaceship_shooter in the assets folder.
+
+Fix: Put the images specifically used for our game to the spaceship_shooter folder, and add their descriptions to the description.txt file inside that folder. Fix the codes to access these images in a new directory.

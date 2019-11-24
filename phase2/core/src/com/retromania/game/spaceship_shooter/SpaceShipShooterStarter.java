@@ -49,7 +49,7 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     private Preferences preferences;
 
     public SpaceShipShooterStarter(RetroManiaGame game){
-        super(game, "Spaceship shooter", RetroManiaGame.Orientation.HORIZONTAL);
+        super(game, "Spaceship shooter", RetroManiaGame.Orientation.VERTICAL);
         gameStats = new GameStats();
         playScreen = StateFactory.getScreen("play screen", game, this);
         pauseScreen = StateFactory.getScreen("pause screen", game, this);
