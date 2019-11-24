@@ -46,7 +46,7 @@ public class GameLister extends RetroManiaScreen {
   public GameLister() {
     super(RetroMania.getRetroManiaInstance());
     gameList = new ArrayList<>();
-    gameList.add(new TicTacToeStarter(RetroMania.getRetroManiaInstance()));
+    gameList.add(new TicTacToeStarter("TicTacToe", RetroManiaGame.Orientation.VERTICAL));
     gameList.add(new SpaceShipShooterStarter(RetroMania.getRetroManiaInstance()));
     gameList.add(new ColourShooterStarter(RetroMania.getRetroManiaInstance()));
     gameList.add(SpecialMarioStarter.getSpecialMarioStarter());

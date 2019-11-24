@@ -36,13 +36,13 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     CellManager cellManager;
     String winner;
 
+    public TicTacToeStarter(String name, RetroManiaGame.Orientation orientation) {
+        super(name, orientation);
+    }
+
     @Override
     public void handleInput() {
 
-    }
-
-    public TicTacToeStarter(RetroManiaGame game) {
-        super(game, "Tic Tac Toe Game", RetroManiaGame.Orientation.VERTICAL);
     }
 
     @Override
