@@ -21,3 +21,10 @@ Code Affected: MenuScreen, PauseScreen, PlayScreen
 Flaw: None of the abstract methods were implemented of Screen class
 Fix: Constructor was added and screen method were implemented.
 
+# Step 4:
+
+Code Affected: Assets folder
+
+Flaw: Assets folder wasn't organized
+Fix: Added new files and reorganized it.
+
