@@ -35,3 +35,9 @@ Code Affected: Configuration
 Flaw: Colour Shooter preference was missing
 Fix: Added colour shooter Preference
 
+# Step 6:
+
+Code Affected: MenuScreen, PauseScreen, PlayScreen
+
+Flaw: new Stage() was being made which can't be implemented as of yet.
+Fix: removed Stage() initializes

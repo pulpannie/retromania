@@ -128,12 +128,12 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 
 	@Override
 	public void pause() {
-		game.setScreen(pauseScreen);
+		//game.setScreen(pauseScreen);
 	}
 
 	@Override
 	public void resume() {
-		game.setScreen(playScreen);
+		//game.setScreen(playScreen);
 	}
 
 	@Override
@@ -147,8 +147,8 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 	}
 
 	public void restart(){
-		setPlayScreen(new PlayScreen(game, this));
-		game.setScreen(getPlayScreen());
+//		setPlayScreen(new PlayScreen(game, this));
+//		game.setScreen(getPlayScreen());
 	}
 
 	public User getUser(){return currentUser;}

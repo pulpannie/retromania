@@ -25,7 +25,7 @@ public class PlayScreen implements Screen {
         this.mainscreen = mainscreen;
         gameCam = new OrthographicCamera();
         gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
-        stage = new Stage(gamePort, game.sb);
+        //stage = new Stage(gamePort, game.sb);
 
         // Add Pause Button
     }

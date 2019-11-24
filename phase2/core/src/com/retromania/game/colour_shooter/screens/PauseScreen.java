@@ -29,12 +29,12 @@ public class PauseScreen implements Screen {
         gameCam = new OrthographicCamera();
         gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
         this.mainscreen = mainscreen;
-        stage = new Stage(gamePort, game.sb);
+        //stage = new Stage(gamePort, game.sb);
         background = new Background();
 
         // Add the buttons
 
-        Gdx.input.setInputProcessor(stage);
+        //Gdx.input.setInputProcessor(stage);
 
 
     }

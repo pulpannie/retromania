@@ -22,7 +22,7 @@ public class MenuScreen implements Screen {
         this.game = game;
         this.mainscreen = mainscreen;
         gameCam = new OrthographicCamera();
-        stage = new Stage(gamePort, game.sb);
+        //stage = new Stage(gamePort, game.sb);
         background = new Background();
 
     }
