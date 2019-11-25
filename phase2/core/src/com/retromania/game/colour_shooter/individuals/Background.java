@@ -15,7 +15,7 @@ public class Background {
             back_texture = new Texture(Gdx.files.internal("colour_shooter/gray_bg.png"));
         }
         else {
-            back_texture = new Texture("gray_bg.png");
+            back_texture = new Texture(Gdx.files.internal("colour_shooter/purple_bg.jpg"));
         }
     }
 }
