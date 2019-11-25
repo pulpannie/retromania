@@ -1,4 +1,4 @@
-package com.retromania.game.tic_tac_toe;
+package com.retromania.game.tic_tac_toe.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;

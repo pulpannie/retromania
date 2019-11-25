@@ -1,8 +1,6 @@
-package com.retromania.game.tic_tac_toe;
+package com.retromania.game.tic_tac_toe.individuals;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.retromania.game.shared_abstractions.Individual;
-import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 public class Cell implements Individual {
     public boolean isTouched;

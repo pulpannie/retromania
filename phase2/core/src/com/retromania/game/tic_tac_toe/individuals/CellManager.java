@@ -1,4 +1,6 @@
-package com.retromania.game.tic_tac_toe;
+package com.retromania.game.tic_tac_toe.individuals;
+
+import com.retromania.game.tic_tac_toe.individuals.Cell;
 
 public class CellManager{
     int gameWidth, gameHeight;

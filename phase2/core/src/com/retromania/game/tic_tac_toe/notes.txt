@@ -39,3 +39,14 @@ Fix: Added .getCellStates() method to TicTacToe class in order to pass double ar
 Code Affected: TicTacToeStarter, GameLister
 Flaw: Depreciated constructor
 Fix: Fixed both classes to update to new constructor.
+
+#Step 8
+Code Affected: MenuScreen, PlayScreen, TicTacToeStarter
+Flaw: TicTacToeStarter class implements whole TicTacToe game, when it should just start the game.
+Fix: Separated TicTacToeStarter class to just start game, set screen to MenuScreen, then upon clicking a button users play.
+
+#Step 9
+Code Affected: All files inside tic_tac_toe package
+Flaw: All files inside tic_tac_toe package are not organized into packages
+Fix: Moved Cell, CellManager, TicTacToe class into newly created individuals package. Moved GameOverScreen, MenuScreen, PlayScreen into screens package.
+

@@ -1,8 +1,8 @@
-package com.retromania.game.tic_tac_toe;
+package com.retromania.game.tic_tac_toe.individuals;
 
 public class TicTacToe {
     CellManager cellManager;
-    String currentTurn;
+    public String currentTurn;
     int gameWidth, gameHeight;
 
     public TicTacToe(int gameWidth, int gameHeight){
