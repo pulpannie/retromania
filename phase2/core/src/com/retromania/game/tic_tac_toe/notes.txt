@@ -50,3 +50,7 @@ Code Affected: All files inside tic_tac_toe package
 Flaw: All files inside tic_tac_toe package are not organized into packages
 Fix: Moved Cell, CellManager, TicTacToe class into newly created individuals package. Moved GameOverScreen, MenuScreen, PlayScreen into screens package.
 
+#Step 10
+Code Affected: Files inside android/assets package
+Flaw: Unorganized tictactoe game assets
+Fix: Moved tictactoe game assets inside respective tic_tac_toe package.
