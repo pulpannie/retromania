@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.colour_shooter.individuals.Background;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
@@ -30,7 +31,7 @@ public class PauseScreen implements Screen {
         gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
         this.mainscreen = mainscreen;
         //stage = new Stage(gamePort, game.sb);
-        background = new Background();
+        background = new Background("pause_screen");
 
         // Add the buttons
 

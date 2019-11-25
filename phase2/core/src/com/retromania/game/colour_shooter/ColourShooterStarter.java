@@ -5,11 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.retromania.game.RetroMania;
 import com.retromania.game.colour_shooter.individuals.ColourShootGameStats;
 import com.retromania.game.colour_shooter.screens.MainScreenInterface;
+import com.retromania.game.colour_shooter.screens.MenuScreen;
+import com.retromania.game.colour_shooter.screens.PauseScreen;
 import com.retromania.game.colour_shooter.screens.PlayScreen;
 import com.retromania.game.colour_shooter.screens.StateFactory;
 import com.retromania.game.colour_shooter.states.GameStateManager;
@@ -20,20 +24,27 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
+import com.retromania.game.spaceship_shooter.individuals.GameStats;
+
 import java.util.List;
 
 
 public class ColourShooterStarter extends RetroManiaInnerGame implements MainScreenInterface {
-//	private GameStateManager gsm;
-//	private SpriteBatch batch;
-
-//	Texture img;
 
 	static ColourShootGameStats gameStats;
 	static Screen pauseScreen;
 	static Screen playScreen;
 	static Screen menuScreen;
 	private Preferences preferences;
+
+	public ColourShooterStarter(RetroManiaGame game) {
+		super(game, "Colour Shooter", RetroManiaGame.Orientation.VERTICAL);
+		gameStats = new ColourShootGameStats();
+		playScreen = StateFactory.getScreen("play screen", game, this);
+		pauseScreen = StateFactory.getScreen("pause screen", game, this);
+		menuScreen = StateFactory.getScreen("menu screen", game, this);
+		preferences = game.getPrefrences(Configuration.colourshooterPreference);
+	}
 
 	public static ColourShootGameStats getGameStats() {
 		return gameStats;
@@ -51,19 +62,20 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 		return menuScreen;
 	}
 
-	public static void setPlayScreen(PlayScreen playScreen) {
-		ColourShooterStarter.playScreen = getPlayScreen();
+	public static void setGameStats(ColourShootGameStats gameStats) {
+		ColourShooterStarter.gameStats = gameStats;
 	}
 
+	public static void setPlayScreen(PlayScreen playScreen) {
+		ColourShooterStarter.playScreen = playScreen;
+	}
 
-	public ColourShooterStarter(RetroManiaGame game) {
-		super(game, "Colour Shooter", RetroManiaGame.Orientation.VERTICAL);
-		gameStats = new ColourShootGameStats();
-		playScreen = StateFactory.getScreen("play screen", game, this);
-		pauseScreen = StateFactory.getScreen("pause screen", game, this);
-		menuScreen = StateFactory.getScreen("menu screen", game, this);
-		preferences = game.getPrefrences(Configuration.colourshooterPreference);
+	public static void setPauseScreen(PauseScreen pauseScreen) {
+		ColourShooterStarter.pauseScreen = pauseScreen;
+	}
 
+	public static void setMenuScreen(MenuScreen menuScreen) {
+		ColourShooterStarter.menuScreen = menuScreen;
 	}
 
 	@Override
@@ -113,7 +125,7 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 
 	@Override
 	public void show() {
-		game.setScreen(menuScreen);
+		game.setScreen(playScreen);
 	}
 
 	@Override

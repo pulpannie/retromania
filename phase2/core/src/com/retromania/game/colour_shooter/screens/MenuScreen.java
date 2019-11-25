@@ -3,6 +3,7 @@ package com.retromania.game.colour_shooter.screens;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.colour_shooter.individuals.Background;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -23,7 +24,7 @@ public class MenuScreen implements Screen {
         this.mainscreen = mainscreen;
         gameCam = new OrthographicCamera();
         //stage = new Stage(gamePort, game.sb);
-        background = new Background();
+        background = new Background("play_screen");
 
     }
 
