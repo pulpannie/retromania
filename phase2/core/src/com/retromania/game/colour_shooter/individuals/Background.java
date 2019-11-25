@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Background {
-    public Texture back_texture;
+    private Texture back_texture;
 
     public Background (String screen_name) {
         if (screen_name.equals("play_screen")) {
@@ -17,5 +17,9 @@ public class Background {
         else {
             back_texture = new Texture(Gdx.files.internal("colour_shooter/purple_bg.jpg"));
         }
+    }
+
+    public Texture getBackgroundTexture() {
+        return back_texture;
     }
 }

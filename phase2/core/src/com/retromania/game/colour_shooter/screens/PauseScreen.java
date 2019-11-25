@@ -23,9 +23,9 @@ public class PauseScreen implements Screen {
     private ImageButton restartButton;
 
     public Stage stage;
-    MainScreenInterface mainscreen;
+    ColourShooterStarter mainscreen;
 
-    public PauseScreen (RetroManiaGame game, MainScreenInterface mainscreen) {
+    public PauseScreen (RetroManiaGame game, ColourShooterStarter mainscreen) {
         this.game = game;
         gameCam = new OrthographicCamera();
         gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);

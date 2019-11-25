@@ -17,9 +17,9 @@ public class MenuScreen implements Screen {
 
     public Stage stage;
 
-    MainScreenInterface mainscreen;
+    ColourShooterStarter mainscreen;
 
-    public MenuScreen(RetroManiaGame game, MainScreenInterface mainscreen) {
+    public MenuScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
         this.game = game;
         this.mainscreen = mainscreen;
         gameCam = new OrthographicCamera();
