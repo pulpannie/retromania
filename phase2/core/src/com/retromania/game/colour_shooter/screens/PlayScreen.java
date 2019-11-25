@@ -14,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -31,7 +33,7 @@ public class PlayScreen implements Screen {
     public SpriteBatch batch;
     private int width;
     private int height;
-    private Sprite square;
+    Image square;
     int i = 0;
 
     public PlayScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
@@ -39,15 +41,12 @@ public class PlayScreen implements Screen {
         this.mainscreen = mainscreen;
         camera = new OrthographicCamera();
         batch = new SpriteBatch();
-        this.stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(),
+        stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(),
                 Gdx.graphics.getHeight(), camera));
         Gdx.input.setInputProcessor(stage);
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
-        square = new Sprite(new Texture(Gdx.files.internal("colour_shooter/square.png")));
-        square.setOrigin(square.getX() / 2, square.getY() / 2);
-        square.setPosition(width / 2 - square.getWidth() / 2,
-                height / 2- square.getHeight() / 2);
+
     }
 
     @Override
@@ -56,11 +55,20 @@ public class PlayScreen implements Screen {
         Image back_img = new Image(background.getBackgroundTexture());
         back_img.setSize(width, height);
         stage.addActor(back_img);
+
         Tank tank = new Tank(mainscreen.getTankPreference());
         Image tank_img = new Image(tank.getTankTexture());
         tank_img.setSize((float) (width * 0.3), (float) (height * 0.2));
         tank_img.setPosition((float)(width / 2) - (tank_img.getWidth() / 2), 0);
         stage.addActor(tank_img);
+
+        square = new Image(new Texture(Gdx.files.internal("colour_shooter/square.png")));
+        square.setSize((float) (width* 0.6), (float) (height * 0.3));
+        square.setPosition((float) (width / 2) - square.getWidth() / 2,
+                (float) (height * 0.6) - square.getHeight() / 2);
+        square.setScaling(Scaling.fit);
+        square.setOrigin(Align.center);
+        stage.addActor(square);
     }
 
     public void update(float dt) {
@@ -71,9 +79,8 @@ public class PlayScreen implements Screen {
     public void render(final float delta) {
         update(delta);
         stage.draw();
+        square.rotateBy(2f);
         batch.begin();
-//        square.setRotation(i++);
-        square.draw(batch);
         batch.end();
     }
 
@@ -103,6 +110,7 @@ public class PlayScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
+        batch.dispose();
     }
 }

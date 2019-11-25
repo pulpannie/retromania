@@ -36,7 +36,7 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 	static Screen playScreen;
 	static Screen menuScreen;
 	private Preferences preferences;
-	private int tankPrefrence;
+	public int tankPrefrence;
 
 	public ColourShooterStarter(RetroManiaGame game) {
 		super(game, "Colour Shooter", RetroManiaGame.Orientation.VERTICAL);
