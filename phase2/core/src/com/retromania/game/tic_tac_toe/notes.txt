@@ -59,3 +59,8 @@ Fix: Moved tictactoe game assets inside respective tic_tac_toe package.
 Code Affected: PlayScreen, MenuScreen
 Flaw: did not edit texture location after organizing assets file
 Fix: Edited locations of all texture files metioned
+
+#Step 12
+Code Affected: Cell, CellManager, TicTacToe
+Flaw: Need specific methods to implement AI player.
+Fix: Added methods to deep clone a current TicTacToe game, change the state of a Cell, get state of game, get Cell information.
