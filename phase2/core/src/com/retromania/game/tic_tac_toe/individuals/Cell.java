@@ -42,6 +42,14 @@ public class Cell implements Individual {
       this.Y = y;
     }
 
+    protected Cell copyCell(){
+      Cell tmpCell = new Cell(W, H, X, Y);
+      tmpCell.isTouched = this.isTouched;
+      tmpCell.shape = this.shape;
+      tmpCell.player = this.player;
+      return tmpCell;
+    }
+
     public boolean inCell(float X, float Y){
         if( X >= this.X && X < this.X + this.W){
             if(Y >= this.Y && Y < this.Y + this.H){

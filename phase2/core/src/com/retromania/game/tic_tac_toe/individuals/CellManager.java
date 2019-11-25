@@ -17,6 +17,18 @@ public class CellManager{
         }
     }
 
+    protected CellManager copyCellManager(){
+        CellManager tmpCellManager = new CellManager(gameWidth, gameHeight);
+        tmpCellManager.winnerCell = this.winnerCell;
+        for (int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++){
+                tmpCellManager.cellArray[i][j] = cellArray[i][j].copyCell();
+            }
+        }
+
+        return tmpCellManager;
+    }
+
     public boolean checkRow(int n){
         for (int i = 0; i < size; i++){
             int tmp = 0;
