@@ -54,3 +54,8 @@ Fix: Moved Cell, CellManager, TicTacToe class into newly created individuals pac
 Code Affected: Files inside android/assets package
 Flaw: Unorganized tictactoe game assets
 Fix: Moved tictactoe game assets inside respective tic_tac_toe package.
+
+#Step 11
+Code Affected: PlayScreen, MenuScreen
+Flaw: did not edit texture location after organizing assets file
+Fix: Edited locations of all texture files metioned

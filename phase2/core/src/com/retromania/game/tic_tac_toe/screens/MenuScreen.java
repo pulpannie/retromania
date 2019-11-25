@@ -37,7 +37,7 @@ public class MenuScreen extends RetroManiaScreen {
         batch = new SpriteBatch();
         Table table = new Table();
         table.setBounds(0, 0, gameWidth, gameHeight);
-        playButton = new ImageButton( new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("play_tictactoe.png")))));
+        playButton = new ImageButton( new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("tic_tac_toe/play_tictactoe.png")))));
         playButton.setSize(500,500);
         playButton.setPosition(gameWidth/2 - 250, gameHeight/2-200);
         stage.addActor(playButton);

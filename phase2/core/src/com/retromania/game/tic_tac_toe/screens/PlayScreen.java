@@ -42,8 +42,8 @@ public class PlayScreen extends RetroManiaScreen {
         cellManager = ticTacToe.getCellManager();
         stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
         Gdx.input.setInputProcessor(stage);
-        cross = new Texture(Gdx.files.internal("cross.jpg"));
-        circle = new Texture(Gdx.files.internal("circle.png"));
+        cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
+        circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
         currentTurn = "Cross";
         batch = new SpriteBatch();
         batch.setProjectionMatrix(gamecam.combined);
