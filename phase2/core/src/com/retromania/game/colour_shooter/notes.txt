@@ -47,3 +47,9 @@ Fix: removed Stage() initializes
 Code Affected: PlayScreen
 
 Added stage, sprite batch and Orthographic Camera in the PlayScreen constructor.
+
+# Step 8:
+
+Code Affected: PlayScreen
+
+Added background, tank and square.
