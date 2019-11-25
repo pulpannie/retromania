@@ -39,3 +39,28 @@ Fix: Added .getCellStates() method to TicTacToe class in order to pass double ar
 Code Affected: TicTacToeStarter, GameLister
 Flaw: Depreciated constructor
 Fix: Fixed both classes to update to new constructor.
+
+#Step 8
+Code Affected: MenuScreen, PlayScreen, TicTacToeStarter
+Flaw: TicTacToeStarter class implements whole TicTacToe game, when it should just start the game.
+Fix: Separated TicTacToeStarter class to just start game, set screen to MenuScreen, then upon clicking a button users play.
+
+#Step 9
+Code Affected: All files inside tic_tac_toe package
+Flaw: All files inside tic_tac_toe package are not organized into packages
+Fix: Moved Cell, CellManager, TicTacToe class into newly created individuals package. Moved GameOverScreen, MenuScreen, PlayScreen into screens package.
+
+#Step 10
+Code Affected: Files inside android/assets package
+Flaw: Unorganized tictactoe game assets
+Fix: Moved tictactoe game assets inside respective tic_tac_toe package.
+
+#Step 11
+Code Affected: PlayScreen, MenuScreen
+Flaw: did not edit texture location after organizing assets file
+Fix: Edited locations of all texture files metioned
+
+#Step 12
+Code Affected: Cell, CellManager, TicTacToe
+Flaw: Need specific methods to implement AI player.
+Fix: Added methods to deep clone a current TicTacToe game, change the state of a Cell, get state of game, get Cell information.

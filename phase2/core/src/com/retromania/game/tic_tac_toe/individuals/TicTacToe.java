@@ -1,8 +1,8 @@
-package com.retromania.game.tic_tac_toe;
+package com.retromania.game.tic_tac_toe.individuals;
 
 public class TicTacToe {
     CellManager cellManager;
-    String currentTurn;
+    public String currentTurn;
     int gameWidth, gameHeight;
 
     public TicTacToe(int gameWidth, int gameHeight){
@@ -14,16 +14,6 @@ public class TicTacToe {
 
     public CellManager getCellManager(){
         return cellManager;
-    }
-
-    /*NEED TO FIX*/
-    public TicTacToe copyTicTacToe(){
-        TicTacToe newTicTacToe = new TicTacToe(gameWidth, gameHeight);
-        return newTicTacToe;
-    }
-
-    public Cell[][] getCellStates(){
-        return cellManager.cellArray;
     }
 
     public void selectCell(int x, int y){
@@ -63,4 +53,36 @@ public class TicTacToe {
     public String getWinner(){
             return cellManager.winnerCell.getCell();
     }
+
+    /* FUNCTIONS FOR AI implementation of TicTacToe */
+
+    public TicTacToe copyTicTacToe(){
+        TicTacToe newTicTacToe = new TicTacToe(gameWidth, gameHeight);
+        newTicTacToe.cellManager = this.cellManager.copyCellManager();
+        newTicTacToe.currentTurn = this.currentTurn;
+        return newTicTacToe;
+    }
+
+    public Cell[][] getCellStates(){
+        return cellManager.cellArray;
+    }
+
+    public void changeCellState(int i, int j, String shape){
+        if (shape.equals("None")) {
+            cellManager.cellArray[i][j].isTouched = false;
+        }
+        else {
+            cellManager.cellArray[i][j].isTouched = true;
+        }
+        cellManager.cellArray[i][j].setCell(shape);
+    }
+
+    public String getStatus(){
+        if (isEnd()){                 //Game finished
+            return getWinner();
+        }
+        return "Unfinished"; //Game not finished
+    }
+    /* FUNCTIONS END */
+
 }

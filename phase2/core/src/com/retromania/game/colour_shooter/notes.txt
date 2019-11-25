@@ -1,8 +1,61 @@
 PHASE 2:
 
-Step 1:
+# Step 1:
 
 Code Affected: Within the colour_shooter package, made a states package which contains the various states of the game
 such as the menu screen, pause screen, play screen (MenuScreen.java, PauseScreen.java, PlayScreen.java etc)
 This is beneficial as it helps put all states of the game together to incorporate a design pattern such as the StateFactory.java
 class.
+
+# Step 2:
+
+Code Affected: ColourShooterStarter
+
+Flaw: Previously implemented states instead of screens.
+Fix: Made changes to ColourShooterStarer to implement MainScreenInterface.
+
+# Step 3:
+
+Code Affected: MenuScreen, PauseScreen, PlayScreen
+
+Flaw: None of the abstract methods were implemented of Screen class
+Fix: Constructor was added and screen method were implemented.
+
+# Step 4:
+
+Code Affected: Assets folder
+
+Flaw: Assets folder wasn't organized
+Fix: Added new files and reorganized it.
+
+# Step 5:
+
+Code Affected: Configuration
+
+Flaw: Colour Shooter preference was missing
+Fix: Added colour shooter Preference
+
+# Step 6:
+
+Code Affected: MenuScreen, PauseScreen, PlayScreen
+
+Flaw: new Stage() was being made which can't be implemented as of yet.
+Fix: removed Stage() initializes
+
+# Step 7:
+
+Code Affected: PlayScreen
+
+Added stage, sprite batch and Orthographic Camera in the PlayScreen constructor.
+
+# Step 8:
+
+Code Affected: PlayScreen
+
+Added the background image, the tank image and the square image using Texture.
+
+# Step 9:
+
+Code Affected: PlayScreen
+
+Used the built in libgdx rotation function to rotate the square.

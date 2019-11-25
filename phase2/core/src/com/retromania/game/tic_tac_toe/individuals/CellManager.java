@@ -1,4 +1,6 @@
-package com.retromania.game.tic_tac_toe;
+package com.retromania.game.tic_tac_toe.individuals;
+
+import com.retromania.game.tic_tac_toe.individuals.Cell;
 
 public class CellManager{
     int gameWidth, gameHeight;
@@ -13,6 +15,18 @@ public class CellManager{
                 cellArray[i][j] = new Cell(gameWidth/size, gameHeight/size, gameWidth*i/size, gameHeight*j/size);
             }
         }
+    }
+
+    protected CellManager copyCellManager(){
+        CellManager tmpCellManager = new CellManager(gameWidth, gameHeight);
+        tmpCellManager.winnerCell = this.winnerCell;
+        for (int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++){
+                tmpCellManager.cellArray[i][j] = cellArray[i][j].copyCell();
+            }
+        }
+
+        return tmpCellManager;
     }
 
     public boolean checkRow(int n){
