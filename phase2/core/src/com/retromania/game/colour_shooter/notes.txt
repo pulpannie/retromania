@@ -59,3 +59,10 @@ Added the background image, the tank image and the square image using Texture.
 Code Affected: PlayScreen
 
 Used the built in libgdx rotation function to rotate the square.
+
+# Step 10:
+
+Code Affected: MenuScreen
+
+
+Added MenuScreen in ColourShooterStarter.
