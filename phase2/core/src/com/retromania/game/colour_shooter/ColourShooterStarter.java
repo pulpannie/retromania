@@ -135,7 +135,7 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 
 	@Override
 	public void show() {
-		game.setScreen(playScreen);
+		game.setScreen(menuScreen);
 	}
 
 	@Override

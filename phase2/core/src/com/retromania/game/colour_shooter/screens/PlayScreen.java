@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -21,6 +24,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.colour_shooter.individuals.Background;
+import com.retromania.game.colour_shooter.individuals.Square;
 import com.retromania.game.colour_shooter.individuals.Tank;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
@@ -33,7 +37,7 @@ public class PlayScreen implements Screen {
     public SpriteBatch batch;
     private int width;
     private int height;
-    Image square;
+    Square square;
     int i = 0;
 
     public PlayScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
@@ -62,13 +66,19 @@ public class PlayScreen implements Screen {
         tank_img.setPosition((float)(width / 2) - (tank_img.getWidth() / 2), 0);
         stage.addActor(tank_img);
 
-        square = new Image(new Texture(Gdx.files.internal("colour_shooter/square.png")));
-        square.setSize((float) (width* 0.6), (float) (height * 0.3));
+//        square = new Image(new Texture(Gdx.files.internal("colour_shooter/square.png")));
+//        square.setSize((float) (width* 0.6), (float) (height * 0.3));
+//        square.setPosition((float) (width / 2) - square.getWidth() / 2,
+//                (float) (height * 0.6) - square.getHeight() / 2);
+//        square.setScaling(Scaling.fit);
+//        square.setOrigin(Align.center);
+//        stage.addActor(square);
+        World world = new World(new Vector2(0, -10), true);
+
+        TextureRegion squareRegion = new TextureRegion();
+        square = new Square(squareRegion, 0, 0, (int) (width* 0.4), (int) (height * 0.3), 1, world);
         square.setPosition((float) (width / 2) - square.getWidth() / 2,
                 (float) (height * 0.6) - square.getHeight() / 2);
-        square.setScaling(Scaling.fit);
-        square.setOrigin(Align.center);
-        stage.addActor(square);
     }
 
     public void update(float dt) {
@@ -79,8 +89,10 @@ public class PlayScreen implements Screen {
     public void render(final float delta) {
         update(delta);
         stage.draw();
-        square.rotateBy(2f);
+
+//        square.rotateBy(2f);
         batch.begin();
+        square.draw(batch);
         batch.end();
     }
 
