@@ -1,6 +1,0 @@
-firstLevel.tmx : the first trial of maps that was used for the mario game
-tileset_gutter.png : tileset for the first level
-mario_small.pack : texture atlas for main player texture
-mario_small.png : the actual texture for the main character
-tileset_gutter.tsx : the resources for the first levels textures
-marioFirstLevelMusic.ogg : Music for the first level, used from : https://www.youtube.com/watch?v=9hzxHeIq1LQ&list=PL-6iEAVaTOdUehR3xL_S9zm6Lu7Hv42Kl
