@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.SpecialMarioStarter;
