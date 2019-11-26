@@ -7,9 +7,14 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.RetroMania;
+import com.retromania.game.colour_shooter.screens.PlayScreen;
 import com.retromania.game.shared_abstractions.Character;
+import com.retromania.game.shared_abstractions.Individual;
 
-public class Square extends Character {
+public class Square extends Character implements Individual {
+
     public Square(TextureRegion textureRegion, int x, int y, int width,
                   int height, float pixelToMeterRate, World world) {
         super(textureRegion, x, y, width, height, pixelToMeterRate, world);
@@ -23,7 +28,7 @@ public class Square extends Character {
     @Override
     protected BodyDef setUpBodyDef() {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(32 / 100f, 256 / 100f);
+        bodyDef.position.set(PlayScreen.viewport.getWorldWidth()/2, PlayScreen.viewport.getWorldHeight()/2);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         return bodyDef;
     }
@@ -35,15 +40,15 @@ public class Square extends Character {
 
     private CircleShape setUpCircleBody(float circleShapeRadius) {
         CircleShape circleShape = new CircleShape();
-        circleShape.setRadius(circleShapeRadius / 100f);
+        circleShape.setRadius(circleShapeRadius );
         return circleShape;
     }
 
     private EdgeShape setUpEdgeShapeBody(float circleShapeRadius, float headLength) {
         EdgeShape head = new EdgeShape();
         head.set(
-                new Vector2((-headLength / 2) / 100f, (circleShapeRadius) / 100f),
-                new Vector2((headLength / 2) / 100f, (circleShapeRadius) / 100f));
+                new Vector2((-headLength / 2), (circleShapeRadius) ),
+                new Vector2((headLength / 2) , (circleShapeRadius) ));
         return head;
     }
 
@@ -59,7 +64,7 @@ public class Square extends Character {
         fixtureDef = new FixtureDef();
         setDefaultCategoryMask();
         setDefaultCollidableWith();
-        setUpFixtureDefShapes(7, 4);
+        setUpFixtureDefShapes(15, 15);
     }
 
     @Override
@@ -75,5 +80,10 @@ public class Square extends Character {
     @Override
     public short getDefaultTarget() {
         return 4;
+    }
+
+    @Override
+    public void update(Object... args) {
+//        body.getPosition().set(10000, 100000);
     }
 }

@@ -70,7 +70,7 @@ public class MainPlayer extends Character implements Individual {
   @Override
   protected BodyDef setUpBodyDef() {
     BodyDef bodyDef = new BodyDef();
-    bodyDef.position.set(convertPixelToMeter(32), convertPixelToMeter(256));
+    bodyDef.position.set(convertPixelToMeter(32), convertPixelToMeter(32));
     bodyDef.type = BodyDef.BodyType.DynamicBody;
     return bodyDef;
   }
