@@ -10,8 +10,26 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
+/**
+ * Class that stores information about instant score, time, and area
+ *
+ * @author Umid, Thuy
+ **/
 public class Hud {
+    /**
+     * Variables:
+     * stage: Stage that our table of labels added
+     * viewport: view screen
+     * worldTimer: timer that counts down to 0
+     * timeCount: timer counts up to 1
+     * score: variable that stores how many ufos shooted
+     * countDownLabel: label that draws time left
+     * scoreLabel: label that draws score
+     * timeLabel: label that draws "TIMER"
+     * worldLabel: label that draws name of specified world
+     * scoreNameLabel: label that draws "SCORE"
+     * areaLabel:  label that draws "AREA"
+     * */
     public Stage stage;
     private Viewport viewport;
 
@@ -19,17 +37,21 @@ public class Hud {
     private float timeCount;
     private Integer score;
 
-    Label countDownLabel;
-    Label scoreLabel;
-    Label timeLabel;
-    Label worldLabel;
-    Label scoreNameLabel;
-    Label areaLabel;
-
+    private Label countDownLabel;
+    private Label scoreLabel;
+    private Label timeLabel;
+    private Label worldLabel;
+    private Label scoreNameLabel;
+    private Label areaLabel;
+    /**
+     * GETTER METHOD FOR SCORE
+     * */
     public Integer getScore() {
         return score;
     }
-
+    /**
+     * CONSTRUCTOR CALL FOR Hud class
+     * */
     public Hud(SpriteBatch sb){
         worldTimer = 60;
         timeCount = 0;
@@ -63,7 +85,9 @@ public class Hud {
         stage.addActor(table);
 
     }
-
+    /**
+     * Method that updates time left
+     * */
     public boolean countDown(float dt){
         timeCount += dt;
         if (timeCount >= 1){
@@ -80,7 +104,9 @@ public class Hud {
         }
         return worldTimer == 0;
     }
-
+    /**
+     * Method that updates score
+     * */
     public void addScore(int value) {
         score += value;
         scoreLabel.setText(String.format("%06d", score));

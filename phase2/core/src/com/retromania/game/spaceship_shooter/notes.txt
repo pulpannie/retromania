@@ -98,3 +98,11 @@ Code affected: MainScreenInterface, UFO, UfoDrawer, UfoManager, UfoManagerFacade
 Flaw: lack of java docs and comments throughout the game.
 
 Fix: Adding and updating java docs and comments to the above classes..
+
+#Step 13:
+
+Code affected: Background, Car, GameStats, Hud, ImageButtonBuilder, LabelBuilder, Rocket
+
+Flaw: lack of java docs and comments throughout the game.
+
+Fix: Adding and updating java docs and comments to the above classes..
