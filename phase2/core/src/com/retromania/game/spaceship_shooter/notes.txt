@@ -90,3 +90,11 @@ Code affected: MainScreenInterface
 Flaw: lack of java docs and comments throughout the game.
 
 Fix: Test adding java docs and comments to MainScreenInterface.
+
+#Step 12:
+
+Code affected: MainScreenInterface, UFO, UfoDrawer, UfoManager, UfoManagerFacade, UfoManagerFacadeBuilder, UfoMover, UfoRepo.
+
+Flaw: lack of java docs and comments throughout the game.
+
+Fix: Adding and updating java docs and comments to the above classes..
