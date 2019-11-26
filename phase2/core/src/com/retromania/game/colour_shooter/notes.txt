@@ -60,9 +60,9 @@ Code Affected: PlayScreen
 
 Used the built in libgdx rotation function to rotate the square.
 
+
 # Step 10:
 
-Code Affected: MenuScreen
+Code Affected: N/A
 
-
-Added MenuScreen in ColourShooterStarter.
+Updated the square picture

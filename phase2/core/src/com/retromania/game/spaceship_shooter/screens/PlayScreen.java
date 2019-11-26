@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.Car;
@@ -20,7 +21,7 @@ import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.UfoManager;
 
 
-public class PlayScreen implements Screen{
+public class PlayScreen extends RetroManiaScreen {
     private RetroManiaGame game;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
@@ -74,14 +75,14 @@ public class PlayScreen implements Screen{
         Gdx.input.setInputProcessor(stage);
     }
 
-    public void handleInput(float dt){
+    public void handleInput(){
         if (rightButton.isPressed()) {
-            player.moveRight(dt);
+            player.moveRight();
             if (!player.goingRight)
                 player.turnSide();
         }
         else if(leftButton.isPressed()){
-            player.moveLeft(dt);
+            player.moveLeft();
             if (player.goingRight)
                 player.turnSide();
 
@@ -97,7 +98,7 @@ public class PlayScreen implements Screen{
     }
 
     public void update(float dt){
-        handleInput(dt);
+        handleInput();
 
         ufoManager.update(player.getiRocket(), hud);
         gamecam.update();

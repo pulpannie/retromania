@@ -17,13 +17,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.GameStats;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
 
-public class MenuScreen implements Screen {
+public class MenuScreen extends RetroManiaScreen {
     private RetroManiaGame game;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
@@ -89,14 +90,14 @@ public class MenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
     }
 
-    public void handleInput(float dt){
+    public void handleInput(){
         if (startButton.isPressed()) {
             start();
         }
     }
 
     public void update(float dt){
-        handleInput(dt);
+        handleInput();
 
         gamecam.update();
     }

@@ -13,12 +13,13 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 
 
-public class PauseScreen implements Screen {
+public class PauseScreen extends RetroManiaScreen {
     private RetroManiaGame game;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
@@ -60,7 +61,7 @@ public class PauseScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
     }
 
-    public void handleInput(float dt){
+    public void handleInput(){
         if (resumeButton.isPressed()) {
             resume();
         }
@@ -70,7 +71,7 @@ public class PauseScreen implements Screen {
     }
 
     public void update(float dt){
-        handleInput(dt);
+        handleInput();
 
         gamecam.update();
     }

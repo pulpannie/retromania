@@ -66,3 +66,27 @@ Code affected: Asset folder, ImageButtonBuilder, Car, UFO, Rocket.
 Flaw: The image that we used haven't been put to the specific folder spaceship_shooter in the assets folder.
 
 Fix: Put the images specifically used for our game to the spaceship_shooter folder, and add their descriptions to the description.txt file inside that folder. Fix the codes to access these images in a new directory.
+
+#Step 9:
+
+Code affected: spaceship_shooter repository inside asset.
+
+Flaw: The images that we used in our game hasn't been described yet.
+
+Fix: add the descriptions of every images file to the description.txt file.
+
+#Step 10:
+
+Code affected: MenuScreen, PauseScreen, PlayScreen, Car.
+
+Flaw: Inconsistent usage of Screen and RetroManiaScreen among different games.
+
+Fix: make all the Screen classes above extends the RetroManiaScreen class, and change the implementation of method handleInput to fit with the RetroManiaScreen's structure.
+
+#Step 11:
+
+Code affected: MainScreenInterface
+
+Flaw: lack of java docs and comments throughout the game.
+
+Fix: Test adding java docs and comments to MainScreenInterface.

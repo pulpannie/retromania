@@ -1,0 +1,10 @@
+resume.png: texture of resume button
+pause.png: texture of pause button
+restart.png: texture of restart button
+start_button.png: texture of start button
+car_try.png: texture of car/player entity
+ufo.png:  texture of ufo entity
+left_button_big.png: texture of button that makes car move left
+right_button_big.png: texture of button that makes car move right
+rocket_fire.png: texture of rocket that is shooted by car
+

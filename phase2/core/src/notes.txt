@@ -125,6 +125,24 @@ Fix: Broke up the function into new functions.
 
 
 
+# Step 14
+
+Code affected: Character, CharacterSprite
+
+Flaw : Character and CharacterSprite were in Special Mario while they are a feature that can be used
+by all projects.
+Fix: All the files were moved to shared_abstractions and also made abstract. CharacterSprite was
+made package protected as well because only Character needs to access it.
+
+
+# Step 15
+
+Code affected: Character, Collidable
+
+Flaw : Collidable was in Special Mario while they are a feature that can be used
+by all projects.
+Fix: All the files were moved to shared_abstractions and also made abstract.
+
 
 
 
