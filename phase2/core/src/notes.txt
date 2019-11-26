@@ -135,6 +135,14 @@ Fix: All the files were moved to shared_abstractions and also made abstract. Cha
 made package protected as well because only Character needs to access it.
 
 
+# Step 15
+
+Code affected: Character, Collidable
+
+Flaw : Collidable was in Special Mario while they are a feature that can be used
+by all projects.
+Fix: All the files were moved to shared_abstractions and also made abstract.
+
 
 
 

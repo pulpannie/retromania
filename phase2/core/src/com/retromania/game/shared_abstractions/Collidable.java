@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.abstractions;
+package com.retromania.game.shared_abstractions;
 
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 
