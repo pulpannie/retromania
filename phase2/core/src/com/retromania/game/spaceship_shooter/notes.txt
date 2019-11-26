@@ -74,3 +74,19 @@ Code affected: spaceship_shooter repository inside asset.
 Flaw: The images that we used in our game hasn't been described yet.
 
 Fix: add the descriptions of every images file to the description.txt file.
+
+#Step 10:
+
+Code affected: MenuScreen, PauseScreen, PlayScreen, Car.
+
+Flaw: Inconsistent usage of Screen and RetroManiaScreen among different games.
+
+Fix: make all the Screen classes above extends the RetroManiaScreen class, and change the implementation of method handleInput to fit with the RetroManiaScreen's structure.
+
+#Step 11:
+
+Code affected: MainScreenInterface
+
+Flaw: lack of java docs and comments throughout the game.
+
+Fix: Test adding java docs and comments to MainScreenInterface.

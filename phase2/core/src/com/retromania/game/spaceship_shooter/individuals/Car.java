@@ -79,15 +79,15 @@ public class Car extends Actor {
     }
 
 
-    public void moveRight(float dt){
+    public void moveRight(){
         if (x + width/2 <= Gdx.graphics.getWidth())
-            x += dt * 250;
+            x += 15;
 
     }
 
-    public void moveLeft(float dt){
+    public void moveLeft(){
         if (x - width/2 >= 0)
-            x -= dt * 250;
+            x -= 15;
     }
     public void shoot(){
         if ((iRocket == null) || (iRocket.reach_top())){
