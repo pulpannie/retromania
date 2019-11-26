@@ -24,6 +24,8 @@ public class RetroMania extends RetroManiaGame {
   }
 
   private RetroMania() {
+    Car c = DaggerComponent.create().getCar();
+    System.out.println("Car : " + c.testClass);
   }
 
   @Override

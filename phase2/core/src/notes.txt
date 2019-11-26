@@ -143,6 +143,17 @@ Flaw : Collidable was in Special Mario while they are a feature that can be used
 by all projects.
 Fix: All the files were moved to shared_abstractions and also made abstract.
 
+# Step 16
+
+Code affected: All The Project (Car, Component, TestClass)
+
+Flaw : We were passing around our values our selves, using singleton design patterns our selves.
+and we don not enjoy typing :), "We hate WET".
+Fix: We used dagger 2 in order to do our dependency injection, This can now do our dependency
+injection at compile time, which is much better and faster compared to something like java springs
+which is exactly what we need in a game. This is because dagger uses annotations at compile time
+rather than using reflection during runtime, right now just the aforementioned classes have been
+added to show the dummy use of dependency injection to team mates.
 
 
 
