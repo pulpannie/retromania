@@ -74,3 +74,10 @@ Code Affected: PlayScreen, Square
 
 Flaw : The box2d was not being shown properly and also the screen was not setup properly.
 Fix :  The correct box2d and textures were added to the classes.
+
+#Step 12:
+
+Code Affected: PlayScreen
+
+Flaw: Rotation of Square and dimensions are not proper
+Fix: Adjusted and improved the code associated to the position of the Square and its rotation.

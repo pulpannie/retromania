@@ -74,7 +74,7 @@ public class PlayScreen implements Screen {
         square = new Square(squareRegion, 0, 0, 64, 64, 1, world);
 //        square.setPosition((float) (RetroMania.V_HEIGHT/ 2) - square.getWidth() / 2,
 //                (float) (RetroMania.V_HEIGHT * 0.6) - square.getHeight() / 2);
-        square.setPosition(viewport.getWorldWidth()/2 - square.getWidth()/2, viewport.getWorldHeight()/2 - square.getHeight()/2);
+        square.setPosition(viewport.getWorldWidth()/2 - square.getWidth()/2, viewport.getWorldHeight()/2 + square.getHeight()/2);
         b2ddr =  new Box2DDebugRenderer();
     }
 
@@ -102,7 +102,7 @@ public class PlayScreen implements Screen {
         RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(viewport.getCamera().combined);
 //        square.rotateBy(2f);
         RetroMania.getRetroManiaInstance().sb.begin();
-//        square.draw(RetroMania.getRetroManiaInstance().sb);
+        square.draw(RetroMania.getRetroManiaInstance().sb);
         RetroMania.getRetroManiaInstance().sb.end();
 
     }
