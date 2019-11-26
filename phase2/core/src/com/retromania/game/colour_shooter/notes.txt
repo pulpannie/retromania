@@ -47,3 +47,15 @@ Fix: removed Stage() initializes
 Code Affected: PlayScreen
 
 Added stage, sprite batch and Orthographic Camera in the PlayScreen constructor.
+
+# Step 8:
+
+Code Affected: PlayScreen
+
+Added the background image, the tank image and the square image using Texture.
+
+# Step 9:
+
+Code Affected: PlayScreen
+
+Used the built in libgdx rotation function to rotate the square.

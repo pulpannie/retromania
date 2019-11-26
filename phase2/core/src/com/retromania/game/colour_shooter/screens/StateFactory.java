@@ -6,7 +6,7 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 
 public class StateFactory {
 
-    public static Screen getScreen(String type, RetroManiaGame game, MainScreenInterface
+    public static Screen getScreen(String type, RetroManiaGame game, ColourShooterStarter
             mainscreen) {
         if (type.equalsIgnoreCase("play screen"))
             return new PlayScreen(game, mainscreen);

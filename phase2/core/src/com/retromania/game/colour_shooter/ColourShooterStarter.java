@@ -36,6 +36,7 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 	static Screen playScreen;
 	static Screen menuScreen;
 	private Preferences preferences;
+	public int tankPrefrence;
 
 	public ColourShooterStarter(RetroManiaGame game) {
 		super(game, "Colour Shooter", RetroManiaGame.Orientation.VERTICAL);
@@ -44,10 +45,19 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 		pauseScreen = StateFactory.getScreen("pause screen", game, this);
 		menuScreen = StateFactory.getScreen("menu screen", game, this);
 		preferences = game.getPrefrences(Configuration.colourshooterPreference);
+		tankPrefrence = 1;
 	}
 
 	public static ColourShootGameStats getGameStats() {
 		return gameStats;
+	}
+
+	public void changeTankPreference(int tankPref) {
+		tankPrefrence = tankPref;
+	}
+
+	public int getTankPreference() {
+		return tankPrefrence;
 	}
 
 	public static Screen getPlayScreen() {
