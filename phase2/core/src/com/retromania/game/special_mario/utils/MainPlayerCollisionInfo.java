@@ -1,7 +1,6 @@
 package com.retromania.game.special_mario.utils;
 
-import com.retromania.game.special_mario.abstractions.Character;
-import com.retromania.game.special_mario.utils.BodyPart;
+import com.retromania.game.shared_abstractions.Character;
 
 public class MainPlayerCollisionInfo {
     private Character character;
