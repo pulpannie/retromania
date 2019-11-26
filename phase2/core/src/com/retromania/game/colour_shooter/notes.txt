@@ -66,3 +66,11 @@ Used the built in libgdx rotation function to rotate the square.
 Code Affected: N/A
 
 Updated the square picture
+
+
+# Step 11:
+
+Code Affected: PlayScreen, Square
+
+Flaw : The box2d was not being shown properly and also the screen was not setup properly.
+Fix :  The correct box2d and textures were added to the classes.
