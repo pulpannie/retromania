@@ -10,10 +10,13 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Individual;
+import com.retromania.game.shared_abstractions.RetroManiaModel;
 import com.retromania.game.special_mario.utils.BodyPart;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 
-public class MainPlayer extends Character implements Individual {
+public class MainPlayer extends Character implements RetroManiaModel<MainPlayerInput> {
+
+  MainPlayerInput input;
 
   public MainPlayer(
       TextureRegion textureRegion,
@@ -37,15 +40,9 @@ public class MainPlayer extends Character implements Individual {
         initialYInWorld);
   }
 
-  public void handleInput(
-      int worldWidth,
-      int worldHeight,
-      int X,
-      int Y,
-      boolean hasBeenTouched,
-      boolean hasBeenHeldDown) {
-    updateX(worldWidth, X, hasBeenHeldDown);
-    updateY(worldHeight, Y, hasBeenTouched);
+  public void handleInput() {
+    updateX(input.getWorldWidth(), input.getX(), input.hasBeenHeldDown());
+    updateY(input.getWorldHeight(), input.getY(), input.hasBeenTouched());
   }
 
   private void updateX(float worldWidth, int X, boolean hasBeenHeldDown) {
@@ -78,38 +75,6 @@ public class MainPlayer extends Character implements Individual {
     return 4;
   }
 
-  /**
-   * args [0] : The worldWidth args [1] : The worldHeight args[2] : The input X args[3] : The input
-   * Y
-   *
-   * <p>*
-   *
-   * <p>args[4] : whether or not the screen has been touched args[5] : whether or not the screen has
-   * been held down
-   */
-  @Override
-  public void update(Object... args) {
-    assertInput(args);
-    handleInput(
-        (Integer) args[0],
-        (Integer) args[1],
-        (Integer) args[2],
-        (Integer) args[3],
-        (Boolean) args[4],
-        (Boolean) args[5]);
-    setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-  }
-
-  private void assertInput(Object[] args) {
-    if (!args[0].getClass().isAssignableFrom(Integer.class)
-        || !args[1].getClass().isAssignableFrom(Integer.class)
-        || !args[2].getClass().isAssignableFrom(Integer.class)
-        || !args[3].getClass().isAssignableFrom(Integer.class)
-        || !args[4].getClass().isAssignableFrom(Boolean.class)
-        || !args[5].getClass().isAssignableFrom(Boolean.class)) {
-      throw new RuntimeException("The input format is not correct.");
-    }
-  }
 
   @Override
   protected Object getUserData() {
@@ -157,5 +122,21 @@ public class MainPlayer extends Character implements Individual {
         new Vector2(convertPixelToMeter(-headLength / 2), convertPixelToMeter(circleShapeRadius)),
         new Vector2(convertPixelToMeter(headLength / 2), convertPixelToMeter(circleShapeRadius)));
     return head;
+  }
+
+  @Override
+  public void update() {
+    handleInput();
+    setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+  }
+
+  @Override
+  public void setInput(MainPlayerInput input) {
+    this.input = input;
+  }
+
+  @Override
+  public MainPlayerInput getOutput() {
+    return input;
   }
 }

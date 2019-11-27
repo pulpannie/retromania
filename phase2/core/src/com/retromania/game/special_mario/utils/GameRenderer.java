@@ -13,6 +13,7 @@ import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.SpecialMarioConfiguration;
 import com.retromania.game.special_mario.individuals.MainPlayer;
+import com.retromania.game.special_mario.individuals.MainPlayerInput;
 
 public class GameRenderer {
 
@@ -70,13 +71,15 @@ public class GameRenderer {
   }
 
   private void displayMainPlayer() {
-    mainPlayer.update(
-        gamePort.getScreenWidth(),
-        gamePort.getScreenHeight(),
-        Gdx.input.getX(),
-        Gdx.input.getY(),
-        Gdx.input.justTouched(),
-        Gdx.input.isTouched());
+    mainPlayer.setInput(
+        new MainPlayerInput(
+            gamePort.getScreenWidth(),
+            gamePort.getScreenHeight(),
+            Gdx.input.getX(),
+            Gdx.input.getY(),
+            Gdx.input.justTouched(),
+            Gdx.input.isTouched()));
+    mainPlayer.update();
     game.sb.begin();
     mainPlayer.draw(game.sb);
     game.sb.end();
@@ -86,7 +89,6 @@ public class GameRenderer {
     Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   }
-
 
   public void resize(int width, int height) {
     gamePort.update(width, height);

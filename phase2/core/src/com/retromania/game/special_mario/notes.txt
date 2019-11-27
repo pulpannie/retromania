@@ -256,3 +256,13 @@ loading the game assets.
 Fix : All the codes were refactored so that WorldLoader is the only class responsible for
 loading the information for loading the assets and also has this sole responsibility.
 
+
+
+# Step 26
+
+Code affected: MainPlayer
+
+Flaw : MainPlayer was implementing Individuals which is deprecated.
+
+Fix : MainPlayer is implementing RetroManiaModel instead.
+

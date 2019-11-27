@@ -1,5 +1,11 @@
 package com.retromania.game.shared_abstractions;
 
+@Deprecated
+/**
+ *
+ * Please use RetroManiaModel instead of individuals
+ *
+ */
 public interface Individual {
-    abstract public void update(Object ...args);
+    void update(Object ...args);
 }

@@ -157,3 +157,22 @@ added to show the dummy use of dependency injection to team mates.
 
 
 
+# Step 17
+
+Code affected: Individual, RetroManiaScreen, Renderable
+
+Flaw : We didn't have any type of software structure other than the one that the framework made us
+use, which was implementing different functions for rendering and updating at each time step. This
+was mainly because we have different models with different update models, so we couldn't just use
+MVC or MVP because we didn't know how to update our models and also because the render method was in
+the same class that is called by the framework and acts like the controller or the presenter.
+
+Fix: We made an interface that is responsible for rendering things, an interface that is responsible
+for updating models, we made lists of both of these interfaces and call them in our render method
+and our update method. we made our Model class a generic class, it can take in its input through the
+setInput and getInput, so that different models with different inputs for their update method
+can still implement the said interface and even work on the past inputs if they wanted to.
+
+PS. : Our main controller is the RetroManiaGame that sets the screen, but each screen class will have
+a list of renderers, a list of models, which are in fact the views and the models and the screen
+itself is the glue that holds all of them together.
