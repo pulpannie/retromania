@@ -27,13 +27,13 @@ public class WorldInformation {
     world = new World(new Vector2(0, -10), true);
     world.setContactListener(new MarioWorldListener());
   }
-  public MainPlayer getMainPlayer() {
+  MainPlayer getMainPlayer() {
     return mainPlayer;
   }
   public World getWorld() {
     return world;
   }
-  public TiledMap getTiledMap() {
+  TiledMap getTiledMap() {
     return tiledMap;
   }
   public TextureAtlas getTextureAtlas() {

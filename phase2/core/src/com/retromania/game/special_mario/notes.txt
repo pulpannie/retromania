@@ -228,3 +228,16 @@ This is very like the MVC architecture. when a something is clicked, this Contro
 the new view is gonna be set in selectedScreen. The values that selectedScreen can take right now are
 instances from the classes : SettingScreen, IntroductoryScreen which are the settings screen and
 the main menu screen.
+
+
+# Step 24
+
+Code affected: SpecialMarioStarter, GameRenderer, MainPlayer
+
+Flaw : MainPlayer was dependant on the gamePort which is something that should be in the view
+and not in the models, therefore it would have been impossible to test MainPlayer as a stand alone
+model, also gamePort was instantiated in the SpecialMarioGameStarter, which is like our facade.
+
+Fix : First of all we moved our gamePort to gameRenderer and then changed the update method in
+our mainPlayer to take in the values it needs for updating the player so that it doesn't call the
+gamePort or Gdx directly for the values, now the model is independent from the view.

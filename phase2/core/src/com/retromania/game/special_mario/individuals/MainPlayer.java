@@ -1,6 +1,5 @@
 package com.retromania.game.special_mario.individuals;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -9,7 +8,6 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Individual;
-import com.retromania.game.special_mario.SpecialMarioStarter;
 import com.retromania.game.special_mario.utils.WorldInformation;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
@@ -28,15 +26,29 @@ public class MainPlayer extends Character implements Individual {
         worldInformation.getWorld());
   }
 
-  public void handleInput() {
-    SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
-    if (Gdx.input.isTouched() && Math.abs(body.getLinearVelocity().x) < 2) {
-      if (Gdx.input.getX() <= innerGame.gamePort.getScreenWidth() / 2)
+  public void handleInput(
+      int worldWidth,
+      int worldHeight,
+      int X,
+      int Y,
+      boolean hasBeenTouched,
+      boolean hasBeenHeldDown) {
+    System.out.println(worldWidth +" "+ X);
+    updateX(worldWidth, X, hasBeenHeldDown);
+    updateY(worldHeight, Y, hasBeenTouched);
+  }
+
+  private void updateX(float worldWidth, int X, boolean hasBeenHeldDown) {
+    if (hasBeenHeldDown && Math.abs(body.getLinearVelocity().x) < 2) {
+      if (X <= worldWidth / 2)
         body.applyLinearImpulse(new Vector2(-.1f, 0), body.getWorldCenter(), true);
       else body.applyLinearImpulse(new Vector2(.1f, 0), body.getWorldCenter(), true);
     }
-    if (Gdx.input.justTouched()) {
-      if (Gdx.input.getY() <= innerGame.gamePort.getScreenHeight() / 2)
+  }
+
+  private void updateY(float worldHeight, int Y, boolean hasBeenTouched) {
+    if (hasBeenTouched) {
+      if (Y <= worldHeight / 2)
         body.applyLinearImpulse(new Vector2(0, 4f), body.getWorldCenter(), true);
     }
   }
@@ -56,10 +68,37 @@ public class MainPlayer extends Character implements Individual {
     return 4;
   }
 
+  /**
+   * args [0] : The worldWidth args [1] : The worldHeight args[2] : The input X args[3] : The input
+   * Y
+   *
+   * <p>*
+   *
+   * <p>args[4] : whether or not the screen has been touched args[5] : whether or not the screen has
+   * been held down
+   */
   @Override
   public void update(Object... args) {
-    handleInput();
+    assertInput(args);
+    handleInput(
+        (Integer) args[0],
+        (Integer) args[1],
+        (Integer) args[2],
+        (Integer) args[3],
+        (Boolean) args[4],
+        (Boolean) args[5]);
     setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+  }
+
+  private void assertInput(Object[] args) {
+    if (!args[0].getClass().isAssignableFrom(Integer.class)
+        || !args[1].getClass().isAssignableFrom(Integer.class)
+        || !args[2].getClass().isAssignableFrom(Integer.class)
+        || !args[3].getClass().isAssignableFrom(Integer.class)
+        || !args[4].getClass().isAssignableFrom(Boolean.class)
+        || !args[5].getClass().isAssignableFrom(Boolean.class)) {
+      throw new RuntimeException("The input format is not correct.");
+    }
   }
 
   @Override
@@ -108,7 +147,4 @@ public class MainPlayer extends Character implements Individual {
         new Vector2(convertPixelToMeter(headLength / 2), convertPixelToMeter(circleShapeRadius)));
     return head;
   }
-  
 }
-
-

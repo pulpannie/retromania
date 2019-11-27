@@ -25,7 +25,6 @@ public abstract class Character extends CharacterSprite implements Collidable {
         body = setUpBody(bodyDef);
         setUpFixture();
         body.createFixture(fixtureDef).setUserData(getUserData());
-        System.out.println("Got here body "+" " + bodyDef+" " + bodyDef +" " +body.getFixtureList());
     }
 
     protected abstract Object getUserData();
