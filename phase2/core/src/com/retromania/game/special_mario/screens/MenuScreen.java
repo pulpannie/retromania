@@ -16,15 +16,16 @@ public class MenuScreen extends RetroManiaScreen {
     selectedScreen.show();
   }
 
-  public void gotoIntroductoryScreen(){
+  private void changeScreen(RetroManiaScreen newScreen){
       selectedScreen.dispose();
-      selectedScreen = new IntroductoryScreen(this);
+      selectedScreen = newScreen;
       selectedScreen.show();
   }
+  public void gotoIntroductoryScreen(){
+      changeScreen(new IntroductoryScreen(this));
+  }
   public void gotoSettingScreen(){
-      selectedScreen.dispose();
-      selectedScreen = new SettingScreen(this);
-      selectedScreen.show();
+      changeScreen(new SettingScreen(this));
   }
 
   @Override

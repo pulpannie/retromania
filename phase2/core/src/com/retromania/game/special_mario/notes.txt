@@ -241,3 +241,18 @@ model, also gamePort was instantiated in the SpecialMarioGameStarter, which is l
 Fix : First of all we moved our gamePort to gameRenderer and then changed the update method in
 our mainPlayer to take in the values it needs for updating the player so that it doesn't call the
 gamePort or Gdx directly for the values, now the model is independent from the view.
+
+
+
+
+
+# Step 25
+
+Code affected: SpecialMarioStarter, WorldInformation -> WorldLoader
+
+Flaw : WorldInformation was having the the responsibility of both giving render information and
+loading the game assets.
+
+Fix : All the codes were refactored so that WorldLoader is the only class responsible for
+loading the information for loading the assets and also has this sole responsibility.
+

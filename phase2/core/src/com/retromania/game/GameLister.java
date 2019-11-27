@@ -97,7 +97,6 @@ public class GameLister extends RetroManiaScreen {
     for (int i = 0; i < gameList.size(); i += 1) {
       gameAndScores[i] = gameList.get(i).getName();
     }
-    System.out.println(list.getStyle().selection.getClass());
     list.setItems(gameAndScores);
   }
 

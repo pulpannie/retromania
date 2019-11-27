@@ -6,38 +6,67 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
-
 public abstract class Character extends CharacterSprite implements Collidable {
 
-    private World world;
-    protected Body body;
-    protected FixtureDef fixtureDef;
+  private World world;
+  protected Body body;
+  protected FixtureDef fixtureDef;
 
+  private int initialXInTheWorld;
+  private int initialYInTheWorld;
 
-    public Character(TextureRegion textureRegion, int x, int y, int width, int height, float pixelToMeterRate, World world){
-        super(textureRegion,x, y, width, height, pixelToMeterRate);
-        this.world = world;
-        createMainPlayer();
-    }
+  public Character(
+      TextureRegion textureRegion,
+      int x,
+      int y,
+      int width,
+      int height,
+      float pixelToMeterRate,
+      World world,
+      int initialXInTheWorld,
+      int initialYInTheWorld) {
+    super(textureRegion, x, y, width, height, pixelToMeterRate);
+    this.initialXInTheWorld = initialXInTheWorld;
+    this.initialYInTheWorld = initialYInTheWorld;
+    this.world = world;
+    createMainPlayer();
+  }
 
-    private void createMainPlayer(){
-        BodyDef bodyDef = setUpBodyDef();
-        body = setUpBody(bodyDef);
-        setUpFixture();
-        body.createFixture(fixtureDef).setUserData(getUserData());
-    }
+  public Character(
+      TextureRegion textureRegion,
+      int x,
+      int y,
+      int width,
+      int height,
+      float pixelToMeterRate,
+      World world) {
+    this(textureRegion, x, y, width, height, pixelToMeterRate, world, 0, 0);
+  }
 
-    protected abstract Object getUserData();
+  private void createMainPlayer() {
+    BodyDef bodyDef = setUpBodyDef();
+    body = setUpBody(bodyDef);
+    setUpFixture();
+    body.createFixture(fixtureDef).setUserData(getUserData());
+  }
 
-    protected abstract BodyDef setUpBodyDef();
+  protected abstract Object getUserData();
 
-    protected abstract Body setUpBody(BodyDef bodyDef);
+  protected abstract BodyDef setUpBodyDef();
 
-    protected abstract void setUpFixture();
+  protected abstract Body setUpBody(BodyDef bodyDef);
 
+  protected abstract void setUpFixture();
 
-    protected World getWorld() {
-        return this.world;
-    }
+  protected World getWorld() {
+    return this.world;
+  }
 
+  public int getInitialXInTheWorld() {
+    return initialXInTheWorld;
+  }
+
+  public int getInitialYInTheWorld() {
+    return initialYInTheWorld;
+  }
 }

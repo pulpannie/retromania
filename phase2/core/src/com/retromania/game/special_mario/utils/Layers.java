@@ -37,14 +37,14 @@ public enum Layers {
     return id;
   }
 
-  public void create(MapObject m, WorldInformation worldInformation)
+  public void create(MapObject m, WorldLoader worldLoader)
       throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
           InstantiationException {
 
 
-    Class cls[] = new Class[] {MapObject.class, WorldInformation.class};
+    Class cls[] = new Class[] {MapObject.class, WorldLoader.class};
     Constructor constructor = c.getConstructor(cls);
-    constructor.newInstance(m, worldInformation);
+    constructor.newInstance(m, worldLoader);
 
 
   }

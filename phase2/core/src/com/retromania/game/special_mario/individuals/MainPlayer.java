@@ -1,29 +1,40 @@
 package com.retromania.game.special_mario.individuals;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Individual;
-import com.retromania.game.special_mario.utils.WorldInformation;
-
-import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
-import static com.retromania.game.special_mario.SpecialMarioConfiguration.getPixelToMeterConversionRate;
+import com.retromania.game.special_mario.utils.BodyPart;
+import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 
 public class MainPlayer extends Character implements Individual {
 
-  public MainPlayer(WorldInformation worldInformation) {
+  public MainPlayer(
+      TextureRegion textureRegion,
+      int x,
+      int y,
+      int width,
+      int height,
+      float pixelToMeterRate,
+      World world,
+      int initialXInWorld,
+      int initialYInWorld) {
     super(
-        worldInformation.getTextureAtlas().findRegion("mario_small"),
-        0,
-        0,
-        16,
-        16,
-        getPixelToMeterConversionRate(),
-        worldInformation.getWorld());
+        textureRegion,
+        x,
+        y,
+        width,
+        height,
+        pixelToMeterRate,
+        world,
+        initialXInWorld,
+        initialYInWorld);
   }
 
   public void handleInput(
@@ -33,7 +44,6 @@ public class MainPlayer extends Character implements Individual {
       int Y,
       boolean hasBeenTouched,
       boolean hasBeenHeldDown) {
-    System.out.println(worldWidth +" "+ X);
     updateX(worldWidth, X, hasBeenHeldDown);
     updateY(worldHeight, Y, hasBeenTouched);
   }
@@ -103,13 +113,14 @@ public class MainPlayer extends Character implements Individual {
 
   @Override
   protected Object getUserData() {
-    return null;
+    return new MainPlayerCollisionInfo(this, BodyPart.HEAD);
   }
 
   @Override
   protected BodyDef setUpBodyDef() {
     BodyDef bodyDef = new BodyDef();
-    bodyDef.position.set(convertPixelToMeter(32), convertPixelToMeter(32));
+    bodyDef.position.set(
+        convertPixelToMeter(getInitialXInTheWorld()), convertPixelToMeter(getInitialYInTheWorld()));
     bodyDef.type = BodyDef.BodyType.DynamicBody;
     return bodyDef;
   }

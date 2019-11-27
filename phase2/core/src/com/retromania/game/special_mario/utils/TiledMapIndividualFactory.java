@@ -6,20 +6,20 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 
 public class TiledMapIndividualFactory {
 
-  public static void getAllLayers(WorldInformation worldInformation) {
-    getLayer(Layers.OBSTACLE, worldInformation);
-    getLayer(Layers.FRIEZING_BLOCK, worldInformation);
-    getLayer(Layers.REWARD, worldInformation);
-    getLayer(Layers.WATER, worldInformation);
-    getLayer(Layers.FIRE, worldInformation);
+  public static void getAllLayers(WorldLoader worldLoader) {
+    getLayer(Layers.OBSTACLE, worldLoader);
+    getLayer(Layers.FRIEZING_BLOCK, worldLoader);
+    getLayer(Layers.REWARD, worldLoader);
+    getLayer(Layers.WATER, worldLoader);
+    getLayer(Layers.FIRE, worldLoader);
   }
 
-  public static void getLayer(Layers l, WorldInformation worldInformation) {
-    TiledMap tiledMap = worldInformation.getTiledMap();
+  public static void getLayer(Layers l, WorldLoader worldLoader) {
+    TiledMap tiledMap = worldLoader.getTiledMap();
     for (MapObject object :
         tiledMap.getLayers().get(l.getValue()).getObjects().getByType(RectangleMapObject.class)) {
       try {
-        l.create(object, worldInformation);
+        l.create(object, worldLoader);
       } catch (Exception e) {
         e.printStackTrace();
         break;

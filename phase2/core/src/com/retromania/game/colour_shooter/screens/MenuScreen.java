@@ -59,7 +59,6 @@ public class MenuScreen implements Screen {
         play.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("as");
                 game.setScreen(mainscreen.getPlayScreen());
             }
         });
