@@ -6,8 +6,24 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
+/**
+ * Our player/car class that we are using to shoot UFOs and moving left/right direction
+ *
+ * @author  Umid, Thuy
+ *
+ * */
 public class Car extends Actor {
+    /**
+     * Variables:
+     * x: x coordinate of Car
+     * y: y coordinate of Car
+     * width: width of Car
+     * height: height of Car
+     * rev: integer that stores turning side of car
+     * goingRight: boolean stores whether car turned right
+     * texture: gui of Car
+     * iRocket: rocket that can be used to shoot UFOs
+     * */
     private ShapeRenderer shapeRenderer;
     static private boolean projectionMatrixSet;
     private int x;
@@ -18,12 +34,19 @@ public class Car extends Actor {
     public boolean goingRight = true;
     private Texture texture;
 
+    /**
+     * getter for iRocket
+     * */
     public Rocket getiRocket() {
         return iRocket;
     }
 
     private Rocket iRocket = null;
 
+
+    /**
+     * Initializer for Car
+     * */
     public Car(){
         shapeRenderer = new ShapeRenderer();
         projectionMatrixSet = false;
@@ -34,15 +57,26 @@ public class Car extends Actor {
         texture = new Texture("spaceship_shooter/car_try.png");
     }
 
+    /**
+     * Method that changes direction of Car
+     * */
     public void turnSide(){
         rev *= -1;
         goingRight = !goingRight;
     }
+
+    /**
+     * Method that draws Car
+     * */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(texture, x-rev*width/2, y-height/2, rev*width, height);
     }
 
+
+    /**
+     * @deprecated we don't use this method anymore
+     * */
     public void draw_2(Batch batch, float parentAlpha) {
         batch.end();
         if(!projectionMatrixSet){
@@ -78,22 +112,32 @@ public class Car extends Actor {
         batch.begin();
     }
 
-
+    /**
+     * Method that mcves car to right
+     * */
     public void moveRight(){
         if (x + width/2 <= Gdx.graphics.getWidth())
             x += 15;
 
     }
-
+    /**
+     * Method that mcves car to left
+     * */
     public void moveLeft(){
         if (x - width/2 >= 0)
             x -= 15;
     }
+    /**
+     * Method that creates/shoots rocket
+     * */
     public void shoot(){
         if ((iRocket == null) || (iRocket.reach_top())){
             this.iRocket = new Rocket(x, y);
         }
     }
+    /**
+     * Checks whether rocket is shooted
+     */
     public boolean shooted(){
         return iRocket != null && !iRocket.reach_top();
     }
