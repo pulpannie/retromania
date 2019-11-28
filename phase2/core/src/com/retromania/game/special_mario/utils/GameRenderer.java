@@ -31,9 +31,9 @@ public class GameRenderer implements Renderable {
   private TiledMap tiledMap;
 
   @Inject
-  public GameRenderer(WorldLoader worldLoader) {
-    this.tiledMap = worldLoader.getTiledMap();
-    this.world = worldLoader.getWorld();
+  public GameRenderer(WorldLoader worldLoader, TileMapLoader tileMapLoader, World world) {
+    this.tiledMap = tileMapLoader.getTiledMap();
+    this.world = world;
     this.mainPlayer = worldLoader.getMainPlayer();
     setUpGamecam();
     setUpGamePort();

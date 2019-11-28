@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
@@ -21,9 +22,9 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   private Body body;
   private FixtureDef fixtureDef;
 
-  public TiledMapIndividual(MapObject object, WorldLoader worldLoader) {
+  public TiledMapIndividual(MapObject object, World world) {
     rectangleBound = setUpBound(object);
-    body = setUpBodyDef(worldLoader);
+    body = setUpBodyDef(world);
     PolygonShape shape = setUpShape();
     Fixture fixture = createFixture(shape);
     fixture.setUserData(this);
@@ -47,13 +48,13 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
     return ((RectangleMapObject) object).getRectangle();
   }
 
-  private Body setUpBodyDef(WorldLoader worldLoader) {
+  private Body setUpBodyDef(World world) {
     BodyDef bodyDef = new BodyDef();
     bodyDef.type = BodyDef.BodyType.StaticBody;
     float x = rectangleBound.getX() + rectangleBound.getWidth() / 2;
     float y = rectangleBound.getY() + rectangleBound.getHeight() / 2;
     bodyDef.position.set(convertPixelToMeter(x), convertPixelToMeter(y));
-    return worldLoader.getWorld().createBody(bodyDef);
+    return world.createBody(bodyDef);
   }
 
   @Override

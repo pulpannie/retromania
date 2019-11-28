@@ -1,12 +1,13 @@
 package com.retromania.game.special_mario;
 
-import javax.inject.Inject;
+import com.retromania.game.special_mario.utils.LibGdxWorldProvider;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component
+@Component(modules = {LibGdxWorldProvider.class})
 public interface SpecialMarioStarterCreator {
     SpecialMarioStarter getSpecialMarioStarter();
 }

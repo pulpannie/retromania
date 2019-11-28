@@ -15,22 +15,20 @@ import static com.retromania.game.special_mario.SpecialMarioConfiguration.getPix
 
 @Singleton
 public class WorldLoader {
-  private TiledMap tiledMap;
   private World world;
   private TextureAtlas textureAtlas;
   private MainPlayer mainPlayer;
 
+
   @Inject
-  public WorldLoader(){
-    this(getPixelToMeterConversionRate());
+  public WorldLoader(World world){
+    this(world,getPixelToMeterConversionRate());
   }
 
-  public WorldLoader(float pixelToMeterRate) {
+  public WorldLoader(World world, float pixelToMeterRate) {
     setUpTextureAtlas();
-    setUpTiledMap();
-    setUpWorld();
+    setUpWorld(world);
     setUpMainPlayer(pixelToMeterRate);
-    TiledMapIndividualFactory.getAllLayers(this);
     MusicManager.addSong("special_mario/marioFirstLevelMusic.ogg");
   }
 
@@ -49,14 +47,11 @@ public class WorldLoader {
             256);
   }
 
-  private void setUpTiledMap() {
-    TmxMapLoader mapLoader = new TmxMapLoader();
-    tiledMap = mapLoader.load("special_mario/firstLevel.tmx");
-  }
 
-  private void setUpWorld() {
-    world = new World(new Vector2(0, -10), true);
-    world.setContactListener(new MarioWorldListener());
+
+  private void setUpWorld(World world) {
+    this.world = world;
+    this.world.setContactListener(new MarioWorldListener());
   }
 
   public MainPlayer getMainPlayer() {
@@ -67,9 +62,6 @@ public class WorldLoader {
     return world;
   }
 
-  public TiledMap getTiledMap() {
-    return tiledMap;
-  }
 
   private void setUpTextureAtlas() {
     textureAtlas = new TextureAtlas("special_mario/mario_small.pack");

@@ -309,3 +309,16 @@ which causes dependency.
 
 Fix : We used dagger 2 do inject an instance of SettingScreen and IntroductoryScreen to
 SpecialMarioStarter.
+
+
+# Step 32
+
+Code affected : TiledMapIndividualFactory, WorldLoader, TileMapLoader
+
+Flaw : There was a dependency cycle between TiledMapIndividualFactory and WorldLoader, which was
+detected using dagger 2.
+
+Fix : Used dagger 2 to remove the dependency cycle and also TileMapLoader was created to do the
+loading of tiles instead of leaving that responsibility with rest of the responsibilities with
+worldLoader .
+
