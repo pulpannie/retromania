@@ -11,12 +11,13 @@ import com.retromania.game.shared_abstractions.ButtonMaker;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
-public class SettingScreen extends RetroManiaScreen {
-  private MenuScreen menuScreen;
+import javax.inject.Inject;
+
+public class SettingScreen extends MenuOptionScreen {
   private Stage stage;
 
-  SettingScreen(MenuScreen menuScreen) {
-    this.menuScreen = menuScreen;
+  @Inject
+  SettingScreen() {
     gamePort =
         new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
   }

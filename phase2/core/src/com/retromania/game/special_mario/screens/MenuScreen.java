@@ -1,6 +1,5 @@
 package com.retromania.game.special_mario.screens;
 
-import com.retromania.game.shared_abstractions.Renderable;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 import javax.inject.Inject;
@@ -8,30 +7,34 @@ import javax.inject.Inject;
 public class MenuScreen extends RetroManiaScreen {
 
 
-  private RetroManiaScreen selectedScreen;
-
+  private MenuOptionScreen selectedScreen;
+  private final IntroductoryScreen introductoryScreen;
+  private final SettingScreen settingScreen;
   @Inject
-  public MenuScreen(){}
+  public MenuScreen(IntroductoryScreen introductoryScreen, SettingScreen settingScreen){
+    this.introductoryScreen = introductoryScreen;
+    this.settingScreen = settingScreen;
+    gotoIntroductoryScreen();
+  }
 
   @Override
   public void handleInput() {}
 
   @Override
   public void show() {
-    selectedScreen = new IntroductoryScreen(this);
     selectedScreen.show();
   }
 
-  private void changeScreen(RetroManiaScreen newScreen){
-      selectedScreen.dispose();
+  private void changeScreen(MenuOptionScreen newScreen){
       selectedScreen = newScreen;
+      selectedScreen.setMenuPage(this);
       selectedScreen.show();
   }
   public void gotoIntroductoryScreen(){
-      changeScreen(new IntroductoryScreen(this));
+      changeScreen(introductoryScreen);
   }
   public void gotoSettingScreen(){
-      changeScreen(new SettingScreen(this));
+      changeScreen(settingScreen);
   }
 
   @Override

@@ -299,3 +299,13 @@ Fix : We used dagger 2 do inject an instance of MenuScreen and GameRenderer to S
 Code affected : PlayableOption1.tmx
 
 Added new map
+
+# Step 31
+
+Code affected : MenuScreen, SettingScreen, IntroductoryScreen
+
+Flaw : We were injecting SettingScreen and IntroductoryScreen by hard coding it in the class,
+which causes dependency.
+
+Fix : We used dagger 2 do inject an instance of SettingScreen and IntroductoryScreen to
+SpecialMarioStarter.

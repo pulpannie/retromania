@@ -13,17 +13,17 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.special_mario.utils.MainPageUtilsTable;
 
-public class IntroductoryScreen extends RetroManiaScreen {
+import javax.inject.Inject;
+
+public class IntroductoryScreen extends MenuOptionScreen {
 
   private Stage stage;
   private Table table;
   Viewport viewport2 =
       new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
-  private MenuScreen menuScreen;
 
-  IntroductoryScreen(MenuScreen menuScreen) {
-    this.menuScreen = menuScreen;
-  }
+  @Inject
+  IntroductoryScreen() { }
 
   @Override
   public void handleInput() {}
