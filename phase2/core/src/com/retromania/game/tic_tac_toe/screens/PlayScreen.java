@@ -32,19 +32,29 @@ public class PlayScreen extends RetroManiaScreen {
     CellManager cellManager;
     String winner;
 
-    @Override
-    public void show() {
-        gamecam = new OrthographicCamera();
-        gamecam.setToOrtho(false, gameWidth, gameHeight);
+    public PlayScreen(Boolean cats){
+        System.out.println(cats);
+        if (cats){
+            cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
+            circle = new Texture(Gdx.files.internal("tic_tac_toe/cat3.png"));
+        }
+        else {
+            cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
+            circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
+        }
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
         ticTacToe = new TicTacToe((int)gameWidth, (int)gameHeight);
         cellManager = ticTacToe.getCellManager();
+        currentTurn = "Cross";
+    }
+
+    @Override
+    public void show() {
+        gamecam = new OrthographicCamera();
+        gamecam.setToOrtho(false, gameWidth, gameHeight);
         stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
         Gdx.input.setInputProcessor(stage);
-        cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
-        circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
-        currentTurn = "Cross";
         batch = new SpriteBatch();
         batch.setProjectionMatrix(gamecam.combined);
     }
@@ -62,6 +72,8 @@ public class PlayScreen extends RetroManiaScreen {
         DrawBoardLine(new Vector2(0, gameHeight / 3), new Vector2(gameWidth, gameHeight / 3), gamecam.combined);
         DrawBoardLine(new Vector2(0, gameHeight * 2 / 3), new Vector2(gameWidth, gameHeight * 2 / 3), gamecam.combined);
 
+
+        /*DEBUGGING PURPOSE*/
         for(int i = 0; i < 3; i++){
             for (int j = 0; j <3; j++){
                 batch.begin();
@@ -70,6 +82,7 @@ public class PlayScreen extends RetroManiaScreen {
                 batch.end();
             }
         }
+        /*END*/
 
         if (Gdx.input.isTouched()) {
             Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
