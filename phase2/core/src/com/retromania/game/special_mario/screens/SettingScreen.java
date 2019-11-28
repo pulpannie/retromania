@@ -12,6 +12,7 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 public class SettingScreen extends MenuOptionScreen {
   private Stage stage;
@@ -58,7 +59,6 @@ public class SettingScreen extends MenuOptionScreen {
   }
   private void calibrateTable(Table table, Table outterTable) {
     table.setWidth(outterTable.getWidth());
-    System.out.println(table.getWidth());
   }
 
 

@@ -31,7 +31,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     this.world = world;
     setUpWorld();
     setUpMainWorldRenderer(mainWorldRenderer);
-    setUpMenuScreen(menuScreen);
+    this.menuScreen = menuScreen;
     this.musicManager = musicManager;
   }
 
@@ -70,6 +70,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   @Override
   public void show() {
     this.musicManager.play();
+    setUpMenuScreen(menuScreen);
   }
 
   private void setUpMenuScreen(MenuScreen menuScreen) {

@@ -353,5 +353,16 @@ Flaw : AS explained in step 34 WorldLoader use was redundant in the presence of 
 Fix : We injected the MusicManager using dagger builder and destroyed WorldLoader.
 
 
+# Step 36
+
+Code affected : TileMapLoader, TiledMapIndividualFactory
+
+Flaw : The two aforementioned classes had a dependency cycle between one another, this wasn't
+discovered until the use of dagger 2.
+
+Fix : Because both of the classes had similar responsibilities we destroyed the first class and
+reformatted the code to the latter class.
+
+
 
 

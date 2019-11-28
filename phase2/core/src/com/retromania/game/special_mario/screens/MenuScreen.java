@@ -15,7 +15,6 @@ public class MenuScreen extends RetroManiaScreen {
       IntroductoryScreen introductoryScreen, SettingScreen settingScreen) {
     this.introductoryScreen = introductoryScreen;
     this.settingScreen = settingScreen;
-    gotoIntroductoryScreen();
   }
 
   @Override
@@ -23,6 +22,7 @@ public class MenuScreen extends RetroManiaScreen {
 
   @Override
   public void show() {
+    gotoIntroductoryScreen();
     selectedScreen.show();
   }
 

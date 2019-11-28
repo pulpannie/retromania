@@ -10,23 +10,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.special_mario.utils.MainPageUtilsTable;
-import com.retromania.game.special_mario.utils.TileMapLoader;
+import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 public class IntroductoryScreen extends MenuOptionScreen {
 
   private Stage stage;
   private Table table;
-  TileMapLoader tileMapLoader;
+  TiledMapIndividualFactory tiledMapIndividualFactory;
   Viewport viewport2 =
       new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
 
   @Inject
-  IntroductoryScreen(TileMapLoader tileMapLoader) {
-    this.tileMapLoader = tileMapLoader;
+  IntroductoryScreen(TiledMapIndividualFactory tiledMapIndividualFactory) {
+    this.tiledMapIndividualFactory = tiledMapIndividualFactory;
   }
 
   @Override
@@ -34,6 +34,7 @@ public class IntroductoryScreen extends MenuOptionScreen {
 
   @Override
   public void show() {
+
     stage = new Stage(viewport2, game.sb);
     table = new Table();
     table.setFillParent(true);
@@ -49,10 +50,10 @@ public class IntroductoryScreen extends MenuOptionScreen {
     table.add(brand).expandX().row();
     table.padTop(30);
     table
-        .add(new MainPageUtilsTable(tileMapLoader,"Play Game", "Settings", menuScreen).getTable())
-        .expandX()
-        .expandY()
-        .row();
+            .add(new MainPageUtilsTable(tiledMapIndividualFactory,"Play Game", "Settings", menuScreen).getTable())
+            .expandX()
+            .expandY()
+            .row();
     stage.addActor(table);
     Gdx.input.setInputProcessor(stage);
   }
