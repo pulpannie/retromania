@@ -53,7 +53,7 @@ public class TicTacToe {
 
 
     public String getWinner(){
-            return cellManager.winnerCell.getCell();
+            return cellManager.winner;
     }
 
     /* FUNCTIONS FOR AI implementation of TicTacToe */

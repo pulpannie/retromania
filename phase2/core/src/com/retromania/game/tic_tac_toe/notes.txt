@@ -75,3 +75,7 @@ Code Affected: CellManager, TicTacToe, MenuScreen, PlayScreen
 Flaw: Lack of customization features.
 Fix: Added being able to customize the dimensions of the tictactoe board.
 
+#Step 15
+Code Affected: CellManager, TicTacToe
+Flaw: application crashes when result is a draw between two players.
+Fix: fixed by changing CellManager's Cell object, winnerCell, to String object, winner.

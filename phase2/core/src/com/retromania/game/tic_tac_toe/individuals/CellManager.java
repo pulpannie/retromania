@@ -6,7 +6,7 @@ public class CellManager{
     int gameWidth, gameHeight;
     int size;
     Cell[][] cellArray;
-    Cell winnerCell;
+    String winner = "None";
     public CellManager(int gameWidth, int gameHeight, int size){
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
@@ -21,7 +21,7 @@ public class CellManager{
 
     protected CellManager copyCellManager(){
         CellManager tmpCellManager = new CellManager(gameWidth, gameHeight, size);
-        tmpCellManager.winnerCell = this.winnerCell;
+        tmpCellManager.winner = this.winner;
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
                 tmpCellManager.cellArray[i][j] = cellArray[i][j].copyCell();
@@ -38,7 +38,7 @@ public class CellManager{
                 if (cellArray[i][j].equal(cellArray[i][j+1])){
                     tmp++;
                     if(tmp == n-1){
-                        winnerCell = cellArray[i][j];
+                        winner = cellArray[i][j].getCell();
                         return true;
                     }
                 }
@@ -54,7 +54,7 @@ public class CellManager{
                 if (cellArray[j][i].equal(cellArray[j+1][i])){
                     tmp++;
                     if(tmp == n-1){
-                        winnerCell = cellArray[j][i];
+                        winner = cellArray[j][i].getCell();
                         return true;
                     }
                 }
@@ -69,7 +69,7 @@ public class CellManager{
                 if (cellArray[i][i].equal(cellArray[i+1][i+1])){
                     tmp++;
                     if(tmp == n-1){
-                        winnerCell = cellArray[i][i];
+                        winner = cellArray[i][i].getCell();
                         return true;
                     }
                 }
@@ -83,7 +83,7 @@ public class CellManager{
                 if (cellArray[i][size-i-1].equal(cellArray[i+1][size-i-2])){
                     tmp++;
                     if(tmp == n-1){
-                        winnerCell = cellArray[i][size-i-1];
+                        winner = cellArray[i][size-i-1].getCell();
                         return true;
                     }
                 }
