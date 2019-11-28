@@ -10,7 +10,6 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.Individual;
-import com.retromania.game.special_mario.SpecialMarioStarter;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 import com.retromania.game.special_mario.utils.WorldLoader;
 
@@ -23,9 +22,8 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   private FixtureDef fixtureDef;
 
   public TiledMapIndividual(MapObject object, WorldLoader worldLoader) {
-    SpecialMarioStarter innerGame = SpecialMarioStarter.getSpecialMarioStarter();
     rectangleBound = setUpBound(object);
-    body = setUpBodyDef(innerGame, worldLoader);
+    body = setUpBodyDef(worldLoader);
     PolygonShape shape = setUpShape();
     Fixture fixture = createFixture(shape);
     fixture.setUserData(this);
@@ -49,7 +47,7 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
     return ((RectangleMapObject) object).getRectangle();
   }
 
-  private Body setUpBodyDef(SpecialMarioStarter innerGame, WorldLoader worldLoader) {
+  private Body setUpBodyDef(WorldLoader worldLoader) {
     BodyDef bodyDef = new BodyDef();
     bodyDef.type = BodyDef.BodyType.StaticBody;
     float x = rectangleBound.getX() + rectangleBound.getWidth() / 2;

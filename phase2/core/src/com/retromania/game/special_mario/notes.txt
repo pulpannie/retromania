@@ -276,3 +276,11 @@ that is the responsibility of the controller/presenter.
 
 Fix : The code was reformatted into SpecialMarioStarter.
 
+# Step 28
+
+Code affected : SpecialMarioStarterCreator, WorldLoader, SpecialMarioStarter
+
+Flaw : We were injecting WorldLoader by hard coding it in the class, which causes dependency.
+
+Fix : We used dagger 2 do inject an instance of WorldLoader to SpecialMarioStarter.
+

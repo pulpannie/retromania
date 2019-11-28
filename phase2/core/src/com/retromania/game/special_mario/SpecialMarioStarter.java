@@ -8,15 +8,23 @@ import com.retromania.game.special_mario.screens.MenuScreen;
 import com.retromania.game.special_mario.utils.GameRenderer;
 import com.retromania.game.special_mario.utils.WorldLoader;
 
+import javax.inject.Inject;
+
 public class SpecialMarioStarter extends RetroManiaInnerGame {
 
-  private static SpecialMarioStarter specialMarioStarter = new SpecialMarioStarter();
   private WorldLoader worldLoader;
   private GameRenderer mainWorldRenderer;
   private MenuScreen menuScreen;
 
-  private SpecialMarioStarter() {
+  @Inject
+  public SpecialMarioStarter(WorldLoader worldLoader) {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
+    setUpWorld(worldLoader);
+  }
+
+  private void setUpWorld(WorldLoader worldLoader) {
+    this.worldLoader = worldLoader;
+    addModel(worldLoader.getMainPlayer());
   }
 
   @Override
@@ -48,13 +56,9 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     mainWorldRenderer.resize(width, height);
   }
 
-  public static SpecialMarioStarter getSpecialMarioStarter() {
-    return specialMarioStarter;
-  }
 
   @Override
   public void show() {
-    setUpWorldLoader();
     setUpMainWorldRenderer();
     setUpMenuScreen();
   }
@@ -74,8 +78,4 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     addRenderable(mainWorldRenderer);
   }
 
-  private void setUpWorldLoader() {
-    worldLoader = new WorldLoader(SpecialMarioConfiguration.getPixelToMeterConversionRate());
-    addModel(worldLoader.getMainPlayer());
-  }
 }

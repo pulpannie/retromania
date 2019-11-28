@@ -27,6 +27,7 @@ import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.shared_abstractions.UserNameTextInputListener;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
+import com.retromania.game.special_mario.DaggerSpecialMarioStarterCreator;
 import com.retromania.game.special_mario.SpecialMarioStarter;
 import com.retromania.game.tic_tac_toe.TicTacToeStarter;
 
@@ -49,7 +50,7 @@ public class GameLister extends RetroManiaScreen {
     gameList.add(new TicTacToeStarter("TicTacToe", RetroManiaGame.Orientation.VERTICAL));
     gameList.add(new SpaceShipShooterStarter(RetroMania.getRetroManiaInstance()));
     gameList.add(new ColourShooterStarter(RetroMania.getRetroManiaInstance()));
-    gameList.add(SpecialMarioStarter.getSpecialMarioStarter());
+    gameList.add(DaggerSpecialMarioStarterCreator.create().getSpecialMarioStarter());
   }
 
   private String getStringBestUserScore() {

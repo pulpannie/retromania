@@ -8,11 +8,20 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.individuals.MainPlayer;
 
+import javax.inject.Inject;
+
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.getPixelToMeterConversionRate;
+
 public class WorldLoader {
   private TiledMap tiledMap;
   private World world;
   private TextureAtlas textureAtlas;
   private MainPlayer mainPlayer;
+
+  @Inject
+  public WorldLoader(){
+    this(getPixelToMeterConversionRate());
+  }
 
   public WorldLoader(float pixelToMeterRate) {
     setUpTextureAtlas();

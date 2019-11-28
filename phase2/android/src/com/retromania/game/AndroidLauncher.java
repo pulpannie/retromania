@@ -8,21 +8,24 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.special_mario.DaggerSpecialMarioStarterCreator;
 import com.retromania.game.special_mario.SpecialMarioStarter;
+import com.retromania.game.special_mario.SpecialMarioStarter_Factory;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		Creatable c = new Creatable<RetroMania>() {
-			@Override
-			public void create(RetroMania r) {
-				r.sb = new SpriteBatch();
-				r.setScreen(new GameLister());
-//				r.setScreen(SpecialMarioStarter.getSpecialMarioStarter());
-			}
-		};
+    Creatable c =
+        new Creatable<RetroMania>() {
+          @Override
+          public void create(RetroMania r) {
+            r.sb = new SpriteBatch();
+            r.setScreen(new GameLister());
+//            r.setScreen(DaggerSpecialMarioStarterCreator.create().getSpecialMarioStarter());
+          }
+        };
 		RetroManiaGame game = RetroMania.getRetroManiaInstance().setCreatable(c);
 		game.setOrientationManager(new OrientationManagerAndroid(this));
 		initialize(game, config);
