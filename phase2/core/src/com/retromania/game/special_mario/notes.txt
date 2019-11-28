@@ -320,5 +320,14 @@ detected using dagger 2.
 
 Fix : Used dagger 2 to remove the dependency cycle and also TileMapLoader was created to do the
 loading of tiles instead of leaving that responsibility with rest of the responsibilities with
-worldLoader .
+worldLoader.
 
+
+
+# Step 33
+
+Code affected : GameRenderer, TileLoader
+
+Added the base code for changing the levels.
+
+TODO : Refactor the code into the appropriate classes.

@@ -10,7 +10,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class LibGdxWorldProvider {
+public class LevelManager {
     @Provides
     @Singleton
     public static World getWorld(){

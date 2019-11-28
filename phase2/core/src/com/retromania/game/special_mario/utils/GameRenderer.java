@@ -28,11 +28,11 @@ public class GameRenderer implements Renderable {
   private Viewport gamePort;
   private MainPlayer mainPlayer;
   private World world;
-  private TiledMap tiledMap;
+  private TileMapLoader tileMapLoader;
 
   @Inject
   public GameRenderer(WorldLoader worldLoader, TileMapLoader tileMapLoader, World world) {
-    this.tiledMap = tileMapLoader.getTiledMap();
+    this.tileMapLoader = tileMapLoader;
     this.world = world;
     this.mainPlayer = worldLoader.getMainPlayer();
     setUpGamecam();
@@ -44,7 +44,11 @@ public class GameRenderer implements Renderable {
   private void setUpOrthogRenderer() {
     orthogRenderer =
         new OrthogonalTiledMapRenderer(
-            tiledMap, SpecialMarioConfiguration.getPixelToMeterConversionRate());
+            tileMapLoader.getTiledMap(), SpecialMarioConfiguration.getPixelToMeterConversionRate());
+  }
+
+  private void clearPage(){
+    setUpOrthogRenderer();
   }
 
   private void handleInput() {
@@ -71,6 +75,7 @@ public class GameRenderer implements Renderable {
   }
 
   private void displayWorld() {
+    setUpOrthogRenderer();
     orthogRenderer.setView(gamecam);
     orthogRenderer.render();
     game.sb.setProjectionMatrix(gamecam.combined);

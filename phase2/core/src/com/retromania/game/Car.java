@@ -6,6 +6,5 @@ public class Car {
     @Inject TestClass testClass;
     @Inject
     public Car(){
-
     }
 }

@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.special_mario.utils.MainPageUtilsTable;
+import com.retromania.game.special_mario.utils.TileMapLoader;
 
 import javax.inject.Inject;
 
@@ -19,11 +20,14 @@ public class IntroductoryScreen extends MenuOptionScreen {
 
   private Stage stage;
   private Table table;
+  TileMapLoader tileMapLoader;
   Viewport viewport2 =
       new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
 
   @Inject
-  IntroductoryScreen() { }
+  IntroductoryScreen(TileMapLoader tileMapLoader) {
+    this.tileMapLoader = tileMapLoader;
+  }
 
   @Override
   public void handleInput() {}
@@ -44,9 +48,8 @@ public class IntroductoryScreen extends MenuOptionScreen {
     table.padTop(10);
     table.add(brand).expandX().row();
     table.padTop(30);
-    //    Button a =  ButtonMaker.makeButton("something");
     table
-        .add(new MainPageUtilsTable("Play Game", "Settings", menuScreen).getTable())
+        .add(new MainPageUtilsTable(tileMapLoader,"Play Game", "Settings", menuScreen).getTable())
         .expandX()
         .expandY()
         .row();

@@ -12,13 +12,13 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
-import com.retromania.game.special_mario.utils.WorldLoader;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
 
 public abstract class TiledMapIndividual implements Individual, Collidable {
 
   private Rectangle rectangleBound;
+
   private Body body;
   private FixtureDef fixtureDef;
 
@@ -40,7 +40,8 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   private PolygonShape setUpShape() {
     PolygonShape shape = new PolygonShape();
     shape.setAsBox(
-        convertPixelToMeter(rectangleBound.getWidth() / 2), convertPixelToMeter(rectangleBound.getHeight() / 2));
+        convertPixelToMeter(rectangleBound.getWidth() / 2),
+        convertPixelToMeter(rectangleBound.getHeight() / 2));
     return shape;
   }
 
@@ -70,6 +71,10 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   @Override
   public short getDefaultTarget() {
     return -1;
+  }
+
+  public Body getBody() {
+    return body;
   }
 
   public abstract void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo);

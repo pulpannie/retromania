@@ -9,6 +9,8 @@ import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.DaggerSpecialMarioStarterCreator;
 
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.FINAL_GAME;
+
 public class AndroidLauncher extends AndroidApplication {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class AndroidLauncher extends AndroidApplication {
           public void create(RetroMania r) {
             r.sb = new SpriteBatch();
             r.setScreen(new GameLister());
-//            r.setScreen(DaggerSpecialMarioStarterCreator.create().getSpecialMarioStarter());
+//            r.setScreen(FINAL_GAME);
           }
         };
 		RetroManiaGame game = RetroMania.getRetroManiaInstance().setCreatable(c);

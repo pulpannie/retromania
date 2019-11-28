@@ -2,6 +2,7 @@ package com.retromania.game.special_mario.utils;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.physics.box2d.World;
+import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.individuals.Fire;
 import com.retromania.game.special_mario.individuals.FriezingBlock;
 import com.retromania.game.special_mario.individuals.Obstacle;
@@ -38,14 +39,14 @@ public enum Layers {
     return id;
   }
 
-  public void create(MapObject m, World world)
+  public TiledMapIndividual create(MapObject m, World world)
       throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
           InstantiationException {
 
 
     Class cls[] = new Class[] {MapObject.class, World.class};
     Constructor constructor = c.getConstructor(cls);
-    constructor.newInstance(m, world);
+    return (TiledMapIndividual)constructor.newInstance(m, world);
 
 
   }

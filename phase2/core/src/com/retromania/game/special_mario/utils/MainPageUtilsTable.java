@@ -13,7 +13,14 @@ public class MainPageUtilsTable {
   private Button gameStartButton;
   private Button settingButton;
   private MenuScreen menuScreen;
-  public MainPageUtilsTable(String gameStartString, String settingString, MenuScreen menuScreen) {
+  private TileMapLoader tileMapLoader;
+
+  public MainPageUtilsTable(
+      TileMapLoader tileMapLoader,
+      String gameStartString,
+      String settingString,
+      MenuScreen menuScreen) {
+    this.tileMapLoader = tileMapLoader;
     this.menuScreen = menuScreen;
     makeGameStartButton(gameStartString);
     makeSettingButton(settingString);
@@ -29,7 +36,7 @@ public class MainPageUtilsTable {
     return new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        System.out.println("go to game");
+        tileMapLoader.setUpSecondWorldTileMap();
       }
     };
   }
