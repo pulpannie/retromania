@@ -4,12 +4,14 @@ import com.retromania.game.tic_tac_toe.individuals.Cell;
 
 public class CellManager{
     int gameWidth, gameHeight;
-    int size = 3;
-    Cell[][] cellArray = new Cell[size][size];
+    int size;
+    Cell[][] cellArray;
     Cell winnerCell;
-    public CellManager(int gameWidth, int gameHeight){
+    public CellManager(int gameWidth, int gameHeight, int size){
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
+        this.size = size;
+        cellArray = new Cell[size][size];
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
                 cellArray[i][j] = new Cell(gameWidth/size, gameHeight/size, gameWidth*i/size, gameHeight*j/size);
@@ -18,7 +20,7 @@ public class CellManager{
     }
 
     protected CellManager copyCellManager(){
-        CellManager tmpCellManager = new CellManager(gameWidth, gameHeight);
+        CellManager tmpCellManager = new CellManager(gameWidth, gameHeight, size);
         tmpCellManager.winnerCell = this.winnerCell;
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){

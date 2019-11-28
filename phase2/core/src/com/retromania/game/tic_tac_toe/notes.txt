@@ -69,3 +69,9 @@ Fix: Added methods to deep clone a current TicTacToe game, change the state of a
 Code Affected: PlayScreen, MenuScreen.java
 Flaw: Lack of customization features.
 Fix: Added the option to play with cat icons.
+
+#Step 14
+Code Affected: CellManager, TicTacToe, MenuScreen, PlayScreen
+Flaw: Lack of customization features.
+Fix: Added being able to customize the dimensions of the tictactoe board.
+

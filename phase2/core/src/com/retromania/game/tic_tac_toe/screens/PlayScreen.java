@@ -31,8 +31,9 @@ public class PlayScreen extends RetroManiaScreen {
     public float gameWidth, gameHeight;
     CellManager cellManager;
     String winner;
+    private int size;
 
-    public PlayScreen(Boolean cats){
+    public PlayScreen(Boolean cats, int size){
         System.out.println(cats);
         if (cats){
             cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
@@ -42,9 +43,10 @@ public class PlayScreen extends RetroManiaScreen {
             cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
             circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
         }
+        this.size = size;
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
-        ticTacToe = new TicTacToe((int)gameWidth, (int)gameHeight);
+        ticTacToe = new TicTacToe((int)gameWidth, (int)gameHeight, size);
         cellManager = ticTacToe.getCellManager();
         currentTurn = "Cross";
     }
@@ -66,19 +68,18 @@ public class PlayScreen extends RetroManiaScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
         stage.draw();
-
-        DrawBoardLine(new Vector2(gameWidth / 3, 0), new Vector2(gameWidth / 3, gameHeight), gamecam.combined);
-        DrawBoardLine(new Vector2(gameWidth * 2 / 3, 0), new Vector2(gameWidth * 2 / 3, gameHeight), gamecam.combined);
-        DrawBoardLine(new Vector2(0, gameHeight / 3), new Vector2(gameWidth, gameHeight / 3), gamecam.combined);
-        DrawBoardLine(new Vector2(0, gameHeight * 2 / 3), new Vector2(gameWidth, gameHeight * 2 / 3), gamecam.combined);
+        for (int i = 1; i < size; i++) {
+            DrawBoardLine(new Vector2(gameWidth*i / size, 0), new Vector2(gameWidth*i / size, gameHeight), gamecam.combined);
+            DrawBoardLine(new Vector2(0, gameHeight*i / size), new Vector2(gameWidth, gameHeight*i / size), gamecam.combined);
+        }
 
 
         /*DEBUGGING PURPOSE*/
-        for(int i = 0; i < 3; i++){
-            for (int j = 0; j <3; j++){
+        for(int i = 0; i < size; i++){
+            for (int j = 0; j <size; j++){
                 batch.begin();
                 font.getData().setScale(5.0f);
-                font.draw(batch, Integer.toString(i) + Integer.toString(j), gameWidth*i/3, gameHeight*j/3 + 50);
+                font.draw(batch, Integer.toString(i) + Integer.toString(j), gameWidth*i/size, gameHeight*j/size + 50);
                 batch.end();
             }
         }
@@ -91,11 +92,11 @@ public class PlayScreen extends RetroManiaScreen {
             ticTacToe.selectCell((int) worldCoordinates.x, (int) worldCoordinates.y);
             this.currentTurn = ticTacToe.currentTurn;
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++){
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++){
                 if (!cellArray[i][j].getCell().equals("None")) {
                     batch.begin();
-                    batch.draw(this.getCell(cellArray[i][j].getCell()), gameWidth*i/3, gameHeight*j/3, gameWidth / 3, gameHeight / 3);
+                    batch.draw(this.getCell(cellArray[i][j].getCell()), gameWidth*i/size, gameHeight*j/size, gameWidth / size, gameHeight / size);
                     batch.end();
                 }
             }
