@@ -344,6 +344,14 @@ the mainPlayer using simple @Inject.
 Fix : We used Builders provided by dagger 2 to provide the values for MainPlayers constructor and
 make workLoader even smaller. TODO try to destroy WorkLoader completely in the next steps.
 
+# Step 35
+
+Code affected : MusicManager, SpecialMarioStarter, WorldLoader
+
+Flaw : AS explained in step 34 WorldLoader use was redundant in the presence of dagger 2.
+
+Fix : We injected the MusicManager using dagger builder and destroyed WorldLoader.
+
 
 
 

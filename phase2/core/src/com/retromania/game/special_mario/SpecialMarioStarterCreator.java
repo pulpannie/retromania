@@ -32,6 +32,11 @@ public interface SpecialMarioStarterCreator {
     @BindsInstance
     Builder MainPlayerINITY(@Named("INIT Y IN WORLD") int Y);
 
+    @BindsInstance
+    Builder MusicAddress(@Named("Music Name") String musicName);
+
+
+
     SpecialMarioStarterCreator build();
   }
 }

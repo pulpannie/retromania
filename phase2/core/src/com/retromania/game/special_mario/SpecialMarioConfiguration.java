@@ -11,7 +11,10 @@ public class SpecialMarioConfiguration {
             .MainPlayerX(0)
             .MainPlayerY(0)
             .MainPlayerINITX(32)
-            .MainPlayerINITY(256).build().getSpecialMarioStarter();
+            .MainPlayerINITY(256)
+            .MusicAddress("special_mario/marioFirstLevelMusic.ogg")
+            .build()
+            .getSpecialMarioStarter();
   }
 
   public static float convertPixelToMeter(float meter) {

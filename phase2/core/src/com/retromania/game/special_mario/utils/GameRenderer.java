@@ -31,10 +31,10 @@ public class GameRenderer implements Renderable {
   private TileMapLoader tileMapLoader;
 
   @Inject
-  public GameRenderer(WorldLoader worldLoader, MainPlayer mainPlayer,TileMapLoader tileMapLoader, World world) {
+  public GameRenderer(MainPlayer mainPlayer,TileMapLoader tileMapLoader, World world) {
     this.tileMapLoader = tileMapLoader;
     this.world = world;
-    this.mainPlayer = worldLoader.getMainPlayer();
+    this.mainPlayer = mainPlayer;
     setUpGamecam();
     setUpGamePort();
     setUpOrthogRenderer();

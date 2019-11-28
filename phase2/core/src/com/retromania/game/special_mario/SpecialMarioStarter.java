@@ -8,6 +8,7 @@ import com.retromania.game.special_mario.individuals.MainPlayer;
 import com.retromania.game.special_mario.individuals.MainPlayerInput;
 import com.retromania.game.special_mario.screens.MenuScreen;
 import com.retromania.game.special_mario.utils.GameRenderer;
+import com.retromania.game.special_mario.utils.MusicManager;
 
 import javax.inject.Inject;
 
@@ -17,19 +18,21 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   private MenuScreen menuScreen;
   private World world;
   private MainPlayer mainPlayer;
-
+  private MusicManager musicManager;
   @Inject
   public SpecialMarioStarter(
       MainPlayer mainPlayer,
       World world,
       GameRenderer mainWorldRenderer,
-      MenuScreen menuScreen) {
+      MenuScreen menuScreen,
+      MusicManager musicManager) {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
     this.mainPlayer = mainPlayer;
     this.world = world;
     setUpWorld();
     setUpMainWorldRenderer(mainWorldRenderer);
     setUpMenuScreen(menuScreen);
+    this.musicManager = musicManager;
   }
 
   private void setUpWorld() {
@@ -65,7 +68,9 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   }
 
   @Override
-  public void show() {}
+  public void show() {
+    this.musicManager.play();
+  }
 
   private void setUpMenuScreen(MenuScreen menuScreen) {
     this.menuScreen = menuScreen;

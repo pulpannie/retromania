@@ -21,8 +21,8 @@ public class AndroidLauncher extends AndroidApplication {
           @Override
           public void create(RetroMania r) {
             r.sb = new SpriteBatch();
-//            r.setScreen(new GameLister());
-            r.setScreen(FINAL_GAME);
+            r.setScreen(new GameLister());
+//            r.setScreen(FINAL_GAME);
           }
         };
 		RetroManiaGame game = RetroMania.getRetroManiaInstance().setCreatable(c);
