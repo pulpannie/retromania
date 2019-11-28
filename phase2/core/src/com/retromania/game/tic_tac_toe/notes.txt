@@ -79,3 +79,8 @@ Fix: Added being able to customize the dimensions of the tictactoe board.
 Code Affected: CellManager, TicTacToe
 Flaw: application crashes when result is a draw between two players.
 Fix: fixed by changing CellManager's Cell object, winnerCell, to String object, winner.
+
+#Step 16
+Code Affected: MenuScreen, PlayScreen, TicTacToeStarter
+Flaw: cannot save user data
+Fix: fixed by passing the GameSaver class through the screens, getting the User in the PlayScreen and updating score accordingly.

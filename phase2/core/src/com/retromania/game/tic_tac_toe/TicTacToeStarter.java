@@ -15,14 +15,14 @@ import java.util.List;
 public class TicTacToeStarter extends RetroManiaInnerGame {
     public Stage stage;
     public SpriteBatch batch;
-    private MenuScreen menuScreen = new MenuScreen();
+    private MenuScreen menuScreen;
     private Preferences preferences;
+    private User currentUser;
 
 
     public TicTacToeStarter(String name, RetroManiaGame.Orientation orientation) {
         super(name, orientation);
-        preferences = game.getPrefrences(Configuration.tictactoePreference);
-
+        menuScreen = new MenuScreen(super.gameSaver);
     }
 
     @Override
@@ -38,41 +38,6 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
   @Override
   public void render(float delta) {
 
-    }
-
-
-    //TODO Override setCurrentUser : Which sets your user and you should use this for checking whether or not you have a personal best
-    @Override
-    public void setCurrentUser(String name) {
-        preferences = game.getPrefrences(Configuration.tictactoePreference);
-        this.currentUser = new RetroManiaGeneralUser(name);
-        this.currentUser.setScore(preferences.getInteger(currentUser.getUserName()));
-    }
-    //	TODO Override setBestUser : this is where you should try and retrieve information for your best user, look at save and retrieve functions
-    @Override
-    public void setBestUser() {
-        preferences = game.getPrefrences(Configuration.tictactoePreference);
-        User user = new RetroManiaGeneralUser(preferences.getString(Configuration.bestUserUserName));
-        user.setScore(preferences.getInteger(Configuration.bestUserScore));
-        bestUser = user;
-    }
-
-    @Override
-    public Integer getBestUserScore() {
-        return bestUser.getScore();
-    }
-
-
-    @Override
-    public void save(Object... args) {
-        if(!preferences.contains("best player name") || currentUser.getScore() > bestUser.getScore()){
-            gameSaver.saveBestUser(currentUser);
-        }
-        else if (!preferences.contains(currentUser.getUserName()) || currentUser.getScore() > preferences.getInteger(currentUser.getUserName())){
-            gameSaver.saveNormalUser(currentUser);
-        }
-
-        preferences.flush();
     }
 
     @Override

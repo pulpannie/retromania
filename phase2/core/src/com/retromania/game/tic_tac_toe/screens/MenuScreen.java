@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
+import com.retromania.game.utils.GameSaver;
 
 public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
@@ -36,10 +37,12 @@ public class MenuScreen extends RetroManiaScreen {
     ImageButton catButton, upButton, downButton;
     Viewport viewport;
     Skin uiSkin;
+    GameSaver gameSaver;
     boolean cats = false;
     private int size = 3;
 
-    public MenuScreen(){
+    public MenuScreen(GameSaver gameSaver){
+        this.gameSaver = gameSaver;
         gamecam = new OrthographicCamera();
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
@@ -120,7 +123,7 @@ public class MenuScreen extends RetroManiaScreen {
     @Override
     public void handleInput() {
         if (playButton.isPressed()){
-            game.setScreen(new PlayScreen(cats, size));
+            game.setScreen(new PlayScreen(cats, size, gameSaver));
         }
     }
 
