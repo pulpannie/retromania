@@ -30,13 +30,13 @@ public class PlayScreen extends RetroManiaScreen {
     private Background background;
     private UfoManager ufoManager;
 
-    static Stage stage;
+    private Stage stage;
     static ImageButton leftButton;
     static ImageButton rightButton;
     static ImageButton pauseButton;
     MainScreenInterface mainscreen;
 
-    public PlayScreen(RetroManiaGame game, MainScreenInterface mainscreen){
+    public PlayScreen(RetroManiaGame game, MainScreenInterface mainscreen) {
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);

@@ -24,6 +24,16 @@ public interface MainScreenInterface {
     public void restart();
 
     /**
+     * go to setting screen.
+     */
+    public void modify();
+
+    /**
+     * go to menu screen.
+     */
+    public void returnMenu(String theme);
+
+    /**
      * get the user of the screen.
      */
     public User getUser();

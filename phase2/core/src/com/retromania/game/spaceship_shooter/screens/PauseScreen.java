@@ -25,8 +25,10 @@ public class PauseScreen extends RetroManiaScreen {
     private Viewport gamePort;
     private ImageButton resumeButton;
     private ImageButton restartButton;
+    private ImageButton settingButton;
+    private ImageButton exitButton;
     private Background background;
-    public Stage stage;
+    private Stage stage;
     MainScreenInterface mainscreen;
     public PauseScreen(RetroManiaGame game, MainScreenInterface mainscreen){
         this.game = game;
@@ -39,17 +41,20 @@ public class PauseScreen extends RetroManiaScreen {
 
 
         resumeButton = (new ImageButtonBuilder()).buildTexture("resume.png").buildButton();
-        resumeButton.setPosition(Gdx.graphics.getWidth()/2-200, Gdx.graphics.getHeight()/2);
-        resumeButton.setSize(400, 400);
+        resumeButton.setPosition(Gdx.graphics.getWidth()/2-150, Gdx.graphics.getHeight()/2 + 100);
+        resumeButton.setSize(300, 300);
         stage.addActor(resumeButton);
 
 
         restartButton = (new ImageButtonBuilder()).buildTexture("restart.png").buildButton();
-        restartButton.setPosition(Gdx.graphics.getWidth()/2-125, Gdx.graphics.getHeight()/2 - 200);
-        restartButton.setSize(250, 250);
+        restartButton.setPosition(Gdx.graphics.getWidth()/2-110, Gdx.graphics.getHeight()/2-50);
+        restartButton.setSize(200, 200);
         stage.addActor(restartButton);
 
-
+        settingButton = (new ImageButtonBuilder()).buildTexture("setting.png").buildButton();
+        settingButton.setPosition(Gdx.graphics.getWidth()/2-110, Gdx.graphics.getHeight()/2 - 300);
+        settingButton.setSize(200, 200);
+        stage.addActor(settingButton);
 
         Gdx.input.setInputProcessor(stage);
 
@@ -58,6 +63,7 @@ public class PauseScreen extends RetroManiaScreen {
     public void show() {
         stage.addActor(resumeButton);
         stage.addActor(restartButton);
+        stage.addActor(settingButton);
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -67,6 +73,10 @@ public class PauseScreen extends RetroManiaScreen {
         }
         else if(restartButton.isPressed()){
             restart();
+        }
+
+        else if(settingButton.isPressed()) {
+            modify();
         }
     }
 
@@ -112,6 +122,11 @@ public class PauseScreen extends RetroManiaScreen {
     public void restart(){
         stage.dispose();
         mainscreen.restart();
+    }
+
+    public void modify(){
+        stage.dispose();
+        mainscreen.modify();
     }
     @Override
     public void hide() {

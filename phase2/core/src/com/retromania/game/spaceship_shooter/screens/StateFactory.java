@@ -12,7 +12,8 @@ public class StateFactory {
             return new PauseScreen(game, mainscreen);
         else if (type.equalsIgnoreCase("menu screen"))
             return new MenuScreen(game, mainscreen);
-
+        else if (type.equalsIgnoreCase("setting screen"))
+            return new SettingScreen(game, mainscreen);
         else
             return null;
     }

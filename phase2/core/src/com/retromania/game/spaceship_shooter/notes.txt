@@ -106,3 +106,31 @@ Code affected: Background, Car, GameStats, Hud, ImageButtonBuilder, LabelBuilder
 Flaw: lack of java docs and comments throughout the game.
 
 Fix: Adding and updating java docs and comments to the above classes..
+
+#Step 14:
+
+Code affected: MainScreenInterface, SpaceShipShooterStarter, spaceship_shooter repository inside asset.
+
+Flaw: We haven't have the setting screen to enable/disable our theme (personal feature)
+
+Fix: Adding a SettingScreen class that would have a select box to choose the game's theme (Independence day with UFO, Halloween with the Witch, or Christmas with Santa Clauss).
+
+It will also have an exit button to exit to the menu screen.
+
+#Step 15:
+
+Code affected: UFO, MainScreenInterface, PauseScreen, PlayScreen, StateFactory, SpaceShipShooterStarter, spaceship_shooter repository inside asset.
+
+Flaw: We haven't incorporate the setting to our game just yet.
+
+Fix: Let the pause screen access the setting screen through touching the setting button being added to the pause screen.
+
+Take the user input for the theme in the setting page to display the appropriate entities based on the theme on the Play Screen after exiting the setting screen to the menu screen.
+
+#Step 16:
+
+Code affected:  glassy-ui.json
+
+Flaw: the template json file is not in correct java format for json files.
+
+Fix: Fixes all the incorrect formats on that file.

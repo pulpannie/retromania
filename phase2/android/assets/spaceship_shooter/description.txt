@@ -7,4 +7,8 @@ ufo.png:  texture of ufo entity
 left_button_big.png: texture of button that makes car move left
 right_button_big.png: texture of button that makes car move right
 rocket_fire.png: texture of rocket that is shooted by car
-
+christmas.png: texture of the santa claus
+halloween.png: texture of the halloween witch
+exit.png: texture of the button that exit the setting screen to the menu screen.
+setting.png: texture of the setting button.
+glassy folder: the skin for the setting screen.

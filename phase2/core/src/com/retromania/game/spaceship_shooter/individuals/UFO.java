@@ -3,6 +3,7 @@ package com.retromania.game.spaceship_shooter.individuals;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 
 /**
  * The flying UFO displayed on the screen.
@@ -26,9 +27,19 @@ public class UFO {
     private int height;
 
     /**
-     * The UFO's GUI.
+     * The UFO's GUI with independence day theme.
      */
-    static Texture texture = new Texture("spaceship_shooter/ufo.png");
+    private Texture texture1 = new Texture("spaceship_shooter/ufo.png");
+
+    /**
+     * The UFO's GUI with halloween theme.
+     */
+    private Texture texture2 = new Texture("spaceship_shooter/halloween.png");
+
+    /**
+     * The UFO's GUI with christmas theme.
+     */
+    private Texture texture3 = new Texture("spaceship_shooter/christmas.png");
 
 
     /**
@@ -64,7 +75,13 @@ public class UFO {
      * @param parentAlpha
      */
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(texture, x-width/2, y-height/2, width, height);
+        System.out.println(SpaceShipShooterStarter.getTheme()+ "independence day");
+        if (SpaceShipShooterStarter.getTheme().equalsIgnoreCase("independence day"))
+            batch.draw(texture1, x-width/2, y-height/2, width, height);
+        else if (SpaceShipShooterStarter.getTheme().equalsIgnoreCase("halloween"))
+            batch.draw(texture2, x-width/2, y-height/2, width, height);
+        else
+            batch.draw(texture3, x-width/2, y-height/2, width, height);
     }
 
 
