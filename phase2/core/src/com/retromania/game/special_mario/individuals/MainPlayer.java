@@ -1,5 +1,6 @@
 package com.retromania.game.special_mario.individuals;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -9,32 +10,41 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
-import com.retromania.game.shared_abstractions.Individual;
 import com.retromania.game.shared_abstractions.RetroManiaModel;
 import com.retromania.game.special_mario.utils.BodyPart;
 import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.getPixelToMeterConversionRate;
+
+@Singleton
 public class MainPlayer extends Character implements RetroManiaModel<MainPlayerInput> {
 
   MainPlayerInput input;
 
+  private static TextureRegion getTextureRegion(String regionName, TextureAtlas textureAtlas) {
+    return textureAtlas.findRegion(regionName);
+  }
+
+  @Inject
   public MainPlayer(
-      TextureRegion textureRegion,
-      int x,
-      int y,
-      int width,
-      int height,
-      float pixelToMeterRate,
+      @Named("Texture Region Name") String textureRegionName,
+      TextureAtlas textureAtlas,
+      @Named("X") int x,
+      @Named("Y") int y,
       World world,
-      int initialXInWorld,
-      int initialYInWorld) {
+      @Named("INIT X IN WORLD") int initialXInWorld,
+      @Named("INIT Y IN WORLD") int initialYInWorld) {
     super(
-        textureRegion,
+        getTextureRegion(textureRegionName, textureAtlas),
         x,
         y,
-        width,
-        height,
-        pixelToMeterRate,
+        getTextureRegion(textureRegionName, textureAtlas).getRegionWidth(),
+        getTextureRegion(textureRegionName, textureAtlas).getRegionHeight(),
+        getPixelToMeterConversionRate(),
         world,
         initialXInWorld,
         initialYInWorld);
@@ -74,7 +84,6 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   public short getDefaultTarget() {
     return 4;
   }
-
 
   @Override
   protected Object getUserData() {

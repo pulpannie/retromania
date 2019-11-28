@@ -331,3 +331,19 @@ Code affected : GameRenderer, TileLoader
 Added the base code for changing the levels.
 
 TODO : Refactor the code into the appropriate classes.
+
+
+# Step 34
+
+Code affected : WorldLoader, MainPlayer, SpecialMarioStarter
+
+Flaw : We are using dagger 2 inorder to avoid righting Factory and Builders our self but the whole
+purpose of WorldLoader was exactly that, this was because we were not able to make instances of
+the mainPlayer using simple @Inject.
+
+Fix : We used Builders provided by dagger 2 to provide the values for MainPlayers constructor and
+make workLoader even smaller. TODO try to destroy WorkLoader completely in the next steps.
+
+
+
+

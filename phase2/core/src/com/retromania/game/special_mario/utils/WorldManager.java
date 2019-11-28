@@ -10,10 +10,12 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class LevelManager {
+public class WorldManager {
     @Provides
     @Singleton
     public static World getWorld(){
-        return new World(new Vector2(0, -10), true);
+        World world = new World(new Vector2(0, -10), true);
+        world.setContactListener(new MarioWorldListener());
+        return world;
     }
 }

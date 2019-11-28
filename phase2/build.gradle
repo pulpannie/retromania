@@ -15,9 +15,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'
 
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:3.5.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
-        classpath "net.ltgt.gradle:gradle-apt-plugin:0.3"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.4"
 
 
     }
@@ -56,8 +56,8 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
 
-        api 'com.google.dagger:dagger:2.0.2'
-        annotationProcessor 'com.google.dagger:dagger-compiler:2.0.2'
+        api 'com.google.dagger:dagger:2.25.2'
+        annotationProcessor 'com.google.dagger:dagger-compiler:2.25.2'
 
     }
 }
@@ -69,8 +69,8 @@ project(":core") {
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        api 'com.google.dagger:dagger:2.0.2'
-        annotationProcessor 'com.google.dagger:dagger-compiler:2.0.2'
+        api 'com.google.dagger:dagger:2.25.2'
+        annotationProcessor 'com.google.dagger:dagger-compiler:2.25.2'
 
     }
 }
@@ -96,8 +96,8 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
 
-        api 'com.google.dagger:dagger:2.0.2'
-        annotationProcessor 'com.google.dagger:dagger-compiler:2.0.2'
+        api 'com.google.dagger:dagger:2.25.2'
+        annotationProcessor 'com.google.dagger:dagger-compiler:2.25.2'
 
     }
 }

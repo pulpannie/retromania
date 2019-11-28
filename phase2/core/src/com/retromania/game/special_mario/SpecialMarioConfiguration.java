@@ -2,8 +2,17 @@ package com.retromania.game.special_mario;
 
 public class SpecialMarioConfiguration {
 
-  static public final SpecialMarioStarter FINAL_GAME =
-      DaggerSpecialMarioStarterCreator.create().getSpecialMarioStarter();
+  public static final SpecialMarioStarter FINAL_GAME;
+
+  static {
+    FINAL_GAME =
+        DaggerSpecialMarioStarterCreator.builder()
+            .MainPlayerTextureRegionName("mario_small")
+            .MainPlayerX(0)
+            .MainPlayerY(0)
+            .MainPlayerINITX(32)
+            .MainPlayerINITY(256).build().getSpecialMarioStarter();
+  }
 
   public static float convertPixelToMeter(float meter) {
     return meter * getPixelToMeterConversionRate();

@@ -4,8 +4,6 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.Array;
-import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
