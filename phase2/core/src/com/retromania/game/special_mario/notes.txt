@@ -293,3 +293,9 @@ Flaw : We were injecting MenuScreen and GameRenderer by hard coding it in the cl
 which causes dependency.
 
 Fix : We used dagger 2 do inject an instance of MenuScreen and GameRenderer to SpecialMarioStarter.
+
+# Step 30
+
+Code affected : PlayableOption1.tmx
+
+Added new map
