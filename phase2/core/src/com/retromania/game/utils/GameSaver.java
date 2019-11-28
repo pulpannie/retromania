@@ -11,6 +11,10 @@ import java.util.Set;
 
 public class GameSaver {
 
+  public User getCurrentUser() {
+    return currentUser;
+  }
+
   private User currentUser;
   private Preferences preferences;
   private static Set<String> nameOfAllGames = new HashSet<>();

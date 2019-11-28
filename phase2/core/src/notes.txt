@@ -176,3 +176,10 @@ can still implement the said interface and even work on the past inputs if they 
 PS. : Our main controller is the RetroManiaGame that sets the screen, but each screen class will have
 a list of renderers, a list of models, which are in fact the views and the models and the screen
 itself is the glue that holds all of them together.
+
+
+# Step 18
+
+Code affected: GameSaver
+
+Added a way to get current game user.
