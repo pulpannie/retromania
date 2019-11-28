@@ -63,4 +63,5 @@ public class WorldLoader {
   private void setUpTextureAtlas() {
     textureAtlas = new TextureAtlas("special_mario/mario_small.pack");
   }
+
 }

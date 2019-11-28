@@ -266,3 +266,13 @@ Flaw : MainPlayer was implementing Individuals which is deprecated.
 
 Fix : MainPlayer is implementing RetroManiaModel instead.
 
+
+# Step 27
+
+Code affected: GameRenderer, SpecialMarioStarter
+
+Flaw : GameRenderer was setting up the input for SpecialMarioStarter which is not it's responsibility
+that is the responsibility of the controller/presenter.
+
+Fix : The code was reformatted into SpecialMarioStarter.
+

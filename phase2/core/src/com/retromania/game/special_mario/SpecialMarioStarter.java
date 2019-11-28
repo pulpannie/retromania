@@ -1,10 +1,11 @@
 package com.retromania.game.special_mario;
 
+import com.badlogic.gdx.Gdx;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
+import com.retromania.game.special_mario.individuals.MainPlayerInput;
 import com.retromania.game.special_mario.screens.MenuScreen;
 import com.retromania.game.special_mario.utils.GameRenderer;
-import com.retromania.game.special_mario.utils.MusicManager;
 import com.retromania.game.special_mario.utils.WorldLoader;
 
 public class SpecialMarioStarter extends RetroManiaInnerGame {
@@ -19,20 +20,28 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   }
 
   @Override
-  public void handleInput() {}
+  public void handleInput() {
+    setUpMainPlayerInput();
+  }
 
   @Override
   public void update() {
-    worldLoader.getWorld().step(1 / 60f, 6, 2);
     handleInput();
+    worldLoader.getWorld().step(1 / 60f, 6, 2);
+    updateModels();
   }
 
-  @Override
-  public void render(float delta) {
-    update();
-    mainWorldRenderer.render();
-    menuScreen.render(delta);
+  private void setUpMainPlayerInput() {
+    worldLoader.getMainPlayer().setInput(
+            new MainPlayerInput(
+                    mainWorldRenderer.getGamePort().getScreenWidth(),
+                    mainWorldRenderer.getGamePort().getScreenHeight(),
+                    Gdx.input.getX(),
+                    Gdx.input.getY(),
+                    Gdx.input.justTouched(),
+                    Gdx.input.isTouched()));
   }
+
 
   @Override
   public void resize(int width, int height) {
@@ -45,13 +54,28 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
   @Override
   public void show() {
-    worldLoader = new WorldLoader(SpecialMarioConfiguration.getPixelToMeterConversionRate());
+    setUpWorldLoader();
+    setUpMainWorldRenderer();
+    setUpMenuScreen();
+  }
+
+  private void setUpMenuScreen() {
+    menuScreen = new MenuScreen();
+    addRenderable(menuScreen);
+    menuScreen.show();
+  }
+
+  private void setUpMainWorldRenderer() {
     mainWorldRenderer =
         new GameRenderer(
             worldLoader.getWorld(),
             worldLoader.getTiledMap(),
             worldLoader.getMainPlayer());
-    menuScreen = new MenuScreen();
-    menuScreen.show();
+    addRenderable(mainWorldRenderer);
+  }
+
+  private void setUpWorldLoader() {
+    worldLoader = new WorldLoader(SpecialMarioConfiguration.getPixelToMeterConversionRate());
+    addModel(worldLoader.getMainPlayer());
   }
 }

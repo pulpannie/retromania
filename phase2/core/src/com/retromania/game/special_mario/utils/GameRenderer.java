@@ -10,17 +10,19 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
+import com.retromania.game.shared_abstractions.Renderable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.SpecialMarioConfiguration;
 import com.retromania.game.special_mario.individuals.MainPlayer;
-import com.retromania.game.special_mario.individuals.MainPlayerInput;
 
-public class GameRenderer {
+public class GameRenderer implements Renderable {
 
   private OrthogonalTiledMapRenderer orthogRenderer;
   private RetroManiaGame game = RetroMania.getRetroManiaInstance();
   private Box2DDebugRenderer b2ddr;
   private OrthographicCamera gamecam;
+
+
   private Viewport gamePort;
   private MainPlayer mainPlayer;
   private World world;
@@ -52,7 +54,8 @@ public class GameRenderer {
     gamecam.update();
   }
 
-  public void render() {
+  @Override
+  public void render(float delta) {
     update();
     clearDisplay();
     displayWorld();
@@ -71,15 +74,6 @@ public class GameRenderer {
   }
 
   private void displayMainPlayer() {
-    mainPlayer.setInput(
-        new MainPlayerInput(
-            gamePort.getScreenWidth(),
-            gamePort.getScreenHeight(),
-            Gdx.input.getX(),
-            Gdx.input.getY(),
-            Gdx.input.justTouched(),
-            Gdx.input.isTouched()));
-    mainPlayer.update();
     game.sb.begin();
     mainPlayer.draw(game.sb);
     game.sb.end();
@@ -105,5 +99,9 @@ public class GameRenderer {
             SpecialMarioConfiguration.convertPixelToMeter(RetroManiaGame.V_HEIGHT),
             gamecam);
     gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+  }
+
+  public Viewport getGamePort() {
+    return gamePort;
   }
 }

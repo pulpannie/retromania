@@ -2,15 +2,13 @@ package com.retromania.game.shared_abstractions;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RetroManiaScreen implements Screen {
+public abstract class RetroManiaScreen implements Screen, Renderable {
     public abstract void handleInput();
 
     protected Viewport gamePort;
@@ -21,10 +19,6 @@ public abstract class RetroManiaScreen implements Screen {
     private List<Renderable> renderables = new ArrayList<>();
     private List<RetroManiaModel> models = new ArrayList<>();
 
-    public List<Screen> innerScreens = new ArrayList<>();
-
-    Texture texture;
-
 
     public RetroManiaScreen(RetroManiaGame game){
         this.game = game;
@@ -34,6 +28,10 @@ public abstract class RetroManiaScreen implements Screen {
 
     public void update(){
         handleInput();
+        updateModels();
+    }
+
+    protected void updateModels() {
         for(RetroManiaModel model : models){
             model.update();
         }

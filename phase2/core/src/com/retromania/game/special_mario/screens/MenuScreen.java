@@ -1,5 +1,6 @@
 package com.retromania.game.special_mario.screens;
 
+import com.retromania.game.shared_abstractions.Renderable;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 public class MenuScreen extends RetroManiaScreen {
