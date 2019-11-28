@@ -9,9 +9,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.individuals.MainPlayer;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.getPixelToMeterConversionRate;
 
+@Singleton
 public class WorldLoader {
   private TiledMap tiledMap;
   private World world;

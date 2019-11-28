@@ -284,3 +284,12 @@ Flaw : We were injecting WorldLoader by hard coding it in the class, which cause
 
 Fix : We used dagger 2 do inject an instance of WorldLoader to SpecialMarioStarter.
 
+
+# Step 29
+
+Code affected : SpecialMarioStarter, MenuScreen, GameRenderer
+
+Flaw : We were injecting MenuScreen and GameRenderer by hard coding it in the class,
+which causes dependency.
+
+Fix : We used dagger 2 do inject an instance of MenuScreen and GameRenderer to SpecialMarioStarter.

@@ -15,6 +15,8 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.SpecialMarioConfiguration;
 import com.retromania.game.special_mario.individuals.MainPlayer;
 
+import javax.inject.Inject;
+
 public class GameRenderer implements Renderable {
 
   private OrthogonalTiledMapRenderer orthogRenderer;
@@ -28,10 +30,11 @@ public class GameRenderer implements Renderable {
   private World world;
   private TiledMap tiledMap;
 
-  public GameRenderer(World world, TiledMap tiledMap, MainPlayer mainPlayer) {
-    this.tiledMap = tiledMap;
-    this.world = world;
-    this.mainPlayer = mainPlayer;
+  @Inject
+  public GameRenderer(WorldLoader worldLoader) {
+    this.tiledMap = worldLoader.getTiledMap();
+    this.world = worldLoader.getWorld();
+    this.mainPlayer = worldLoader.getMainPlayer();
     setUpGamecam();
     setUpGamePort();
     setUpOrthogRenderer();

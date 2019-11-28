@@ -3,10 +3,15 @@ package com.retromania.game.special_mario.screens;
 import com.retromania.game.shared_abstractions.Renderable;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
+import javax.inject.Inject;
+
 public class MenuScreen extends RetroManiaScreen {
 
 
   private RetroManiaScreen selectedScreen;
+
+  @Inject
+  public MenuScreen(){}
 
   @Override
   public void handleInput() {}

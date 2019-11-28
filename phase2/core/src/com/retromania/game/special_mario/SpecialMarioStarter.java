@@ -17,9 +17,12 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   private MenuScreen menuScreen;
 
   @Inject
-  public SpecialMarioStarter(WorldLoader worldLoader) {
+  public SpecialMarioStarter(
+      WorldLoader worldLoader, GameRenderer mainWorldRenderer, MenuScreen menuScreen) {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
     setUpWorld(worldLoader);
+    setUpMainWorldRenderer(mainWorldRenderer);
+    setUpMenuScreen(menuScreen);
   }
 
   private void setUpWorld(WorldLoader worldLoader) {
@@ -40,42 +43,34 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   }
 
   private void setUpMainPlayerInput() {
-    worldLoader.getMainPlayer().setInput(
+    worldLoader
+        .getMainPlayer()
+        .setInput(
             new MainPlayerInput(
-                    mainWorldRenderer.getGamePort().getScreenWidth(),
-                    mainWorldRenderer.getGamePort().getScreenHeight(),
-                    Gdx.input.getX(),
-                    Gdx.input.getY(),
-                    Gdx.input.justTouched(),
-                    Gdx.input.isTouched()));
+                mainWorldRenderer.getGamePort().getScreenWidth(),
+                mainWorldRenderer.getGamePort().getScreenHeight(),
+                Gdx.input.getX(),
+                Gdx.input.getY(),
+                Gdx.input.justTouched(),
+                Gdx.input.isTouched()));
   }
-
 
   @Override
   public void resize(int width, int height) {
     mainWorldRenderer.resize(width, height);
   }
 
-
   @Override
-  public void show() {
-    setUpMainWorldRenderer();
-    setUpMenuScreen();
+  public void show() {}
+
+  private void setUpMenuScreen(MenuScreen menuScreen) {
+    this.menuScreen = menuScreen;
+    addRenderable(this.menuScreen);
+    this.menuScreen.show();
   }
 
-  private void setUpMenuScreen() {
-    menuScreen = new MenuScreen();
-    addRenderable(menuScreen);
-    menuScreen.show();
+  private void setUpMainWorldRenderer(GameRenderer mainWorldRenderer) {
+    this.mainWorldRenderer = mainWorldRenderer;
+    addRenderable(this.mainWorldRenderer);
   }
-
-  private void setUpMainWorldRenderer() {
-    mainWorldRenderer =
-        new GameRenderer(
-            worldLoader.getWorld(),
-            worldLoader.getTiledMap(),
-            worldLoader.getMainPlayer());
-    addRenderable(mainWorldRenderer);
-  }
-
 }
