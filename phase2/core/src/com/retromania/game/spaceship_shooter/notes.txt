@@ -142,3 +142,13 @@ Code affected: SpaceShipShooterStarter, MenuScreen, SettingScreen, PauseScreen, 
 Flaw: We need to get rid of couplings and 'depreciated constructor method'
 
 Fix: deleted "game" attribute from constructor class of all above-mentioned classes
+
+#Step 18:
+
+Code affected: MenuScreen, PauseScreen
+
+Flaw: All the screen classes are responsible to multiple actors, including updating the entities on the screen and rendering the screen itself.
+
+Fix: Adding the GameRenderer class in the new utils package inside the spaceship_shooter package which responsible for rendering the screens in the game.
+
+Modify MenuScreen and PauseScreen to test rendering the menu and pause screens using the GameRenderer. This would fit with the Single Responsibility Principle and the MVP pattern, while removing duplicate codes.

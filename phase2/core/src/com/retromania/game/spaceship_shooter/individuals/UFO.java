@@ -75,7 +75,6 @@ public class UFO {
      * @param parentAlpha
      */
     public void draw(Batch batch, float parentAlpha) {
-        System.out.println(SpaceShipShooterStarter.getTheme()+ "independence day");
         if (SpaceShipShooterStarter.getTheme().equalsIgnoreCase("independence day"))
             batch.draw(texture1, x-width/2, y-height/2, width, height);
         else if (SpaceShipShooterStarter.getTheme().equalsIgnoreCase("halloween"))
