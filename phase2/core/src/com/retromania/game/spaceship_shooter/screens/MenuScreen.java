@@ -47,9 +47,6 @@ public class MenuScreen extends RetroManiaScreen {
 
     public MenuScreen(MainScreenInterface mainscreen){
         renderer = new GameRenderer("stretch");
-//        gamecam = new OrthographicCamera();
-//        gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
-//        background = new Background();
         this.mainscreen = mainscreen;
         stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
         temp = SpaceShipShooterStarter.getGameStats();

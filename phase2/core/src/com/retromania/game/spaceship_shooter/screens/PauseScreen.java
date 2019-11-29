@@ -36,9 +36,6 @@ public class PauseScreen extends RetroManiaScreen {
     private GameRenderer renderer;
     public PauseScreen(MainScreenInterface mainscreen){
         renderer = new GameRenderer("fill");
-//        gamecam = new OrthographicCamera();
-//        gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
-//        background = new Background();
         this.mainscreen = mainscreen;
         stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 

@@ -20,31 +20,22 @@ import com.retromania.game.spaceship_shooter.individuals.Car;
 import com.retromania.game.spaceship_shooter.individuals.Hud;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.UfoManager;
+import com.retromania.game.spaceship_shooter.utils.GameRenderer;
+import com.retromania.game.spaceship_shooter.utils.PlayerScreenRenderer;
 
 
 public class PlayScreen extends RetroManiaScreen {
-    private OrthographicCamera gamecam;
-    private Viewport gamePort;
-    private Hud hud;
-    private Car player;
-    private Background background;
-    private UfoManager ufoManager;
-
     private Stage stage;
     private ImageButton leftButton;
     private ImageButton rightButton;
     private ImageButton pauseButton;
     private MainScreenInterface mainscreen;
+    PlayerScreenRenderer renderer;
 
     public PlayScreen(MainScreenInterface mainscreen) {
-
-        gamecam = new OrthographicCamera();
-        gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
-        hud = new Hud(RetroMania.getRetroManiaInstance().sb);
-        player = new Car();
+        renderer = new PlayerScreenRenderer("stretch", new Hud(RetroMania.getRetroManiaInstance().sb), new Car(), new UfoManager(4));
         this.mainscreen = mainscreen;
-
-        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
+        stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 
 
         leftButton = (new ImageButtonBuilder()).buildTexture("left_button_big.png").buildButton();
@@ -63,8 +54,6 @@ public class PlayScreen extends RetroManiaScreen {
         stage.addActor(pauseButton);
         Gdx.input.setInputProcessor(stage);
 
-        background = new Background();
-        ufoManager = new UfoManager(4);
 
     }
     @Override
@@ -77,33 +66,24 @@ public class PlayScreen extends RetroManiaScreen {
 
     public void handleInput(){
         if (rightButton.isPressed()) {
-            player.moveRight();
-            if (!player.goingRight)
-                player.turnSide();
+            renderer.getPlayer().moveRight();
         }
         else if(leftButton.isPressed()){
-            player.moveLeft();
-            if (player.goingRight)
-                player.turnSide();
-
-
+            renderer.getPlayer().moveLeft();
         }
         else if(pauseButton.isPressed()){
             pause();
         }
 
         else if(Gdx.input.isTouched())
-            player.shoot();
+            renderer.getPlayer().shoot();
 
     }
 
     public void update(float dt){
         handleInput();
-
-        ufoManager.update(player.getiRocket(), hud);
-        gamecam.update();
-
-        if (hud.countDown(dt))
+        stage.act();
+        if (renderer.isFinished())
             endGame();
     }
 
@@ -112,23 +92,14 @@ public class PlayScreen extends RetroManiaScreen {
         update(delta);
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(hud.stage.getCamera().combined);
-        RetroMania.getRetroManiaInstance().sb.begin();
-        background.draw(RetroMania.getRetroManiaInstance().sb, delta);
-        if (player.shooted())
-            player.getiRocket().draw(game.sb, delta);
-        player.draw(RetroMania.getRetroManiaInstance().sb, delta);
-        ufoManager.draw(RetroMania.getRetroManiaInstance().sb, delta);
-        RetroMania.getRetroManiaInstance().sb.end();
-        hud.stage.draw();
+        renderer.render(delta);
         stage.draw();
 
     }
 
     @Override
     public void resize(int width, int height) {
-        gamePort.update(width, height);
+        renderer.resize(width, height);
     }
 
     @Override
@@ -144,7 +115,7 @@ public class PlayScreen extends RetroManiaScreen {
 
     public void endGame() {
         stage.dispose();
-        SpaceShipShooterStarter.getGameStats().update(hud.getScore());
+        SpaceShipShooterStarter.getGameStats().update(renderer.getScore());
         this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
         this.mainscreen.returnMenu(SpaceShipShooterStarter.getTheme());
         mainscreen.save();
