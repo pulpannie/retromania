@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.Hud;
@@ -21,7 +21,6 @@ import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
 
 public class SettingScreen extends RetroManiaScreen {
-    private RetroManiaGame game;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
     private Hud hud;
@@ -34,12 +33,11 @@ public class SettingScreen extends RetroManiaScreen {
     private MainScreenInterface mainscreen;
     SelectBox<String> gameModeBox;
 
-    public SettingScreen(RetroManiaGame game, MainScreenInterface mainscreen){
-        this.game = game;
+    public SettingScreen(MainScreenInterface mainscreen){
         gamecam = new OrthographicCamera();
         gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
         this.mainscreen = mainscreen;
-        stage = new Stage(gamePort, game.sb);
+        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
         background = new Background();
 
         Skin skin = new Skin(Gdx.files.internal("spaceship_shooter/glassy/skin/glassy-ui.json"));
@@ -89,11 +87,11 @@ public class SettingScreen extends RetroManiaScreen {
         Gdx.gl.glClearColor(256,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        game.sb.setProjectionMatrix(stage.getCamera().combined);
-        game.sb.begin();
+        RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(stage.getCamera().combined);
+        RetroMania.getRetroManiaInstance().sb.begin();
         background.draw(game.sb, delta);
 
-        game.sb.end();
+        RetroMania.getRetroManiaInstance().sb.end();
         stage.draw();
     }
 

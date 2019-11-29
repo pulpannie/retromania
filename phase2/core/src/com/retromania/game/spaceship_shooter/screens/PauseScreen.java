@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
@@ -20,7 +21,6 @@ import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 
 
 public class PauseScreen extends RetroManiaScreen {
-    private RetroManiaGame game;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
     private ImageButton resumeButton;
@@ -30,12 +30,11 @@ public class PauseScreen extends RetroManiaScreen {
     private Background background;
     private Stage stage;
     MainScreenInterface mainscreen;
-    public PauseScreen(RetroManiaGame game, MainScreenInterface mainscreen){
-        this.game = game;
+    public PauseScreen(MainScreenInterface mainscreen){
         gamecam = new OrthographicCamera();
         gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
         this.mainscreen = mainscreen;
-        stage = new Stage(gamePort, game.sb);
+        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
         background = new Background();
 
 
@@ -94,10 +93,10 @@ public class PauseScreen extends RetroManiaScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
-        game.sb.begin();
-        background.draw(game.sb, delta);
+        RetroMania.getRetroManiaInstance().sb.begin();
+        background.draw(RetroMania.getRetroManiaInstance().sb, delta);
 
-        game.sb.end();
+        RetroMania.getRetroManiaInstance().sb.end();
         stage.draw();
 
 

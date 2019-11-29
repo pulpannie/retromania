@@ -5,15 +5,15 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 
 public class StateFactory {
 
-    public static Screen getScreen(String type, RetroManiaGame game, MainScreenInterface mainscreen){
+    public static Screen getScreen(String type, MainScreenInterface mainscreen){
         if (type.equalsIgnoreCase("play screen"))
-            return new PlayScreen(game, mainscreen);
+            return new PlayScreen(mainscreen);
         else if (type.equalsIgnoreCase("pause screen"))
-            return new PauseScreen(game, mainscreen);
+            return new PauseScreen(mainscreen);
         else if (type.equalsIgnoreCase("menu screen"))
-            return new MenuScreen(game, mainscreen);
+            return new MenuScreen(mainscreen);
         else if (type.equalsIgnoreCase("setting screen"))
-            return new SettingScreen(game, mainscreen);
+            return new SettingScreen(mainscreen);
         else
             return null;
     }
