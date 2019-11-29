@@ -57,10 +57,10 @@ public abstract class RetroManiaScreen implements Screen, Renderable {
     @Override
     public void dispose() {}
 
-    public void addRenderable(Renderable renderable) {
+    protected void addRenderable(Renderable renderable) {
         this.renderables.add(renderable);
     }
-    public void addModel(RetroManiaModel model) {
+    protected void addModel(RetroManiaModel model) {
         this.models.add(model);
     }
 

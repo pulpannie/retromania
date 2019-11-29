@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.DaggerSpecialMarioStarterCreator;
+import com.retromania.game.tic_tac_toe.DaggerTicTacToeStarterComponent;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.FINAL_GAME;
 
@@ -23,6 +24,7 @@ public class AndroidLauncher extends AndroidApplication {
             r.sb = new SpriteBatch();
             r.setScreen(new GameLister());
 //            r.setScreen(FINAL_GAME);
+//			  r.setScreen(DaggerTicTacToeStarterComponent.create().getTicTacToeStarter());
           }
         };
 		RetroManiaGame game = RetroMania.getRetroManiaInstance().setCreatable(c);

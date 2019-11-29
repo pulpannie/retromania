@@ -33,12 +33,12 @@ public class PlayScreen extends RetroManiaScreen {
     public float gameWidth, gameHeight;
     CellManager cellManager;
     String winner;
-    GameSaver gameSaver;
+//    GameSaver gameSaver;
     User currentUser;
     private int size;
 
-    public PlayScreen(Boolean cats, int size, GameSaver gameSaver) {
-        this.gameSaver = gameSaver;
+    public PlayScreen(Boolean cats, int size) {
+//        this.gameSaver = gameSaver;
         System.out.println(cats);
         if (cats) {
             cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
@@ -98,8 +98,8 @@ public class PlayScreen extends RetroManiaScreen {
             if (winner.equals("None")) {
                 game.setScreen(new GameOverScreen(game, "No one"));
             } else if (winner.equals("Cross")) {
-                currentUser = gameSaver.getCurrentUser();
-                gameSaver.setScore(currentUser.getScore() + 1);
+//                currentUser = gameSaver.getCurrentUser();
+//                gameSaver.setScore(currentUser.getScore() + 1);
                 game.setScreen(new GameOverScreen(game, "Cross"));
 
             } else if (winner.equals("Circle")) {

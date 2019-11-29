@@ -89,3 +89,9 @@ Fix: fixed by passing the GameSaver class through the screens, getting the User 
 Code Affected: ImageButtonBuilder, MenuScreen
 Flaw: too lengthy imageButton construction process
 Fix: Added ImageButtonBuilder class to build imageButton and configurations.
+
+
+#Step 18
+Code Affected: TicTacToeStarter
+Flaw: The game was not using dagger
+Fix: The starter can be ginned from dagger now.

@@ -3,26 +3,27 @@ package com.retromania.game.tic_tac_toe;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.retromania.game.shared_abstractions.Configuration;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.tic_tac_toe.screens.MenuScreen;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class TicTacToeStarter extends RetroManiaInnerGame {
     public Stage stage;
-    public SpriteBatch batch;
     private MenuScreen menuScreen;
-    private Preferences preferences;
-    private User currentUser;
 
 
-    public TicTacToeStarter(String name, RetroManiaGame.Orientation orientation) {
-        super(name, orientation);
-        menuScreen = new MenuScreen(super.gameSaver);
+    @Inject
+    public TicTacToeStarter(MenuScreen menuScreen) {
+        super("Tic Tac Toe", RetroManiaGame.Orientation.VERTICAL);
+        game.setOrientation(getOrientation());
+        this.menuScreen = menuScreen;
     }
 
     @Override

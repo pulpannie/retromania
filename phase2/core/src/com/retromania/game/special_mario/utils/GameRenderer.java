@@ -3,7 +3,6 @@ package com.retromania.game.special_mario.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -24,14 +23,14 @@ public class GameRenderer implements Renderable {
   private Box2DDebugRenderer b2ddr;
   private OrthographicCamera gamecam;
 
-
   private Viewport gamePort;
   private MainPlayer mainPlayer;
   private World world;
   private TiledMapIndividualFactory tiledMapIndividualFactory;
 
   @Inject
-  public GameRenderer(MainPlayer mainPlayer,TiledMapIndividualFactory tiledMapIndividualFactory, World world) {
+  public GameRenderer(
+      MainPlayer mainPlayer, TiledMapIndividualFactory tiledMapIndividualFactory, World world) {
     this.tiledMapIndividualFactory = tiledMapIndividualFactory;
     this.world = world;
     this.mainPlayer = mainPlayer;
@@ -44,10 +43,11 @@ public class GameRenderer implements Renderable {
   private void setUpOrthogRenderer() {
     orthogRenderer =
         new OrthogonalTiledMapRenderer(
-            tiledMapIndividualFactory.getTiledMap(), SpecialMarioConfiguration.getPixelToMeterConversionRate());
+            tiledMapIndividualFactory.getTiledMap(),
+            SpecialMarioConfiguration.getPixelToMeterConversionRate());
   }
 
-  private void clearPage(){
+  private void clearPage() {
     setUpOrthogRenderer();
   }
 

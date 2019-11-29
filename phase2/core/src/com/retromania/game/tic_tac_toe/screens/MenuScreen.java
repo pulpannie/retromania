@@ -26,6 +26,10 @@ import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.tic_tac_toe.individuals.ImageButtonBuilder;
 import com.retromania.game.utils.GameSaver;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
     public SpriteBatch batch;
@@ -37,12 +41,12 @@ public class MenuScreen extends RetroManiaScreen {
     ImageButton playButton;
     ImageButton catButton, upButton, downButton;
     Viewport viewport;
-    GameSaver gameSaver;
+//    GameSaver gameSaver;
     private int size = 3;
-
-    public MenuScreen(GameSaver gameSaver) {
-        this.gameSaver = gameSaver;
-        gamecam = new OrthographicCamera();
+    @Inject
+    public MenuScreen(OrthographicCamera gamecam) {
+//        this.gameSaver = new GameSaver();
+        this.gamecam = gamecam;
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
         viewport = new FillViewport(gameWidth, gameHeight, gamecam);
@@ -90,7 +94,7 @@ public class MenuScreen extends RetroManiaScreen {
     @Override
     public void handleInput() {
         if (playButton.isPressed()) {
-            game.setScreen(new PlayScreen(catButton.isChecked(), size, gameSaver));
+            game.setScreen(new PlayScreen(catButton.isChecked(), size));
         }
     }
 
