@@ -157,7 +157,32 @@ Modify MenuScreen and PauseScreen to test rendering the menu and pause screens u
 
 Code affected: PlayScreen
 
-Flaw: PlayScreen is responsible to multiple actors, including updating the entities on the screen and rendering the screen itself.
+Flaw: PlayScreen is responsible to multiple actors, including handling inputs, updating the entities on the screen and rendering the screen itself.
 
-Fix: Applied MVP pattern, so that introduced new class named as PlayScreenRenderer which is child class of GameRenderer
+Fix: Applied MVP pattern by introducing new class named as PlayScreenRenderer which is child class of GameRenderer
 We introduced PlayScreenRenderer rather then using GameRenderer in order to draw more specific actors/entities
+
+#Step 20:
+
+Code affected: PauseScreen
+
+Flaw: PauseScreen is responsible to multiple actors, including handling inputs and rendering the screen itself.
+
+Fix: Applied MVP pattern by introducing new class named as PauseScreenRenderer which is child class of GameRenderer
+We introduced PauseScreenRenderer rather then using GameRenderer in order to draw more specific actors/entities.
+
+#Step 21:
+
+Code affected: GameRenderer, PauseScreenRenderer, PlayScreenRenderer
+
+Flaw: The Renderer Classes should not be responsible for handling input, this should be handled by the Screen Classes.
+
+Fix: Delete the handleInput method and modify the update method to adapt with the change in all above classes.
+
+#Step 22:
+
+Code affected: PauseScreen
+
+Flaw: In step 18, when introducing GameRenderer class to render the pause screen, the handleInput method in PauseScreen wasn't working, and we have to add the listener for all the buttons to recognize input from the user.
+
+Fix: Modify the render method in the PauseScreen Class to update the screen accordingly, which makes the handleInput method work and the pause screen is now able to recognize input from the user. Delete all the listeners for the buttons.

@@ -16,14 +16,9 @@ public class PlayerScreenRenderer extends  GameRenderer{
         this.player = player;
         this.ufoManager = ufoManager;
     }
-    @Override
-    public void handleInput(){
-        super.handleInput();
-    }
 
     @Override
     public void update(float dt){
-        handleInput();
         super.update(dt);
 
         ufoManager.update(player.getiRocket(), hud);

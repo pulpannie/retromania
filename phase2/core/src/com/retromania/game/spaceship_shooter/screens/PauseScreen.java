@@ -22,6 +22,7 @@ import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.utils.GameRenderer;
+import com.retromania.game.spaceship_shooter.utils.PauseScreenRenderer;
 
 
 public class PauseScreen extends RetroManiaScreen {
@@ -33,42 +34,24 @@ public class PauseScreen extends RetroManiaScreen {
     private Background background;
     private Stage stage;
     MainScreenInterface mainscreen;
-    private GameRenderer renderer;
+    private PauseScreenRenderer renderer;
     public PauseScreen(MainScreenInterface mainscreen){
-        renderer = new GameRenderer("fill");
+        renderer = new PauseScreenRenderer("fill");
         this.mainscreen = mainscreen;
         stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 
         resumeButton = (new ImageButtonBuilder()).buildTexture("resume.png").buildButton();
         resumeButton.setPosition(Gdx.graphics.getWidth()/2-150, Gdx.graphics.getHeight()/2 + 100);
         resumeButton.setSize(300, 300);
-        resumeButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                resume();
-            }
-        });
-        stage.addActor(resumeButton);
 
 
         restartButton = (new ImageButtonBuilder()).buildTexture("restart.png").buildButton();
         restartButton.setPosition(Gdx.graphics.getWidth()/2-110, Gdx.graphics.getHeight()/2-50);
         restartButton.setSize(200, 200);
-        restartButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                restart();
-            }
-        });
-        stage.addActor(restartButton);
 
         settingButton = (new ImageButtonBuilder()).buildTexture("setting.png").buildButton();
         settingButton.setPosition(Gdx.graphics.getWidth()/2-110, Gdx.graphics.getHeight()/2 - 300);
         settingButton.setSize(200, 200);
-        settingButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                modify();
-            }
-        });
-        stage.addActor(settingButton);
 
         Gdx.input.setInputProcessor(stage);
 
@@ -103,17 +86,8 @@ public class PauseScreen extends RetroManiaScreen {
 
     @Override
     public void render(final float delta) {
+        update(delta);
         renderer.render(delta);
-//        update(delta);
-//
-//        Gdx.gl.glClearColor(0,0,0,1);
-//        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//
-//
-//        RetroMania.getRetroManiaInstance().sb.begin();
-//        background.draw(RetroMania.getRetroManiaInstance().sb, delta);
-//
-//        RetroMania.getRetroManiaInstance().sb.end();
         stage.draw();
 
 

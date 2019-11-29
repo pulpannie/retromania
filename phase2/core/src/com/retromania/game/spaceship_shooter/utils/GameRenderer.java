@@ -29,12 +29,7 @@ public class GameRenderer implements Renderable {
         background = new Background();
     }
 
-    public void handleInput(){
-    }
-
     public void update(float dt){
-        handleInput();
-
         gamecam.update();
     }
 
