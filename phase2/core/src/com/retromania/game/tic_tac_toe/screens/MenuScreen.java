@@ -28,7 +28,6 @@ import com.retromania.game.utils.GameSaver;
 
 public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
-    public String currentTurn;
     public SpriteBatch batch;
     public OrthographicCamera gamecam;
     BitmapFont font = new BitmapFont();
@@ -38,12 +37,10 @@ public class MenuScreen extends RetroManiaScreen {
     ImageButton playButton;
     ImageButton catButton, upButton, downButton;
     Viewport viewport;
-    Skin uiSkin;
     GameSaver gameSaver;
-    boolean cats = false;
     private int size = 3;
 
-    public MenuScreen(GameSaver gameSaver){
+    public MenuScreen(GameSaver gameSaver) {
         this.gameSaver = gameSaver;
         gamecam = new OrthographicCamera();
         gameWidth = Gdx.graphics.getWidth();
@@ -56,16 +53,16 @@ public class MenuScreen extends RetroManiaScreen {
         table.setBounds(0, 0, gameWidth, gameHeight);
 //        uiSkin = new Skin(Gdx.files.internal("tic_tac_toe/uiskin.json"));
         imageButtonBuilder = new ImageButtonBuilder();
-        playButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/play_tictactoe.png")),200,200,gameWidth/2 - 110, gameHeight/2-70);
+        playButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/play_tictactoe.png")), 200, 200, gameWidth / 2 - 110, gameHeight / 2 - 70);
         stage.addActor(playButton);
 
         /**Create cat buttons, tutorial from "https://alvinalexander.com/source-code/how-create-libgdx-scene2d-imagebutton" */
         Texture catTexture = new Texture(Gdx.files.internal("tic_tac_toe/radio-off-button.png"));
         Texture catTexturePressed = new Texture(Gdx.files.internal("tic_tac_toe/radio-on-button.png"));
-        catButton = imageButtonBuilder.buildButton(catTexture, catTexturePressed, 60, 60, gameWidth/2-220, gameHeight/3);
+        catButton = imageButtonBuilder.buildButton(catTexture, catTexturePressed, 60, 60, gameWidth / 2 - 220, gameHeight / 3);
         stage.addActor(catButton);
 
-        upButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/up.png")), 50, 50,gameWidth/2 - 50, gameHeight/3+40);
+        upButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/up.png")), 50, 50, gameWidth / 2 - 50, gameHeight / 3 + 40);
         upButton.addListener(new ClickListener() {
                                  public void clicked(InputEvent event, float x, float y) {
                                      size++;
@@ -74,14 +71,14 @@ public class MenuScreen extends RetroManiaScreen {
         );
         stage.addActor(upButton);
 
-        downButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/down.png")), 50, 50,gameWidth/2 - 50, gameHeight/3-40);
+        downButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/down.png")), 50, 50, gameWidth / 2 - 50, gameHeight / 3 - 40);
         downButton.addListener(new ClickListener() {
-                                 public void clicked(InputEvent event, float x, float y) {
-                                     if (size > 3) {
-                                         size--;
-                                     }
-                                 }
-                             }
+                                   public void clicked(InputEvent event, float x, float y) {
+                                       if (size > 3) {
+                                           size--;
+                                       }
+                                   }
+                               }
         );
         stage.addActor(downButton);
 
@@ -92,7 +89,7 @@ public class MenuScreen extends RetroManiaScreen {
 
     @Override
     public void handleInput() {
-        if (playButton.isPressed()){
+        if (playButton.isPressed()) {
             game.setScreen(new PlayScreen(catButton.isChecked(), size, gameSaver));
         }
     }
@@ -115,10 +112,10 @@ public class MenuScreen extends RetroManiaScreen {
         batch.begin();
         font.setColor(Color.BLACK);
         font.getData().setScale(2, 2);
-        font.draw(batch, "CATS!", gameWidth/2-210, gameHeight/3-30);
+        font.draw(batch, "CATS!", gameWidth / 2 - 210, gameHeight / 3 - 30);
         batch.end();
         batch.begin();
-        font.draw(batch, Integer.toString(size), gameWidth/2-50, gameHeight/3+30);
+        font.draw(batch, Integer.toString(size), gameWidth / 2 - 50, gameHeight / 3 + 30);
         batch.end();
 
     }
@@ -128,7 +125,7 @@ public class MenuScreen extends RetroManiaScreen {
         viewport.update(width, height);
     }
 
-    public void dispose(){
+    public void dispose() {
         stage.dispose();
     }
 }

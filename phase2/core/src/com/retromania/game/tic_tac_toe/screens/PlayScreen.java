@@ -22,7 +22,7 @@ import com.retromania.game.utils.GameSaver;
 
 public class PlayScreen extends RetroManiaScreen {
     public Stage stage;
-    public static ShapeRenderer boardRenderer=new ShapeRenderer();
+    public static ShapeRenderer boardRenderer = new ShapeRenderer();
     public String currentTurn;
     public SpriteBatch batch;
     public Texture cross;
@@ -37,21 +37,20 @@ public class PlayScreen extends RetroManiaScreen {
     User currentUser;
     private int size;
 
-    public PlayScreen(Boolean cats, int size, GameSaver gameSaver){
+    public PlayScreen(Boolean cats, int size, GameSaver gameSaver) {
         this.gameSaver = gameSaver;
         System.out.println(cats);
-        if (cats){
+        if (cats) {
             cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
             circle = new Texture(Gdx.files.internal("tic_tac_toe/cat3.png"));
-        }
-        else {
+        } else {
             cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
             circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
         }
         this.size = size;
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
-        ticTacToe = new TicTacToe((int)gameWidth, (int)gameHeight, size);
+        ticTacToe = new TicTacToe((int) gameWidth, (int) gameHeight, size);
         cellManager = ticTacToe.getCellManager();
         currentTurn = "Cross";
     }
@@ -74,21 +73,9 @@ public class PlayScreen extends RetroManiaScreen {
         stage.act(delta);
         stage.draw();
         for (int i = 1; i < size; i++) {
-            DrawBoardLine(new Vector2(gameWidth*i / size, 0), new Vector2(gameWidth*i / size, gameHeight), gamecam.combined);
-            DrawBoardLine(new Vector2(0, gameHeight*i / size), new Vector2(gameWidth, gameHeight*i / size), gamecam.combined);
+            DrawBoardLine(new Vector2(gameWidth * i / size, 0), new Vector2(gameWidth * i / size, gameHeight), gamecam.combined);
+            DrawBoardLine(new Vector2(0, gameHeight * i / size), new Vector2(gameWidth, gameHeight * i / size), gamecam.combined);
         }
-
-
-        /*DEBUGGING PURPOSE*/
-        for(int i = 0; i < size; i++){
-            for (int j = 0; j <size; j++){
-                batch.begin();
-                font.getData().setScale(5.0f);
-                font.draw(batch, Integer.toString(i) + Integer.toString(j), gameWidth*i/size, gameHeight*j/size + 50);
-                batch.end();
-            }
-        }
-        /*END*/
 
         if (Gdx.input.isTouched()) {
             Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -98,32 +85,30 @@ public class PlayScreen extends RetroManiaScreen {
             this.currentTurn = ticTacToe.currentTurn;
         }
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++){
+            for (int j = 0; j < size; j++) {
                 if (!cellArray[i][j].getCell().equals("None")) {
                     batch.begin();
-                    batch.draw(this.getCell(cellArray[i][j].getCell()), gameWidth*i/size, gameHeight*j/size, gameWidth / size, gameHeight / size);
+                    batch.draw(this.getCell(cellArray[i][j].getCell()), gameWidth * i / size, gameHeight * j / size, gameWidth / size, gameHeight / size);
                     batch.end();
                 }
             }
         }
-        if(ticTacToe.isEnd()){
+        if (ticTacToe.isEnd()) {
             winner = ticTacToe.getWinner();
-            if(winner.equals("None")){
+            if (winner.equals("None")) {
                 game.setScreen(new GameOverScreen(game, "No one"));
-            }
-            else if(winner.equals("Cross")){
+            } else if (winner.equals("Cross")) {
                 currentUser = gameSaver.getCurrentUser();
                 gameSaver.setScore(currentUser.getScore() + 1);
                 game.setScreen(new GameOverScreen(game, "Cross"));
 
-            }
-            else if (winner.equals("Circle")){
+            } else if (winner.equals("Circle")) {
                 game.setScreen(new GameOverScreen(game, "Circle"));
             }
         }
     }
 
-    public static void DrawBoardLine(Vector2 start, Vector2 end, Matrix4 projectionMatrix){
+    public static void DrawBoardLine(Vector2 start, Vector2 end, Matrix4 projectionMatrix) {
         Gdx.gl.glLineWidth(15);
         boardRenderer.setProjectionMatrix(projectionMatrix);
         boardRenderer.begin(ShapeRenderer.ShapeType.Line);
@@ -133,11 +118,10 @@ public class PlayScreen extends RetroManiaScreen {
 
     }
 
-    public Texture getCell(String string){
-        if (string == "Cross"){
+    public Texture getCell(String string) {
+        if (string == "Cross") {
             return cross;
-        }
-        else if (string == "Circle"){
+        } else if (string == "Circle") {
             return circle;
         }
         return null;

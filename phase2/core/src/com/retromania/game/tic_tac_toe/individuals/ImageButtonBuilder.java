@@ -7,11 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-public class ImageButtonBuilder{
+public class ImageButtonBuilder {
     ImageButton imageButton;
     boolean pressed = false;
 
-    public ImageButton buildButton(Texture texture, float width, float height, float posx, float posy){
+    public ImageButton buildButton(Texture texture, float width, float height, float posx, float posy) {
         imageButton = new ImageButton(
                 new TextureRegionDrawable(new TextureRegion(texture)));
         imageButton.setSize(width, height);
@@ -19,7 +19,7 @@ public class ImageButtonBuilder{
         return imageButton;
     }
 
-    public ImageButton buildButton (Texture texture1, Texture texture2, float width, float height, float posx, float posy){
+    public ImageButton buildButton(Texture texture1, Texture texture2, float width, float height, float posx, float posy) {
         imageButton = new ImageButton(
                 new TextureRegionDrawable(new TextureRegion(texture1)),
                 new TextureRegionDrawable(new TextureRegion(texture2)),
@@ -42,7 +42,6 @@ public class ImageButtonBuilder{
                 });
         return imageButton;
     }
-
 
 
 }
