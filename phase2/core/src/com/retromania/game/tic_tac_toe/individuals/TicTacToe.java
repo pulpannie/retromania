@@ -1,17 +1,23 @@
 package com.retromania.game.tic_tac_toe.individuals;
 
+import com.retromania.game.shared_abstractions.User;
+import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class TicTacToe {
     CellManager cellManager;
     public String currentTurn;
-    int gameWidth, gameHeight;
-    int size;
+    UserPrefrence userPrefrence;
 
-    public TicTacToe(int gameWidth, int gameHeight, int size) {
-        this.size = size;
-        this.cellManager = new CellManager(gameWidth, gameHeight, size);
+
+    @Inject
+    public TicTacToe(UserPrefrence userPrefrence, CellManager cellManager) {
+//        TODO delete the gameWidth and gameHeight from cells logic
+        this.userPrefrence = userPrefrence;
+        this.cellManager = cellManager;
         this.currentTurn = "Cross";
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
     }
 
     public CellManager getCellManager() {
@@ -19,8 +25,8 @@ public class TicTacToe {
     }
 
     public void selectCell(int x, int y) {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < userPrefrence.getGameSize(); i++) {
+            for (int j = 0; j < userPrefrence.getGameSize(); j++) {
                 if (cellManager.cellArray[i][j].inCell(x, y)) {
                     if (!cellManager.cellArray[i][j].isTouched) {
                         cellManager.cellArray[i][j].isTouched = true;
@@ -57,12 +63,12 @@ public class TicTacToe {
 
     /* FUNCTIONS FOR AI implementation of TicTacToe */
 
-    public TicTacToe copyTicTacToe() {
-        TicTacToe newTicTacToe = new TicTacToe(gameWidth, gameHeight, size);
-        newTicTacToe.cellManager = this.cellManager.copyCellManager();
-        newTicTacToe.currentTurn = this.currentTurn;
-        return newTicTacToe;
-    }
+//    public TicTacToe copyTicTacToe() {
+//        TicTacToe newTicTacToe = new TicTacToe(gameWidth, gameHeight, userPrefrence);
+//        newTicTacToe.cellManager = this.cellManager.copyCellManager();
+//        newTicTacToe.currentTurn = this.currentTurn;
+//        return newTicTacToe;
+//    }
 
     public Cell[][] getCellStates() {
         return cellManager.cellArray;

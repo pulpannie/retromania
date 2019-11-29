@@ -95,3 +95,9 @@ Fix: Added ImageButtonBuilder class to build imageButton and configurations.
 Code Affected: TicTacToeStarter
 Flaw: The game was not using dagger
 Fix: The starter can be ginned from dagger now.
+
+
+#Step 19
+Code Affected: MenuScreen, PlayScreen, CellManager
+Flaw: All the aforementioned classes had their instantiations made by hard coding.
+Fix: Dagger was used to inject dependencies.

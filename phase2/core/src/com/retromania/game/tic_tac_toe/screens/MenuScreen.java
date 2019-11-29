@@ -23,7 +23,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
+import com.retromania.game.tic_tac_toe.TicTacToeConfiguration;
 import com.retromania.game.tic_tac_toe.individuals.ImageButtonBuilder;
+import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
 import com.retromania.game.utils.GameSaver;
 
 import javax.inject.Inject;
@@ -41,12 +43,29 @@ public class MenuScreen extends RetroManiaScreen {
     ImageButton playButton;
     ImageButton catButton, upButton, downButton;
     Viewport viewport;
+    UserPrefrence userPrefrence;
+    PlayScreen playScreen;
 //    GameSaver gameSaver;
-    private int size = 3;
     @Inject
-    public MenuScreen(OrthographicCamera gamecam) {
+    public MenuScreen(OrthographicCamera gamecam, UserPrefrence userPrefrence, PlayScreen playScreen) {
 //        this.gameSaver = new GameSaver();
+
+        this.playScreen = playScreen;
+        this.userPrefrence = userPrefrence;
         this.gamecam = gamecam;
+    }
+
+    @Override
+    public void handleInput() {
+        if (playButton.isPressed()) {
+            game.setScreen(playScreen);
+        }
+    }
+
+    @Override
+    public void show() {
+
+
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
         viewport = new FillViewport(gameWidth, gameHeight, gamecam);
@@ -69,7 +88,7 @@ public class MenuScreen extends RetroManiaScreen {
         upButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/up.png")), 50, 50, gameWidth / 2 - 50, gameHeight / 3 + 40);
         upButton.addListener(new ClickListener() {
                                  public void clicked(InputEvent event, float x, float y) {
-                                     size++;
+                                     userPrefrence.addSize();
                                  }
                              }
         );
@@ -78,8 +97,8 @@ public class MenuScreen extends RetroManiaScreen {
         downButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/down.png")), 50, 50, gameWidth / 2 - 50, gameHeight / 3 - 40);
         downButton.addListener(new ClickListener() {
                                    public void clicked(InputEvent event, float x, float y) {
-                                       if (size > 3) {
-                                           size--;
+                                       if (userPrefrence.getGameSize() > 3) {
+                                           userPrefrence.decreaseSize();
                                        }
                                    }
                                }
@@ -89,17 +108,8 @@ public class MenuScreen extends RetroManiaScreen {
         stage.addActor(table);
         table.debug();
 
-    }
 
-    @Override
-    public void handleInput() {
-        if (playButton.isPressed()) {
-            game.setScreen(new PlayScreen(catButton.isChecked(), size));
-        }
-    }
 
-    @Override
-    public void show() {
         Gdx.input.setInputProcessor(stage);
 
     }
@@ -119,7 +129,7 @@ public class MenuScreen extends RetroManiaScreen {
         font.draw(batch, "CATS!", gameWidth / 2 - 210, gameHeight / 3 - 30);
         batch.end();
         batch.begin();
-        font.draw(batch, Integer.toString(size), gameWidth / 2 - 50, gameHeight / 3 + 30);
+        font.draw(batch, Integer.toString(userPrefrence.getGameSize()), gameWidth / 2 - 50, gameHeight / 3 + 30);
         batch.end();
 
     }

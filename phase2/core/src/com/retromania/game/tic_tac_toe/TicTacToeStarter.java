@@ -22,7 +22,6 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     @Inject
     public TicTacToeStarter(MenuScreen menuScreen) {
         super("Tic Tac Toe", RetroManiaGame.Orientation.VERTICAL);
-        game.setOrientation(getOrientation());
         this.menuScreen = menuScreen;
     }
 

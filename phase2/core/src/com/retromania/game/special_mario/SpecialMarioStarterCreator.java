@@ -36,7 +36,6 @@ public interface SpecialMarioStarterCreator {
     Builder MusicAddress(@Named("Music Name") String musicName);
 
 
-
     SpecialMarioStarterCreator build();
   }
 }
