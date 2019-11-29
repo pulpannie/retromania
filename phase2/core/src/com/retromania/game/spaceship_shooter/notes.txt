@@ -186,3 +186,20 @@ Code affected: PauseScreen
 Flaw: In step 18, when introducing GameRenderer class to render the pause screen, the handleInput method in PauseScreen wasn't working, and we have to add the listener for all the buttons to recognize input from the user.
 
 Fix: Modify the render method in the PauseScreen Class to update the screen accordingly, which makes the handleInput method work and the pause screen is now able to recognize input from the user. Delete all the listeners for the buttons.
+
+#Step 23:
+
+Code affected: MenuScreen, SettingScreen
+
+Flaw: MenuScreen and SettingScreen are responsible to multiple actors, including handling inputs and rendering the screen itself.
+
+Fix: Applied MVP pattern by introducing two new classes named as MenuScreenRenderer and SettingScreenRenderer which are child classes of GameRenderer
+We introduced MenuScreenRenderer and SettingScreenRenderer rather then using GameRenderer in order to draw more specific actors/entities.
+
+#Step 24:
+
+Code affected: MenuScreen, PauseScreen, PlayScreen, SettingScreen
+
+Flaw: Too many unused import statements in the above classes.
+
+Fix: Delete all the unused import statements in all the above classes.
