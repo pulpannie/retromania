@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
@@ -22,7 +23,6 @@ import com.retromania.game.spaceship_shooter.individuals.UfoManager;
 
 
 public class PlayScreen extends RetroManiaScreen {
-    private RetroManiaGame game;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
     private Hud hud;
@@ -31,20 +31,20 @@ public class PlayScreen extends RetroManiaScreen {
     private UfoManager ufoManager;
 
     private Stage stage;
-    static ImageButton leftButton;
-    static ImageButton rightButton;
-    static ImageButton pauseButton;
-    MainScreenInterface mainscreen;
+    private ImageButton leftButton;
+    private ImageButton rightButton;
+    private ImageButton pauseButton;
+    private MainScreenInterface mainscreen;
 
-    public PlayScreen(RetroManiaGame game, MainScreenInterface mainscreen) {
-        this.game = game;
+    public PlayScreen(MainScreenInterface mainscreen) {
+
         gamecam = new OrthographicCamera();
         gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
-        hud = new Hud(game.sb);
+        hud = new Hud(RetroMania.getRetroManiaInstance().sb);
         player = new Car();
         this.mainscreen = mainscreen;
 
-        stage = new Stage(gamePort, game.sb);
+        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
 
 
         leftButton = (new ImageButtonBuilder()).buildTexture("left_button_big.png").buildButton();
@@ -110,18 +110,17 @@ public class PlayScreen extends RetroManiaScreen {
     @Override
     public void render(final float delta) {
         update(delta);
-
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        game.sb.setProjectionMatrix(hud.stage.getCamera().combined);
-        game.sb.begin();
-        background.draw(game.sb, delta);
+        RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(hud.stage.getCamera().combined);
+        RetroMania.getRetroManiaInstance().sb.begin();
+        background.draw(RetroMania.getRetroManiaInstance().sb, delta);
         if (player.shooted())
             player.getiRocket().draw(game.sb, delta);
-        player.draw(game.sb, delta);
-        ufoManager.draw(game.sb, delta);
-        game.sb.end();
+        player.draw(RetroMania.getRetroManiaInstance().sb, delta);
+        ufoManager.draw(RetroMania.getRetroManiaInstance().sb, delta);
+        RetroMania.getRetroManiaInstance().sb.end();
         hud.stage.draw();
         stage.draw();
 
@@ -147,7 +146,7 @@ public class PlayScreen extends RetroManiaScreen {
         stage.dispose();
         SpaceShipShooterStarter.getGameStats().update(hud.getScore());
         this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
-        game.setScreen(SpaceShipShooterStarter.getMenuScreen());
+        this.mainscreen.returnMenu(SpaceShipShooterStarter.getTheme());
         mainscreen.save();
     }
 

@@ -61,12 +61,12 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     private Preferences preferences;
 
     public SpaceShipShooterStarter(RetroManiaGame game){
-        super(game, "Spaceship shooter", RetroManiaGame.Orientation.VERTICAL);
+        super("Spaceship shooter", RetroManiaGame.Orientation.VERTICAL);
         gameStats = new GameStats();
-        playScreen = StateFactory.getScreen("play screen", game, this);
-        pauseScreen = StateFactory.getScreen("pause screen", game, this);
-        menuScreen = StateFactory.getScreen("menu screen", game, this);
-        settingScreen = StateFactory.getScreen("setting screen", game, this);
+        playScreen = StateFactory.getScreen("play screen", this);
+        pauseScreen = StateFactory.getScreen("pause screen", this);
+        menuScreen = StateFactory.getScreen("menu screen",  this);
+        settingScreen = StateFactory.getScreen("setting screen",  this);
         preferences = game.getPrefrences(Configuration.spaceshipDestroyerPreference);
     }
 
@@ -157,7 +157,7 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     }
 
     public void restart(){
-        setPlayScreen(new PlayScreen(game, this));
+        setPlayScreen(new PlayScreen(this));
         game.setScreen(getPlayScreen());
     }
 

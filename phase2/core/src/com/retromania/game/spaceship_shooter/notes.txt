@@ -134,3 +134,11 @@ Code affected:  glassy-ui.json
 Flaw: the template json file is not in correct java format for json files.
 
 Fix: Fixes all the incorrect formats on that file.
+
+#Step 17:
+
+Code affected: SpaceShipShooterStarter, MenuScreen, SettingScreen, PauseScreen, PlayScreen
+
+Flaw: We need to get rid of couplings and 'depreciated constructor method'
+
+Fix: deleted "game" attribute from constructor class of all above-mentioned classes
