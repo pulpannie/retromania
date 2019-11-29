@@ -13,10 +13,10 @@ import com.retromania.game.colour_shooter.screens.PlayScreen;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Individual;
 
-public class Square extends Character implements Individual {
+public class Bullet extends Character implements Individual {
 
-    public Square(TextureRegion textureRegion, int x, int y, int width,
-                  int height, float pixelToMeterRate, World world) {
+    public Bullet(TextureRegion textureRegion, int x, int y, int width,
+                     int height, float pixelToMeterRate, World world) {
         super(textureRegion, x, y, width, height, pixelToMeterRate, world);
     }
 

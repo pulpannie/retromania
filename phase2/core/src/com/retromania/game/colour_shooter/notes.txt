@@ -81,3 +81,12 @@ Code Affected: PlayScreen
 
 Flaw: Rotation of Square and dimensions are not proper
 Fix: Adjusted and improved the code associated to the position of the Square and its rotation.
+
+#Step 13:
+
+Code Affected: PlayScreen, Header, Rectangle
+
+Added header to Playscreen class. Header is a seperate class which uses LibGdx Table to make a table.
+The table has timer, colour and score label. Currently, colour is being chosen at random.
+Timer and score are currently unimplemented.
+Added class Rectangle. It isn't implemented currently.
