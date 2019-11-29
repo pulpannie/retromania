@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
+import com.retromania.game.tic_tac_toe.individuals.ImageButtonBuilder;
 import com.retromania.game.utils.GameSaver;
 
 public class MenuScreen extends RetroManiaScreen {
@@ -33,6 +34,7 @@ public class MenuScreen extends RetroManiaScreen {
     BitmapFont font = new BitmapFont();
     public float gameWidth;
     public float gameHeight;
+    ImageButtonBuilder imageButtonBuilder;
     ImageButton playButton;
     ImageButton catButton, upButton, downButton;
     Viewport viewport;
@@ -53,48 +55,17 @@ public class MenuScreen extends RetroManiaScreen {
         Table table = new Table();
         table.setBounds(0, 0, gameWidth, gameHeight);
 //        uiSkin = new Skin(Gdx.files.internal("tic_tac_toe/uiskin.json"));
-        playButton = new ImageButton( new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("tic_tac_toe/play_tictactoe.png")))));
-        playButton.setSize(200,200);
-        playButton.setPosition(gameWidth/2 - 110, gameHeight/2-70);
+        imageButtonBuilder = new ImageButtonBuilder();
+        playButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/play_tictactoe.png")),200,200,gameWidth/2 - 110, gameHeight/2-70);
         stage.addActor(playButton);
 
         /**Create cat buttons, tutorial from "https://alvinalexander.com/source-code/how-create-libgdx-scene2d-imagebutton" */
         Texture catTexture = new Texture(Gdx.files.internal("tic_tac_toe/radio-off-button.png"));
         Texture catTexturePressed = new Texture(Gdx.files.internal("tic_tac_toe/radio-on-button.png"));
-        catButton = new ImageButton(
-                new TextureRegionDrawable(new TextureRegion(catTexture)),
-                new TextureRegionDrawable(new TextureRegion(catTexturePressed)),
-                new TextureRegionDrawable(new TextureRegion(catTexturePressed))
-        );
-        catButton.setSize(60, 60);
-        catButton.setPosition(gameWidth/2-220, gameHeight/3);
-
-        catButton.addListener(
-                new InputListener() {
-                    @Override
-                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                        System.out.println("CATS PRESSED");
-                        if (cats == false) {
-                            catButton.setChecked(true);
-                            cats = true;
-                        }
-                        else{
-                            catButton.setChecked(false);
-                            cats = false;
-                        }
-                    }
-
-                    @Override
-                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                        System.out.println("CATS...");
-                        return true;
-                    }
-                });
+        catButton = imageButtonBuilder.buildButton(catTexture, catTexturePressed, 60, 60, gameWidth/2-220, gameHeight/3);
         stage.addActor(catButton);
 
-        upButton = new ImageButton( new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("tic_tac_toe/up.png")))));
-        upButton.setSize(50,50);
-        upButton.setPosition(gameWidth/2 - 50, gameHeight/3+40);
+        upButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/up.png")), 50, 50,gameWidth/2 - 50, gameHeight/3+40);
         upButton.addListener(new ClickListener() {
                                  public void clicked(InputEvent event, float x, float y) {
                                      size++;
@@ -102,9 +73,8 @@ public class MenuScreen extends RetroManiaScreen {
                              }
         );
         stage.addActor(upButton);
-        downButton = new ImageButton( new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("tic_tac_toe/down.png")))));
-        downButton.setSize(50,50);
-        downButton.setPosition(gameWidth/2 - 50, gameHeight/3-40);
+
+        downButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/down.png")), 50, 50,gameWidth/2 - 50, gameHeight/3-40);
         downButton.addListener(new ClickListener() {
                                  public void clicked(InputEvent event, float x, float y) {
                                      if (size > 3) {
@@ -123,7 +93,7 @@ public class MenuScreen extends RetroManiaScreen {
     @Override
     public void handleInput() {
         if (playButton.isPressed()){
-            game.setScreen(new PlayScreen(cats, size, gameSaver));
+            game.setScreen(new PlayScreen(catButton.isChecked(), size, gameSaver));
         }
     }
 

@@ -84,3 +84,8 @@ Fix: fixed by changing CellManager's Cell object, winnerCell, to String object, 
 Code Affected: MenuScreen, PlayScreen, TicTacToeStarter
 Flaw: cannot save user data
 Fix: fixed by passing the GameSaver class through the screens, getting the User in the PlayScreen and updating score accordingly.
+
+#Step 17
+Code Affected: ImageButtonBuilder, MenuScreen
+Flaw: too lengthy imageButton construction process
+Fix: Added ImageButtonBuilder class to build imageButton and configurations.
