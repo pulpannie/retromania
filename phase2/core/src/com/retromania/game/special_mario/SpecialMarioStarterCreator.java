@@ -1,5 +1,6 @@
 package com.retromania.game.special_mario;
 
+import com.retromania.game.special_mario.models.utils.LevelPreferenceProvider;
 import com.retromania.game.special_mario.views.renderables.RendererProvider;
 import com.retromania.game.special_mario.views.renderables.UserRenderPrefPrefrenceProvider;
 import com.retromania.game.special_mario.utils.TextureAtlasLoader;
@@ -13,7 +14,7 @@ import dagger.BindsInstance;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {WorldManager.class, TextureAtlasLoader.class, RendererProvider.class, UserRenderPrefPrefrenceProvider.class})
+@Component(modules = {WorldManager.class, TextureAtlasLoader.class, RendererProvider.class, UserRenderPrefPrefrenceProvider.class, LevelPreferenceProvider.class})
 public interface SpecialMarioStarterCreator {
   SpecialMarioStarter getSpecialMarioStarter();
 

@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.models;
+package com.retromania.game.special_mario.models.player;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,8 +11,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.RetroManiaModel;
-import com.retromania.game.special_mario.utils.BodyPart;
-import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
+import com.retromania.game.special_mario.models.MainPlayerInput;
 
 import javax.inject.Inject;
 import javax.inject.Named;

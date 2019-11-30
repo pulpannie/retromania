@@ -3,6 +3,7 @@ package com.retromania.game.special_mario.views.renderables;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -11,8 +12,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.SpecialMarioConfiguration;
-import com.retromania.game.special_mario.models.MainPlayer;
-import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
+import com.retromania.game.special_mario.models.player.MainPlayer;
+import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -28,12 +29,15 @@ class GameRenderer implements MarioRenderable {
   private Viewport gamePort;
   private MainPlayer mainPlayer;
   private World world;
-  private TiledMapIndividualFactory tiledMapIndividualFactory;
+  private SpecialMarioStarterPresenter marioGamePresenter;
+  private TiledMap currTiledMap;
 
   @Inject
   GameRenderer(
-      MainPlayer mainPlayer, TiledMapIndividualFactory tiledMapIndividualFactory, World world) {
-    this.tiledMapIndividualFactory = tiledMapIndividualFactory;
+          MainPlayer mainPlayer,
+          World world, SpecialMarioStarterPresenter marioGamePresenter) {
+    this.marioGamePresenter = marioGamePresenter;
+    this.currTiledMap = this.marioGamePresenter.getTileMap();
     this.world = world;
     this.mainPlayer = mainPlayer;
     setUpGamecam();
@@ -45,7 +49,7 @@ class GameRenderer implements MarioRenderable {
   private void setUpOrthogRenderer() {
     orthogRenderer =
         new OrthogonalTiledMapRenderer(
-            tiledMapIndividualFactory.getTiledMap(),
+                marioGamePresenter.getTileMap(),
             SpecialMarioConfiguration.getPixelToMeterConversionRate());
   }
 
@@ -58,6 +62,11 @@ class GameRenderer implements MarioRenderable {
   public void update() {
     handleInput();
     gamecam.update();
+
+    if(checkTiledMap()){
+      currTiledMap = this.marioGamePresenter.getTileMap();
+      setUpOrthogRenderer();
+    }
   }
 
   @Override
@@ -92,6 +101,11 @@ class GameRenderer implements MarioRenderable {
 
   public void resize(int width, int height) {
     gamePort.update(width, height);
+  }
+
+  @Override
+  public boolean checkTiledMap() {
+    return currTiledMap != this.marioGamePresenter.getTileMap();
   }
 
   @Override

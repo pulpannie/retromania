@@ -1,5 +1,6 @@
 package com.retromania.game;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -10,7 +11,7 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.FINAL_GAME;
 
-
+@android.annotation.TargetApi(Build.VERSION_CODES.N)
 public class AndroidLauncher extends AndroidApplication {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {

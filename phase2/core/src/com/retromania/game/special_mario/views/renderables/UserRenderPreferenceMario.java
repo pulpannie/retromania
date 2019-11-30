@@ -1,30 +1,53 @@
 package com.retromania.game.special_mario.views.renderables;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
 import javax.inject.Inject;
 
-public class UserRenderPreferenceMario implements UserRenderPreference {
+class UserRenderPreferenceMario implements UserRenderPreference {
 
-    private GameRenderer gameRenderer;
-    private MarioRenderable selectedRenderer;
-    @Inject
-    UserRenderPreferenceMario(GameRenderer gameRenderer){
-        this.gameRenderer = gameRenderer;
-        setGameRenderNormal();
-    }
+  private GameRenderer gameRenderer;
+  private MarioRenderable selectedRenderer;
+  private Map<Supplier<MarioRenderable>, String> functionOfRenderModeMap = new HashMap<>();
+  @Inject
+  UserRenderPreferenceMario(
+      GameRenderer gameRenderer) {
+      this.gameRenderer = gameRenderer;
 
-    @Override
-    public void setGameRenderNormal() {
-        this.selectedRenderer = gameRenderer;
-    }
 
-    @Override
-    public void setGameRenderSurvival() {
-        throw new RuntimeException("this renderer has not been implemented yet.");
-    }
+    setGameRenderNormal();
+    functionOfRenderModeMap.put(this::setGameRenderNormal, "NORMAL GAME");
+    functionOfRenderModeMap.put(this::setGameRenderNormal, "SURVIVAL GAME");
+    functionOfRenderModeMap.put(this::setGameRenderGhost, "GHOST GAME");
 
-    @Override
-    public MarioRenderable getRenderable() {
-        System.out.println("Hey look a me "+ selectedRenderer);
-        return selectedRenderer;
-    }
+  }
+
+  @Override
+  public Map<Supplier<MarioRenderable>, String> getRenderModeFunctions() {
+    return functionOfRenderModeMap;
+  }
+
+  @Override
+  public MarioRenderable setGameRenderNormal() {
+    this.selectedRenderer = gameRenderer;
+    return selectedRenderer;
+  }
+
+  @Override
+  public MarioRenderable setGameRenderSurvival() {
+    throw new RuntimeException("this renderer has not been implemented yet.");
+  }
+
+  @Override
+  public MarioRenderable setGameRenderGhost() {
+    throw new RuntimeException("this renderer has not been implemented yet.");
+  }
+
+  @Override
+  public MarioRenderable getRenderable() {
+    return selectedRenderer;
+  }
+
 }

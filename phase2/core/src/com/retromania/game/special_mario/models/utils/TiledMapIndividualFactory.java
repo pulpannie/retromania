@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.utils;
+package com.retromania.game.special_mario.models.utils;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -15,10 +15,10 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 
+
+
 @Singleton
-public class TiledMapIndividualFactory {
-
-
+class TiledMapIndividualFactory {
 
 
   private static final String FIRST_WORLD = "special_mario/firstLevel.tmx";
@@ -42,12 +42,12 @@ public class TiledMapIndividualFactory {
     getAllLayers();
   }
 
-  private void setUpFirstWorldTileMap() {
+  public void setUpFirstWorldTileMap() {
     clearBodiesOfMap();
     setUpTiledMap(FIRST_WORLD);
   }
 
-  void setUpSecondWorldTileMap() {
+  public void setUpSecondWorldTileMap() {
     clearBodiesOfMap();
     setUpTiledMap(SECOND_WORLD);
   }

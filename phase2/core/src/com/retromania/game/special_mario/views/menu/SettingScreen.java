@@ -1,22 +1,42 @@
 package com.retromania.game.special_mario.views.menu;
 
+import android.annotation.SuppressLint;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.retromania.game.shared_abstractions.ButtonMaker;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.special_mario.models.utils.LevelPreference;
+import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
+
+import java.util.function.Supplier;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class SettingScreen extends MenuOptionScreen {
   private Stage stage;
 
+//  private String[] levels = {"Level 1", "Level 2"};
+  //  private String[] gameViewOptions = {"SURVIVAL : ON", "GHOST : OFF", "Normal : ON"};
+
+  UserRenderPreference userRenderPreference;
+  LevelPreference levelPreference;
+
   @Inject
-  SettingScreen() {
+  SettingScreen(UserRenderPreference userRenderPreference, LevelPreference levelPreference) {
+    this.levelPreference = levelPreference;
+    this.userRenderPreference = userRenderPreference;
     gamePort =
         new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
   }
@@ -29,8 +49,10 @@ public class SettingScreen extends MenuOptionScreen {
     stage = new Stage(gamePort, game.sb);
     Table table = setUpTable();
     table.debug();
-    setUpGameOptions(table);
-    setUpLevel(table);
+    setUpGameLevelOptions(table);
+    setUpLevelSetting(table);
+    setUpGoBack(table);
+    Gdx.input.setInputProcessor(stage);
   }
 
   private Table setUpTable() {
@@ -44,7 +66,7 @@ public class SettingScreen extends MenuOptionScreen {
   private Table setUpTable(Table outterTable) {
     Table table = new Table();
     table.top();
-    outterTable.add(table).expandX().row();
+    outterTable.add(table).padTop(30).expandX().row();
     calibrateTable(table, outterTable);
     return table;
   }
@@ -53,10 +75,10 @@ public class SettingScreen extends MenuOptionScreen {
     table.setFillParent(true);
     table.pack();
   }
+
   private void calibrateTable(Table table, Table outterTable) {
     table.setWidth(outterTable.getWidth());
   }
-
 
   private static TextButton makeTextButton(
       String data, Color color, float scaleFont, float scaleButton) {
@@ -70,34 +92,65 @@ public class SettingScreen extends MenuOptionScreen {
     return textButton;
   }
 
-  private static TextButton makeTextButton(String data, Color color) {
-    return makeTextButton(data, color, 1, 1);
+  private void setUpGameLevelOptions(Table outterTable) {
+    Table table = setUpTable(outterTable);
+    Cell c = null;
+    for (Supplier f : userRenderPreference.getRenderModeFunctions().keySet()) {
+      String s = userRenderPreference.getRenderModeFunctions().get(f);
+      TextButton textButton = makeTextButton(s, Color.RED, .8f, .8f);
+      textButton.addListener(
+          new ClickListener() {
+            @android.annotation.SuppressLint("NewApi")
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+              f.get();
+            }
+          });
+      c =
+          addPortionTextButtonToTable(
+              table,
+              textButton,
+              0,
+              table.getWidth() / userRenderPreference.getRenderModeFunctions().size() + .1f);
+    }
+    c.row();
   }
 
-  private void setUpGameOptions(Table outterTable) {
+  private void setUpGoBack(Table outterTable) {
     Table table = setUpTable(outterTable);
-    table
-        .add(makeTextButton("SURVIVAL : ON", Color.RED, 0.8f, .8f))
-        .padRight(10)
-        .width(table.getWidth() / 3.1f);
-    table
-        .add(makeTextButton("GHOST : OFF", Color.BLUE, 0.8f, 0.8f))
-        .padRight(10)
-        .width(table.getWidth() / 3.1f);
-    table
-        .add(makeTextButton("Normal : ON", Color.BLUE, 0.8f, 0.8f))
-        .padRight(10)
-        .width(table.getWidth() / 3.1f)
-        .row();
+    TextButton textButton = makeTextButton("Play Our Game", Color.GREEN, 1, 1);
+    textButton.addListener(
+        new ClickListener() {
+          @Override
+          public void clicked(InputEvent event, float x, float y) {
+            super.clicked(event, x, y);
+          }
+        });
+    addPortionTextButtonToTable(table, textButton, 0, table.getWidth()).row();
   }
 
-  private void setUpLevel(Table outterTable) {
-    //        table.debug();
+  private void setUpLevelSetting(Table outterTable) {
     Table table = setUpTable(outterTable);
-    table.add(makeTextButton("Level 1", Color.RED)).width(table.getWidth() / 2f).expandX();
-    table.add(makeTextButton("Level 2", Color.BLUE)).width(table.getWidth() / 2f).expandX().row();
-    //        table.add(makeTextButton("Normal : ON", Color.RED, 0.8f,
-    // 0.8f)).padRight(10).width(table.getWidth()/3.1f).row();
+    Cell c = null;
+    for (Supplier f : levelPreference.getLevelModeFunctions().keySet()) {
+      String  s  = levelPreference.getLevelModeFunctions().get(f);
+      TextButton textButton = makeTextButton(s, Color.RED, 1, 1);
+      textButton.addListener(
+          new ClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+              f.get();
+            }
+          });
+      c = addPortionTextButtonToTable(table, textButton, 0, table.getWidth() / levelPreference.getLevelModeFunctions().size());
+    }
+    c.row();
+  }
+
+  private Cell addPortionTextButtonToTable(
+      Table table, TextButton textButton, float padRight, float width) {
+    return table.add(textButton).padRight(padRight).width(width);
   }
 
   @Override
