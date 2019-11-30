@@ -1,0 +1,75 @@
+package com.retromania.game.spaceship_shooter.presenter;
+
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.retromania.game.RetroMania;
+import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
+import com.retromania.game.spaceship_shooter.individuals.Car;
+import com.retromania.game.spaceship_shooter.individuals.Hud;
+import com.retromania.game.spaceship_shooter.individuals.UfoManager;
+import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlayScreenPresenter extends Presenter{
+
+    private Hud hud;
+    private Car car;
+    private UfoManager ufoManager;
+    private MainScreenInterface mainscreen;
+    private boolean finished = false;
+
+    public PlayScreenPresenter(String screenType, int numOfUfos, MainScreenInterface mainScreen){
+        super(screenType);
+        hud = new Hud(RetroMania.getRetroManiaInstance().sb);
+        car = new Car();
+        ufoManager = new UfoManager(4);
+        this.mainscreen = mainScreen;
+
+    }
+    public void moveCarRight(){
+        car.moveRight();
+    }
+    public void moveCarLeft(){
+        car.moveLeft();
+    }
+    public void pause(){
+        mainscreen.pause();
+    }
+
+    public void endGame(){
+        SpaceShipShooterStarter.getGameStats().update(hud.getScore());
+        this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
+        this.mainscreen.returnMenu();
+        mainscreen.save();
+    }
+
+    public void dispose(){
+
+    }
+
+    public void update(float dt){
+        this.getGamecam().update();
+        RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(hud.stage.getCamera().combined);
+        if (hud.countDown(dt))
+            finished = true;
+        ufoManager.update(car.getiRocket(), hud);
+
+
+    }
+    public boolean isFinished(){return finished;}
+
+    public void shoot(){car.shoot();}
+
+    public Stage getHudStage(){return hud.stage;}
+
+    public ArrayList<Actor> getRenderableActors(){
+        ArrayList<Actor> list = new ArrayList<Actor>();
+        list.add(ufoManager);
+        list.add(car);
+        if (car.shot())
+            list.add(car.getiRocket());
+        return list;
+    }
+}
