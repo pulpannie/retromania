@@ -36,12 +36,13 @@ public interface MainScreenInterface {
     void returnMenu();
 
     /**
-     * get the user of the screen.
-     */
-    User getUser();
-
-    /**
      * save the screen.
      */
     void save(Object... args);
+
+    /**
+     * saves score of current user
+     * @param score
+     */
+    void saveScore(int score);
 }

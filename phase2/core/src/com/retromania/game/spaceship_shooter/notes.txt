@@ -284,3 +284,19 @@ Code affected: all classes in the screens and presenters packages
 Flaw: the name of mainscreen and gamecam variables don't follow the Java naming convention.
 
 Fix: change the name of mainscreen and gamecam variables to mainScreen and gameCam.
+
+#Step 35:
+
+Code affected: SpaceShipShooterStarter, MainScreenInterface, PlayScreen
+
+Flaw: algorithm was not saving best score of user
+
+Fix: used GameSaver class in order to save score
+
+#Step 36:
+
+Code affected: MenuScreen, MenuScreenPresenter
+
+Flaw: current MVP structure of the menu screen had some dependencies and the view is handling a task that the presenter should be responsible to.
+
+Fix: let the MenuScreenPresenter handle the task of initializing and update the scoreLabel instead of the MenuScreen.

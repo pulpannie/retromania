@@ -39,7 +39,7 @@ public class PlayScreenPresenter extends Presenter{
 
     public void endGame(){
         SpaceShipShooterStarter.getGameStats().update(hud.getScore());
-        this.mainScreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
+        this.mainScreen.saveScore(SpaceShipShooterStarter.getGameStats().getHighScore());
         this.mainScreen.returnMenu();
         mainScreen.save();
     }
@@ -71,4 +71,6 @@ public class PlayScreenPresenter extends Presenter{
             list.add(car.getiRocket());
         return list;
     }
+
+
 }
