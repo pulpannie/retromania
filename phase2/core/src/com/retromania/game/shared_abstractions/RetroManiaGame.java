@@ -45,8 +45,7 @@ public abstract class RetroManiaGame extends Game {
     protected Texture img;
 
 
-
-    public Preferences getPrefrences(String name){
+    static public Preferences getPrefrences(String name){
         return Gdx.app.getPreferences(name);
     }
 
