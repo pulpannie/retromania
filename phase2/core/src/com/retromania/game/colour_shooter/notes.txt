@@ -86,7 +86,7 @@ Fix: Adjusted and improved the code associated to the position of the Square and
 
 Code Affected: PlayScreen, Header, Rectangle
 
-Added header to Playscreen class. Header is a seperate class which uses LibGdx Table to make a table.
+Added header to PlayScreen class. Header is a separate class which uses LibGdx Table to make a table.
 The table has timer, colour and score label. Currently, colour is being chosen at random.
 Timer and score are currently unimplemented.
 Added class Rectangle. It isn't implemented currently.
@@ -95,6 +95,8 @@ Added class Rectangle. It isn't implemented currently.
 
 Code Affected: InstructionsScreen
 
-Added an instructions screen class which implements Screen. This feature
-is when from the menu screen the user can view the instructions and go back
-to the menu. Also removed static references.
+Flaw:
+
+Added an Instructions screen class which implements Screen. This is when the
+game first starts the user is introduced the rules of the game and then
+can go back to the main menu, and play the game or adjust the skins.
