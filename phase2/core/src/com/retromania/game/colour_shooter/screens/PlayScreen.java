@@ -2,9 +2,6 @@ package com.retromania.game.colour_shooter.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,7 +15,6 @@ import com.retromania.game.colour_shooter.individuals.Background;
 import com.retromania.game.colour_shooter.individuals.Header;
 import com.retromania.game.colour_shooter.individuals.Rectangle;
 import com.retromania.game.colour_shooter.individuals.Tank;
-import com.retromania.game.colour_shooter.utils.ColourShooterListener;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
 public class PlayScreen implements Screen {

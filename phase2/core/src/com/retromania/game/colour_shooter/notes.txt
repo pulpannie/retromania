@@ -95,8 +95,14 @@ Added class Rectangle. It isn't implemented currently.
 
 Code Affected: InstructionsScreen
 
-Flaw:
-
 Added an Instructions screen class which implements Screen. This is when the
 game first starts the user is introduced the rules of the game and then
 can go back to the main menu, and play the game or adjust the skins.
+
+#Step 15:
+
+Code Affected: Bullet, BulletCatcherSquare, Header, Rectangle, InstructionsScreen, MenuScreen, PlayScreen
+
+Flaw: Too many unused import statements in the above classes.
+
+Fix: Delete all the unused import statements in all the above classes.

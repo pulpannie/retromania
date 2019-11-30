@@ -12,9 +12,6 @@ import com.retromania.game.colour_shooter.screens.PlayScreen;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Individual;
 
-import java.awt.Color;
-import java.awt.geom.RectangularShape;
-
 public class BulletCatcherSquare extends Character implements Individual {
 
   public BulletCatcherSquare(

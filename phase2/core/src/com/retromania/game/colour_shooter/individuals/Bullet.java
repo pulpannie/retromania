@@ -7,8 +7,6 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.retromania.game.RetroMania;
 import com.retromania.game.colour_shooter.screens.PlayScreen;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Individual;
