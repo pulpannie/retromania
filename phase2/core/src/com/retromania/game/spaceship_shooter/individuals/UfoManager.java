@@ -41,6 +41,7 @@ public class UfoManager extends Actor {
      * @param batch
      * @param delta
      */
+    @Override
     public void draw(Batch batch, float delta){
         facade.drawer.drawUfos(batch, facade.repo.getUfos(), delta);
     }

@@ -227,3 +227,12 @@ Code affected: BackGround, Car, GameStats, Hud, ImageButtonBuilder, LabelBuilder
 Flaw: Some Java docs, variables and methods are not properly named and documented
 
 Fix: Fix and modify all Java docs, variables and methods that are not properly named and documented.
+
+#Step 28:
+
+Code affected: SpaceShipShooterStarter, PlayScreen
+
+Flaw: MVP design still creating couplings and wrong dependency flow
+
+Fix: Created Presenter classes and implemented "Presenter", "StarterPresenter", "PlayScreenPresenter"
+#TODO: implement rest of presenter classes

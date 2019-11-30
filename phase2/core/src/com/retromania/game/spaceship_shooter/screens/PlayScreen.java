@@ -1,6 +1,7 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.retromania.game.RetroMania;
@@ -10,6 +11,7 @@ import com.retromania.game.spaceship_shooter.individuals.Car;
 import com.retromania.game.spaceship_shooter.individuals.Hud;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.UfoManager;
+import com.retromania.game.spaceship_shooter.presenter.PlayScreenPresenter;
 import com.retromania.game.spaceship_shooter.utils.PlayerScreenRenderer;
 
 
@@ -18,13 +20,11 @@ public class PlayScreen extends RetroManiaScreen {
     private ImageButton leftButton;
     private ImageButton rightButton;
     private ImageButton pauseButton;
-    private MainScreenInterface mainscreen;
-    PlayerScreenRenderer renderer;
+    private PlayScreenPresenter presenter;
 
     public PlayScreen(MainScreenInterface mainscreen) {
-        renderer = new PlayerScreenRenderer("stretch", new Hud(RetroMania.getRetroManiaInstance().sb), new Car(), new UfoManager(4));
-        this.mainscreen = mainscreen;
-        stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+        presenter = new PlayScreenPresenter("stretch", 4, mainscreen);
+        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 
 
         leftButton = (new ImageButtonBuilder()).buildTexture("left_button_big.png").buildButton();
@@ -55,44 +55,49 @@ public class PlayScreen extends RetroManiaScreen {
 
     public void handleInput(){
         if (rightButton.isPressed()) {
-            renderer.getPlayer().moveRight();
+            presenter.moveCarRight();
         }
         else if(leftButton.isPressed()){
-            renderer.getPlayer().moveLeft();
+            presenter.moveCarLeft();
         }
         else if(pauseButton.isPressed()){
-            pause();
+            presenter.pause();
         }
-
         else if(Gdx.input.isTouched())
-            renderer.getPlayer().shoot();
+            presenter.shoot();
 
     }
 
     public void update(float dt){
         handleInput();
         stage.act();
-        if (renderer.isFinished())
+        presenter.update(dt);
+        if (presenter.isFinished())
             endGame();
     }
 
     @Override
     public void render(final float delta) {
         update(delta);
-        renderer.render(delta);
+        RetroMania.getRetroManiaInstance().sb.begin();
+        presenter.getBackground().draw(RetroMania.getRetroManiaInstance().sb, delta);
+        for (Actor actor: presenter.getRenderableActors())
+            actor.draw(RetroMania.getRetroManiaInstance().sb, delta);
+        RetroMania.getRetroManiaInstance().sb.end();
         stage.draw();
+        presenter.getHudStage().draw();
 
     }
 
     @Override
     public void resize(int width, int height) {
-        renderer.resize(width, height);
+        presenter.resize(width, height);
     }
 
     @Override
     public void pause() {
         dispose();
-        mainscreen.pause();
+        presenter.pause();
     }
 
     @Override
@@ -102,10 +107,7 @@ public class PlayScreen extends RetroManiaScreen {
 
     public void endGame() {
         dispose();
-        SpaceShipShooterStarter.getGameStats().update(renderer.getScore());
-        this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
-        this.mainscreen.returnMenu();
-        mainscreen.save();
+        presenter.endGame();
     }
 
     @Override

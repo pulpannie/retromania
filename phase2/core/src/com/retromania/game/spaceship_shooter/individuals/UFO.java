@@ -3,13 +3,14 @@ package com.retromania.game.spaceship_shooter.individuals;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 
 /**
  * The flying UFO displayed on the screen.
  * @author Thuy, Umid.
  */
-public class UFO {
+public class UFO extends Actor {
     /**
      * The UFO's location in (x,y) format.
      */
@@ -74,6 +75,7 @@ public class UFO {
      * @param batch
      * @param parentAlpha
      */
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         if (SpaceShipShooterStarter.getTheme().equalsIgnoreCase("independence day"))
             batch.draw(texture1, x-width/2, y-height/2, width, height);
