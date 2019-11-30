@@ -260,3 +260,11 @@ Code affected: all the Presenter Classes except the StarterPresenter.
 Flaw: After the implementation of all the Presenter classes for the new MVP pattern, music is not working on our game.
 
 Fix: incorporate music on our game by creating an update method for the Presenter which update the gamecam and play the music, while letting its child classes called it
+
+#Step 32:
+
+Code affected: all classes in the screens and presenters package.
+
+Flaw: Access modifiers haven't been restricted, there are many unused import statements.
+
+Fix: Delete all the unused import statements and restrict all loose access modifiers in all the above classes.

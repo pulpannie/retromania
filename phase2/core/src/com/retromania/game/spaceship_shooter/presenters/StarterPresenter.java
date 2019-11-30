@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.presenter;
+package com.retromania.game.spaceship_shooter.presenters;
 
 import com.badlogic.gdx.Screen;
 import com.retromania.game.RetroMania;
@@ -10,7 +10,7 @@ import com.retromania.game.spaceship_shooter.utils.MusicManager;
 
 
 public class StarterPresenter {
-    static GameStats gameStats;
+    private static GameStats gameStats;
     private static String theme = "Independence Day";
     private static boolean isMusic = false;
     private Screen playScreen;

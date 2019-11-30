@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.presenter;
+package com.retromania.game.spaceship_shooter.presenters;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -23,7 +23,7 @@ public class PlayScreenPresenter extends Presenter{
         super(screenType);
         hud = new Hud(RetroMania.getRetroManiaInstance().sb);
         car = new Car();
-        ufoManager = new UfoManager(4);
+        ufoManager = new UfoManager(numOfUfos);
         this.mainscreen = mainScreen;
 
     }

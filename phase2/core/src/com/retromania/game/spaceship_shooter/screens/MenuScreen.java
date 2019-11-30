@@ -12,17 +12,17 @@ import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.GameStats;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
-import com.retromania.game.spaceship_shooter.presenter.MenuScreenPresenter;
+import com.retromania.game.spaceship_shooter.presenters.MenuScreenPresenter;
 
 public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
     private ImageButton startButton;
-    Label highScoreTextLabel;
+    private Label highScoreTextLabel;
     private Label latestScoreTextLabel;
-    Label highScoreLabel;
-    Label latestScoreLabel;
-    GameStats temp;
-    Table table;
+    private Label highScoreLabel;
+    private Label latestScoreLabel;
+    private GameStats temp;
+    private Table table;
     private MenuScreenPresenter presenter;
 
     public MenuScreen(MainScreenInterface mainscreen){
@@ -111,7 +111,7 @@ public class MenuScreen extends RetroManiaScreen {
     public void resume() {
     }
 
-    public void start(){
+    private void start(){
         dispose();
         presenter.start();
     }

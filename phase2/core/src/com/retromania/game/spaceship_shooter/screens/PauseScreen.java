@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.presenter.PauseScreenPresenter;
+import com.retromania.game.spaceship_shooter.presenters.PauseScreenPresenter;
 
 
 public class PauseScreen extends RetroManiaScreen {
@@ -99,7 +99,7 @@ public class PauseScreen extends RetroManiaScreen {
         presenter.restart();
     }
 
-    public void modify(){
+    private void modify(){
         dispose();
         presenter.modify();
     }

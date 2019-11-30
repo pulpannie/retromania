@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.presenter;
+package com.retromania.game.spaceship_shooter.presenters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;

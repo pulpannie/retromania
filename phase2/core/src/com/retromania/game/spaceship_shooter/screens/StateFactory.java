@@ -1,7 +1,6 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Screen;
-import com.retromania.game.shared_abstractions.RetroManiaGame;
 
 public class StateFactory {
 

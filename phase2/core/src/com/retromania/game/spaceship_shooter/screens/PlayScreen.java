@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.presenter.PlayScreenPresenter;
+import com.retromania.game.spaceship_shooter.presenters.PlayScreenPresenter;
 
 
 public class PlayScreen extends RetroManiaScreen {
@@ -105,7 +105,7 @@ public class PlayScreen extends RetroManiaScreen {
 
     }
 
-    public void endGame() {
+    private void endGame() {
         dispose();
         presenter.endGame();
     }

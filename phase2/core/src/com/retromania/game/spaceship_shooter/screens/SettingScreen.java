@@ -13,7 +13,7 @@ import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
-import com.retromania.game.spaceship_shooter.presenter.SettingsScreenPresenter;
+import com.retromania.game.spaceship_shooter.presenters.SettingsScreenPresenter;
 
 public class SettingScreen extends RetroManiaScreen {
     Label gameModeLabel;
@@ -108,7 +108,7 @@ public class SettingScreen extends RetroManiaScreen {
 
     }
 
-    public void returnMenu(){
+    private void returnMenu(){
         dispose();
         presenter.returnMenu(gameModeBox.getSelected(), musicBox.isChecked());
     }

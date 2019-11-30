@@ -11,37 +11,37 @@ public interface MainScreenInterface {
     /**
      * pause the screen
      */
-    public void pause();
+    void pause();
 
     /**
      * resume the screen.
      */
-    public void resume();
+    void resume();
 
     /**
      * restart the screen.
      */
-    public void restart();
+    void restart();
 
     /**
      * go to setting screen.
      */
-    public void modify();
+    void modify();
 
     /**
      * go to menu screen.
      */
-    public void returnMenu(String theme, boolean isMusic);
+    void returnMenu(String theme, boolean isMusic);
 
-    public void returnMenu();
+    void returnMenu();
 
     /**
      * get the user of the screen.
      */
-    public User getUser();
+    User getUser();
 
     /**
      * save the screen.
      */
-    public void save(Object... args);
+    void save(Object... args);
 }
