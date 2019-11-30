@@ -73,33 +73,17 @@ public class Rocket extends Actor {
      *
      * @return true if and only if rocket touches ceil
      * */
-    public boolean reach_top(){
+    boolean reach_top(){
         return y+ height >= Gdx.graphics.getHeight();
     }
 
     /**
      * Method that makes rocket go up
      * */
-    public void moveUp(){
+    void moveUp(){
         this.y += 50;
     }
 
-    /**
-     *
-     * @deprecated This code is not utilized anymore
-     * */
-    public void draw_2(Batch batch, float parentAlpha) {
-        batch.end();
-        if(!projectionMatrixSet){
-            shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
-            projectionMatrixSet = true;
-        }
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect(x-width/2, y-height/2, width, height);
-        shapeRenderer.end();
-        batch.begin();
-    }
     /**
      * Draws the entity by batch
      *

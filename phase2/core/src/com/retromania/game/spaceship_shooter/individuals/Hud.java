@@ -3,7 +3,6 @@ package com.retromania.game.spaceship_shooter.individuals;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -30,7 +29,7 @@ public class Hud {
      * scoreNameLabel: label that draws "SCORE"
      * areaLabel:  label that draws "AREA"
      * */
-    public Stage stage;
+    public  Stage stage;
     private Viewport viewport;
 
     private Integer worldTimer;
@@ -107,7 +106,7 @@ public class Hud {
     /**
      * Method that updates score
      * */
-    public void addScore(int value) {
+    void addScore(int value) {
         score += value;
         scoreLabel.setText(String.format("%06d", score));
     }

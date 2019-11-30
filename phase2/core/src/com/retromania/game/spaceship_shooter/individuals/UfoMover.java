@@ -6,14 +6,14 @@ import java.util.List;
  * The UFO mover responsible for moving a list of UFOs.
  * @author Thuy, Umid.
  */
-public class UfoMover {
+class UfoMover {
 
     /**
      * Update/move the list of given UFOs ufos.
      *
      * @param ufos   the given list of UFOs.
      */
-     public void moveUfos(List<UFO> ufos){
+     void moveUfos(List<UFO> ufos){
         for (UFO i: ufos)
             i.moveRight();
     }
@@ -26,7 +26,7 @@ public class UfoMover {
      * @param ufos     the given list of UFOs.
      * @param hud
      */
-    public void moveRocket(Rocket rocket, List<UFO> ufos, Hud hud){
+    void moveRocket(Rocket rocket, List<UFO> ufos, Hud hud){
 
         if (rocket != null && !rocket.reach_top()) {
             rocket.moveUp();

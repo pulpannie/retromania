@@ -211,3 +211,11 @@ Code affected: MainScreenInterface, SpaceShipShooterStarter, GameRenderer, Setti
 Flaw: Our game hasn't have music yet.
 
 Fix: Add the MusicManager to play or stop the music (the mp3 file added to the spaceship_shooter package inside asset), based on the check box music that is created in the SettingScreen.
+
+#Step 26:
+
+Code affected: all classes in the individuals package
+
+Flaw: Access modifiers haven't been restricted, there are many unused import statements.
+
+Fix: Delete all the unused import statements and restrict all loose access modifiers in all the above classes.

@@ -22,9 +22,9 @@ public class Background extends Actor {
      * height: height of  background
      * */
     private ShapeRenderer shapeRenderer;
-    static private boolean projectionMatrixSet;
-    int width;
-    int height;
+    private static boolean projectionMatrixSet;
+    private int width;
+    private int height;
 
     /**
      * constructor of Background

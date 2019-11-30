@@ -1,12 +1,7 @@
 package com.retromania.game.spaceship_shooter.individuals;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * The UFO Manager responsible for managing the list of UFOs through working

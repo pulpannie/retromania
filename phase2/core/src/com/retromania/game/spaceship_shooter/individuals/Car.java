@@ -31,7 +31,7 @@ public class Car extends Actor {
     private int width;
     private int height;
     private int rev = 1;
-    public boolean goingRight = true;
+    private boolean goingRight = true;
     private Texture texture;
 
     /**
@@ -60,7 +60,7 @@ public class Car extends Actor {
     /**
      * Method that changes direction of Car
      * */
-    public void turnSide(){
+    private void turnSide(){
         rev *= -1;
         goingRight = !goingRight;
     }

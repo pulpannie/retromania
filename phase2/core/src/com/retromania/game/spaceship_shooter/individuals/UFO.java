@@ -60,7 +60,7 @@ public class UFO {
     /**
      * move this UFO right on the screen.
      */
-    public void moveRight(){
+    void moveRight(){
         if (this.x + width/2 >= Gdx.graphics.getWidth())
             recreate();
 
@@ -90,7 +90,7 @@ public class UFO {
      * @param rocket the rocket fired by the car.
      * @return true if the rocket hit this UFO, false if it not.
      */
-    public boolean isRocketTouches(Rocket rocket){
+    boolean isRocketTouches(Rocket rocket){
         double d;
         double dp = Math.sqrt(Math.pow(x-rocket.getX(),2)+ Math.pow(y-rocket.getY(),2));
         if (x -width/2 < rocket.getX()&& rocket.getX() < x+ width/2)
@@ -103,7 +103,7 @@ public class UFO {
     /**
      * recreate this UFO in a different (x,y) coordinate.
      */
-    public void recreate(){
+    void recreate(){
         x =(int) (Math.random() * -80);
         y = (int) (Math.random() * (Gdx.graphics.getHeight()/2 + 1) + Gdx.graphics.getHeight()/4);
     }

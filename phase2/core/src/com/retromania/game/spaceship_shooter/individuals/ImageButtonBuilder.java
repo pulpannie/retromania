@@ -16,7 +16,7 @@ public class ImageButtonBuilder {
      * texture: texture of image
      * */
 
-    Texture texture;
+    private Texture texture;
 
     /**
      * Method that builds texture of image
