@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.screens;
+package com.retromania.game.special_mario.views.menu;
 
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 

@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.individuals;
+package com.retromania.game.special_mario.models;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

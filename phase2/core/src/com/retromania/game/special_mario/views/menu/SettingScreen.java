@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.screens;
+package com.retromania.game.special_mario.views.menu;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,10 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.retromania.game.shared_abstractions.ButtonMaker;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 public class SettingScreen extends MenuOptionScreen {
   private Stage stage;
@@ -33,8 +31,6 @@ public class SettingScreen extends MenuOptionScreen {
     table.debug();
     setUpGameOptions(table);
     setUpLevel(table);
-    //        table.padTop(10);
-    //        table.add(ButtonMaker.makeButton("c")).pad(10).expandX().row();
   }
 
   private Table setUpTable() {

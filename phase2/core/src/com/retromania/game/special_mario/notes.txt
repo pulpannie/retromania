@@ -364,5 +364,19 @@ Fix : Because both of the classes had similar responsibilities we destroyed the 
 reformatted the code to the latter class.
 
 
+# Step 37
+
+Code affected : All the package
+
+Flaw : After extensive talks and consideration we figured out there is no way we can implement the
+MVP Project Architecture and have the Screens be the presenters at the same time, because in that
+scenario we will have to pass the value of the presenter to the view and the value of the view
+to the presenter and that creates a cycle in our directed dependency graph which will make the
+dagger break.
+
+Fix : We changed the project in a way that there views are passed to explicit presenters and they
+are the ones that talk with the models.
+
+
 
 

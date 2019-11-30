@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.screens;
+package com.retromania.game.special_mario.views.menu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,11 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.special_mario.views.SpecialMarioStarter;
 import com.retromania.game.special_mario.utils.MainPageUtilsTable;
 import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
+import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 public class IntroductoryScreen extends MenuOptionScreen {
 
@@ -23,9 +24,13 @@ public class IntroductoryScreen extends MenuOptionScreen {
   TiledMapIndividualFactory tiledMapIndividualFactory;
   Viewport viewport2 =
       new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
+  UserRenderPreference userRenderPreference;
 
   @Inject
-  IntroductoryScreen(TiledMapIndividualFactory tiledMapIndividualFactory) {
+  IntroductoryScreen(
+      TiledMapIndividualFactory tiledMapIndividualFactory,
+      UserRenderPreference userRenderPreference) {
+    this.userRenderPreference = userRenderPreference;
     this.tiledMapIndividualFactory = tiledMapIndividualFactory;
   }
 
@@ -50,10 +55,16 @@ public class IntroductoryScreen extends MenuOptionScreen {
     table.add(brand).expandX().row();
     table.padTop(30);
     table
-            .add(new MainPageUtilsTable(tiledMapIndividualFactory,"Play Game", "Settings", menuScreen).getTable())
-            .expandX()
-            .expandY()
-            .row();
+        .add(
+            new MainPageUtilsTable(
+                    tiledMapIndividualFactory,
+                    "Play Game",
+                    "Settings",
+                    menuScreen, userRenderPreference)
+                .getTable())
+        .expandX()
+        .expandY()
+        .row();
     stage.addActor(table);
     Gdx.input.setInputProcessor(stage);
   }
