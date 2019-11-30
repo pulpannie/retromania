@@ -18,6 +18,7 @@ import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.tic_tac_toe.individuals.Cell;
 import com.retromania.game.tic_tac_toe.individuals.CellManager;
 import com.retromania.game.tic_tac_toe.individuals.TicTacToe;
+import com.retromania.game.tic_tac_toe.presenters.PlayPresenter;
 import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
 
 import javax.inject.Inject;
@@ -30,12 +31,12 @@ public class PlayScreen extends RetroManiaScreen {
   public Texture circle;
   public OrthographicCamera gamecam;
   BitmapFont font = new BitmapFont();
-  TicTacToe ticTacToe;
   public float gameWidth, gameHeight;
   CellManager cellManager;
   String winner;
   //    GameSaver gameSaver;
   User currentUser;
+  PlayPresenter playPresenter;
 
   UserPrefrence userPrefrence;
 
@@ -43,21 +44,15 @@ public class PlayScreen extends RetroManiaScreen {
   public PlayScreen(UserPrefrence userPrefrence, CellManager cellManager) {
     this.userPrefrence = userPrefrence;
     this.cellManager = cellManager;
+    this.playPresenter = new PlayPresenter("fill", userPrefrence, cellManager);
   }
 
   @Override
   public void show() {
-
-    if (userPrefrence.getCat()) {
-      cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
-      circle = new Texture(Gdx.files.internal("tic_tac_toe/cat3.png"));
-    } else {
-      cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
-      circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
-    }
+    playPresenter.setTextures();
     gameWidth = Gdx.graphics.getWidth();
     gameHeight = Gdx.graphics.getHeight();
-    ticTacToe = new TicTacToe(userPrefrence, cellManager);
+    playPresenter.createTicTacToe();
 
     gamecam = new OrthographicCamera();
     gamecam.setToOrtho(false, gameWidth, gameHeight);
@@ -70,7 +65,7 @@ public class PlayScreen extends RetroManiaScreen {
 
   @Override
   public void render(float delta) {
-    Cell[][] cellArray = ticTacToe.getCellStates();
+    Cell[][] cellArray = playPresenter.getCells();
     Gdx.gl.glClearColor(1, 1, 1, 0);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     stage.act(delta);
@@ -88,19 +83,15 @@ public class PlayScreen extends RetroManiaScreen {
 
     if (Gdx.input.isTouched()) {
       Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-      System.out.println(mousePos);
       Vector3 worldCoordinates = gamecam.unproject(mousePos);
-
-      int tmpx = (int)((worldCoordinates.x * userPrefrence.getGameSize())/gameWidth);
-      int tmpy = (int)((worldCoordinates.y * userPrefrence.getGameSize())/gameHeight);
-      ticTacToe.touchCell(tmpx, tmpy);
+      playPresenter.touchCells(worldCoordinates.x, worldCoordinates.y);
     }
     for (int i = 0; i < userPrefrence.getGameSize(); i++) {
       for (int j = 0; j < userPrefrence.getGameSize(); j++) {
         if (!cellArray[i][j].getCell().equals("None")) {
           batch.begin();
           batch.draw(
-              this.getCell(cellArray[i][j].getCell()),
+              playPresenter.convertCell(cellArray[i][j].getCell()),
               gameWidth * i / userPrefrence.getGameSize(),
               gameHeight * j / userPrefrence.getGameSize(),
               gameWidth / userPrefrence.getGameSize(),
@@ -109,19 +100,7 @@ public class PlayScreen extends RetroManiaScreen {
         }
       }
     }
-    if (ticTacToe.isEnd()) {
-      winner = ticTacToe.getWinner();
-      if (winner.equals("None")) {
-        game.setScreen(new GameOverScreen(game, "No one"));
-      } else if (winner.equals("Cross")) {
-        //                currentUser = gameSaver.getCurrentUser();
-        //                gameSaver.setScore(currentUser.getScore() + 1);
-        game.setScreen(new GameOverScreen(game, "Cross"));
-
-      } else if (winner.equals("Circle")) {
-        game.setScreen(new GameOverScreen(game, "Circle"));
-      }
-    }
+    playPresenter.checkEnd();
   }
 
   public static void DrawBoardLine(Vector2 start, Vector2 end, Matrix4 projectionMatrix) {
@@ -133,14 +112,6 @@ public class PlayScreen extends RetroManiaScreen {
     boardRenderer.end();
   }
 
-  public Texture getCell(String string) {
-    if (string == "Cross") {
-      return cross;
-    } else if (string == "Circle") {
-      return circle;
-    }
-    return null;
-  }
 
   @Override
   public void resize(int width, int height) {}

@@ -3,9 +3,11 @@ package com.retromania.game.tic_tac_toe;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.retromania.game.shared_abstractions.Presentable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.shared_abstractions.User;
+import com.retromania.game.tic_tac_toe.presenters.StarterPresenter;
 import com.retromania.game.tic_tac_toe.screens.MenuScreen;
 
 import java.util.List;
@@ -15,14 +17,13 @@ import javax.inject.Singleton;
 
 @Singleton
 public class TicTacToeStarter extends RetroManiaInnerGame {
-    public Stage stage;
-    private MenuScreen menuScreen;
+    private StarterPresenter starterPresenter;
 
 
     @Inject
     public TicTacToeStarter(MenuScreen menuScreen) {
         super("Tic Tac Toe", RetroManiaGame.Orientation.VERTICAL);
-        this.menuScreen = menuScreen;
+        this.starterPresenter = new StarterPresenter("stretch", menuScreen);
     }
 
     @Override
@@ -32,11 +33,11 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
 
     @Override
     public void show() {
-        game.setScreen(menuScreen);
+        starterPresenter.returnMenuScreen();
     }
 
-  @Override
-  public void render(float delta) {
+    @Override
+    public void render(float delta) {
 
     }
 
@@ -50,23 +51,4 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
 
     }
 
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
 }
