@@ -300,3 +300,11 @@ Code affected: MenuScreen, MenuScreenPresenter
 Flaw: current MVP structure of the menu screen had some dependencies and the view is handling a task that the presenter should be responsible to.
 
 Fix: let the MenuScreenPresenter handle the task of initializing and update the scoreLabel instead of the MenuScreen.
+
+#Step 37:
+
+Code affected: SpaceShipShooterStarter, StarterPresenter
+
+Flaw: game saving actions was done in view which is against the rule of MVP pattern
+
+Fix: added setScore method and GameSaver instance to presenter. And called it in View

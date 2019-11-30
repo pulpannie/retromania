@@ -7,6 +7,7 @@ import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
 import com.retromania.game.spaceship_shooter.screens.PlayScreen;
 import com.retromania.game.spaceship_shooter.screens.StateFactory;
 import com.retromania.game.spaceship_shooter.utils.MusicManager;
+import com.retromania.game.utils.GameSaver;
 
 
 public class StarterPresenter {
@@ -17,6 +18,7 @@ public class StarterPresenter {
     private Screen pauseScreen;
     private Screen menuScreen;
     private Screen settingScreen;
+    private GameSaver gameSaver;
 
     public StarterPresenter(MainScreenInterface mainScreen){
         gameStats = new GameStats();
@@ -24,6 +26,7 @@ public class StarterPresenter {
         pauseScreen = StateFactory.getScreen("pause screen", mainScreen);
         menuScreen = StateFactory.getScreen("menu screen",  mainScreen);
         settingScreen = StateFactory.getScreen("setting screen",  mainScreen);
+        gameSaver = new GameSaver("Spaceship shooter");
     }
 
     public void pause() {
@@ -70,5 +73,7 @@ public class StarterPresenter {
             MusicManager.stop();
     }
 
-
+    public void setScore(int score){
+        gameSaver.setScore(score);
+    }
 }

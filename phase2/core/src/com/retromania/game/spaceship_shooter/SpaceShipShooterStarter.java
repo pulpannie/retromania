@@ -75,6 +75,7 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     public static void playMusic(){StarterPresenter.playMusic();}
     public static String getTheme(){return StarterPresenter.getTheme();}
     public static GameStats getGameStats(){return StarterPresenter.getGameStats();}
-    public void saveScore(int score){gameSaver.setScore(score);}
+    public void saveScore(int score){presenter.setScore(score);
+    }
 
 }
