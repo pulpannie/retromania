@@ -3,21 +3,28 @@ package com.retromania.game.tic_tac_toe.presenters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.retromania.game.RetroMania;
+import com.retromania.game.shared_abstractions.User;
+import com.retromania.game.tic_tac_toe.TicTacToeStarter;
 import com.retromania.game.tic_tac_toe.individuals.Cell;
 import com.retromania.game.tic_tac_toe.individuals.CellManager;
 import com.retromania.game.tic_tac_toe.individuals.TicTacToe;
 import com.retromania.game.tic_tac_toe.screens.GameOverScreen;
 import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
+import com.retromania.game.utils.GameSaver;
 
 public class PlayPresenter extends Presenter {
     Texture cross, circle;
     UserPrefrence userPrefrence;
     TicTacToe ticTacToe;
     CellManager cellManager;
+    GameSaver gameSaver;
+    User currentUser;
     public PlayPresenter(String screenType, UserPrefrence userPrefrence, CellManager cellManager) {
         super(screenType);
         this.userPrefrence = userPrefrence;
         this.cellManager = cellManager;
+        this.gameSaver = new GameSaver(TicTacToeStarter.getNameOfGame());
+
     }
 
     public String getWinner(){
@@ -30,8 +37,8 @@ public class PlayPresenter extends Presenter {
             if (winner.equals("None")) {
                 RetroMania.getRetroManiaInstance().setScreen(new GameOverScreen(RetroMania.getRetroManiaInstance(), "No one"));
             } else if (winner.equals("Cross")) {
-                //                currentUser = gameSaver.getCurrentUser();
-                //                gameSaver.setScore(currentUser.getScore() + 1);
+                                currentUser = gameSaver.getCurrentUser();
+                                gameSaver.setScore(currentUser.getScore() + 1);
                 RetroMania.getRetroManiaInstance().setScreen(new GameOverScreen(RetroMania.getRetroManiaInstance(), "Cross"));
 
             } else if (winner.equals("Circle")) {

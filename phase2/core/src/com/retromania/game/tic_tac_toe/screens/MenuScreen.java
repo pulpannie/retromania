@@ -34,10 +34,9 @@ public class MenuScreen extends RetroManiaScreen {
     Viewport viewport;
     PlayScreen playScreen;
     MenuPresenter menuPresenter;
-//    GameSaver gameSaver;
+    GameSaver gameSaver;
     @Inject
     public MenuScreen(OrthographicCamera gamecam, UserPrefrence userPrefrence, PlayScreen playScreen) {
-//        this.gameSaver = new GameSaver();
         this.menuPresenter = new MenuPresenter("fill",gamecam, userPrefrence, playScreen);
         this.playScreen = playScreen;
         this.gamecam = gamecam;

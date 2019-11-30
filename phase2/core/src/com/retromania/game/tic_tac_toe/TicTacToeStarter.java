@@ -19,6 +19,11 @@ import javax.inject.Singleton;
 public class TicTacToeStarter extends RetroManiaInnerGame {
     private StarterPresenter starterPresenter;
     static final String NAME_OF_GAME = "Tic Tac Toe";
+
+    public static String getNameOfGame(){
+        return NAME_OF_GAME;
+    }
+
     @Inject
     public TicTacToeStarter(MenuScreen menuScreen) {
         super(NAME_OF_GAME, RetroManiaGame.Orientation.VERTICAL);

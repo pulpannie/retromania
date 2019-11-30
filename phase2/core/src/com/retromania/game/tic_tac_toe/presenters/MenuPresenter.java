@@ -55,11 +55,11 @@ public class MenuPresenter extends Presenter {
         buildPlayButton();
         buildCatButton();
         buildSizeButtons();
-//        stage.addActor(playButton);
-//        stage.addActor(catButton);
-//        stage.addActor(upButton);
-//        stage.addActor(downButton);
-//        Gdx.input.setInputProcessor(stage);
+        stage.addActor(playButton);
+        stage.addActor(catButton);
+        stage.addActor(upButton);
+        stage.addActor(downButton);
+        Gdx.input.setInputProcessor(stage);
     }
 
     public ImageButton getCatButton(){
@@ -74,6 +74,12 @@ public class MenuPresenter extends Presenter {
 
     private void buildPlayButton(){
         playButton = imageButtonBuilder.buildButton(new Texture(Gdx.files.internal("tic_tac_toe/play_tictactoe.png")), 200, 200, Gdx.graphics.getWidth() / 2 - 110, Gdx.graphics.getHeight() / 2 - 70);
+    }
+
+    public void handleInput() {
+        if (playButton.isPressed()) {
+            RetroMania.getRetroManiaInstance().setScreen(playScreen);
+        }
     }
 
     public Stage getStage(){
