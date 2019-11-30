@@ -16,12 +16,12 @@ public class Header {
     private float timecount;
     private Integer score;
 
-    Label scoreText;
-    Label colourText;
-    Label timeText;
-    Label scoreTracker;
-    Label colourTracker;
-    Label timeTracker;
+    private Label scoreText;
+    private Label colourText;
+    private Label timeText;
+    private Label scoreTracker;
+    private Label colourTracker;
+    private Label timeTracker;
 
     public Header(Stage stage, float width, float height) {
         worldTimer = 30;
@@ -33,9 +33,9 @@ public class Header {
         table.top();
         table.setFillParent(true);
 
-        scoreText = new Label(String.format("SCORE"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        colourText = new Label(String.format("COLOUR"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        timeText = new Label(String.format("TIME"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        scoreText = new Label("SCORE", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        colourText = new Label("COLOUR", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        timeText = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
         colourTracker = new Label("NOT SET", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         setRandomColour();
@@ -54,7 +54,7 @@ public class Header {
         stage.addActor(table);
     }
 
-    public void setRandomColour() {
+    private void setRandomColour() {
         int randomNumber1 = (int) (Math.random() * 4);
         String[] arrayColorText = {"RED", "GREEN", "BLUE", "YELLOW"};
         Color[] arrayColorObject = {new Color().set(255, 0, 0, 1),

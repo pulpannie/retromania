@@ -112,5 +112,14 @@ Fix: Delete all the unused import statements in all the above classes.
 Code Affected: PlayScreen
 
 Flaw: The continuously rotating square is not being rotated.
+
 Fix: Adjusted the way the TextureRegion were being called, added the additional
 relevant imports.
+
+#Step 17:
+
+Code Affected: ColourShooterStarter, Header, InstructionsScreen, MenuScreen, PlayScreen, MenuScreen, PauseScreen
+
+Flaw: Access modifiers haven't been restricted
+
+Fix: Restrict all loose access modifiers in all the above classes.

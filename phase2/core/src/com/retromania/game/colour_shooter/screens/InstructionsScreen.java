@@ -17,12 +17,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 
 public class InstructionsScreen implements Screen {
+
     private RetroManiaGame game;
-    static Stage stage;
+    private static Stage stage;
     private Viewport gamePort;
     ColourShooterStarter mainscreen;
-    int width;
-    int height;
+    private int width;
+    private int height;
 
     public InstructionsScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
         this.game = game;
@@ -63,7 +64,7 @@ public class InstructionsScreen implements Screen {
                 dispose();
                 //game.setScreen(ColourShooterStarter.getPlayScreen());
                 game.setScreen(ColourShooterStarter.getMenuScreen());
-//                ColourShooterStarter.setMenuScreen();
+                //ColourShooterStarter.setMenuScreen();
             }
         });
 

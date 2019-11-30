@@ -18,10 +18,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class MenuScreen implements Screen {
     private RetroManiaGame game;
-    static Stage stage;
+    private static Stage stage;
     ColourShooterStarter mainscreen;
 
-    public OrthographicCamera camera;
+    private OrthographicCamera camera;
     public SpriteBatch batch;
     private int width;
     private int height;

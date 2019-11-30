@@ -24,10 +24,10 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 public class PlayScreen implements Screen {
     static Stage stage;
     ColourShooterStarter mainscreen;
-    World world;
-    Rectangle square;
-    Rectangle blue, green, red, yellow;
-    Header header;
+    private World world;
+    private Rectangle square;
+    private Rectangle blue, green, red, yellow;
+    private Header header;
     public static Viewport viewport =
             new FitViewport(RetroManiaGame.V_HEIGHT, RetroManiaGame.V_WIDTH, new OrthographicCamera());
     private Box2DDebugRenderer b2ddr ;

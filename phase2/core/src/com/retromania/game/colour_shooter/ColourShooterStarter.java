@@ -19,13 +19,13 @@ import java.util.List;
 
 public class ColourShooterStarter extends RetroManiaInnerGame implements MainScreenInterface {
 
-  static ColourShootGameStats gameStats;
-  static Screen pauseScreen;
-  static Screen playScreen;
-  static Screen menuScreen;
-  static Screen instructionsScreen;
+  private static ColourShootGameStats gameStats;
+  private static Screen pauseScreen;
+  private static Screen playScreen;
+  private static Screen menuScreen;
+  private static Screen instructionsScreen;
   private Preferences preferences;
-  public int tankPrefrence;
+  private int tankPrefrence;
 
   public ColourShooterStarter(RetroManiaGame game) {
     super(game, "Colour Shooter", RetroManiaGame.Orientation.VERTICAL);
@@ -53,7 +53,6 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
   public static Screen getPlayScreen() {
     return playScreen;
   }
-
 
   public static Screen getPauseScreen() {
     return pauseScreen;

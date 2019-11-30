@@ -16,6 +16,7 @@ public class PauseScreen extends RetroManiaScreen {
     private Stage stage;
     MainScreenInterface mainscreen;
     private PauseScreenRenderer renderer;
+
     public PauseScreen(MainScreenInterface mainscreen){
         renderer = new PauseScreenRenderer("fill");
         this.mainscreen = mainscreen;
@@ -70,7 +71,6 @@ public class PauseScreen extends RetroManiaScreen {
         update(delta);
         renderer.render(delta);
         stage.draw();
-
 
     }
 

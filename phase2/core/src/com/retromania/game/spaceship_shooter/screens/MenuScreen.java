@@ -17,7 +17,7 @@ public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
     private ImageButton startButton;
     Label highScoreTextLabel;
-    Label latestScoreTextLabel;
+    private Label latestScoreTextLabel;
     Label highScoreLabel;
     Label latestScoreLabel;
     GameStats temp;
