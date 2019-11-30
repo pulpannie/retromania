@@ -13,18 +13,25 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 
 public class Background extends Actor {
+    /**
+     * renderer to draw simple objects
+     */
+    private ShapeRenderer shapeRenderer;
 
     /**
-     * Variables:
-     * shapeRenderer: renderer to draw simple objects
-     * projectionMatrixSet: boolean for check if batch is set for projection
-     * width: width of background
-     * height: height of  background
-     * */
-    private ShapeRenderer shapeRenderer;
-    static private boolean projectionMatrixSet;
-    int width;
-    int height;
+     * boolean for check if batch is set for projection
+     */
+    private static boolean projectionMatrixSet;
+
+    /**
+     * width of background
+     */
+    private int width;
+
+    /**
+     * height of  background
+     */
+    private int height;
 
     /**
      * constructor of Background
@@ -35,9 +42,12 @@ public class Background extends Actor {
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
     }
+
     /**
      * Method that draws background with shapeRenderer
-     * */
+     * @param batch
+     * @param parentAlpha
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.end();

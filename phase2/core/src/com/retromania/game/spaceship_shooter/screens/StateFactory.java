@@ -1,19 +1,18 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Screen;
-import com.retromania.game.shared_abstractions.RetroManiaGame;
 
 public class StateFactory {
 
-    public static Screen getScreen(String type, MainScreenInterface mainscreen){
+    public static Screen getScreen(String type, MainScreenInterface mainScreen){
         if (type.equalsIgnoreCase("play screen"))
-            return new PlayScreen(mainscreen);
+            return new PlayScreen(mainScreen);
         else if (type.equalsIgnoreCase("pause screen"))
-            return new PauseScreen(mainscreen);
+            return new PauseScreen(mainScreen);
         else if (type.equalsIgnoreCase("menu screen"))
-            return new MenuScreen(mainscreen);
+            return new MenuScreen(mainScreen);
         else if (type.equalsIgnoreCase("setting screen"))
-            return new SettingScreen(mainscreen);
+            return new SettingScreen(mainScreen);
         else
             return null;
     }

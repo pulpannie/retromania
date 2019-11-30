@@ -1,16 +1,14 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.spaceship_shooter.individuals.Car;
-import com.retromania.game.spaceship_shooter.individuals.Hud;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.individuals.UfoManager;
-import com.retromania.game.spaceship_shooter.utils.PlayerScreenRenderer;
+import com.retromania.game.spaceship_shooter.presenters.PlayScreenPresenter;
 
 
 public class PlayScreen extends RetroManiaScreen {
@@ -18,13 +16,11 @@ public class PlayScreen extends RetroManiaScreen {
     private ImageButton leftButton;
     private ImageButton rightButton;
     private ImageButton pauseButton;
-    private MainScreenInterface mainscreen;
-    PlayerScreenRenderer renderer;
+    private PlayScreenPresenter presenter;
 
-    public PlayScreen(MainScreenInterface mainscreen) {
-        renderer = new PlayerScreenRenderer("stretch", new Hud(RetroMania.getRetroManiaInstance().sb), new Car(), new UfoManager(4));
-        this.mainscreen = mainscreen;
-        stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+    public PlayScreen(MainScreenInterface mainScreen) {
+        presenter = new PlayScreenPresenter("stretch", 4, mainScreen);
+        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 
 
         leftButton = (new ImageButtonBuilder()).buildTexture("left_button_big.png").buildButton();
@@ -55,44 +51,53 @@ public class PlayScreen extends RetroManiaScreen {
 
     public void handleInput(){
         if (rightButton.isPressed()) {
-            renderer.getPlayer().moveRight();
+            presenter.moveCarRight();
         }
         else if(leftButton.isPressed()){
-            renderer.getPlayer().moveLeft();
+            presenter.moveCarLeft();
         }
         else if(pauseButton.isPressed()){
             pause();
         }
-
         else if(Gdx.input.isTouched())
-            renderer.getPlayer().shoot();
+            presenter.shoot();
 
     }
 
     public void update(float dt){
         handleInput();
         stage.act();
-        if (renderer.isFinished())
+        presenter.update(dt);
+        if (presenter.isFinished())
             endGame();
     }
 
     @Override
     public void render(final float delta) {
         update(delta);
-        renderer.render(delta);
+
+        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        RetroMania.getRetroManiaInstance().sb.begin();
+        presenter.getBackground().draw(RetroMania.getRetroManiaInstance().sb, delta);
+        for (Actor actor: presenter.getRenderableActors())
+            actor.draw(RetroMania.getRetroManiaInstance().sb, delta);
+        RetroMania.getRetroManiaInstance().sb.end();
         stage.draw();
+        presenter.getHudStage().draw();
 
     }
 
     @Override
     public void resize(int width, int height) {
-        renderer.resize(width, height);
+        presenter.resize(width, height);
     }
 
     @Override
     public void pause() {
-        stage.dispose();
-        mainscreen.pause();
+        dispose();
+        presenter.pause();
     }
 
     @Override
@@ -100,12 +105,9 @@ public class PlayScreen extends RetroManiaScreen {
 
     }
 
-    public void endGame() {
-        stage.dispose();
-        SpaceShipShooterStarter.getGameStats().update(renderer.getScore());
-        this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
-        this.mainscreen.returnMenu(SpaceShipShooterStarter.getTheme());
-        mainscreen.save();
+    private void endGame() {
+        dispose();
+        presenter.endGame();
     }
 
     @Override
@@ -115,7 +117,7 @@ public class PlayScreen extends RetroManiaScreen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
 

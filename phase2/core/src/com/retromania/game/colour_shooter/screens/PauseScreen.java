@@ -11,76 +11,57 @@ import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.colour_shooter.individuals.Background;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
-
 public class PauseScreen implements Screen {
 
-    private RetroManiaGame game;
-    private OrthographicCamera gameCam;
-    private Viewport gamePort;
-    private Background background;
-    private ImageButton exitButton;
-    private ImageButton resumeButton;
-    private ImageButton restartButton;
+  private RetroManiaGame game;
+  private OrthographicCamera gameCam;
+  private Viewport gamePort;
+  private Background background;
+  private ImageButton exitButton;
+  private ImageButton resumeButton;
+  private ImageButton restartButton;
 
-    public Stage stage;
-    ColourShooterStarter mainscreen;
+  public Stage stage;
+  ColourShooterStarter mainscreen;
 
-    public PauseScreen (RetroManiaGame game, ColourShooterStarter mainscreen) {
-        this.game = game;
-        gameCam = new OrthographicCamera();
-        gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
-        this.mainscreen = mainscreen;
-        //stage = new Stage(gamePort, game.sb);
-        background = new Background("pause_screen");
+  public PauseScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
+    this.game = game;
+    gameCam = new OrthographicCamera();
+    gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
+    this.mainscreen = mainscreen;
+    // stage = new Stage(gamePort, game.sb);
+    background = new Background("pause_screen");
 
-        // Add the buttons
+    // Add the buttons
 
-        //Gdx.input.setInputProcessor(stage);
+    // Gdx.input.setInputProcessor(stage);
 
+  }
 
-    }
+  @Override
+  public void show() {}
 
+  public void handleInput(float dt) {
+    // What happens when button is pressed
+  }
 
-    @Override
-    public void show() {
+  public void update(float dt) {}
 
-    }
+  @Override
+  public void render(float delta) {}
 
-    public void handleInput(float dt) {
-        // What happens when button is pressed
-    }
+  @Override
+  public void resize(int width, int height) {}
 
-    public void update(float dt){
+  @Override
+  public void pause() {}
 
-    }
+  @Override
+  public void resume() {}
 
-    @Override
-    public void render(float delta) {
+  @Override
+  public void hide() {}
 
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
+  @Override
+  public void dispose() {}
 }

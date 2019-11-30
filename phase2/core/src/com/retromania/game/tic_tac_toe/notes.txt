@@ -101,3 +101,13 @@ Fix: The starter can be ginned from dagger now.
 Code Affected: MenuScreen, PlayScreen, CellManager
 Flaw: All the aforementioned classes had their instantiations made by hard coding.
 Fix: Dagger was used to inject dependencies.
+
+#Step 20
+Code Affected: PlayScreen, Cell, CellManager, TicTacToe
+Flaw: TicTacToe logic in Cell, CellManager, TicTacToe all depend on the device screen width and height.
+Fix: Moved logic that depends on width and height to PlayScreen, which is the presenter.
+
+#Step 21
+Code Affected: All classes within presenters package, TicTacToeStarter, MenuScreen, PlayScreen
+Flaw: need to implement MVP
+Fix: Created presenters and separated logical concerns from screens to presenters.

@@ -3,7 +3,6 @@ package com.retromania.game.colour_shooter.individuals;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -17,12 +16,12 @@ public class Header {
     private float timecount;
     private Integer score;
 
-    Label scoreText;
-    Label colourText;
-    Label timeText;
-    Label scoreTracker;
-    Label colourTracker;
-    Label timeTracker;
+    private Label scoreText;
+    private Label colourText;
+    private Label timeText;
+    private Label scoreTracker;
+    private Label colourTracker;
+    private Label timeTracker;
 
     public Header(Stage stage, float width, float height) {
         worldTimer = 30;
@@ -34,15 +33,17 @@ public class Header {
         table.top();
         table.setFillParent(true);
 
-        scoreText = new Label(String.format("SCORE"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        colourText = new Label(String.format("COLOUR"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        timeText = new Label(String.format("TIME"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        scoreText = new Label("SCORE", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        colourText = new Label("COLOUR", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        timeText = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+
+        scoreTracker = new Label(String.format("%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
         colourTracker = new Label("NOT SET", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         setRandomColour();
 
         timeTracker = new Label(String.format("%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        scoreTracker = new Label(String.format("%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+
 
         table.add(scoreText).expandX().padTop(10);;
         table.add(colourText).expandX().padTop(10);;
@@ -50,12 +51,12 @@ public class Header {
         table.row();
         table.add(scoreTracker).expandX();
         table.add(colourTracker).expandX();
-        table.add(scoreTracker).expandX();
+        table.add(timeTracker).expandX();
 
         stage.addActor(table);
     }
 
-    public void setRandomColour() {
+    private void setRandomColour() {
         int randomNumber1 = (int) (Math.random() * 4);
         String[] arrayColorText = {"RED", "GREEN", "BLUE", "YELLOW"};
         Color[] arrayColorObject = {new Color().set(255, 0, 0, 1),

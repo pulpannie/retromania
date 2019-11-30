@@ -9,10 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.colour_shooter.individuals.Background;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
@@ -21,10 +18,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class MenuScreen implements Screen {
     private RetroManiaGame game;
-    static Stage stage;
+    private static Stage stage;
     ColourShooterStarter mainscreen;
 
-    public OrthographicCamera camera;
+    private OrthographicCamera camera;
     public SpriteBatch batch;
     private int width;
     private int height;
@@ -60,7 +57,7 @@ public class MenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                game.setScreen(mainscreen.getPlayScreen());
+                game.setScreen(ColourShooterStarter.getPlayScreen());
             }
         });
 
@@ -69,6 +66,13 @@ public class MenuScreen implements Screen {
         Image rules = new Image(new Texture(Gdx.files.internal("colour_shooter/rules_wth_txt.png")));
         rules.setSize((float) (width * 0.5), (float) (height * 0.18));
         rules.setPosition((float)(width / 2) - (title.getWidth() / 2), (float) (height * 0.4));
+        rules.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                dispose();
+                game.setScreen(ColourShooterStarter.getInstructionsScreen());
+            }
+        });
         stage.addActor(rules);
 
         Image skins = new Image(new Texture(Gdx.files.internal("colour_shooter/skins_wth_txt.png")));

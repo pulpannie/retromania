@@ -1,10 +1,8 @@
 package com.retromania.game.spaceship_shooter.individuals;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
@@ -15,33 +13,47 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Rocket extends Actor {
     /**
-     * Variables:
-     * x: integer that stores x coordinate of Rocket
-     * y: integer that stores y coordinate of Rocket
-     * width: width of rocket
-     * height: height of rocket
-     * texture: gui of rocket
-     * */
-    private ShapeRenderer shapeRenderer;
-    static private boolean projectionMatrixSet;
+     * Rocket's GUI.
+     */
+    private Texture texture = new Texture("spaceship_shooter/rocket_fire.png");
 
+    /**
+     * integer that stores x coordinate of Rocket
+     */
     private int x;
+
+    /**
+     * integer that stores y coordinate of Rocket
+     */
     private int y;
 
+    /**
+     * width of rocket
+     */
+    private int width;
+
+    /**
+     * height of rocket
+     */
+    private int height;
+
+    /**
+     * Getter method for rocket's width.
+     * @return the rocket's width.
+     */
     @Override
     public float getWidth() {
         return width;
     }
 
+    /**
+     * Getter method for rocket's height.
+     * @return the rocket's height.
+     */
     @Override
     public float getHeight() {
         return height;
     }
-
-    private int width;
-    private int height;
-    private Texture texture = new Texture("spaceship_shooter/rocket_fire.png");
-
 
     /**
      * Constructor of Rocket class
@@ -54,55 +66,47 @@ public class Rocket extends Actor {
         height = Gdx.graphics.getHeight()/16;
         this.x = x;
         this.y = y;
-        shapeRenderer = new ShapeRenderer();
-        projectionMatrixSet = false;
     }
 
-    //getter of x coordinate
+    /**
+     * Getter method for rocket's x coordinate.
+     * @return the rocket's x coordinate.
+     */
     @Override
     public float getX() {
         return x;
     }
-    //getter of y coordinate
+
+    /**
+     * Getter method for rocket's x coordinate.
+     * @return the rocket's x coordinate.
+     */
     @Override
     public float getY() {
         return y;
     }
+
     /**
      * Checks if rocket touches top
      *
      * @return true if and only if rocket touches ceil
      * */
-    public boolean reach_top(){
+    boolean reach_top(){
         return y+ height >= Gdx.graphics.getHeight();
     }
 
     /**
-     * Method that makes rocket go up
+     * Make the rocket go up
      * */
-    public void moveUp(){
+    void moveUp(){
         this.y += 50;
     }
 
     /**
-     *
-     * @deprecated This code is not utilized anymore
-     * */
-    public void draw_2(Batch batch, float parentAlpha) {
-        batch.end();
-        if(!projectionMatrixSet){
-            shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
-            projectionMatrixSet = true;
-        }
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect(x-width/2, y-height/2, width, height);
-        shapeRenderer.end();
-        batch.begin();
-    }
-    /**
      * Draws the entity by batch
      *
+     * @param batch
+     * @param parentAlpha
      * */
     public void draw(Batch batch, float parentAlpha){
         batch.draw(texture, x-width/2, y-height/2, width, height);

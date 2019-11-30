@@ -1,12 +1,13 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.utils.PauseScreenRenderer;
+import com.retromania.game.spaceship_shooter.presenters.PauseScreenPresenter;
 
 
 public class PauseScreen extends RetroManiaScreen {
@@ -14,12 +15,11 @@ public class PauseScreen extends RetroManiaScreen {
     private ImageButton restartButton;
     private ImageButton settingButton;
     private Stage stage;
-    MainScreenInterface mainscreen;
-    private PauseScreenRenderer renderer;
-    public PauseScreen(MainScreenInterface mainscreen){
-        renderer = new PauseScreenRenderer("fill");
-        this.mainscreen = mainscreen;
-        stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+    private PauseScreenPresenter presenter;
+
+    public PauseScreen(MainScreenInterface mainScreen){
+        presenter = new PauseScreenPresenter("fill", mainScreen);
+        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 
         resumeButton = (new ImageButtonBuilder()).buildTexture("resume.png").buildButton();
         resumeButton.setPosition(Gdx.graphics.getWidth()/2-150, Gdx.graphics.getHeight()/2 + 100);
@@ -60,23 +60,27 @@ public class PauseScreen extends RetroManiaScreen {
 
     public void update(float dt){
         handleInput();
-
-        renderer.update(dt);
         stage.act();
+        presenter.update(dt);
     }
 
     @Override
     public void render(final float delta) {
         update(delta);
-        renderer.render(delta);
+
+        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        RetroMania.getRetroManiaInstance().sb.begin();
+        presenter.getBackground().draw(RetroMania.getRetroManiaInstance().sb, delta);
+
+        RetroMania.getRetroManiaInstance().sb.end();
         stage.draw();
-
-
     }
 
     @Override
     public void resize(int width, int height) {
-        renderer.resize(width, height);
+        presenter.resize(width, height);
     }
 
     @Override
@@ -86,18 +90,18 @@ public class PauseScreen extends RetroManiaScreen {
 
     @Override
     public void resume() {
-        stage.dispose();
-        mainscreen.resume();
+        dispose();
+        presenter.resume();
     }
 
     public void restart(){
-        stage.dispose();
-        mainscreen.restart();
+        dispose();
+        presenter.restart();
     }
 
-    public void modify(){
-        stage.dispose();
-        mainscreen.modify();
+    private void modify(){
+        dispose();
+        presenter.modify();
     }
     @Override
     public void hide() {
@@ -106,7 +110,7 @@ public class PauseScreen extends RetroManiaScreen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
 

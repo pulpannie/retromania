@@ -3,13 +3,14 @@ package com.retromania.game.spaceship_shooter.individuals;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 
 /**
  * The flying UFO displayed on the screen.
  * @author Thuy, Umid.
  */
-public class UFO {
+public class UFO extends Actor {
     /**
      * The UFO's location in (x,y) format.
      */
@@ -60,7 +61,7 @@ public class UFO {
     /**
      * move this UFO right on the screen.
      */
-    public void moveRight(){
+    void moveRight(){
         if (this.x + width/2 >= Gdx.graphics.getWidth())
             recreate();
 
@@ -74,6 +75,7 @@ public class UFO {
      * @param batch
      * @param parentAlpha
      */
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         if (SpaceShipShooterStarter.getTheme().equalsIgnoreCase("independence day"))
             batch.draw(texture1, x-width/2, y-height/2, width, height);
@@ -90,7 +92,7 @@ public class UFO {
      * @param rocket the rocket fired by the car.
      * @return true if the rocket hit this UFO, false if it not.
      */
-    public boolean isRocketTouches(Rocket rocket){
+    boolean isRocketTouches(Rocket rocket){
         double d;
         double dp = Math.sqrt(Math.pow(x-rocket.getX(),2)+ Math.pow(y-rocket.getY(),2));
         if (x -width/2 < rocket.getX()&& rocket.getX() < x+ width/2)
@@ -103,7 +105,7 @@ public class UFO {
     /**
      * recreate this UFO in a different (x,y) coordinate.
      */
-    public void recreate(){
+    void recreate(){
         x =(int) (Math.random() * -80);
         y = (int) (Math.random() * (Gdx.graphics.getHeight()/2 + 1) + Gdx.graphics.getHeight()/4);
     }

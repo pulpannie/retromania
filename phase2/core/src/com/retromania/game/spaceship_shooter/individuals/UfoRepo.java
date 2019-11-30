@@ -10,7 +10,7 @@ public class UfoRepo {
     /**
      * The list of UFOs.
      */
-    List<UFO> ufos;
+    private List<UFO> ufos;
 
     /**
      * Initialized this UFO repo with a list of UFOs.
@@ -26,5 +26,5 @@ public class UfoRepo {
      *
      * @return the list of UFOs in the UFO repo.
      */
-    public List<UFO> getUfos(){return ufos;}
+    List<UFO> getUfos(){return ufos;}
 }

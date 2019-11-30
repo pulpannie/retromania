@@ -5,16 +5,16 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Tank {
 
-    private Texture correctTank;
+  private Texture correctTank;
 
-    public Tank(int tankPref){
-        StringBuilder strPath = new StringBuilder("colour_shooter/cannon");
-        strPath.append(tankPref);
-        strPath.append(".png");
-        correctTank = new Texture(Gdx.files.internal(strPath.toString()));
-    }
+  public Tank(int tankPref) {
+    StringBuilder strPath = new StringBuilder("colour_shooter/cannon");
+    strPath.append(tankPref);
+    strPath.append(".png");
+    correctTank = new Texture(Gdx.files.internal(strPath.toString()));
+  }
 
-    public Texture getTankTexture(){
-        return correctTank;
-    }
+  public Texture getTankTexture() {
+    return correctTank;
+  }
 }

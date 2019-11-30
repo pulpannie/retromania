@@ -86,7 +86,48 @@ Fix: Adjusted and improved the code associated to the position of the Square and
 
 Code Affected: PlayScreen, Header, Rectangle
 
-Added header to Playscreen class. Header is a seperate class which uses LibGdx Table to make a table.
+Added header to PlayScreen class. Header is a separate class which uses LibGdx Table to make a table.
 The table has timer, colour and score label. Currently, colour is being chosen at random.
 Timer and score are currently unimplemented.
 Added class Rectangle. It isn't implemented currently.
+
+#Step 14:
+
+Code Affected: InstructionsScreen
+
+Added an Instructions screen class which implements Screen. This is when the
+game first starts the user is introduced the rules of the game and then
+can go back to the main menu, and play the game or adjust the skins.
+
+#Step 15:
+
+Code Affected: Bullet, BulletCatcherSquare, Header, Rectangle, InstructionsScreen, MenuScreen, PlayScreen
+
+Flaw: Too many unused import statements in the above classes.
+
+Fix: Delete all the unused import statements in all the above classes.
+
+#Step 16:
+
+Code Affected: PlayScreen
+
+Flaw: The continuously rotating square is not being rotated.
+
+Fix: Adjusted the way the TextureRegion were being called, added the additional
+relevant imports.
+
+#Step 17:
+
+Code Affected: ColourShooterStarter, Header, InstructionsScreen, MenuScreen, PlayScreen, MenuScreen, PauseScreen
+
+Flaw: Access modifiers haven't been restricted
+
+Fix: Restrict all loose access modifiers in all the above classes.
+
+#Step 18:
+
+Code Affected: PlayScreen
+
+Flaw: Wrong positioning of red and blue rectangle in Colour Shooter Playscreen
+
+Fix: Changed red and blue position by subtracting square.width / 2 from original value
