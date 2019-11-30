@@ -31,7 +31,9 @@ public interface MainScreenInterface {
     /**
      * go to menu screen.
      */
-    public void returnMenu(String theme);
+    public void returnMenu(String theme, boolean isMusic);
+
+    public void returnMenu();
 
     /**
      * get the user of the screen.

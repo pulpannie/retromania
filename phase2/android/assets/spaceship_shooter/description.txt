@@ -12,3 +12,4 @@ halloween.png: texture of the halloween witch
 exit.png: texture of the button that exit the setting screen to the menu screen.
 setting.png: texture of the setting button.
 glassy folder: the skin for the setting screen.
+shooting_star_music.mp3: the music for the game.

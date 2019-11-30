@@ -1,12 +1,15 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
@@ -22,16 +25,26 @@ public class SettingScreen extends RetroManiaScreen {
     private Stage stage;
     private MainScreenInterface mainscreen;
     SelectBox<String> gameModeBox;
+    CheckBox musicBox;
 
     public SettingScreen(MainScreenInterface mainscreen){
         renderer = new SettingScreenRenderer("fill");
         stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
         this.mainscreen = mainscreen;
         Skin skin = new Skin(Gdx.files.internal("spaceship_shooter/glassy/skin/glassy-ui.json"));
+
         gameModeLabel = (new LabelBuilder()).buildFont(3f).buildColor().buildLabelStyle().buildText("Choose game mode").buildLabel();
         gameModeBox = new SelectBox<String>(skin);
         gameModeBox.setItems("Independence day", "Halloween", "Christmas");
         gameModeBox.getStyle().font.getData().setScale(3f, 2f);
+
+        musicBox = new CheckBox("music", skin);
+//        musicBox.addListener(new ChangeListener() {
+//            @Override
+//            public void changed (ChangeEvent event, Actor actor) {
+//                Gdx.graphics.setContinuousRendering(musicBox.isChecked());
+//            }
+//        });
 
         table = new Table();
         table.center();
@@ -39,6 +52,9 @@ public class SettingScreen extends RetroManiaScreen {
         table.add(gameModeLabel).expandX().pad(5);
         table.row();
         table.add(gameModeBox).expandX().pad(10);
+        table.row();
+        table.row();
+        table.add(musicBox).expandX().pad(20);
         Gdx.input.setInputProcessor(stage);
 
         exitButton = (new ImageButtonBuilder()).buildTexture("exit.png").buildButton();
@@ -95,8 +111,8 @@ public class SettingScreen extends RetroManiaScreen {
     }
 
     public void returnMenu(){
-        stage.dispose();
-        mainscreen.returnMenu(gameModeBox.getSelected());
+        dispose();
+        mainscreen.returnMenu(gameModeBox.getSelected(), musicBox.isChecked());
     }
 
     @Override
@@ -106,6 +122,6 @@ public class SettingScreen extends RetroManiaScreen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }

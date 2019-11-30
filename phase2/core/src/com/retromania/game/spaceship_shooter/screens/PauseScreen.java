@@ -86,17 +86,17 @@ public class PauseScreen extends RetroManiaScreen {
 
     @Override
     public void resume() {
-        stage.dispose();
+        dispose();
         mainscreen.resume();
     }
 
     public void restart(){
-        stage.dispose();
+        dispose();
         mainscreen.restart();
     }
 
     public void modify(){
-        stage.dispose();
+        dispose();
         mainscreen.modify();
     }
     @Override
@@ -106,7 +106,7 @@ public class PauseScreen extends RetroManiaScreen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
 

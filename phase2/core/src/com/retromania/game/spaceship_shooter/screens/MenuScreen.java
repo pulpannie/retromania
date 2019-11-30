@@ -108,7 +108,7 @@ public class MenuScreen extends RetroManiaScreen {
     }
 
     public void start(){
-        stage.dispose();
+        dispose();
         mainscreen.restart();
     }
     @Override
@@ -118,7 +118,7 @@ public class MenuScreen extends RetroManiaScreen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
 

@@ -203,3 +203,11 @@ Code affected: MenuScreen, PauseScreen, PlayScreen, SettingScreen
 Flaw: Too many unused import statements in the above classes.
 
 Fix: Delete all the unused import statements in all the above classes.
+
+#Step 25:
+
+Code affected: MainScreenInterface, SpaceShipShooterStarter, GameRenderer, Setting Screen
+
+Flaw: Our game hasn't have music yet.
+
+Fix: Add the MusicManager to play or stop the music (the mp3 file added to the spaceship_shooter package inside asset), based on the check box music that is created in the SettingScreen.

@@ -1,6 +1,7 @@
 package com.retromania.game.spaceship_shooter.utils;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FillViewport;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.Renderable;
+import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 
 public class GameRenderer implements Renderable {
@@ -27,10 +29,14 @@ public class GameRenderer implements Renderable {
         else
             gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
         background = new Background();
+
     }
+
 
     public void update(float dt){
         gamecam.update();
+
+        SpaceShipShooterStarter.playMusic();
     }
 
     @Override
