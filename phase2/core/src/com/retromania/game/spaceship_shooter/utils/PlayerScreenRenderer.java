@@ -35,7 +35,7 @@ public class PlayerScreenRenderer extends  GameRenderer{
         RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(hud.stage.getCamera().combined);
         RetroMania.getRetroManiaInstance().sb.begin();
 
-        if (player.shooted())
+        if (player.shot())
             player.getiRocket().draw(RetroMania.getRetroManiaInstance().sb, delta);
 
         player.draw(RetroMania.getRetroManiaInstance().sb, delta);

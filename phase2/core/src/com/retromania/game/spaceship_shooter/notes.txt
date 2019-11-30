@@ -6,14 +6,14 @@ Code affected: MenuScreen, PauseScreen, PLayScreen, Hud
 
 Flaw: The mentioned classes should not create their buttons and labels by itself according to Single Responsibility Rule.
 
-Fix: creation of buttons and labels are seperated from their usage by introducing ImageButtonBuilder, LabelBuilder classes (apply Builder design pattern)
+Fix: creation of buttons and labels are separated from their usage by introducing ImageButtonBuilder, LabelBuilder classes (apply Builder design pattern)
 
 
 #Step 2
 
 Code affected: UfoManager
 
-Flaw: UfoManager is currently responsibe to multiple "actors" such as: moving UFO and checking if the rocket hit UFO, drawing UFO, storing all the UFOs.
+Flaw: UfoManager is currently responsible to multiple "actors" such as: moving UFO and checking if the rocket hit UFO, drawing UFO, storing all the UFOs.
 
 Fix: Create UfoManagerFacade that contains the same responsibilities as the UfoManager through the help of different classes: UfoDrawer, UfoMover, UfoRepo (apply facade design pattern) and having an instance variable of UfoManagerFacade in UfoManager class.
 
@@ -219,3 +219,11 @@ Code affected: all classes in the individuals package
 Flaw: Access modifiers haven't been restricted, there are many unused import statements.
 
 Fix: Delete all the unused import statements and restrict all loose access modifiers in all the above classes.
+
+#Step 27:
+
+Code affected: BackGround, Car, GameStats, Hud, ImageButtonBuilder, LabelBuilder, Rocket, PlayerScreen Renderer
+
+Flaw: Some Java docs, variables and methods are not properly named and documented
+
+Fix: Fix and modify all Java docs, variables and methods that are not properly named and documented.

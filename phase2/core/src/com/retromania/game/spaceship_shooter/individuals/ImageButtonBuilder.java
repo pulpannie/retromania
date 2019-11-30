@@ -12,15 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
  * */
 public class ImageButtonBuilder {
     /**
-     * Variables:
-     * texture: texture of image
+     * texture of image
      * */
-
     private Texture texture;
 
     /**
      * Method that builds texture of image
      *
+     * @param path the inner path of the texture inside the spaceship_shooter package.
      * @return instance of class so that builder can be one-line
      * */
     public ImageButtonBuilder buildTexture(String path){
@@ -30,7 +29,7 @@ public class ImageButtonBuilder {
     }
 
     /**
-     * Method that builds button
+     * Build button
      *
      * @return ImageButton which is final product of builder
      * */

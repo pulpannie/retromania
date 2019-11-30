@@ -16,40 +16,70 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  **/
 public class Hud {
     /**
-     * Variables:
-     * stage: Stage that our table of labels added
-     * viewport: view screen
-     * worldTimer: timer that counts down to 0
-     * timeCount: timer counts up to 1
-     * score: variable that stores how many ufos shooted
-     * countDownLabel: label that draws time left
-     * scoreLabel: label that draws score
-     * timeLabel: label that draws "TIMER"
-     * worldLabel: label that draws name of specified world
-     * scoreNameLabel: label that draws "SCORE"
-     * areaLabel:  label that draws "AREA"
-     * */
+     * Stage that our table of labels added
+     */
     public  Stage stage;
+
+    /**
+     * view screen
+     */
     private Viewport viewport;
 
+    /**
+     * timer that counts down to 0
+     */
     private Integer worldTimer;
+
+    /**
+     * timer counts up 1 unit.
+     */
     private float timeCount;
+
+    /**
+     * variable that stores how many ufos are shot time ten.
+     */
     private Integer score;
 
+    /**
+     * Label that draws time left
+     */
     private Label countDownLabel;
+
+    /**
+     * Label that draws score
+     */
     private Label scoreLabel;
+
+    /**
+     * Label that draws "TIMER"
+     */
     private Label timeLabel;
+
+    /**
+     * Label that draws name of specified world
+     */
     private Label worldLabel;
+
+    /**
+     * Label that draws "SCORE"
+     */
     private Label scoreNameLabel;
+
+    /**
+     * Label that draws "AREA"
+     */
     private Label areaLabel;
+
     /**
      * GETTER METHOD FOR SCORE
      * */
     public Integer getScore() {
         return score;
     }
+
     /**
      * CONSTRUCTOR CALL FOR Hud class
+     * @param sb
      * */
     public Hud(SpriteBatch sb){
         worldTimer = 60;
@@ -84,8 +114,9 @@ public class Hud {
         stage.addActor(table);
 
     }
+
     /**
-     * Method that updates time left
+     * Update the remaining time.
      * */
     public boolean countDown(float dt){
         timeCount += dt;
@@ -104,7 +135,7 @@ public class Hud {
         return worldTimer == 0;
     }
     /**
-     * Method that updates score
+     * Update score
      * */
     void addScore(int value) {
         score += value;

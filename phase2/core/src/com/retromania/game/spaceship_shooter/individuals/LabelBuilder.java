@@ -9,20 +9,29 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
  * */
 public class LabelBuilder {
     /**
-     * Variables:
-     * text: string you want to show up in GUI
-     * bitmapFont: font of text(including size)
-     * color: color of text
-     * labelStyle: display style of text
-     * */
+     * string you want to show up in GUI
+     */
     private CharSequence text;
+
+    /**
+     * font of text(including size)
+     */
     private BitmapFont bitmapFont;
+
+    /**
+     * color of text
+     */
     private Color color;
+
+    /**
+     * display style of text
+     */
     private Label.LabelStyle labelStyle;
 
     /**
-     * Method that builds text
+     * Build text
      *
+     * @param text   the text we need to build
      * @return instance of builder class to finish building label in 1 line
      * */
     public LabelBuilder buildText(CharSequence text){
@@ -30,8 +39,9 @@ public class LabelBuilder {
         return this;
     }
     /**
-     * Method that build font of text
+     * Build the font of the text
      *
+     * @param size   the size of the font of the text that we will set.
      * @return instance of builder class to finish building label in 1 line
      * */
     public LabelBuilder buildFont(float size){
@@ -41,7 +51,7 @@ public class LabelBuilder {
         return this;
     }
     /**
-     * Method that builds color of text
+     * Build the color of the text.
      *
      * @return instance of builder class to finish building label in 1 line
      * */
@@ -50,7 +60,7 @@ public class LabelBuilder {
         return this;
     }
     /**
-     * Method that builds labelStyle of text with given font and color
+     * Build labelStyle of text with given font and color
      *
      * @return instance of builder class to finish building label in 1 line
      * */
