@@ -37,11 +37,13 @@ public class Header {
         colourText = new Label("COLOUR", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         timeText = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
+        scoreTracker = new Label(String.format("%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+
         colourTracker = new Label("NOT SET", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         setRandomColour();
 
         timeTracker = new Label(String.format("%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        scoreTracker = new Label(String.format("%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+
 
         table.add(scoreText).expandX().padTop(10);;
         table.add(colourText).expandX().padTop(10);;
@@ -49,7 +51,7 @@ public class Header {
         table.row();
         table.add(scoreTracker).expandX();
         table.add(colourTracker).expandX();
-        table.add(scoreTracker).expandX();
+        table.add(timeTracker).expandX();
 
         stage.addActor(table);
     }

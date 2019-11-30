@@ -123,3 +123,11 @@ Code Affected: ColourShooterStarter, Header, InstructionsScreen, MenuScreen, Pla
 Flaw: Access modifiers haven't been restricted
 
 Fix: Restrict all loose access modifiers in all the above classes.
+
+#Step 18:
+
+Code Affected: PlayScreen
+
+Flaw: Wrong positioning of red and blue rectangle in Colour Shooter Playscreen
+
+Fix: Changed red and blue position by subtracting square.width / 2 from original value
