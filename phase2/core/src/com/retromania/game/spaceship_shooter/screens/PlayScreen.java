@@ -91,7 +91,7 @@ public class PlayScreen extends RetroManiaScreen {
 
     @Override
     public void pause() {
-        stage.dispose();
+        dispose();
         mainscreen.pause();
     }
 
@@ -101,10 +101,10 @@ public class PlayScreen extends RetroManiaScreen {
     }
 
     public void endGame() {
-        stage.dispose();
+        dispose();
         SpaceShipShooterStarter.getGameStats().update(renderer.getScore());
         this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
-        this.mainscreen.returnMenu(SpaceShipShooterStarter.getTheme());
+        this.mainscreen.returnMenu();
         mainscreen.save();
     }
 
@@ -115,7 +115,7 @@ public class PlayScreen extends RetroManiaScreen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
 

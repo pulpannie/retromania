@@ -14,6 +14,7 @@ import com.retromania.game.spaceship_shooter.screens.PauseScreen;
 import com.retromania.game.spaceship_shooter.screens.PlayScreen;
 import com.retromania.game.spaceship_shooter.screens.SettingScreen;
 import com.retromania.game.spaceship_shooter.screens.StateFactory;
+import com.retromania.game.spaceship_shooter.utils.MusicManager;
 
 import java.util.List;
 
@@ -22,7 +23,20 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
 
     static GameStats gameStats;
 
-    static String theme = "Independence Day";
+    private static String theme = "Independence Day";
+
+    public static boolean isIsMusic() {
+        return isMusic;
+    }
+
+    private static boolean isMusic = false;
+
+    public static void playMusic() {
+        if (isMusic)
+            MusicManager.play();
+        else
+            MusicManager.stop();
+    }
 
     public static String getTheme() {
         return theme;
@@ -59,7 +73,6 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
 
 
     private Preferences preferences;
-
     public SpaceShipShooterStarter(RetroManiaGame game){
         super("Spaceship shooter", RetroManiaGame.Orientation.VERTICAL);
         gameStats = new GameStats();
@@ -68,6 +81,7 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
         menuScreen = StateFactory.getScreen("menu screen",  this);
         settingScreen = StateFactory.getScreen("setting screen",  this);
         preferences = game.getPrefrences(Configuration.spaceshipDestroyerPreference);
+
     }
 
 
@@ -147,6 +161,17 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     }
 
     @Override
+    public void returnMenu(String theme, boolean isMusic) {
+        game.setScreen(menuScreen);
+        this.theme = theme;
+        this.isMusic = isMusic;
+    }
+
+    public void returnMenu() {
+        game.setScreen(menuScreen);
+    }
+
+    @Override
     public void hide() {
 
     }
@@ -159,11 +184,6 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     public void restart(){
         setPlayScreen(new PlayScreen(this));
         game.setScreen(getPlayScreen());
-    }
-
-    public void returnMenu(String theme){
-        game.setScreen(menuScreen);
-        this.theme = theme;
     }
 
     public User getUser(){return currentUser;}

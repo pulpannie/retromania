@@ -1,5 +1,4 @@
 package com.retromania.game.spaceship_shooter.utils;
-
 import com.retromania.game.RetroMania;
 import com.retromania.game.spaceship_shooter.individuals.Car;
 import com.retromania.game.spaceship_shooter.individuals.Hud;
@@ -10,6 +9,7 @@ public class PlayerScreenRenderer extends  GameRenderer{
     private Car player;
     private UfoManager ufoManager;
     private boolean finished = false;
+
     public PlayerScreenRenderer(String screenType, Hud hud, Car player, UfoManager ufoManager) {
         super(screenType);
         this.hud = hud;
