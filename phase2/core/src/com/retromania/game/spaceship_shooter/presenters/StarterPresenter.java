@@ -18,12 +18,12 @@ public class StarterPresenter {
     private Screen menuScreen;
     private Screen settingScreen;
 
-    public StarterPresenter(MainScreenInterface mainscreen){
+    public StarterPresenter(MainScreenInterface mainScreen){
         gameStats = new GameStats();
-        playScreen = StateFactory.getScreen("play screen", mainscreen);
-        pauseScreen = StateFactory.getScreen("pause screen", mainscreen);
-        menuScreen = StateFactory.getScreen("menu screen",  mainscreen);
-        settingScreen = StateFactory.getScreen("setting screen",  mainscreen);
+        playScreen = StateFactory.getScreen("play screen", mainScreen);
+        pauseScreen = StateFactory.getScreen("pause screen", mainScreen);
+        menuScreen = StateFactory.getScreen("menu screen",  mainScreen);
+        settingScreen = StateFactory.getScreen("setting screen",  mainScreen);
     }
 
     public void pause() {
@@ -50,8 +50,8 @@ public class StarterPresenter {
         RetroMania.getRetroManiaInstance().setScreen(menuScreen);
     }
 
-    public void restart(MainScreenInterface mainscreen){
-        playScreen = new PlayScreen(mainscreen);
+    public void restart(MainScreenInterface mainScreen){
+        playScreen = new PlayScreen(mainScreen);
         RetroMania.getRetroManiaInstance().setScreen(playScreen);
     }
 

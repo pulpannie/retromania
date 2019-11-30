@@ -25,8 +25,8 @@ public class MenuScreen extends RetroManiaScreen {
     private Table table;
     private MenuScreenPresenter presenter;
 
-    public MenuScreen(MainScreenInterface mainscreen){
-        presenter = new MenuScreenPresenter("stretch", mainscreen);
+    public MenuScreen(MainScreenInterface mainScreen){
+        presenter = new MenuScreenPresenter("stretch", mainScreen);
         stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
         temp = SpaceShipShooterStarter.getGameStats();
         table = new Table();

@@ -4,11 +4,11 @@ import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
 
 public class MenuScreenPresenter extends Presenter {
 
-    private MainScreenInterface mainscreen;
+    private MainScreenInterface mainScreen;
 
     public MenuScreenPresenter(String screenType, MainScreenInterface mainScreen){
         super(screenType);
-        this.mainscreen = mainScreen;
+        this.mainScreen = mainScreen;
     }
 
     public void dispose() {
@@ -20,6 +20,6 @@ public class MenuScreenPresenter extends Presenter {
     }
 
     public void start() {
-        mainscreen.restart();
+        mainScreen.restart();
     }
 }

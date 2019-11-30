@@ -4,23 +4,23 @@ import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
 
 public class PauseScreenPresenter extends Presenter {
 
-    private MainScreenInterface mainscreen;
+    private MainScreenInterface mainScreen;
 
     public PauseScreenPresenter(String screenType, MainScreenInterface mainScreen){
         super(screenType);
-        this.mainscreen = mainScreen;
+        this.mainScreen = mainScreen;
     }
 
     public void resume() {
-        mainscreen.resume();
+        mainScreen.resume();
     }
 
     public void restart() {
-        mainscreen.restart();
+        mainScreen.restart();
     }
 
     public void modify() {
-        mainscreen.modify();
+        mainScreen.modify();
     }
 
     public void dispose() {

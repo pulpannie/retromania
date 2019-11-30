@@ -18,8 +18,8 @@ public class PlayScreen extends RetroManiaScreen {
     private ImageButton pauseButton;
     private PlayScreenPresenter presenter;
 
-    public PlayScreen(MainScreenInterface mainscreen) {
-        presenter = new PlayScreenPresenter("stretch", 4, mainscreen);
+    public PlayScreen(MainScreenInterface mainScreen) {
+        presenter = new PlayScreenPresenter("stretch", 4, mainScreen);
         stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 
 

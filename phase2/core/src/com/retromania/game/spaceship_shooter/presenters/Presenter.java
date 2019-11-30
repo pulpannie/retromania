@@ -11,13 +11,13 @@ import com.retromania.game.spaceship_shooter.individuals.Background;
 public class Presenter {
     private Viewport gamePort;
     private Background background;
-    private OrthographicCamera gamecam;
+    private OrthographicCamera gameCam;
     public Presenter(String screenType){
-        gamecam = new OrthographicCamera();
+        gameCam = new OrthographicCamera();
         if (screenType.equalsIgnoreCase("stretch"))
-            gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
+            gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
         else
-            gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
+            gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
         background = new Background();
     }
     public void resize(int width, int height) {
@@ -27,7 +27,7 @@ public class Presenter {
     public Background getBackground(){return background;}
 
     public void update(float dt){
-        gamecam.update();
+        gameCam.update();
 
         SpaceShipShooterStarter.playMusic();
     }

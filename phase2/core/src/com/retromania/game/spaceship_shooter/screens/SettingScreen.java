@@ -25,8 +25,8 @@ public class SettingScreen extends RetroManiaScreen {
     SelectBox<String> gameModeBox;
     CheckBox musicBox;
 
-    public SettingScreen(MainScreenInterface mainscreen){
-        presenter = new SettingsScreenPresenter("fill", mainscreen);
+    public SettingScreen(MainScreenInterface mainScreen){
+        presenter = new SettingsScreenPresenter("fill", mainScreen);
         stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
         Skin skin = new Skin(Gdx.files.internal("spaceship_shooter/glassy/skin/glassy-ui.json"));
 

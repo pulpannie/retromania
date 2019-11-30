@@ -16,7 +16,7 @@ public class PlayScreenPresenter extends Presenter{
     private Hud hud;
     private Car car;
     private UfoManager ufoManager;
-    private MainScreenInterface mainscreen;
+    private MainScreenInterface mainScreen;
     private boolean finished = false;
 
     public PlayScreenPresenter(String screenType, int numOfUfos, MainScreenInterface mainScreen){
@@ -24,7 +24,7 @@ public class PlayScreenPresenter extends Presenter{
         hud = new Hud(RetroMania.getRetroManiaInstance().sb);
         car = new Car();
         ufoManager = new UfoManager(numOfUfos);
-        this.mainscreen = mainScreen;
+        this.mainScreen = mainScreen;
 
     }
     public void moveCarRight(){
@@ -34,14 +34,14 @@ public class PlayScreenPresenter extends Presenter{
         car.moveLeft();
     }
     public void pause(){
-        mainscreen.pause();
+        mainScreen.pause();
     }
 
     public void endGame(){
         SpaceShipShooterStarter.getGameStats().update(hud.getScore());
-        this.mainscreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
-        this.mainscreen.returnMenu();
-        mainscreen.save();
+        this.mainScreen.getUser().setScore(SpaceShipShooterStarter.getGameStats().getHighScore());
+        this.mainScreen.returnMenu();
+        mainScreen.save();
     }
 
     public void dispose(){

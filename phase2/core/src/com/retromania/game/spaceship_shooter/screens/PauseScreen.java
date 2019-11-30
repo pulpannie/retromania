@@ -17,8 +17,8 @@ public class PauseScreen extends RetroManiaScreen {
     private Stage stage;
     private PauseScreenPresenter presenter;
 
-    public PauseScreen(MainScreenInterface mainscreen){
-        presenter = new PauseScreenPresenter("fill", mainscreen);
+    public PauseScreen(MainScreenInterface mainScreen){
+        presenter = new PauseScreenPresenter("fill", mainScreen);
         stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
 
         resumeButton = (new ImageButtonBuilder()).buildTexture("resume.png").buildButton();
