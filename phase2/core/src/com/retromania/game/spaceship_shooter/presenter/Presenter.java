@@ -1,11 +1,11 @@
 package com.retromania.game.spaceship_shooter.presenter;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.Background;
 
 public class Presenter {
@@ -25,5 +25,10 @@ public class Presenter {
     }
     public Viewport getGamePort() { return gamePort; }
     public Background getBackground(){return background;}
-    public OrthographicCamera getGamecam() { return gamecam; }
+
+    public void update(float dt){
+        gamecam.update();
+
+        SpaceShipShooterStarter.playMusic();
+    }
 }

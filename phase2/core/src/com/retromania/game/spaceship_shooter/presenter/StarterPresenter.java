@@ -2,7 +2,6 @@ package com.retromania.game.spaceship_shooter.presenter;
 
 import com.badlogic.gdx.Screen;
 import com.retromania.game.RetroMania;
-import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.spaceship_shooter.individuals.GameStats;
 import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
 import com.retromania.game.spaceship_shooter.screens.PlayScreen;
@@ -23,8 +22,6 @@ public class StarterPresenter {
         gameStats = new GameStats();
         playScreen = StateFactory.getScreen("play screen", mainscreen);
         pauseScreen = StateFactory.getScreen("pause screen", mainscreen);
-        System.out.println("*********************");
-        System.out.println(pauseScreen);
         menuScreen = StateFactory.getScreen("menu screen",  mainscreen);
         settingScreen = StateFactory.getScreen("setting screen",  mainscreen);
     }

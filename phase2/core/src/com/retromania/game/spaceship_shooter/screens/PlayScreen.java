@@ -1,18 +1,14 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.spaceship_shooter.individuals.Car;
-import com.retromania.game.spaceship_shooter.individuals.Hud;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.individuals.UfoManager;
 import com.retromania.game.spaceship_shooter.presenter.PlayScreenPresenter;
-import com.retromania.game.spaceship_shooter.utils.PlayerScreenRenderer;
 
 
 public class PlayScreen extends RetroManiaScreen {
@@ -61,7 +57,7 @@ public class PlayScreen extends RetroManiaScreen {
             presenter.moveCarLeft();
         }
         else if(pauseButton.isPressed()){
-            presenter.pause();
+            pause();
         }
         else if(Gdx.input.isTouched())
             presenter.shoot();
@@ -79,6 +75,10 @@ public class PlayScreen extends RetroManiaScreen {
     @Override
     public void render(final float delta) {
         update(delta);
+
+        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         RetroMania.getRetroManiaInstance().sb.begin();
         presenter.getBackground().draw(RetroMania.getRetroManiaInstance().sb, delta);
         for (Actor actor: presenter.getRenderableActors())

@@ -236,3 +236,27 @@ Flaw: MVP design still creating couplings and wrong dependency flow
 
 Fix: Created Presenter classes and implemented "Presenter", "StarterPresenter", "PlayScreenPresenter"
 #TODO: implement rest of presenter classes
+
+#Step 29:
+
+Code affected: MenuScreen, PauseScreen, SettingScreen, MenuScreenPresenter, PauseScreenPresenter, SettingScreenPresenter
+
+Flaw: the others Presenter classes in step 28 haven't been implemented yet.
+
+Fix: implement classes "MenuScreenPresenter", "PausePresenter", "SettingScreenPresenter". Remove all the Renderer classes.
+
+#Step 30:
+
+Code affected: PauseScreen, PlayScreen
+
+Flaw: the transfer between the two screens contains bugs since it's these screens are not well-disposed before exiting and enter another screen, resulting the play screen unable to go back to the pause screen in the second time.
+
+Fix: dispose the screens clearly and properly by calling dispose methods in the Screen Classes (View) before accessing the Presenter method for transfering.
+
+#Step 31:
+
+Code affected: all the Presenter Classes except the StarterPresenter.
+
+Flaw: After the implementation of all the Presenter classes for the new MVP pattern, music is not working on our game.
+
+Fix: incorporate music on our game by creating an update method for the Presenter which update the gamecam and play the music, while letting its child classes called it

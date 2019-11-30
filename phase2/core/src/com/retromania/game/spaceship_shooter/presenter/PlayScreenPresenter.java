@@ -10,7 +10,6 @@ import com.retromania.game.spaceship_shooter.individuals.UfoManager;
 import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlayScreenPresenter extends Presenter{
 
@@ -50,7 +49,7 @@ public class PlayScreenPresenter extends Presenter{
     }
 
     public void update(float dt){
-        this.getGamecam().update();
+        super.update(dt);
         RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(hud.stage.getCamera().combined);
         if (hud.countDown(dt))
             finished = true;

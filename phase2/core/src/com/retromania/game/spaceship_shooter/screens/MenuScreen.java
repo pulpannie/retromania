@@ -1,6 +1,7 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -11,7 +12,7 @@ import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.GameStats;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
-import com.retromania.game.spaceship_shooter.utils.MenuScreenRenderer;
+import com.retromania.game.spaceship_shooter.presenter.MenuScreenPresenter;
 
 public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
@@ -22,13 +23,11 @@ public class MenuScreen extends RetroManiaScreen {
     Label latestScoreLabel;
     GameStats temp;
     Table table;
-    MainScreenInterface mainscreen;
-    MenuScreenRenderer renderer;
+    private MenuScreenPresenter presenter;
 
     public MenuScreen(MainScreenInterface mainscreen){
-        renderer = new MenuScreenRenderer("stretch");
-        this.mainscreen = mainscreen;
-        stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+        presenter = new MenuScreenPresenter("stretch", mainscreen);
+        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
         temp = SpaceShipShooterStarter.getGameStats();
         table = new Table();
         table.top();
@@ -80,22 +79,27 @@ public class MenuScreen extends RetroManiaScreen {
     public void update(float dt){
         handleInput();
 
-        renderer.update(dt);
         stage.act();
+        presenter.update(dt);
     }
 
     @Override
     public void render(final float delta) {
         update(delta);
-        renderer.render(delta);
+
+        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        RetroMania.getRetroManiaInstance().sb.begin();
+        presenter.getBackground().draw(RetroMania.getRetroManiaInstance().sb, delta);
+
+        RetroMania.getRetroManiaInstance().sb.end();
         stage.draw();
-
-
     }
 
     @Override
     public void resize(int width, int height) {
-        renderer.resize(width, height);
+        presenter.resize(width, height);
     }
 
     @Override
@@ -109,7 +113,7 @@ public class MenuScreen extends RetroManiaScreen {
 
     public void start(){
         dispose();
-        mainscreen.restart();
+        presenter.start();
     }
     @Override
     public void hide() {
