@@ -1,43 +1,37 @@
-package com.retromania.game.special_mario;
+package com.retromania.game.special_mario.views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
-import com.retromania.game.special_mario.individuals.MainPlayer;
-import com.retromania.game.special_mario.individuals.MainPlayerInput;
-import com.retromania.game.special_mario.screens.MenuScreen;
-import com.retromania.game.special_mario.utils.GameRenderer;
+import com.retromania.game.special_mario.models.MainPlayerInput;
+import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 import com.retromania.game.special_mario.utils.MusicManager;
+import com.retromania.game.special_mario.views.menu.MenuScreen;
+import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class SpecialMarioStarter extends RetroManiaInnerGame {
 
-  private GameRenderer mainWorldRenderer;
+  private UserRenderPreference userRenderPreference;
   private MenuScreen menuScreen;
-  private World world;
-  private MainPlayer mainPlayer;
   private MusicManager musicManager;
+  private SpecialMarioStarterPresenter specialMarioStarterPresenter;
   @Inject
   public SpecialMarioStarter(
-      MainPlayer mainPlayer,
-      World world,
-      GameRenderer mainWorldRenderer,
+      SpecialMarioStarterPresenter specialMarioStarterPresenter,
+      UserRenderPreference userRenderPreference,
       MenuScreen menuScreen,
       MusicManager musicManager) {
     super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
-    this.mainPlayer = mainPlayer;
-    this.world = world;
-    setUpWorld();
-    setUpMainWorldRenderer(mainWorldRenderer);
+    this.specialMarioStarterPresenter = specialMarioStarterPresenter;
+    setUpMainWorldRenderer(userRenderPreference);
     this.menuScreen = menuScreen;
     this.musicManager = musicManager;
   }
 
-  private void setUpWorld() {
-    addModel(mainPlayer);
-  }
 
   @Override
   public void handleInput() {
@@ -47,15 +41,15 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
   @Override
   public void update() {
     handleInput();
-    world.step(1 / 60f, 6, 2);
     updateModels();
+    specialMarioStarterPresenter.present();
   }
 
   private void setUpMainPlayerInput() {
-    mainPlayer.setInput(
+    specialMarioStarterPresenter.setMainPlayerInput(
         new MainPlayerInput(
-            mainWorldRenderer.getGamePort().getScreenWidth(),
-            mainWorldRenderer.getGamePort().getScreenHeight(),
+            userRenderPreference.getRenderable().getGamePort().getScreenWidth(),
+            userRenderPreference.getRenderable().getGamePort().getScreenHeight(),
             Gdx.input.getX(),
             Gdx.input.getY(),
             Gdx.input.justTouched(),
@@ -64,7 +58,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
 
   @Override
   public void resize(int width, int height) {
-    mainWorldRenderer.resize(width, height);
+    userRenderPreference.getRenderable().resize(width, height);
   }
 
   @Override
@@ -79,8 +73,8 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
     this.menuScreen.show();
   }
 
-  private void setUpMainWorldRenderer(GameRenderer mainWorldRenderer) {
-    this.mainWorldRenderer = mainWorldRenderer;
-    addRenderable(this.mainWorldRenderer);
+  private void setUpMainWorldRenderer(UserRenderPreference userRenderPreference) {
+    this.userRenderPreference = userRenderPreference;
+    addRenderable(userRenderPreference.getRenderable());
   }
 }

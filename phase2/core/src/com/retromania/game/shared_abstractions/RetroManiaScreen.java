@@ -60,6 +60,13 @@ public abstract class RetroManiaScreen implements Screen, Renderable {
     protected void addRenderable(Renderable renderable) {
         this.renderables.add(renderable);
     }
+    private void changeRenderable(Renderable oldRenderable, Renderable newRenderable){
+        int index = this.renderables.indexOf(oldRenderable);
+        if(index == -1){
+            throw new RuntimeException("This renderable does not exist.");
+        }
+        this.renderables.set(index, newRenderable);
+    }
     protected void addModel(RetroManiaModel model) {
         this.models.add(model);
     }

@@ -70,7 +70,7 @@ public class TiledMapIndividualFactory {
     getLayer(Layers.FIRE, world);
   }
 
-  TiledMap getTiledMap() {
+  public TiledMap getTiledMap() {
     return tiledMap;
   }
 

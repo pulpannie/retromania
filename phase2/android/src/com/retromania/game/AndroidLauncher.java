@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.FINAL_GAME;
+
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override

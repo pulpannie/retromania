@@ -5,7 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.retromania.game.shared_abstractions.ButtonMaker;
-import com.retromania.game.special_mario.screens.MenuScreen;
+import com.retromania.game.special_mario.views.menu.MenuScreen;
+import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 public class MainPageUtilsTable {
 
@@ -14,12 +15,15 @@ public class MainPageUtilsTable {
   private Button settingButton;
   private MenuScreen menuScreen;
   private TiledMapIndividualFactory tiledMapIndividualFactory;
+  private UserRenderPreference userRenderPreference;
 
   public MainPageUtilsTable(
-      TiledMapIndividualFactory tiledMapIndividualFactory,
-      String gameStartString,
-      String settingString,
-      MenuScreen menuScreen) {
+          TiledMapIndividualFactory tiledMapIndividualFactory,
+          String gameStartString,
+          String settingString,
+          MenuScreen menuScreen,
+          UserRenderPreference userRenderPreference) {
+    this.userRenderPreference = userRenderPreference;
     this.menuScreen = menuScreen;
     this.tiledMapIndividualFactory = tiledMapIndividualFactory;
     makeGameStartButton(gameStartString);
@@ -37,6 +41,7 @@ public class MainPageUtilsTable {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         tiledMapIndividualFactory.setUpSecondWorldTileMap();
+        userRenderPreference.getRenderable().resetWorldRenderTiles();
       }
     };
   }

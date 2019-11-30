@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.utils;
+package com.retromania.game.special_mario.views.renderables;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -9,14 +9,16 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
-import com.retromania.game.shared_abstractions.Renderable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.SpecialMarioConfiguration;
-import com.retromania.game.special_mario.individuals.MainPlayer;
+import com.retromania.game.special_mario.models.MainPlayer;
+import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
-public class GameRenderer implements Renderable {
+@Singleton
+class GameRenderer implements MarioRenderable {
 
   private OrthogonalTiledMapRenderer orthogRenderer;
   private RetroManiaGame game = RetroMania.getRetroManiaInstance();
@@ -29,7 +31,7 @@ public class GameRenderer implements Renderable {
   private TiledMapIndividualFactory tiledMapIndividualFactory;
 
   @Inject
-  public GameRenderer(
+  GameRenderer(
       MainPlayer mainPlayer, TiledMapIndividualFactory tiledMapIndividualFactory, World world) {
     this.tiledMapIndividualFactory = tiledMapIndividualFactory;
     this.world = world;
@@ -47,9 +49,6 @@ public class GameRenderer implements Renderable {
             SpecialMarioConfiguration.getPixelToMeterConversionRate());
   }
 
-  private void clearPage() {
-    setUpOrthogRenderer();
-  }
 
   private void handleInput() {
     gamecam.position.x =
@@ -75,7 +74,6 @@ public class GameRenderer implements Renderable {
   }
 
   private void displayWorld() {
-    setUpOrthogRenderer();
     orthogRenderer.setView(gamecam);
     orthogRenderer.render();
     game.sb.setProjectionMatrix(gamecam.combined);
@@ -94,6 +92,11 @@ public class GameRenderer implements Renderable {
 
   public void resize(int width, int height) {
     gamePort.update(width, height);
+  }
+
+  @Override
+  public void resetWorldRenderTiles() {
+    setUpOrthogRenderer();
   }
 
   private void setUpGamecam() {

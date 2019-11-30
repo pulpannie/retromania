@@ -1,5 +1,8 @@
 package com.retromania.game.special_mario;
 
+
+import com.retromania.game.special_mario.views.SpecialMarioStarter;
+
 public class SpecialMarioConfiguration {
 
   public static final SpecialMarioStarter FINAL_GAME;
