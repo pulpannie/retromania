@@ -90,3 +90,11 @@ Added header to Playscreen class. Header is a seperate class which uses LibGdx T
 The table has timer, colour and score label. Currently, colour is being chosen at random.
 Timer and score are currently unimplemented.
 Added class Rectangle. It isn't implemented currently.
+
+#Step 14:
+
+Code Affected: InstructionsScreen
+
+Added an instructions screen class which implements Screen. This feature
+is when from the menu screen the user can view the instructions and go back
+to the menu. Also removed static references.
