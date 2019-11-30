@@ -1,36 +1,21 @@
 package com.retromania.game.spaceship_shooter.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
-import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.spaceship_shooter.individuals.Background;
 import com.retromania.game.spaceship_shooter.individuals.GameStats;
 import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
 import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
+import com.retromania.game.spaceship_shooter.utils.MenuScreenRenderer;
 
 public class MenuScreen extends RetroManiaScreen {
-    private OrthographicCamera gamecam;
-    private Viewport gamePort;
-    private ImageButton startButton;
-    private Background background;
     public Stage stage;
+    private ImageButton startButton;
     Label highScoreTextLabel;
     Label latestScoreTextLabel;
     Label highScoreLabel;
@@ -38,14 +23,12 @@ public class MenuScreen extends RetroManiaScreen {
     GameStats temp;
     Table table;
     MainScreenInterface mainscreen;
+    MenuScreenRenderer renderer;
 
     public MenuScreen(MainScreenInterface mainscreen){
-        gamecam = new OrthographicCamera();
-        gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
+        renderer = new MenuScreenRenderer("stretch");
         this.mainscreen = mainscreen;
-
-        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
-        background = new Background();
+        stage = new Stage(renderer.getGamePort(), RetroMania.getRetroManiaInstance().sb);
         temp = SpaceShipShooterStarter.getGameStats();
         table = new Table();
         table.top();
@@ -90,29 +73,21 @@ public class MenuScreen extends RetroManiaScreen {
     }
 
     public void handleInput(){
-        if (startButton.isPressed()) {
+        if (startButton.isPressed())
             start();
-        }
     }
 
     public void update(float dt){
         handleInput();
 
-        gamecam.update();
+        renderer.update(dt);
+        stage.act();
     }
 
     @Override
     public void render(final float delta) {
         update(delta);
-
-        Gdx.gl.glClearColor(0,0,0,1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-
-        RetroMania.getRetroManiaInstance().sb.begin();
-        background.draw(RetroMania.getRetroManiaInstance().sb, delta);
-
-        RetroMania.getRetroManiaInstance().sb.end();
+        renderer.render(delta);
         stage.draw();
 
 
@@ -120,7 +95,7 @@ public class MenuScreen extends RetroManiaScreen {
 
     @Override
     public void resize(int width, int height) {
-        gamePort.update(width, height);
+        renderer.resize(width, height);
     }
 
     @Override

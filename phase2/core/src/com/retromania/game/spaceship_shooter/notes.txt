@@ -142,3 +142,64 @@ Code affected: SpaceShipShooterStarter, MenuScreen, SettingScreen, PauseScreen, 
 Flaw: We need to get rid of couplings and 'depreciated constructor method'
 
 Fix: deleted "game" attribute from constructor class of all above-mentioned classes
+
+#Step 18:
+
+Code affected: MenuScreen, PauseScreen
+
+Flaw: All the screen classes are responsible to multiple actors, including updating the entities on the screen and rendering the screen itself.
+
+Fix: Adding the GameRenderer class in the new utils package inside the spaceship_shooter package which responsible for rendering the screens in the game.
+
+Modify MenuScreen and PauseScreen to test rendering the menu and pause screens using the GameRenderer. This would fit with the Single Responsibility Principle and the MVP pattern, while removing duplicate codes.
+
+#Step 19:
+
+Code affected: PlayScreen
+
+Flaw: PlayScreen is responsible to multiple actors, including handling inputs, updating the entities on the screen and rendering the screen itself.
+
+Fix: Applied MVP pattern by introducing new class named as PlayScreenRenderer which is child class of GameRenderer
+We introduced PlayScreenRenderer rather then using GameRenderer in order to draw more specific actors/entities
+
+#Step 20:
+
+Code affected: PauseScreen
+
+Flaw: PauseScreen is responsible to multiple actors, including handling inputs and rendering the screen itself.
+
+Fix: Applied MVP pattern by introducing new class named as PauseScreenRenderer which is child class of GameRenderer
+We introduced PauseScreenRenderer rather then using GameRenderer in order to draw more specific actors/entities.
+
+#Step 21:
+
+Code affected: GameRenderer, PauseScreenRenderer, PlayScreenRenderer
+
+Flaw: The Renderer Classes should not be responsible for handling input, this should be handled by the Screen Classes.
+
+Fix: Delete the handleInput method and modify the update method to adapt with the change in all above classes.
+
+#Step 22:
+
+Code affected: PauseScreen
+
+Flaw: In step 18, when introducing GameRenderer class to render the pause screen, the handleInput method in PauseScreen wasn't working, and we have to add the listener for all the buttons to recognize input from the user.
+
+Fix: Modify the render method in the PauseScreen Class to update the screen accordingly, which makes the handleInput method work and the pause screen is now able to recognize input from the user. Delete all the listeners for the buttons.
+
+#Step 23:
+
+Code affected: MenuScreen, SettingScreen
+
+Flaw: MenuScreen and SettingScreen are responsible to multiple actors, including handling inputs and rendering the screen itself.
+
+Fix: Applied MVP pattern by introducing two new classes named as MenuScreenRenderer and SettingScreenRenderer which are child classes of GameRenderer
+We introduced MenuScreenRenderer and SettingScreenRenderer rather then using GameRenderer in order to draw more specific actors/entities.
+
+#Step 24:
+
+Code affected: MenuScreen, PauseScreen, PlayScreen, SettingScreen
+
+Flaw: Too many unused import statements in the above classes.
+
+Fix: Delete all the unused import statements in all the above classes.

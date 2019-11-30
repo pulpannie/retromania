@@ -119,6 +119,9 @@ public class Car extends Actor {
         if (x + width/2 <= Gdx.graphics.getWidth())
             x += 15;
 
+        if (!goingRight)
+            turnSide();
+
     }
     /**
      * Method that mcves car to left
@@ -126,6 +129,8 @@ public class Car extends Actor {
     public void moveLeft(){
         if (x - width/2 >= 0)
             x -= 15;
+        if (goingRight)
+            turnSide();
     }
     /**
      * Method that creates/shoots rocket
