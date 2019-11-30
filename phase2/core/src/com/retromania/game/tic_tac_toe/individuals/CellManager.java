@@ -6,19 +6,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 public class CellManager {
-  int gameWidth, gameHeight;
   Cell[][] cellArray;
   String winner = "None";
   UserPrefrence userPrefrence;
 
   @Inject
-  public CellManager(
-      @Named("Game Width") int gameWidth,
-      @Named("Game Height") int gameHeight,
-      UserPrefrence userPrefrence) {
-    this.gameWidth = gameWidth;
-    this.gameHeight = gameHeight;
-    System.out.println(gameWidth +" " +gameHeight);
+  public CellManager(UserPrefrence userPrefrence) {
     this.userPrefrence = userPrefrence;
   }
 
@@ -27,13 +20,18 @@ public class CellManager {
     for (int i = 0; i < userPrefrence.getGameSize(); i++) {
       for (int j = 0; j < userPrefrence.getGameSize(); j++) {
         cellArray[i][j] =
-            new Cell(
-                gameWidth / userPrefrence.getGameSize(),
-                gameHeight / userPrefrence.getGameSize(),
-                gameWidth * i / userPrefrence.getGameSize(),
-                gameHeight * j / userPrefrence.getGameSize());
+            new Cell();
       }
     }
+  }
+
+  public void touchCell(int i, int j, String currentTurn){
+    cellArray[i][j].setIsTouched(true);
+    cellArray[i][j].setCell(currentTurn);
+  }
+
+  public boolean isCellTouched(int i, int j){
+    return cellArray[i][j].getIsTouched();
   }
 
   public boolean checkRow(int n) {

@@ -25,7 +25,6 @@ import javax.inject.Inject;
 public class PlayScreen extends RetroManiaScreen {
   public Stage stage;
   public static ShapeRenderer boardRenderer = new ShapeRenderer();
-  public String currentTurn;
   public SpriteBatch batch;
   public Texture cross;
   public Texture circle;
@@ -59,7 +58,6 @@ public class PlayScreen extends RetroManiaScreen {
     gameWidth = Gdx.graphics.getWidth();
     gameHeight = Gdx.graphics.getHeight();
     ticTacToe = new TicTacToe(userPrefrence, cellManager);
-    currentTurn = "Cross";
 
     gamecam = new OrthographicCamera();
     gamecam.setToOrtho(false, gameWidth, gameHeight);
@@ -92,8 +90,10 @@ public class PlayScreen extends RetroManiaScreen {
       Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
       System.out.println(mousePos);
       Vector3 worldCoordinates = gamecam.unproject(mousePos);
-      ticTacToe.selectCell((int) worldCoordinates.x, (int) worldCoordinates.y);
-      this.currentTurn = ticTacToe.currentTurn;
+
+      int tmpx = (int)((worldCoordinates.x * userPrefrence.getGameSize())/gameWidth);
+      int tmpy = (int)((worldCoordinates.y * userPrefrence.getGameSize())/gameHeight);
+      ticTacToe.touchCell(tmpx, tmpy);
     }
     for (int i = 0; i < userPrefrence.getGameSize(); i++) {
       for (int j = 0; j < userPrefrence.getGameSize(); j++) {
