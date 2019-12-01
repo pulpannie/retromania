@@ -399,11 +399,16 @@ Code affected : All the package
 Menu completed, and the renderer and the levels are now orthogonal.
 
 
-# Step 39
+# Step 40
 
 Code affected : All of the package
 
 Beta Version Completed
 
+# Step 41
+
+Code affected : views
+
+all renderables are now private but the interfaces and the providers
 
 

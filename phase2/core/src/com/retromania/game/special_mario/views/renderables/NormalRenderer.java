@@ -11,7 +11,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-
+/**
+ * A Concrete implementation of MarioRenderable, this renderable is a normal renderable for showing
+ * the game.
+ */
 @Singleton
 class NormalRenderer extends MarioRenderable {
 
@@ -26,17 +29,17 @@ class NormalRenderer extends MarioRenderable {
     super(mainPlayer, world, marioGamePresenter, orthogonalTiledMapRenderer, gameCam, gamePort);
   }
 
-
   @Override
   public void start() {
-    System.out.println("game cam position x "+gameCam.position.x);
     mainPlayer.createMainPlayer();
     handleInput();
   }
 
   private void handleInput() {
     gameCam.position.x =
-        gamePort.getWorldWidth() / 2 > mainPlayer.getX() ? gamePort.getWorldWidth() / 2 : mainPlayer.getX();
+        gamePort.getWorldWidth() / 2 > mainPlayer.getX()
+            ? gamePort.getWorldWidth() / 2
+            : mainPlayer.getX();
   }
 
   public void update() {

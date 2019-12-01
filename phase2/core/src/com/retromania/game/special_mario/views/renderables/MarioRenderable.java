@@ -13,11 +13,11 @@ import com.retromania.game.shared_abstractions.Renderable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.presenter.MarioGamePresentable;
-import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 
-public abstract class MarioRenderable implements Renderable, MarioShowable {
+abstract class MarioRenderable implements Renderable, MarioShowable {
 
-  private MarioGamePresentable marioGamePresentable;
+  MarioGamePresentable marioGamePresentable;
+
   private TiledMap currTiledMap;
 
   private OrthogonalTiledMapRenderer orthogRenderer;
@@ -32,14 +32,14 @@ public abstract class MarioRenderable implements Renderable, MarioShowable {
   MarioRenderable(
       MainPlayer mainPlayer,
       World world,
-      SpecialMarioStarterPresenter marioGamePresenter,
+      MarioGamePresentable marioGamePresentable,
       OrthogonalTiledMapRenderer orthogRendererr,
       OrthographicCamera gameCam,
       Viewport gamePort) {
+    this.marioGamePresentable = marioGamePresentable;
+    this.currTiledMap = this.marioGamePresentable.getTileMap();
     this.gamePort = gamePort;
     this.gameCam = gameCam;
-    this.marioGamePresentable = marioGamePresenter;
-    this.currTiledMap = this.marioGamePresentable.getTileMap();
     this.world = world;
     this.mainPlayer = mainPlayer;
     this.orthogRenderer = orthogRendererr;
@@ -85,5 +85,10 @@ public abstract class MarioRenderable implements Renderable, MarioShowable {
   public void dispose() {
     orthogRenderer.dispose();
     b2ddr.dispose();
+  }
+
+  @Override
+  public void setPresenter(MarioGamePresentable marioGamePresentable){
+    this.marioGamePresentable = marioGamePresentable;
   }
 }

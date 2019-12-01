@@ -13,8 +13,16 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 
+
+/**
+ *
+ * A Concrete implementation of MarioRenderable, this renderable will not show the main player,
+ * and make the said player, a ghost(invisible), but at the same it will give it its information back
+ * to the presenter and from there to the main player, so you will play but you won't see your player.
+ * */
+
 @Singleton
-public class GhostRenderer extends MarioRenderable {
+class GhostRenderer extends MarioRenderable {
 
   @Inject
   GhostRenderer(

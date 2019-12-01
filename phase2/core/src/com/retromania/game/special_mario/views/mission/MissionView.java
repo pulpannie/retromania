@@ -7,13 +7,14 @@ import com.retromania.game.special_mario.abstractions.DeathObserver;
 import com.retromania.game.special_mario.abstractions.FinisherObserver;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerInput;
+import com.retromania.game.special_mario.presenter.MarioGamePresentable;
 import com.retromania.game.special_mario.presenter.MarioGamePresenter;
 import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 
 public abstract class MissionView extends RetroManiaScreen implements DeathObserver, FinisherObserver {
     private UserRenderPreference userRenderPreference;
-    private MarioGamePresenter marioGamePresenter;
+    private MarioGamePresentable marioGamePresentable;
     MainPlayer mainPlayer;
     public MissionView(
             MarioGamePresenter marioGamePresenter,
@@ -21,12 +22,13 @@ public abstract class MissionView extends RetroManiaScreen implements DeathObser
 //        This is to redo any position or state of the player for the game
         mainPlayer.createMainPlayer();
 
-        this.marioGamePresenter = marioGamePresenter;
-        this.marioGamePresenter.reloadLevel();
-        this.marioGamePresenter.addDeathObserver(this);
-        this.marioGamePresenter.addFinisherObserver(this);
+        this.marioGamePresentable = marioGamePresenter;
+        this.marioGamePresentable.reloadLevel();
+        this.marioGamePresentable.addDeathObserver(this);
+        this.marioGamePresentable.addFinisherObserver(this);
         this.mainPlayer = mainPlayer;
         setUpMainWorldRenderer(userRenderPreference);
+        this.userRenderPreference.getRenderable().setPresenter(marioGamePresenter);
     }
 
 
@@ -39,11 +41,11 @@ public abstract class MissionView extends RetroManiaScreen implements DeathObser
     public void update() {
         handleInput();
         updateModels();
-        marioGamePresenter.present();
+        marioGamePresentable.present();
     }
 
     private void setUpMainPlayerInput() {
-        marioGamePresenter.setMainPlayerInput(
+        marioGamePresentable.setMainPlayerInput(
                 new MainPlayerInput(
                         userRenderPreference.getRenderable().getGamePort().getScreenWidth(),
                         userRenderPreference.getRenderable().getGamePort().getScreenHeight(),

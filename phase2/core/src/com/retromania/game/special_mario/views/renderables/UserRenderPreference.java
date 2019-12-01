@@ -7,16 +7,16 @@ import java.util.function.Supplier;
 
 public interface UserRenderPreference {
 
-    Map<Supplier<MarioRenderable>, String> getRenderModeFunctions();
+    Map<Supplier<MarioShowable>, String> getRenderModeFunctions();
 
 
-    MarioRenderable setGameRenderNormal();
+    MarioShowable setGameRenderNormal();
 
-    MarioRenderable setGameRenderSurvival();
+    MarioShowable setGameRenderSurvival();
 
-    MarioRenderable setGameRenderGhost();
+    MarioShowable setGameRenderGhost();
 
-    MarioRenderable getRenderable();
+    MarioShowable getRenderable();
 
     void start();
 

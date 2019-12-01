@@ -2,8 +2,11 @@ package com.retromania.game.special_mario.views.renderables;
 
 
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.retromania.game.shared_abstractions.Renderable;
+import com.retromania.game.special_mario.presenter.MarioGamePresentable;
 
-public interface MarioShowable{
+
+public interface MarioShowable extends Renderable {
     Viewport getGamePort();
     void resize(int width, int height);
     /**
@@ -13,6 +16,11 @@ public interface MarioShowable{
      *
      * **/
     boolean checkTiledMap();
+
     void start();
     void dispose();
+
+    void setPresenter(MarioGamePresentable marioGamePresentable);
+
+
 }

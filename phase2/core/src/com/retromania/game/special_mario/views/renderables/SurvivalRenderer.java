@@ -10,7 +10,12 @@ import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-public class SurvivalRenderer extends MarioRenderable {
+/**
+ *
+ * A Concrete implementation of MarioRenderable, this renderable is will not care about your player,
+ * and will leave it by if you let it.
+ * */
+class SurvivalRenderer extends MarioRenderable {
 
   @Inject
   SurvivalRenderer(
