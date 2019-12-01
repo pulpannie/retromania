@@ -139,3 +139,10 @@ Code Affected: PlayScreen, SquareCharacter
 Flaw: Not using shared abstract class Character
 
 Fix: Extended abstract class Character to make SquareCharacter
+
+
+#Step 21:
+
+Code Affected: BulletCharacter
+
+Character was extended on the BulletCharacter

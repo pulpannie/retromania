@@ -10,15 +10,12 @@ import com.retromania.game.shared_abstractions.Character;
 
 public class BulletCharacter extends Character {
 
-    private float radiusBullet;
-    private float x_pos, y_pos;
     private FixtureDef fixtureDef;
-
+    private float getRadius(){
+        return 6;
+    }
     public BulletCharacter(World given_world, TextureRegion textureRegion, int x, int y, int radius) {
-        super(textureRegion, x, y, radius * 2, radius * 2, 1f, given_world);
-        x_pos = x;
-        y_pos = y;
-        radiusBullet = radius;
+        super(textureRegion, x, y, radius * 2, radius * 2, 1f, given_world, x, y);
     }
 
     @Override
@@ -29,9 +26,9 @@ public class BulletCharacter extends Character {
     @Override
     protected BodyDef setUpBodyDef() {
         BodyDef bDef = new BodyDef();
+        bDef.position.set(getInitialXInTheWorld(), getInitialYInTheWorld());
         bDef.fixedRotation = true;
         bDef.type = BodyDef.BodyType.DynamicBody;
-        bDef.position.set(x_pos, y_pos);
         return bDef;
     }
 
@@ -44,7 +41,8 @@ public class BulletCharacter extends Character {
     @Override
     protected void setUpFixture() {
         CircleShape shape = new CircleShape();
-        shape.setRadius(radiusBullet);
+    System.out.println("this fucker "+getRadius());
+        shape.setRadius(getRadius());
 
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
