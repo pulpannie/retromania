@@ -53,6 +53,7 @@ class TiledMapIndividualFactory {
   }
 
   private void clearBodiesOfMap() {
+    System.out.println("this gets called");
     for(Body b : bodies){
       world.destroyBody(b);
     }

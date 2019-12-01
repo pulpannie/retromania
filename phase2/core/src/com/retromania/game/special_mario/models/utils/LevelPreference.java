@@ -15,5 +15,8 @@ public interface LevelPreference {
 
     TiledMap getCurrentTileMap();
 
+    boolean isItFirstMission();
+
+
 
 }

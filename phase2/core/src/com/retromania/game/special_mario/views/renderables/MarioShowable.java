@@ -13,4 +13,6 @@ public interface MarioShowable{
      *
      * **/
     boolean checkTiledMap();
+    void start();
+    void dispose();
 }

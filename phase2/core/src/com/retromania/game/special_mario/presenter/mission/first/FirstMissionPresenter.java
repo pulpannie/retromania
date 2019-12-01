@@ -1,27 +1,18 @@
-package com.retromania.game.special_mario.presenter;
+package com.retromania.game.special_mario.presenter.mission.first;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.models.player.MainPlayer;
-import com.retromania.game.special_mario.models.map.MainPlayerInput;
 import com.retromania.game.special_mario.models.utils.LevelPreference;
+import com.retromania.game.special_mario.presenter.MarioGamePresenter;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
-@Singleton
-public class SpecialMarioStarterPresenter extends MarioGamePresenter {
-
-
+public class FirstMissionPresenter extends MarioGamePresenter {
     @Inject
-    SpecialMarioStarterPresenter(
+    public FirstMissionPresenter(
             MainPlayer mainPlayer,
             World world,
             LevelPreference levelPreference){
         super(mainPlayer, world, levelPreference);
     }
-
-
-
-
 }

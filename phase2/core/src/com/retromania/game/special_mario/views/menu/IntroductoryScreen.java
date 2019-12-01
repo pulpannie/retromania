@@ -10,7 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
+import com.retromania.game.special_mario.models.utils.LevelPreference;
 import com.retromania.game.special_mario.utils.MainPageUtilsTable;
+import com.retromania.game.special_mario.views.mission.first.FirstMissionView;
+import com.retromania.game.special_mario.views.mission.seccond.SecondMissionView;
 import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
@@ -21,17 +24,24 @@ public class IntroductoryScreen extends MenuOptionScreen {
 
   private Stage stage;
   private Table table;
-  Skin skin;
-  Viewport viewport2 =
+  private Skin skin;
+  private Viewport viewport2 =
       new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
-  UserRenderPreference userRenderPreference;
+  private UserRenderPreference userRenderPreference;
+  private LevelPreference levelPreference;
+  private FirstMissionView firstMissionView;
+  private SecondMissionView secondMissionView;
 
   @Inject
   IntroductoryScreen(
-//      TiledMapIndividualFactory tiledMapIndividualFactory,
+      LevelPreference levelPreference,
+      FirstMissionView firstMissionView,
+      SecondMissionView secondMissionView,
       UserRenderPreference userRenderPreference) {
     this.userRenderPreference = userRenderPreference;
-//    this.tiledMapIndividualFactory = tiledMapIndividualFactory;
+    this.levelPreference = levelPreference;
+    this.firstMissionView = firstMissionView;
+    this.secondMissionView = secondMissionView;
   }
 
   @Override
@@ -56,7 +66,12 @@ public class IntroductoryScreen extends MenuOptionScreen {
                     "Play Game",
                     "Settings",
                     menuScreen,
-                    userRenderPreference)
+                    this,
+                    levelPreference,
+                    userRenderPreference,
+                    game,
+                    firstMissionView,
+                    secondMissionView)
                 .getTable())
         .expandX()
         .expandY()

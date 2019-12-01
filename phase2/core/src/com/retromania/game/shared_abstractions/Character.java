@@ -44,7 +44,7 @@ public abstract class Character extends CharacterSprite implements Collidable {
     this(textureRegion, x, y, width, height, pixelToMeterRate, world, 0, 0);
   }
 
-  private void createMainPlayer() {
+  public void createMainPlayer() {
     BodyDef bodyDef = setUpBodyDef();
     body = setUpBody(bodyDef);
     setUpFixture();
@@ -55,6 +55,12 @@ public abstract class Character extends CharacterSprite implements Collidable {
 
   protected abstract BodyDef setUpBodyDef();
 
+  /**
+   *
+   * Should be able to make the body, and it should be able to make it multiple times so
+   * the body needs to be deleted from the world, if needed.
+   *
+   * **/
   protected abstract Body setUpBody(BodyDef bodyDef);
 
   protected abstract void setUpFixture();

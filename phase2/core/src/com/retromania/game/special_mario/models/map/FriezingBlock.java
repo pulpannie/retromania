@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.models;
+package com.retromania.game.special_mario.models.map;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.physics.box2d.World;

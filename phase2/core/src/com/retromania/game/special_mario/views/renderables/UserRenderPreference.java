@@ -18,4 +18,6 @@ public interface UserRenderPreference {
 
     MarioRenderable getRenderable();
 
+    void start();
+
 }

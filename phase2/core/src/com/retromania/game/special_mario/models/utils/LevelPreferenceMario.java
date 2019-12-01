@@ -12,10 +12,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-
 public class LevelPreferenceMario implements LevelPreference {
 
-
+    private boolean isItFirst = true;
     private Map<Supplier<TiledMap>, String> functionOfLevelMap = new HashMap<>();
     private TiledMapIndividualFactory tiledMapIndividualFactory;
 
@@ -40,18 +39,19 @@ public class LevelPreferenceMario implements LevelPreference {
         return functionOfLevelMap;
     }
     private TiledMap setUpTiledMap(){
-        System.out.println("This was changed");
         this.currentTile = this.tiledMapIndividualFactory.getTiledMap();
         return currentTile;
     }
     @Override
     public TiledMap setGameLevelToFirst() {
+        isItFirst = true;
         tiledMapIndividualFactory.setUpFirstWorldTileMap();
         return setUpTiledMap();
     }
 
     @Override
     public TiledMap setGameLevelToSecond() {
+        isItFirst = false;
         tiledMapIndividualFactory.setUpSecondWorldTileMap();
         return setUpTiledMap();
     }
@@ -61,8 +61,13 @@ public class LevelPreferenceMario implements LevelPreference {
         return currentTile;
     }
 
+    @Override
+    public boolean isItFirstMission() {
+        return isItFirst;
+    }
 
-     void clearDisplay() {
+
+    void clearDisplay() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }

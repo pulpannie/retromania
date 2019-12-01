@@ -1,13 +1,13 @@
-package com.retromania.game.special_mario.models;
+package com.retromania.game.special_mario.models.map;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
-public class Water extends TiledMapIndividual {
+public class Fire extends TiledMapIndividual {
 
-    public Water(MapObject object, World world) {
+    public Fire(MapObject object, World world) {
         super(object, world);
     }
 
@@ -20,4 +20,5 @@ public class Water extends TiledMapIndividual {
     public void update(Object... args) {
 
     }
+
 }

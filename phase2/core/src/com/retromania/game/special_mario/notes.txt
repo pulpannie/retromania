@@ -391,4 +391,13 @@ the levelProvider and that value of tileMap will be given to the renderer.
 
 
 
+# Step 39
+
+Code affected : All the package
+
+
+Menu completed, and the renderer and the levels are now orthogonal.
+
+
+
 

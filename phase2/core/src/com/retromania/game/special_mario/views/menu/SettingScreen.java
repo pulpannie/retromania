@@ -16,6 +16,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.retromania.game.shared_abstractions.ButtonMaker;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.special_mario.models.utils.LevelPreference;
+import com.retromania.game.special_mario.views.mission.first.FirstMissionView;
+import com.retromania.game.special_mario.views.mission.seccond.SecondMissionView;
 import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import java.util.function.Supplier;
@@ -27,16 +29,22 @@ import javax.inject.Singleton;
 public class SettingScreen extends MenuOptionScreen {
   private Stage stage;
 
-//  private String[] levels = {"Level 1", "Level 2"};
-  //  private String[] gameViewOptions = {"SURVIVAL : ON", "GHOST : OFF", "Normal : ON"};
+  private UserRenderPreference userRenderPreference;
+  private LevelPreference levelPreference;
 
-  UserRenderPreference userRenderPreference;
-  LevelPreference levelPreference;
+  private FirstMissionView firstMissionView;
+  private SecondMissionView secondMissionView;
 
   @Inject
-  SettingScreen(UserRenderPreference userRenderPreference, LevelPreference levelPreference) {
+  SettingScreen(
+      UserRenderPreference userRenderPreference,
+      LevelPreference levelPreference,
+      FirstMissionView firstMissionView,
+      SecondMissionView secondMissionView) {
     this.levelPreference = levelPreference;
     this.userRenderPreference = userRenderPreference;
+    this.firstMissionView = firstMissionView;
+    this.secondMissionView = secondMissionView;
     gamePort =
         new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
   }
@@ -123,7 +131,10 @@ public class SettingScreen extends MenuOptionScreen {
         new ClickListener() {
           @Override
           public void clicked(InputEvent event, float x, float y) {
-            super.clicked(event, x, y);
+            userRenderPreference.start();
+            dispose();
+            if (levelPreference.isItFirstMission()) game.setScreen(firstMissionView);
+            else game.setScreen(secondMissionView);
           }
         });
     addPortionTextButtonToTable(table, textButton, 0, table.getWidth()).row();
@@ -133,7 +144,7 @@ public class SettingScreen extends MenuOptionScreen {
     Table table = setUpTable(outterTable);
     Cell c = null;
     for (Supplier f : levelPreference.getLevelModeFunctions().keySet()) {
-      String  s  = levelPreference.getLevelModeFunctions().get(f);
+      String s = levelPreference.getLevelModeFunctions().get(f);
       TextButton textButton = makeTextButton(s, Color.RED, 1, 1);
       textButton.addListener(
           new ClickListener() {
@@ -143,7 +154,12 @@ public class SettingScreen extends MenuOptionScreen {
               f.get();
             }
           });
-      c = addPortionTextButtonToTable(table, textButton, 0, table.getWidth() / levelPreference.getLevelModeFunctions().size());
+      c =
+          addPortionTextButtonToTable(
+              table,
+              textButton,
+              0,
+              table.getWidth() / levelPreference.getLevelModeFunctions().size());
     }
     c.row();
   }

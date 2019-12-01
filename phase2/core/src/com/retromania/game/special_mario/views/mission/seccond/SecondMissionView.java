@@ -1,31 +1,17 @@
 package com.retromania.game.special_mario.views.mission.seccond;
 
-import com.retromania.game.shared_abstractions.RetroManiaScreen;
+import com.retromania.game.special_mario.presenter.mission.second.SecondMissionPresenter;
+import com.retromania.game.special_mario.views.mission.MissionView;
 import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
 
-public class SecondMissionView extends RetroManiaScreen {
-
-    UserRenderPreference userRenderPreference;
-
+public class SecondMissionView extends MissionView {
     @Inject
-    SecondMissionView(UserRenderPreference userRenderPreference){
-        this.userRenderPreference = userRenderPreference;
+    SecondMissionView(
+            SecondMissionPresenter secondMissionPresenter,
+            UserRenderPreference userRenderPreference) {
+        super(secondMissionPresenter, userRenderPreference);
     }
 
-    @Override
-    public void handleInput() {
-
-    }
-
-    @Override
-    public void show() {
-        addRenderable(userRenderPreference.getRenderable());
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
 }

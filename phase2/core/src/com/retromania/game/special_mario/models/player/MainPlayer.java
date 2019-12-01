@@ -11,7 +11,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.RetroManiaModel;
-import com.retromania.game.special_mario.models.MainPlayerInput;
+import com.retromania.game.special_mario.models.map.MainPlayerInput;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,7 +22,8 @@ import static com.retromania.game.special_mario.SpecialMarioConfiguration.getPix
 @Singleton
 public class MainPlayer extends Character implements RetroManiaModel<MainPlayerInput> {
 
-  MainPlayerInput input;
+  private MainPlayerInput input;
+  private BodyDef bodyDef;
 
   private static TextureRegion getTextureRegion(String regionName, TextureAtlas textureAtlas) {
     return textureAtlas.findRegion(regionName);
@@ -91,16 +92,22 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
 
   @Override
   protected BodyDef setUpBodyDef() {
-    BodyDef bodyDef = new BodyDef();
+    bodyDef = new BodyDef();
     bodyDef.position.set(
         convertPixelToMeter(getInitialXInTheWorld()), convertPixelToMeter(getInitialYInTheWorld()));
     bodyDef.type = BodyDef.BodyType.DynamicBody;
     return bodyDef;
   }
 
+  public BodyDef getBodyDef(){
+    return bodyDef;
+  }
+
   @Override
-  protected Body setUpBody(BodyDef bodyDef) {
-    return getWorld().createBody(bodyDef);
+  public Body setUpBody(BodyDef bodyDef) {
+    if(body!=null)
+      getWorld().destroyBody(body);
+    return body = getWorld().createBody(bodyDef);
   }
 
   @Override

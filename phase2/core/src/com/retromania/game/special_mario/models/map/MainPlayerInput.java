@@ -1,4 +1,4 @@
-package com.retromania.game.special_mario.models;
+package com.retromania.game.special_mario.models.map;
 
 public class MainPlayerInput {
 

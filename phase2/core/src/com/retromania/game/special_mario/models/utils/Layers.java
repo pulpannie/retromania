@@ -3,11 +3,11 @@ package com.retromania.game.special_mario.models.utils;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
-import com.retromania.game.special_mario.models.Fire;
-import com.retromania.game.special_mario.models.FriezingBlock;
-import com.retromania.game.special_mario.models.Obstacle;
-import com.retromania.game.special_mario.models.Reward;
-import com.retromania.game.special_mario.models.Water;
+import com.retromania.game.special_mario.models.map.Fire;
+import com.retromania.game.special_mario.models.map.FriezingBlock;
+import com.retromania.game.special_mario.models.map.Obstacle;
+import com.retromania.game.special_mario.models.map.Reward;
+import com.retromania.game.special_mario.models.map.Water;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
