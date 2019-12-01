@@ -116,3 +116,8 @@ Fix: Created presenters and separated logical concerns from screens to presenter
 Code Affected: MenuPresenter, PlayPresenter, MenuScreen, PlayScreen, TicTacToeStarter
 Flaw: Need to implement save method again with GameSaver class
 Fix: created GameSaver instance in PlayPresenter class, then update score logic accordingly.
+
+#Step 23
+Code Affected: MenuPresenter, PlayPresenter, Presenter, MenuScreen, PlayScreen, CellManager, TicTacToe
+Flaw: userpreference instance being passed around in view (screen classes)
+Fix: made size static in UserPreference class.

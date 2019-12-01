@@ -12,19 +12,24 @@ import com.retromania.game.tic_tac_toe.screens.GameOverScreen;
 import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
 import com.retromania.game.utils.GameSaver;
 
-public class PlayPresenter extends Presenter {
+import java.awt.Menu;
+
+public class PlayPresenter{
     Texture cross, circle;
     UserPrefrence userPrefrence;
     TicTacToe ticTacToe;
     CellManager cellManager;
     GameSaver gameSaver;
     User currentUser;
-    public PlayPresenter(String screenType, UserPrefrence userPrefrence, CellManager cellManager) {
-        super(screenType);
-        this.userPrefrence = userPrefrence;
-        this.cellManager = cellManager;
+
+    public PlayPresenter() {
+        this.userPrefrence = MenuPresenter.userPrefrence;
         this.gameSaver = new GameSaver(TicTacToeStarter.getNameOfGame());
 
+    }
+
+    public int getSize(){
+        return userPrefrence.getGameSize();
     }
 
     public String getWinner(){
@@ -62,7 +67,7 @@ public class PlayPresenter extends Presenter {
     }
 
     public void createTicTacToe(){
-        ticTacToe = new TicTacToe(userPrefrence, cellManager);
+        ticTacToe = new TicTacToe(userPrefrence);
 
     }
 

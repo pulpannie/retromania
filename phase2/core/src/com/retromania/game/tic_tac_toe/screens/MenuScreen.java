@@ -10,13 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 import com.retromania.game.tic_tac_toe.individuals.ImageButtonBuilder;
 import com.retromania.game.tic_tac_toe.presenters.MenuPresenter;
 import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
-import com.retromania.game.utils.GameSaver;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -34,10 +34,10 @@ public class MenuScreen extends RetroManiaScreen {
     Viewport viewport;
     PlayScreen playScreen;
     MenuPresenter menuPresenter;
-    GameSaver gameSaver;
+
     @Inject
-    public MenuScreen(OrthographicCamera gamecam, UserPrefrence userPrefrence, PlayScreen playScreen) {
-        this.menuPresenter = new MenuPresenter("fill",gamecam, userPrefrence, playScreen);
+    public MenuScreen(OrthographicCamera gamecam, PlayScreen playScreen) {
+        this.menuPresenter = new MenuPresenter(playScreen);
         this.playScreen = playScreen;
         this.gamecam = gamecam;
     }
@@ -45,7 +45,7 @@ public class MenuScreen extends RetroManiaScreen {
     @Override
     public void handleInput() {
         if (playButton.isPressed()) {
-            game.setScreen(playScreen);
+            menuPresenter.returnPlayScreen();
         }
     }
 
@@ -56,8 +56,7 @@ public class MenuScreen extends RetroManiaScreen {
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
         viewport = new FillViewport(gameWidth, gameHeight, gamecam);
-        stage = new Stage(viewport, game.sb);
-        Gdx.input.setInputProcessor(stage);
+
         batch = new SpriteBatch();
 
         menuPresenter.buildButtons();
@@ -67,13 +66,13 @@ public class MenuScreen extends RetroManiaScreen {
         upButton = menuPresenter.getUpButton();
         downButton = menuPresenter.getDownButton();
 
-        stage.addActor(playButton);
-        stage.addActor(catButton);
-        stage.addActor(upButton);
-        stage.addActor(downButton);;
-
-
+        stage = new Stage(viewport, game.sb);
+        stage.addActor(menuPresenter.getCatButton());
+        stage.addActor(menuPresenter.getPlayButton());
+        stage.addActor(menuPresenter.getUpButton());
+        stage.addActor(menuPresenter.getDownButton());;
         Gdx.input.setInputProcessor(stage);
+
 
     }
 

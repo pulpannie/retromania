@@ -13,10 +13,10 @@ public class TicTacToe {
 
 
     @Inject
-    public TicTacToe(UserPrefrence userPrefrence, CellManager cellManager) {
+    public TicTacToe(UserPrefrence userPrefrence) {
 //        TODO delete the gameWidth and gameHeight from cells logic
         this.userPrefrence = userPrefrence;
-        this.cellManager = cellManager;
+        this.cellManager = new CellManager(userPrefrence);
         this.currentTurn = "Cross";
     }
 
