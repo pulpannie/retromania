@@ -63,4 +63,8 @@ public class BulletCharacter extends Character {
     public short getDefaultTarget() {
         return 0;
     }
+
+    public void move(float speed_x, float speed_y) {
+        this.body.setLinearVelocity(speed_x, speed_y);
+    }
 }

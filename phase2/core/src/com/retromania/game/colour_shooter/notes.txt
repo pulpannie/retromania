@@ -146,3 +146,9 @@ Fix: Extended abstract class Character to make SquareCharacter
 Code Affected: BulletCharacter
 
 Character was extended on the BulletCharacter
+
+#Step 22:
+
+Code Affected: PlayScreen, BulletCharacter
+
+Made a function move in BulletCharacter so that body doesn't have to be a public class

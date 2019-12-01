@@ -157,14 +157,9 @@ public class PlayScreen implements Screen {
     if (Gdx.input.isTouched() & !bullet_in_motion) {
       bullet_in_motion = true;
       bullet = makeBullet();
-      System.out.println("got here");
-      System.out.println(bullet.body.getPosition().x + " " + bullet.body.getPosition().y);
-      bullet.body.applyLinearImpulse(new Vector2(0, 100), bullet.body.getWorldCenter(), true);
+      bullet.move(0, 300);
     }
     world.step(1 / 60f, 6, 2);
-    if (bullet!=null)
-    System.out.println(bullet.body.getPosition().x + " " + bullet.body.getPosition().y);
-
     //        square.update();
     //        red.update();
     //        green.update();
