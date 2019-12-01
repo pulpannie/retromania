@@ -35,6 +35,7 @@ public class PlayScreen implements Screen {
   private boolean bullet_in_motion = false;
   public static Viewport viewport =
       new FitViewport(RetroManiaGame.V_HEIGHT, RetroManiaGame.V_WIDTH, new OrthographicCamera());
+  BulletCharacter bullet = null;
 
   public PlayScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
     this.mainscreen = mainscreen;
@@ -134,12 +135,12 @@ public class PlayScreen implements Screen {
 
   private BulletCharacter makeBullet() {
     TextureRegion bulletRegion =
-        new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/bullet.png")));
+        new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/newBullet.png")));
 
     int n_x = Math.round((viewport.getWorldWidth() / 2));
     int n_y = Math.round(bullet_starting_pos);
 
-    BulletCharacter bullet = new BulletCharacter(world, bulletRegion, n_x, n_y, 12);
+    BulletCharacter bullet = new BulletCharacter(world, bulletRegion, n_x, n_y);
     return bullet;
   }
 
@@ -150,6 +151,7 @@ public class PlayScreen implements Screen {
     int n_x = Math.round(viewport.getWorldWidth()/2 - 4);
     int n_y = Math.round((float) (viewport.getWorldHeight() * 0.6));
     square = new Square(world, squareRegion, n_x, n_y, 16);
+    square.setPosition(square.body.getPosition().x - square.getWidth() / 2, square.body.getPosition().y - square.getHeight() / 2);
     return square;
   }
 
@@ -166,7 +168,7 @@ public class PlayScreen implements Screen {
 
   public void update(float dt) {
     stage.act(dt);
-    BulletCharacter bullet = null;
+
     if (Gdx.input.isTouched() & !bullet_in_motion) {
       bullet_in_motion = true;
       bullet = makeBullet();
@@ -178,7 +180,14 @@ public class PlayScreen implements Screen {
     //        green.update();
     //        blue.update();
     //        yellow.update();
-    square.setPosition(square.body.getPosition().x - square.getWidth() / 2, square.body.getPosition().y - square.getHeight() / 2);
+//    square.setRotation(square.body.getAngle());
+//    square.setOriginCenter();
+//    square.rotateSquare();
+    square.rotateSquare();
+
+    if (bullet != null) {
+      bullet.update();
+    }
 
 
   }
@@ -205,7 +214,6 @@ public class PlayScreen implements Screen {
     stage.draw();
     //        b2ddr.render(world, viewport.getCamera().combined);
     RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(viewport.getCamera().combined);
-    RetroMania.getRetroManiaInstance().sb.begin();
     //        square.draw(RetroMania.getRetroManiaInstance().sb);
     //        blue.draw(RetroMania.getRetroManiaInstance().sb);
     //        red.draw(RetroMania.getRetroManiaInstance().sb);
@@ -216,10 +224,22 @@ public class PlayScreen implements Screen {
     //            bullet.draw(RetroMania.getRetroManiaInstance().sb);
     //        }
 
+    RetroMania.getRetroManiaInstance().sb.begin();
+
     square.draw(RetroMania.getRetroManiaInstance().sb);
+
+    RetroMania.getRetroManiaInstance().sb.end();
+
+    RetroMania.getRetroManiaInstance().sb.begin();
+    if (bullet!=null)
+    bullet.draw(RetroMania.getRetroManiaInstance().sb);
+
     RetroMania.getRetroManiaInstance().sb.end();
 
     b2ddr.render(world, viewport.getCamera().combined);
+
+
+
   }
 
   @Override
