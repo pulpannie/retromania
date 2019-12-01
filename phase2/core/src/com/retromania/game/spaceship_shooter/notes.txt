@@ -357,3 +357,27 @@ Code affected: MenuScreenPresenter
 Flaw: lack of java docs and comments throughout the code.
 
 Fix: Adding and updating java docs and comments to the above class.
+
+#Step 44:
+
+Code affected: PauseScreenPresenter, PlayScreenPresenter, Presenter, SettingsScreenPresenter, StarterPresenter
+
+Flaw: lack of java docs and comments throughout the code.
+
+Fix: Adding and updating java docs and comments to the above class.
+
+#Step 45:
+
+Code affected: PauseScreenPresenter, PlayScreenPresenter, Presenter, SettingsScreenPresenter, StarterPresenter, MenuScreenPresenter
+
+Flaw: code of these classes were not clearly formatted
+
+Fix: code formatted by built in IDE shortcut
+
+#Step 46:
+
+Code affected: MusicManager, SpaceShipShooterStarter
+
+Flaw: code of these classes were not clearly formatted and lacks javadoc
+
+Fix: code formatted by built in IDE shortcut & comments and javadocs added

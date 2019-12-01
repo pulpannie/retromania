@@ -2,32 +2,46 @@ package com.retromania.game.spaceship_shooter.Presenters;
 
 import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
 
+/**
+ * Presenter class of PauseScreen. It has access to models of PauseScreen and updates models by
+ * command of view class
+ *
+ * @author Umid, Thuy
+ */
 public class PauseScreenPresenter extends Presenter {
+  /** Interface to give input to viewport of starter class */
+  private MainScreenInterface mainScreen;
 
-    private MainScreenInterface mainScreen;
+  /**
+   * Constructor class for presenter
+   *
+   * @param mainScreen access to viewport of starter class through interface
+   */
+  public PauseScreenPresenter(MainScreenInterface mainScreen) {
+    super();
+    this.mainScreen = mainScreen;
+  }
 
-    public PauseScreenPresenter(MainScreenInterface mainScreen){
-        super();
-        this.mainScreen = mainScreen;
-    }
+  /** Changes screen from Pause to Resume */
+  public void resume() {
+    mainScreen.resume();
+  }
 
-    public void resume() {
-        mainScreen.resume();
-    }
+  /** Changes screen from Pause to *New* Play */
+  public void restart() {
+    mainScreen.restart();
+  }
 
-    public void restart() {
-        mainScreen.restart();
-    }
+  /** Changes screen from Pause to Settings */
+  public void modify() {
+    mainScreen.modify();
+  }
 
-    public void modify() {
-        mainScreen.modify();
-    }
+  /** Disposes disposable objects */
+  public void dispose() {}
 
-    public void dispose() {
-
-    }
-
-    public void update(float dt){
-        super.update(dt);
-    }
+  /** Updates models by request of View/MenuScreen */
+  public void update(float dt) {
+    super.update(dt);
+  }
 }
