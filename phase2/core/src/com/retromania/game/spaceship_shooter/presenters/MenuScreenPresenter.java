@@ -1,11 +1,11 @@
-package com.retromania.game.spaceship_shooter.Presenters;
+package com.retromania.game.spaceship_shooter.presenters;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.spaceship_shooter.Models.LabelBuilder;
-import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
+import com.retromania.game.spaceship_shooter.models.LabelBuilder;
+import com.retromania.game.spaceship_shooter.views.MainScreenInterface;
 
 import java.util.Locale;
 

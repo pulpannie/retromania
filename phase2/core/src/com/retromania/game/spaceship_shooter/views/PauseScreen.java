@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.Views;
+package com.retromania.game.spaceship_shooter.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -9,8 +9,8 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.Presenters.PauseScreenPresenter;
+import com.retromania.game.spaceship_shooter.models.ImageButtonBuilder;
+import com.retromania.game.spaceship_shooter.presenters.PauseScreenPresenter;
 
 /**
  * View class of the pause screen. It is responsible for rendering the pause screen, and has access

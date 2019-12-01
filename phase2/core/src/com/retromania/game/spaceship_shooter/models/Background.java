@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.Models;
+package com.retromania.game.spaceship_shooter.models;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
