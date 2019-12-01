@@ -3,10 +3,12 @@ package com.retromania.game.tic_tac_toe.presenters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.tic_tac_toe.individuals.ImageButtonBuilder;
@@ -16,24 +18,18 @@ import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
 
 import java.util.ArrayList;
 
-public class MenuPresenter extends Presenter {
-    public Stage stage;
-    OrthographicCamera gamecam;
-    UserPrefrence userPrefrence;
+public class MenuPresenter{
     PlayScreen playScreen;
     ImageButtonBuilder imageButtonBuilder;
     ImageButton playButton, catButton, upButton, downButton;
+    static UserPrefrence userPrefrence = new UserPrefrence();
 
 
-    public MenuPresenter(String screenType, OrthographicCamera gamecam, UserPrefrence userPrefrence, PlayScreen playScreen) {
-        super(screenType);
+    public MenuPresenter(PlayScreen playScreen) {
         this.playScreen = playScreen;
-        this.userPrefrence = userPrefrence;
-        this.gamecam = super.gameCam;
-        this.stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
         imageButtonBuilder = new ImageButtonBuilder();
-
     }
+
     public ImageButton getPlayButton(){
         return playButton;
     }
@@ -47,19 +43,11 @@ public class MenuPresenter extends Presenter {
         RetroMania.getRetroManiaInstance().setScreen(playScreen);
     }
 
-    public OrthographicCamera getGameCam(){
-        return gamecam;
-    }
 
     public void buildButtons(){
         buildPlayButton();
         buildCatButton();
         buildSizeButtons();
-        stage.addActor(playButton);
-        stage.addActor(catButton);
-        stage.addActor(upButton);
-        stage.addActor(downButton);
-        Gdx.input.setInputProcessor(stage);
     }
 
     public ImageButton getCatButton(){
@@ -82,9 +70,6 @@ public class MenuPresenter extends Presenter {
         }
     }
 
-    public Stage getStage(){
-        return stage;
-    }
 
     /**Create cat buttons, tutorial from "https://alvinalexander.com/source-code/how-create-libgdx-scene2d-imagebutton" */
     private void buildCatButton(){

@@ -28,24 +28,15 @@ public class PlayScreen extends RetroManiaScreen {
   public Stage stage;
   public static ShapeRenderer boardRenderer = new ShapeRenderer();
   public SpriteBatch batch;
-  public Texture cross;
-  public Texture circle;
   public OrthographicCamera gamecam;
   BitmapFont font = new BitmapFont();
   public float gameWidth, gameHeight;
   CellManager cellManager;
-  String winner;
-  //    GameSaver gameSaver;
-  User currentUser;
   PlayPresenter playPresenter;
 
-  UserPrefrence userPrefrence;
-
   @Inject
-  public PlayScreen(UserPrefrence userPrefrence, CellManager cellManager) {
-    this.userPrefrence = userPrefrence;
-    this.cellManager = cellManager;
-    this.playPresenter = new PlayPresenter("fill", userPrefrence, cellManager);
+  public PlayScreen() {
+    this.playPresenter = new PlayPresenter();
   }
 
   @Override
@@ -57,11 +48,10 @@ public class PlayScreen extends RetroManiaScreen {
 
     gamecam = new OrthographicCamera();
     gamecam.setToOrtho(false, gameWidth, gameHeight);
-    stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
+    stage = new Stage(new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam));
     Gdx.input.setInputProcessor(stage);
     batch = new SpriteBatch();
     batch.setProjectionMatrix(gamecam.combined);
-    cellManager.show();
   }
 
   @Override
@@ -69,16 +59,17 @@ public class PlayScreen extends RetroManiaScreen {
     Cell[][] cellArray = playPresenter.getCells();
     Gdx.gl.glClearColor(1, 1, 1, 0);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    game.sb.setProjectionMatrix(stage.getCamera().combined);
     stage.act(delta);
     stage.draw();
-    for (int i = 1; i < userPrefrence.getGameSize(); i++) {
+    for (int i = 1; i < playPresenter.getSize(); i++) {
       DrawBoardLine(
-          new Vector2(gameWidth * i / userPrefrence.getGameSize(), 0),
-          new Vector2(gameWidth * i / userPrefrence.getGameSize(), gameHeight),
+          new Vector2(gameWidth * i / playPresenter.getSize(), 0),
+          new Vector2(gameWidth * i / playPresenter.getSize(), gameHeight),
           gamecam.combined);
       DrawBoardLine(
-          new Vector2(0, gameHeight * i / userPrefrence.getGameSize()),
-          new Vector2(gameWidth, gameHeight * i / userPrefrence.getGameSize()),
+          new Vector2(0, gameHeight * i / playPresenter.getSize()),
+          new Vector2(gameWidth, gameHeight * i / playPresenter.getSize()),
           gamecam.combined);
     }
 
@@ -87,16 +78,16 @@ public class PlayScreen extends RetroManiaScreen {
       Vector3 worldCoordinates = gamecam.unproject(mousePos);
       playPresenter.touchCells(worldCoordinates.x, worldCoordinates.y);
     }
-    for (int i = 0; i < userPrefrence.getGameSize(); i++) {
-      for (int j = 0; j < userPrefrence.getGameSize(); j++) {
+    for (int i = 0; i < playPresenter.getSize(); i++) {
+      for (int j = 0; j < playPresenter.getSize(); j++) {
         if (!cellArray[i][j].getCell().equals("None")) {
           batch.begin();
           batch.draw(
               playPresenter.convertCell(cellArray[i][j].getCell()),
-              gameWidth * i / userPrefrence.getGameSize(),
-              gameHeight * j / userPrefrence.getGameSize(),
-              gameWidth / userPrefrence.getGameSize(),
-              gameHeight / userPrefrence.getGameSize());
+              gameWidth * i / playPresenter.getSize(),
+              gameHeight * j / playPresenter.getSize(),
+              gameWidth / playPresenter.getSize(),
+              gameHeight / playPresenter.getSize());
           batch.end();
         }
       }

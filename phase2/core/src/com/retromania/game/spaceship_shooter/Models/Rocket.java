@@ -104,9 +104,6 @@ public class Rocket extends Actor {
 
     /**
      * Draws the entity by batch
-     *
-     * @param batch
-     * @param parentAlpha
      * */
     public void draw(Batch batch, float parentAlpha){
         batch.draw(texture, x-width/2, y-height/2, width, height);

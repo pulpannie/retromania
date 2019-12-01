@@ -10,9 +10,9 @@ public class CellManager {
   String winner = "None";
   UserPrefrence userPrefrence;
 
-  @Inject
   public CellManager(UserPrefrence userPrefrence) {
     this.userPrefrence = userPrefrence;
+    show();
   }
 
   public void show() {
@@ -34,7 +34,7 @@ public class CellManager {
     return cellArray[i][j].getIsTouched();
   }
 
-  public boolean checkRow(int n) {
+  public boolean checkColumn(int n) {
     for (int i = 0; i < userPrefrence.getGameSize(); i++) {
       int tmp = 0;
       for (int j = 0; j < userPrefrence.getGameSize() - 1; j++) {
@@ -50,7 +50,7 @@ public class CellManager {
     return false;
   }
 
-  public boolean checkColumn(int n) {
+  public boolean checkRow(int n) {
     for (int i = 0; i < userPrefrence.getGameSize(); i++) {
       int tmp = 0;
       for (int j = 0; j < userPrefrence.getGameSize() - 1; j++) {
@@ -66,7 +66,7 @@ public class CellManager {
     return false;
   }
 
-  public boolean checkDiagRight(int n) {
+  public boolean checkDiagLeft(int n) {
     int tmp = 0;
     for (int i = 0; i < userPrefrence.getGameSize() - 1; i++) {
       if (cellArray[i][i].equal(cellArray[i + 1][i + 1])) {
@@ -80,15 +80,18 @@ public class CellManager {
     return false;
   }
 
-  public boolean checkDiagLeft(int n) {
+  public boolean checkDiagRight(int n) {
     int tmp = 0;
-    for (int i = 0; i < userPrefrence.getGameSize() - 1; i++) {
-      if (cellArray[i][userPrefrence.getGameSize() - i - 1].equal(
-          cellArray[i + 1][userPrefrence.getGameSize() - i - 2])) {
-        tmp++;
-        if (tmp == n - 1) {
-          winner = cellArray[i][userPrefrence.getGameSize() - i - 1].getCell();
-          return true;
+    for (int i = 0; i < userPrefrence.getGameSize() - 3; i++) {
+      for (int j = 0; j < userPrefrence.getGameSize() -2; j++){
+        if (cellArray[j][userPrefrence.getGameSize() - i - 1].equal(
+            cellArray[j + 1][userPrefrence.getGameSize() - i - 2]) && (
+                cellArray[j + 1][userPrefrence.getGameSize() - i - 2]).equals(cellArray[j+2][userPrefrence.getGameSize()-i-3])) {
+          tmp++;
+          if (tmp == n - 1) {
+            winner = cellArray[i][userPrefrence.getGameSize() - i - 1].getCell();
+            return true;
+          }
         }
       }
     }

@@ -12,9 +12,7 @@ class UfoDrawer {
 
     /**
      * Draw the lhe list of UFOs.
-     * @param batch
      * @param ufos   the given list of UFOs.
-     * @param delta
      */
     void drawUfos(Batch batch, List<UFO> ufos, float delta){
         for (UFO i: ufos)

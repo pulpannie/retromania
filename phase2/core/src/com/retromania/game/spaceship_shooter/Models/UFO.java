@@ -71,9 +71,6 @@ public class UFO extends Actor {
 
     /**
      * Draw this UFO.
-     *
-     * @param batch
-     * @param parentAlpha
      */
     @Override
     public void draw(Batch batch, float parentAlpha) {
