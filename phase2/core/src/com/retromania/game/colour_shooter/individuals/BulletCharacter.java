@@ -8,9 +8,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
+import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.RetroManiaModel;
 
-public class BulletCharacter extends Character implements RetroManiaModel {
+public class BulletCharacter extends Character implements RetroManiaModel, Collidable {
 
     private FixtureDef fixtureDef;
     private static int getRadius(){
@@ -47,6 +48,8 @@ public class BulletCharacter extends Character implements RetroManiaModel {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(getRadius() * 2, getRadius() * 2);
 
+        setDefaultCategoryMask();
+        setDefaultCollidableWith();
 
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
@@ -60,12 +63,12 @@ public class BulletCharacter extends Character implements RetroManiaModel {
 
     @Override
     public short getDefaultMask() {
-        return 0;
+        return -1;
     }
 
     @Override
     public short getDefaultTarget() {
-        return 0;
+        return -1;
     }
 
     public void move(float speed_x, float speed_y) {

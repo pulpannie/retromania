@@ -141,7 +141,7 @@ Flaw: Not using shared abstract class Character
 Fix: Extended abstract class Character to make SquareCharacter
 
 
-#Step 21:
++#Step 21:
 
 Code Affected: BulletCharacter
 

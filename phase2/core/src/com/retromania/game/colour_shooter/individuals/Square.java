@@ -7,8 +7,9 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
+import com.retromania.game.shared_abstractions.Collidable;
 
-public class Square extends Character {
+public class Square extends Character implements Collidable {
   BodyDef bDef;
   private FixtureDef fixtureDef;
 
@@ -54,6 +55,10 @@ public class Square extends Character {
     PolygonShape shape = new PolygonShape();
     shape.setAsBox(getRadius() * 2, getRadius() * 2);
 
+
+    setDefaultCategoryMask();
+    setDefaultCollidableWith();
+
     fixtureDef = new FixtureDef();
     fixtureDef.shape = shape;
     body.createFixture(fixtureDef);
@@ -66,12 +71,12 @@ public class Square extends Character {
 
   @Override
   public short getDefaultMask() {
-    return 0;
+    return -1;
   }
 
   @Override
   public short getDefaultTarget() {
-    return 0;
+    return -1;
   }
 
   public void rotateSquare(){
