@@ -1,6 +1,7 @@
 package com.retromania.game.tic_tac_toe.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,11 +22,8 @@ public class GameOverScreen extends RetroManiaScreen {
     public Stage stage;
     BitmapFont font = new BitmapFont();
     String winner;
-    public OrthographicCamera gamecam;
-//    Texture replayTexture;
-//    ImageButton replayButton;
-//    Texture menuTexture;
-//    ImageButton menuButton;
+    private OrthographicCamera gamecam;
+    private Texture gameOver;
 
 
     public GameOverScreen(RetroManiaGame game, String winner) {
@@ -43,23 +41,9 @@ public class GameOverScreen extends RetroManiaScreen {
         stage = new Stage(new FitViewport(gameWidth, gameHeight, gamecam));
         Gdx.input.setInputProcessor(stage);
         batch = new SpriteBatch();
+        gameOver = new Texture(Gdx.files.internal("tic_tac_toe/game_over.png"));
 
-//        replayTexture= new Texture(Gdx.files.internal("replay_tictactoe.png"));
-//        TextureRegion replayTextureRegion = new TextureRegion(replayTexture);
-//        TextureRegionDrawable replayTextureRegionDrawable =
-//                new TextureRegionDrawable(replayTextureRegion);
-//        replayButton = new ImageButton(replayTextureRegionDrawable);
-//        replayButton.setSize(400, 400);
-//        replayButton.setPosition(200, 500);
-//        stage.addActor(replayButton);
-//        menuTexture= new Texture(Gdx.files.internal("menu_tictactoe.png"));
-//        TextureRegion menuTextureRegion = new TextureRegion(menuTexture);
-//        TextureRegionDrawable menuTextureRegionDrawable =
-//                new TextureRegionDrawable(menuTextureRegion);
-//        menuButton = new ImageButton(menuTextureRegionDrawable);
-//        menuButton.setSize(200, 200);
-//        menuButton.setPosition(600, 200);
-//        stage.addActor(menuButton);
+
     }
 
     @Override
@@ -68,11 +52,27 @@ public class GameOverScreen extends RetroManiaScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
         stage.draw();
-        batch.begin();
-        font.getData().setScale(5, 5);
-        font.draw(batch, this.winner + "wins!", gameWidth / 2, gameHeight / 2);
-        batch.end();
+        drawGameOver();
+        writeWinner();
 
+    }
+
+    private void drawGameOver(){
+
+        batch.begin();
+        batch.draw(
+                gameOver,
+                gameWidth/4 - 40,
+                gameHeight/3 + 100, 600, 600);
+        batch.end();
+    }
+
+    private void writeWinner(){
+        batch.begin();
+        font.setColor(Color.BLACK);
+        font.getData().setScale(7, 7);
+        font.draw(batch, this.winner + "wins!", gameWidth / 4 + 10, gameHeight/3);
+        batch.end();
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import com.retromania.game.colour_shooter.individuals.BulletCharacter;
+import com.retromania.game.colour_shooter.individuals.Bullet;
 import com.retromania.game.colour_shooter.individuals.Square;
 
 public class ColourShooterListener implements ContactListener {
@@ -14,14 +14,14 @@ public class ColourShooterListener implements ContactListener {
     public void beginContact(Contact contact) {
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
-        System.out.println("Contact detected");
         bulletCatcher(fa, fb);
         bulletCatcher(fb, fa);
     }
     private void bulletCatcher(Fixture fa, Fixture fb){
-        if (fa.getUserData() != null) {
-            if (fa.getUserData().getClass().isAssignableFrom(BulletCharacter.class)) {
-            ((BulletCharacter) fa.getUserData()).setIsFinished(true);
+        if (fa.getUserData() != null & fb.getUserData() != null) {
+            if (fa.getUserData().getClass().isAssignableFrom(Bullet.class)) {
+            ((Bullet) fa.getUserData()).setBulletCollided(true,
+                    (((Square) fb.getUserData()).body.getAngle()));
           }
         }
     }

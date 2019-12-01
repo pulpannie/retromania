@@ -1,29 +1,50 @@
 package com.retromania.game.tic_tac_toe.individuals;
 
-import com.retromania.game.shared_abstractions.User;
-import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
+import com.retromania.game.tic_tac_toe.utils.UserPreference;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
+/**
+ * Model responsible for one TicTacToe game.
+ * @author Hyokyung Kim
+ */
 public class TicTacToe {
-    CellManager cellManager;
-    public String currentTurn;
-    UserPrefrence userPrefrence;
+    private CellManager cellManager;
+    private String currentTurn;
 
-
+    /**
+     * constructor, uses Dagger
+     * @param userPreference Current user's TicTacToe game's preference
+     * instantiates CellManager class.
+     */
     @Inject
-    public TicTacToe(UserPrefrence userPrefrence) {
-//        TODO delete the gameWidth and gameHeight from cells logic
-        this.userPrefrence = userPrefrence;
-        this.cellManager = new CellManager(userPrefrence);
+    public TicTacToe(UserPreference userPreference) {
+        this.cellManager = new CellManager(userPreference);
         this.currentTurn = "Cross";
     }
 
-    public CellManager getCellManager() {
-        return cellManager;
+    /**
+     * @param i which row the Cell to be touched is in.
+     * @param j which column the Cell to be touched is in.
+     * @return String whether the specific Cell is "Cross", "Circle", or "None".
+     */
+    public String getCellState(int i, int j){
+        return cellManager.getCellState(i, j);
     }
 
+    /**
+     * @param i which row the Cell to be touched is in.
+     * @param j which column the Cell to be touched is in.
+     * @return boolean whether the specific Cell has been touched.
+     */
+    public boolean isCellTouched(int i, int j){
+        return cellManager.isCellTouched(i,j);
+    }
+
+    /**
+     * @param i which row the Cell to be touched is in.
+     * @param j which column the Cell to be touched is in.
+     */
     public void touchCell(int i, int j) {
         if(!cellManager.isCellTouched(i,j)){
             cellManager.touchCell(i, j, currentTurn);
@@ -32,6 +53,9 @@ public class TicTacToe {
         }
     }
 
+    /**
+     * switches the current turn.
+     */
     public void switchTurns() {
         if (currentTurn.equals("Cross")) {
             currentTurn = "Circle";
@@ -40,22 +64,17 @@ public class TicTacToe {
         }
     }
 
+    /**Checks if game has ended */
     public boolean isEnd() {
-        if (cellManager.checkRow(3) || cellManager.checkColumn(3) ||
-                cellManager.checkDiagLeft(3) || cellManager.checkDiagRight(3) || cellManager.allTouched()) {
+        if (cellManager.checkRow() || cellManager.checkColumn() ||
+                cellManager.checkDiagLeft() || cellManager.checkDiagRight() || cellManager.allTouched()) {
             return true;
         }
         return false;
     }
 
-
     public String getWinner() {
-        return cellManager.winner;
+        return cellManager.getWinner();
     }
-
-    public Cell[][] getCellStates() {
-        return cellManager.cellArray;
-    }
-
 
 }

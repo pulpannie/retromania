@@ -13,16 +13,20 @@ import java.util.Locale;
 
 public class Header {
     public Viewport viewport;
-    private Label colourTracker;
     private Integer worldTimer = 30;
     private float timeCount;
+    private String colour;
+    private int score;
+
     private Label timeTracker;
     private boolean endGame = false;
+    private Label scoreTracker;
+    private Label colourTracker;
 
     public Header(Stage stage, float width, float height) {
         Integer worldTimer = 30;
         timeCount = 0;
-        Integer score = 0;
+        score = 0;
 
         viewport = new FillViewport(width, height, new OrthographicCamera());
         Table table = new Table();
@@ -33,7 +37,7 @@ public class Header {
         Label colourText = new Label(String.format(Locale.US,"COLOUR"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         Label timeText = new Label(String.format("TIME"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
-        Label scoreTracker = new Label(String.format(Locale.US,"%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        scoreTracker = new Label(String.format(Locale.US,"%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
         colourTracker = new Label("NOT SET", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         setRandomColour();
@@ -67,6 +71,16 @@ public class Header {
         }
     }
 
+    public void addScore(int addToScore){
+        if (score + addToScore >= 0) {
+            score = score + addToScore;
+        }
+        else {
+            score = 0;
+        }
+        scoreTracker.setText(String.format(Locale.US, "%03d", score));
+    }
+
     public boolean checkGameOver() {
         return endGame;
     }
@@ -75,6 +89,9 @@ public class Header {
         countDown(dt);
     }
 
+    public String getColour() {
+        return colour;
+    }
 
     public void setRandomColour() {
         int randomNumber1 = (int) (Math.random() * 4);
@@ -83,8 +100,9 @@ public class Header {
                 new Color().set(255, 255, 0, 1),
                 new Color().set(0, 176, 240, 1),
                 new Color().set(0, 176, 80, 1)};
-        colourTracker.setText(arrayColorText[randomNumber1]);
 
+        colour = arrayColorText[randomNumber1];
+        colourTracker.setText(colour);
         int randomNumber2 = (int) (Math.random() * 4);
 
         colourTracker.setStyle(new Label.LabelStyle(new BitmapFont(),

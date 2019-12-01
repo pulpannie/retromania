@@ -121,3 +121,23 @@ Fix: created GameSaver instance in PlayPresenter class, then update score logic 
 Code Affected: MenuPresenter, PlayPresenter, Presenter, MenuScreen, PlayScreen, CellManager, TicTacToe
 Flaw: userpreference instance being passed around in view (screen classes)
 Fix: made size static in UserPreference class.
+
+#Step 24
+Code Affected: All classes within tic_tac_toe module except Presenter, TicTacToeConfiguration, TicTacToeStarterComponent
+Flaw: MVP not implemented correctly
+Fix: Moved everything related to UI to the screens (View)
+
+#Step 25
+Code Affected: PlayScreen, PlayPresenter, CellManager
+Flaw: TicTacToe has a bug when checking for winners diagonally, when the game is bigger than size 4.
+Fix: Fixed checkDiagLeft checkDiagRight logic in CellManager class.
+
+#Step 26
+Code Affected: Cell, CellManager, TicTacToe, PlayPresenter, MenuScreen, PlayScreen
+Flaw: not enough Javadoc
+Fix: Added some Javadoc to individuals
+
+#Step 27
+Code Affected: PlayScreen, MenuScreen, GameOverScreen
+Flaw: Methods too long
+Fix: split them into smaller methods.

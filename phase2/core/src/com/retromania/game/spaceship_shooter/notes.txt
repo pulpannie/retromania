@@ -397,3 +397,11 @@ Code affected: Views package, MenuScreenPresenter, PauseScreenPresenter, StaterP
 Flaw: code of these classes were not clearly formatted and are lacks of javadoc.
 
 Fix: code formatted by built in IDE shortcut, add comments and javadoc.
+
+#Step 49:
+
+Code affected: all classes
+
+Flaw: the names of the packages haven't been changed to follow the Java naming convention.
+
+Fix: change the names of the packages to follow the Java naming convention.

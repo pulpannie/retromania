@@ -16,9 +16,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.colour_shooter.ColourShooterStarter;
 import com.retromania.game.colour_shooter.individuals.Background;
-import com.retromania.game.colour_shooter.individuals.BulletCharacter;
+import com.retromania.game.colour_shooter.individuals.Bullet;
 import com.retromania.game.colour_shooter.individuals.Header;
-import com.retromania.game.colour_shooter.individuals.Rectangle;
 import com.retromania.game.colour_shooter.individuals.Tank;
 import com.retromania.game.colour_shooter.individuals.Square;
 import com.retromania.game.colour_shooter.utils.ColourShooterListener;
@@ -35,7 +34,7 @@ public class PlayScreen implements Screen {
   private boolean bullet_in_motion = false;
   public static Viewport viewport =
       new FitViewport(RetroManiaGame.V_HEIGHT, RetroManiaGame.V_WIDTH, new OrthographicCamera());
-  BulletCharacter bullet = null;
+  Bullet bullet = null;
 
   public PlayScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
     this.mainscreen = mainscreen;
@@ -133,14 +132,14 @@ public class PlayScreen implements Screen {
     //        b2ddr =  new Box2DDebugRenderer();
   }
 
-  private BulletCharacter makeBullet() {
+  private Bullet makeBullet() {
     TextureRegion bulletRegion =
         new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/newBullet.png")));
 
     int n_x = Math.round((viewport.getWorldWidth() / 2));
     int n_y = Math.round(bullet_starting_pos);
 
-    BulletCharacter bullet = new BulletCharacter(world, bulletRegion, n_x, n_y);
+    Bullet bullet = new Bullet(world, bulletRegion, n_x, n_y);
     return bullet;
   }
 
@@ -193,17 +192,56 @@ public class PlayScreen implements Screen {
     if (bullet != null) {
       bullet.update();
       if(bullet.getIsFinished()){
-        world.destroyBody(bullet.body);
-        bullet = null;
-        bullet_in_motion = false;
-        header.setRandomColour();
+        bulletCollided();
       }
     }
 
   }
-
-  public void bulletCollided(float degreeRotation) {
+  private void updateScore(float angle) {
+    String colour = header.getColour();
+    if (angle == 45 || angle == 135 || angle == 225 || angle == 315 ) {
+      header.addScore(0);
+    }
+    else if ((315 < angle & angle < 360) || (0 < angle & angle < 45)) {
+      if (colour.equalsIgnoreCase("BLUE")) {
+        header.addScore(10);
+      }
+      else {
+        header.addScore(-5);
+      }
+    }
+    else if (45 < angle & angle < 135) {
+      if (colour.equalsIgnoreCase("RED")) {
+        header.addScore(10);
+      }
+      else {
+        header.addScore(-5);
+      }
+    }
+    else if (135 < angle & angle < 225) {
+      if (colour.equalsIgnoreCase("YELLOW")) {
+        header.addScore(10);
+      }
+      else {
+        header.addScore(-5);
+      }
+    }
+    else if (225 < angle & angle < 315) {
+      if (colour.equalsIgnoreCase("GREEN")) {
+        header.addScore(10);
+      }
+      else {
+        header.addScore(-5);
+      }
+    }
+  }
+  private void bulletCollided() {
+    float angle = bullet.getAngleFinished();
+    updateScore(angle);
+    world.destroyBody(bullet.body);
+    bullet = null;
     bullet_in_motion = false;
+    header.setRandomColour();
   }
 
   @Override

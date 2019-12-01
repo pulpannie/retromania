@@ -5,35 +5,36 @@ import com.badlogic.gdx.graphics.Texture;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.tic_tac_toe.TicTacToeStarter;
-import com.retromania.game.tic_tac_toe.individuals.Cell;
 import com.retromania.game.tic_tac_toe.individuals.CellManager;
 import com.retromania.game.tic_tac_toe.individuals.TicTacToe;
 import com.retromania.game.tic_tac_toe.screens.GameOverScreen;
-import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
+import com.retromania.game.tic_tac_toe.utils.UserPreference;
 import com.retromania.game.utils.GameSaver;
 
-import java.awt.Menu;
-
 public class PlayPresenter{
-    Texture cross, circle;
-    UserPrefrence userPrefrence;
-    TicTacToe ticTacToe;
-    CellManager cellManager;
-    GameSaver gameSaver;
-    User currentUser;
+    private Texture cross, circle;
+    private UserPreference userPreference;
+    private TicTacToe ticTacToe;
+    private CellManager cellManager;
+    private GameSaver gameSaver;
+    private User currentUser;
 
     public PlayPresenter() {
-        this.userPrefrence = MenuPresenter.userPrefrence;
+        this.userPreference = MenuPresenter.userPreference;
         this.gameSaver = new GameSaver(TicTacToeStarter.getNameOfGame());
 
     }
 
     public int getSize(){
-        return userPrefrence.getGameSize();
+        return userPreference.getGameSize();
     }
 
     public String getWinner(){
         return ticTacToe.getWinner();
+    }
+
+    public String getCellState(int i, int j){
+        return ticTacToe.getCellState(i, j);
     }
 
     public void checkEnd(){
@@ -57,22 +58,24 @@ public class PlayPresenter{
     }
 
     public void touchCells(float tmpx, float tmpy){
-        int x = (int)((tmpx * userPrefrence.getGameSize())/Gdx.graphics.getWidth());
-        int y = (int)((tmpy * userPrefrence.getGameSize())/Gdx.graphics.getHeight());
+        int x = (int)((tmpx * userPreference.getGameSize())/Gdx.graphics.getWidth());
+        int y = (int)((tmpy * userPreference.getGameSize())/Gdx.graphics.getHeight());
         ticTacToe.touchCell(x, y);
+        System.out.println("XY" + Integer.toString(x) + Integer.toString(y));
     }
 
-    public Cell[][] getCells(){
-        return ticTacToe.getCellStates();
-    }
 
     public void createTicTacToe(){
-        ticTacToe = new TicTacToe(userPrefrence);
+        ticTacToe = new TicTacToe(userPreference);
 
+    }
+
+    public boolean isCellTouched(int i, int j){
+        return ticTacToe.isCellTouched(i, j);
     }
 
     public void setTextures(){
-        if (userPrefrence.getCat()) {
+        if (userPreference.getCat()) {
             cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
             circle = new Texture(Gdx.files.internal("tic_tac_toe/cat3.png"));
         } else {
@@ -82,9 +85,9 @@ public class PlayPresenter{
     }
 
     public Texture convertCell(String string) {
-        if (string == "Cross") {
+        if (string.equals("Cross")) {
             return cross;
-        } else if (string == "Circle") {
+        } else if (string.equals("Circle")) {
             return circle;
         }
         return null;
