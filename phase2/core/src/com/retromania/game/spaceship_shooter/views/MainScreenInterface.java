@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.Views;
+package com.retromania.game.spaceship_shooter.views;
 
 /**
  * The MainScreenInterface is created to reduce coupling between the Screen and its subclasses.

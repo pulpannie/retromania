@@ -3,9 +3,9 @@ package com.retromania.game.spaceship_shooter.presenters;
 import com.badlogic.gdx.Screen;
 import com.retromania.game.RetroMania;
 import com.retromania.game.spaceship_shooter.models.GameStats;
-import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
-import com.retromania.game.spaceship_shooter.Views.PlayScreen;
-import com.retromania.game.spaceship_shooter.Views.StateFactory;
+import com.retromania.game.spaceship_shooter.views.MainScreenInterface;
+import com.retromania.game.spaceship_shooter.views.PlayScreen;
+import com.retromania.game.spaceship_shooter.views.StateFactory;
 import com.retromania.game.spaceship_shooter.utils.MusicManager;
 import com.retromania.game.utils.GameSaver;
 

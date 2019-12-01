@@ -1,6 +1,6 @@
 package com.retromania.game.spaceship_shooter.presenters;
 
-import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
+import com.retromania.game.spaceship_shooter.views.MainScreenInterface;
 
 /**
  * Presenter class of PauseScreen. It has access to models of PauseScreen and updates models by

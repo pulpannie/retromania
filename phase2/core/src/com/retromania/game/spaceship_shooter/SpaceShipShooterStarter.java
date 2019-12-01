@@ -4,7 +4,7 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.spaceship_shooter.models.GameStats;
 import com.retromania.game.spaceship_shooter.presenters.StarterPresenter;
-import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
+import com.retromania.game.spaceship_shooter.views.MainScreenInterface;
 
 /**
  * Starter class of spaceship shooter game

@@ -1,6 +1,6 @@
 package com.retromania.game.spaceship_shooter.presenters;
 
-import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
+import com.retromania.game.spaceship_shooter.views.MainScreenInterface;
 
 /**
  * Presenter class of SettingsScreen. It has access to models of SettingsScreen and updates models

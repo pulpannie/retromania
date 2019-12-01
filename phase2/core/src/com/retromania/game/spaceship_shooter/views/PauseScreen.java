@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.Views;
+package com.retromania.game.spaceship_shooter.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
