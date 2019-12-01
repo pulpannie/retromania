@@ -381,3 +381,11 @@ Code affected: MusicManager, SpaceShipShooterStarter
 Flaw: code of these classes were not clearly formatted and lacks javadoc
 
 Fix: code formatted by built in IDE shortcut & comments and javadocs added
+
+#Step 47:
+
+Code affected: SpaceShipShooterStarter, GameLister
+
+Flaw: construct was not working in SpaceShipShooterStarter after deleting depreciated method
+
+Fix: in GameLister class, we were calling depreciated constructor so after modifying it, program works

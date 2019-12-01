@@ -1,5 +1,6 @@
 package com.retromania.game.spaceship_shooter;
 
+import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.spaceship_shooter.Models.GameStats;
