@@ -188,11 +188,12 @@ public class PlayScreen implements Screen {
     if (bullet != null) {
       bullet.update();
       if(bullet.getIsFinished()){
-        System.out.println("shit");
+        world.destroyBody(bullet.body);
         bullet = null;
+        bullet_in_motion = false;
+        header.setRandomColour();
       }
     }
-
 
   }
 

@@ -177,3 +177,10 @@ Flaw: Unnecessary states package
 
 Fix: Not using states anymore, DELETED STATES PACKAGE.
 
+#Step 26
+
+Code Affected: PlayScreen
+
+Flaw: The bullet is not disappearing when it collides.
+Fix: By adding the world.destroyBody. It destroys the Texture and the bullet when the bullet collides with the rotating square.
+

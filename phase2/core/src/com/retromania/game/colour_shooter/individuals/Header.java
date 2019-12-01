@@ -57,7 +57,7 @@ public class Header {
         stage.addActor(table);
     }
 
-    private void setRandomColour() {
+    public void setRandomColour() {
         int randomNumber1 = (int) (Math.random() * 4);
         String[] arrayColorText = {"RED", "GREEN", "BLUE", "YELLOW"};
         Color[] arrayColorObject = {new Color().set(255, 0, 0, 1),
