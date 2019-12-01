@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
@@ -13,26 +11,19 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.shared_abstractions.User;
-import com.retromania.game.tic_tac_toe.individuals.Cell;
-import com.retromania.game.tic_tac_toe.individuals.CellManager;
-import com.retromania.game.tic_tac_toe.individuals.TicTacToe;
 import com.retromania.game.tic_tac_toe.presenters.PlayPresenter;
-import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
-import com.retromania.game.utils.GameSaver;
 
 import javax.inject.Inject;
 
 public class PlayScreen extends RetroManiaScreen {
-  public Stage stage;
-  public static ShapeRenderer boardRenderer = new ShapeRenderer();
-  public SpriteBatch batch;
-  public OrthographicCamera gamecam;
-  BitmapFont font = new BitmapFont();
-  public float gameWidth, gameHeight;
-  CellManager cellManager;
-  PlayPresenter playPresenter;
+  private Stage stage;
+  private static ShapeRenderer boardRenderer = new ShapeRenderer();
+  private SpriteBatch batch;
+  private OrthographicCamera gamecam;
+  private float gameWidth, gameHeight;
+  private PlayPresenter playPresenter;
 
   @Inject
   public PlayScreen() {
@@ -56,10 +47,9 @@ public class PlayScreen extends RetroManiaScreen {
 
   @Override
   public void render(float delta) {
-    Cell[][] cellArray = playPresenter.getCells();
     Gdx.gl.glClearColor(1, 1, 1, 0);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    game.sb.setProjectionMatrix(stage.getCamera().combined);
+    RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(stage.getCamera().combined);
     stage.act(delta);
     stage.draw();
     for (int i = 1; i < playPresenter.getSize(); i++) {
@@ -78,12 +68,13 @@ public class PlayScreen extends RetroManiaScreen {
       Vector3 worldCoordinates = gamecam.unproject(mousePos);
       playPresenter.touchCells(worldCoordinates.x, worldCoordinates.y);
     }
+
     for (int i = 0; i < playPresenter.getSize(); i++) {
       for (int j = 0; j < playPresenter.getSize(); j++) {
-        if (!cellArray[i][j].getCell().equals("None")) {
+        if (playPresenter.isCellTouched(i, j)) {
           batch.begin();
           batch.draw(
-              playPresenter.convertCell(cellArray[i][j].getCell()),
+              playPresenter.convertCell(playPresenter.getCellState(i,j)),
               gameWidth * i / playPresenter.getSize(),
               gameHeight * j / playPresenter.getSize(),
               gameWidth / playPresenter.getSize(),

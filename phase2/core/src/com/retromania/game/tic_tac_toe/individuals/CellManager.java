@@ -1,24 +1,21 @@
 package com.retromania.game.tic_tac_toe.individuals;
 
-import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
-
-import javax.inject.Inject;
-import javax.inject.Named;
+import com.retromania.game.tic_tac_toe.utils.UserPreference;
 
 public class CellManager {
   Cell[][] cellArray;
   String winner = "None";
-  UserPrefrence userPrefrence;
+  UserPreference userPreference;
 
-  public CellManager(UserPrefrence userPrefrence) {
-    this.userPrefrence = userPrefrence;
+  public CellManager(UserPreference userPreference) {
+    this.userPreference = userPreference;
     show();
   }
 
   public void show() {
-    cellArray = new Cell[userPrefrence.getGameSize()][userPrefrence.getGameSize()];
-    for (int i = 0; i < userPrefrence.getGameSize(); i++) {
-      for (int j = 0; j < userPrefrence.getGameSize(); j++) {
+    cellArray = new Cell[userPreference.getGameSize()][userPreference.getGameSize()];
+    for (int i = 0; i < userPreference.getGameSize(); i++) {
+      for (int j = 0; j < userPreference.getGameSize(); j++) {
         cellArray[i][j] =
             new Cell();
       }
@@ -34,10 +31,14 @@ public class CellManager {
     return cellArray[i][j].getIsTouched();
   }
 
+  public String getCellState(int i, int j){
+    return cellArray[i][j].getCell();
+  }
+
   public boolean checkColumn(int n) {
-    for (int i = 0; i < userPrefrence.getGameSize(); i++) {
+    for (int i = 0; i < userPreference.getGameSize(); i++) {
       int tmp = 0;
-      for (int j = 0; j < userPrefrence.getGameSize() - 1; j++) {
+      for (int j = 0; j < userPreference.getGameSize() - 1; j++) {
         if (cellArray[i][j].equal(cellArray[i][j + 1])) {
           tmp++;
           if (tmp == n - 1) {
@@ -51,9 +52,9 @@ public class CellManager {
   }
 
   public boolean checkRow(int n) {
-    for (int i = 0; i < userPrefrence.getGameSize(); i++) {
+    for (int i = 0; i < userPreference.getGameSize(); i++) {
       int tmp = 0;
-      for (int j = 0; j < userPrefrence.getGameSize() - 1; j++) {
+      for (int j = 0; j < userPreference.getGameSize() - 1; j++) {
         if (cellArray[j][i].equal(cellArray[j + 1][i])) {
           tmp++;
           if (tmp == n - 1) {
@@ -68,7 +69,7 @@ public class CellManager {
 
   public boolean checkDiagLeft(int n) {
     int tmp = 0;
-    for (int i = 0; i < userPrefrence.getGameSize() - 1; i++) {
+    for (int i = 0; i < userPreference.getGameSize() - 1; i++) {
       if (cellArray[i][i].equal(cellArray[i + 1][i + 1])) {
         tmp++;
         if (tmp == n - 1) {
@@ -82,14 +83,14 @@ public class CellManager {
 
   public boolean checkDiagRight(int n) {
     int tmp = 0;
-    for (int i = 0; i < userPrefrence.getGameSize() - 3; i++) {
-      for (int j = 0; j < userPrefrence.getGameSize() -2; j++){
-        if (cellArray[j][userPrefrence.getGameSize() - i - 1].equal(
-            cellArray[j + 1][userPrefrence.getGameSize() - i - 2]) && (
-                cellArray[j + 1][userPrefrence.getGameSize() - i - 2]).equals(cellArray[j+2][userPrefrence.getGameSize()-i-3])) {
+    for (int i = 0; i < userPreference.getGameSize() - 3; i++) {
+      for (int j = 0; j < userPreference.getGameSize() -2; j++){
+        if (cellArray[j][userPreference.getGameSize() - i - 1].equal(
+            cellArray[j + 1][userPreference.getGameSize() - i - 2]) && (
+                cellArray[j + 1][userPreference.getGameSize() - i - 2]).equals(cellArray[j+2][userPreference.getGameSize()-i-3])) {
           tmp++;
           if (tmp == n - 1) {
-            winner = cellArray[i][userPrefrence.getGameSize() - i - 1].getCell();
+            winner = cellArray[i][userPreference.getGameSize() - i - 1].getCell();
             return true;
           }
         }
@@ -99,8 +100,8 @@ public class CellManager {
   }
 
   public boolean allTouched() {
-    for (int i = 0; i < userPrefrence.getGameSize(); i++) {
-      for (int j = 0; j < userPrefrence.getGameSize(); j++) {
+    for (int i = 0; i < userPreference.getGameSize(); i++) {
+      for (int j = 0; j < userPreference.getGameSize(); j++) {
         if (cellArray[i][j].getCell().equals("None")) {
           return false;
         }
@@ -108,10 +109,4 @@ public class CellManager {
     }
     return true;
   }
-
-  private void setCellsWidth() {}
-
-  private void setCellsX() {}
-
-  private void setCellsY() {}
 }

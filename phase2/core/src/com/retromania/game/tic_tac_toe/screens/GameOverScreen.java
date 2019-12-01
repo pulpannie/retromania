@@ -22,10 +22,6 @@ public class GameOverScreen extends RetroManiaScreen {
     BitmapFont font = new BitmapFont();
     String winner;
     public OrthographicCamera gamecam;
-//    Texture replayTexture;
-//    ImageButton replayButton;
-//    Texture menuTexture;
-//    ImageButton menuButton;
 
 
     public GameOverScreen(RetroManiaGame game, String winner) {
@@ -44,22 +40,6 @@ public class GameOverScreen extends RetroManiaScreen {
         Gdx.input.setInputProcessor(stage);
         batch = new SpriteBatch();
 
-//        replayTexture= new Texture(Gdx.files.internal("replay_tictactoe.png"));
-//        TextureRegion replayTextureRegion = new TextureRegion(replayTexture);
-//        TextureRegionDrawable replayTextureRegionDrawable =
-//                new TextureRegionDrawable(replayTextureRegion);
-//        replayButton = new ImageButton(replayTextureRegionDrawable);
-//        replayButton.setSize(400, 400);
-//        replayButton.setPosition(200, 500);
-//        stage.addActor(replayButton);
-//        menuTexture= new Texture(Gdx.files.internal("menu_tictactoe.png"));
-//        TextureRegion menuTextureRegion = new TextureRegion(menuTexture);
-//        TextureRegionDrawable menuTextureRegionDrawable =
-//                new TextureRegionDrawable(menuTextureRegion);
-//        menuButton = new ImageButton(menuTextureRegionDrawable);
-//        menuButton.setSize(200, 200);
-//        menuButton.setPosition(600, 200);
-//        stage.addActor(menuButton);
     }
 
     @Override

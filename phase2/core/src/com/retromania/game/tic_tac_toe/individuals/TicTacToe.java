@@ -1,27 +1,33 @@
 package com.retromania.game.tic_tac_toe.individuals;
 
-import com.retromania.game.shared_abstractions.User;
-import com.retromania.game.tic_tac_toe.utils.UserPrefrence;
+import com.retromania.game.tic_tac_toe.utils.UserPreference;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 public class TicTacToe {
     CellManager cellManager;
     public String currentTurn;
-    UserPrefrence userPrefrence;
+    UserPreference userPreference;
 
 
     @Inject
-    public TicTacToe(UserPrefrence userPrefrence) {
+    public TicTacToe(UserPreference userPreference) {
 //        TODO delete the gameWidth and gameHeight from cells logic
-        this.userPrefrence = userPrefrence;
-        this.cellManager = new CellManager(userPrefrence);
+        this.userPreference = userPreference;
+        this.cellManager = new CellManager(userPreference);
         this.currentTurn = "Cross";
     }
 
     public CellManager getCellManager() {
         return cellManager;
+    }
+
+    public boolean isCellTouched(int i, int j){
+        return cellManager.isCellTouched(i,j);
+    }
+
+    public String getCellState(int i, int j){
+        return cellManager.getCellState(i, j);
     }
 
     public void touchCell(int i, int j) {

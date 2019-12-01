@@ -2,7 +2,7 @@ package com.retromania.game.tic_tac_toe.individuals;
 
 import com.retromania.game.shared_abstractions.Individual;
 
-public class Cell implements Individual {
+public class Cell {
     private boolean isTouched;
     private String shape;
 
@@ -43,9 +43,5 @@ public class Cell implements Individual {
         return false;
     }
 
-    @Override
-    public void update(Object... args) {
-        setCell((String)args[0]);
-    }
 
 }

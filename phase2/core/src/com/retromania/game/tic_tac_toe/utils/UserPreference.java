@@ -4,13 +4,13 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class UserPrefrence {
+public class UserPreference {
 
   private int gameSize = 3;
   private boolean cat = false;
 
   @Inject
-  public UserPrefrence() {}
+  public UserPreference() {}
 
   public void addSize() {
     gameSize++;
