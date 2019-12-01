@@ -184,3 +184,10 @@ Code Affected: PlayScreen
 Flaw: The bullet is not disappearing when it collides.
 Fix: By adding the world.destroyBody. It destroys the Texture and the bullet when the bullet collides with the rotating square.
 
+#Step 26
+
+Code Affected: PlayScreen, Header
+
+Flaw: The countdown wasn't working
+Fix: By adding the method countDown in header class and calling it in update method of playScreen, we fixed the problem.
+

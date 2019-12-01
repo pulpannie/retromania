@@ -14,9 +14,10 @@ import java.util.Locale;
 public class Header {
     public Viewport viewport;
     private Label colourTracker;
-    private Integer worldTimer;
+    private Integer worldTimer = 30;
     private float timeCount;
     private Label timeTracker;
+    private boolean endGame = false;
 
     public Header(Stage stage, float width, float height) {
         Integer worldTimer = 30;
@@ -37,7 +38,7 @@ public class Header {
         colourTracker = new Label("NOT SET", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         setRandomColour();
 
-        Label timeTracker = new Label(String.format(Locale.US,"%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        timeTracker = new Label(String.format(Locale.US,"%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
 
 
@@ -52,17 +53,26 @@ public class Header {
         stage.addActor(table);
     }
 
-    public boolean countDown(float dt) {
+    public void countDown(float dt) {
         timeCount += dt;
-        if (timeCount >= 1) {
+        if (timeCount >= 1 & worldTimer > 0) {
             worldTimer--;
-            timeTracker.setText(String.format(Locale.US, "%03d", worldTimer));
+            timeTracker.setText(String.format(Locale.US, "%02d", worldTimer));
             timeCount = 0;
             if (worldTimer <= 10) {
-                timeTracker.setColor(Color.RED);
+                timeTracker.setStyle(new Label.LabelStyle(new BitmapFont(), Color.RED));
             }
+        } else if (worldTimer <= 0) {
+            endGame = true;
         }
-        return worldTimer == 0;
+    }
+
+    public boolean checkGameOver() {
+        return endGame;
+    }
+
+    public void update(float dt) {
+        countDown(dt);
     }
 
 
