@@ -184,10 +184,20 @@ Code Affected: PlayScreen
 Flaw: The bullet is not disappearing when it collides.
 Fix: By adding the world.destroyBody. It destroys the Texture and the bullet when the bullet collides with the rotating square.
 
-#Step 26
+#Step 27
 
 Code Affected: PlayScreen, Header
 
 Flaw: The countdown wasn't working
 Fix: By adding the method countDown in header class and calling it in update method of playScreen, we fixed the problem.
+
+#Step 28
+
+Code Affected: PlayScreen, Header
+
+Flaw: The score wasn't working
+Fix: By adding the method addScore in header class and called it when bullet made contact with square.
+We added variable angleSquare in bullet which keeps track of angle of square when bullet made contact
+with square. In update method of playScreen, we simply called updateScore method which updated the score
+based on the angle of the square.
 
