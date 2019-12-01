@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 public abstract class Character extends CharacterSprite implements Collidable {
 
   private World world;
-  protected Body body;
+  public Body body;
   protected FixtureDef fixtureDef;
 
   private int initialXInTheWorld;
