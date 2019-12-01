@@ -10,7 +10,7 @@ import com.retromania.game.special_mario.models.utils.LevelPreference;
 import javax.inject.Inject;
 
 
-public class SpecialMarioStarterPresenter implements Presentable, MarioGamePresenter {
+public class SpecialMarioStarterPresenter implements MarioGamePresentable {
 
 
     MainPlayer mainPlayer;

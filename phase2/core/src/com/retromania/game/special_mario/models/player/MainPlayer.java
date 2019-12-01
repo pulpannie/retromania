@@ -116,6 +116,8 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
     body.createFixture(fixtureDef);
     fixtureDef.shape = setUpEdgeShapeBody(circleShapeRadius, headLength);
     fixtureDef.isSensor = true;
+    body.createFixture(fixtureDef);
+
   }
 
   private CircleShape setUpCircleBody(float circleShapeRadius) {

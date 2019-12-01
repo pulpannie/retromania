@@ -6,7 +6,7 @@ import dagger.Binds;
 import dagger.Module;
 
 @Module
-public abstract class UserRenderPrefPrefrenceProvider {
+public abstract class UserRenderPreferenceProvider {
 
     @Binds
     abstract UserRenderPreference getUserPrefrence(UserRenderPreferenceMario userRenderPreferenceMario);

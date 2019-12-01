@@ -1,5 +1,7 @@
 package com.retromania.game.special_mario.models.utils;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import java.util.HashMap;
@@ -25,6 +27,7 @@ public class LevelPreferenceMario implements LevelPreference {
             TiledMapIndividualFactory tiledMapIndividualFactory){
         this.tiledMapIndividualFactory = tiledMapIndividualFactory;
 
+//        TODO Change this to interfaces
         functionOfLevelMap.put(this::setGameLevelToFirst, "FIRST LEVEL");
         functionOfLevelMap.put(this::setGameLevelToSecond, "SECOND LEVEL");
 
@@ -57,4 +60,11 @@ public class LevelPreferenceMario implements LevelPreference {
     public TiledMap getCurrentTileMap() {
         return currentTile;
     }
+
+
+     void clearDisplay() {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    }
+
 }

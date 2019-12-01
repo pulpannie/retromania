@@ -15,17 +15,14 @@ public class ColourShooterListener implements ContactListener {
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
         System.out.println("Contact detected");
-
-        if (fa == null || fb == null ) return;
-        if (fa.getFilterData() == null || fb.getFilterData() == null) return;
-
-        if (fa.getUserData() instanceof BulletCharacter & fb.getUserData() instanceof Square) {
-            contact.getFixtureB().getBody().destroyFixture(fa);
-            System.out.println("ADASDASDASDASD");
-        }
-        else if (fa.getUserData() instanceof Square & fb.getUserData() instanceof BulletCharacter) {
-            contact.getFixtureB().getBody().destroyFixture(fb);
-            System.out.println("BDASDASDASDASD");
+        bulletCatcher(fa, fb);
+        bulletCatcher(fb, fa);
+    }
+    private void bulletCatcher(Fixture fa, Fixture fb){
+        if (fa.getUserData() != null) {
+            if (fa.getUserData().getClass().isAssignableFrom(BulletCharacter.class)) {
+            ((BulletCharacter) fa.getUserData()).setIsFinished(true);
+          }
         }
     }
 

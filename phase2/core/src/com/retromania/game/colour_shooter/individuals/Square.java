@@ -54,12 +54,12 @@ public class Square extends Character implements Collidable {
   protected void setUpFixture() {
     PolygonShape shape = new PolygonShape();
     shape.setAsBox(getRadius() * 2, getRadius() * 2);
+    fixtureDef = new FixtureDef();
 
 
     setDefaultCategoryMask();
     setDefaultCollidableWith();
 
-    fixtureDef = new FixtureDef();
     fixtureDef.shape = shape;
     body.createFixture(fixtureDef);
   }

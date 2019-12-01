@@ -187,6 +187,10 @@ public class PlayScreen implements Screen {
 
     if (bullet != null) {
       bullet.update();
+      if(bullet.getIsFinished()){
+        System.out.println("shit");
+        bullet = null;
+      }
     }
 
 

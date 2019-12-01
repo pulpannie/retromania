@@ -3,6 +3,7 @@ package com.retromania.game.shared_abstractions;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -47,7 +48,7 @@ public abstract class Character extends CharacterSprite implements Collidable {
     BodyDef bodyDef = setUpBodyDef();
     body = setUpBody(bodyDef);
     setUpFixture();
-//    body.createFixture(fixtureDef).setUserData(getUserData());
+    body.createFixture(getFixtureDef()).setUserData(getUserData());
   }
 
   protected abstract Object getUserData();
@@ -57,6 +58,7 @@ public abstract class Character extends CharacterSprite implements Collidable {
   protected abstract Body setUpBody(BodyDef bodyDef);
 
   protected abstract void setUpFixture();
+
 
   protected World getWorld() {
     return this.world;

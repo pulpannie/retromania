@@ -13,13 +13,20 @@ import com.retromania.game.shared_abstractions.RetroManiaModel;
 
 public class BulletCharacter extends Character implements RetroManiaModel, Collidable {
 
-    private FixtureDef fixtureDef;
+    private boolean isFinished = false;
     private static int getRadius(){
         return 3;
     }
     public BulletCharacter(World given_world, TextureRegion textureRegion, int x, int y) {
         super(textureRegion, x, y, getRadius() * 4, getRadius() * 4, 1f, given_world, x, y);
+    }
 
+    public void setIsFinished(boolean isFinished){
+        this.isFinished = isFinished;
+    }
+
+    public boolean getIsFinished(){
+        return isFinished;
     }
 
     @Override
@@ -47,13 +54,12 @@ public class BulletCharacter extends Character implements RetroManiaModel, Colli
 
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(getRadius() * 2, getRadius() * 2);
+        fixtureDef = new FixtureDef();
 
         setDefaultCategoryMask();
         setDefaultCollidableWith();
 
-        fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
-        body.createFixture(fixtureDef);
     }
 
     @Override

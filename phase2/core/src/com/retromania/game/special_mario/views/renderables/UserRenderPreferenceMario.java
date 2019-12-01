@@ -8,12 +8,12 @@ import javax.inject.Inject;
 
 class UserRenderPreferenceMario implements UserRenderPreference {
 
-  private GameRenderer gameRenderer;
+  private NormalRenderer gameRenderer;
   private MarioRenderable selectedRenderer;
   private Map<Supplier<MarioRenderable>, String> functionOfRenderModeMap = new HashMap<>();
   @Inject
   UserRenderPreferenceMario(
-      GameRenderer gameRenderer) {
+      NormalRenderer gameRenderer) {
       this.gameRenderer = gameRenderer;
 
 
