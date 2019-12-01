@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
@@ -18,6 +17,10 @@ import com.retromania.game.tic_tac_toe.presenters.PlayPresenter;
 
 import javax.inject.Inject;
 
+/**
+ * implements the interface during the game.
+ * @author Hyokyung Kim
+ */
 public class PlayScreen extends RetroManiaScreen {
   private Stage stage;
   private static ShapeRenderer boardRenderer = new ShapeRenderer();
@@ -25,7 +28,6 @@ public class PlayScreen extends RetroManiaScreen {
   private OrthographicCamera gamecam;
   private float gameWidth, gameHeight;
   private PlayPresenter playPresenter;
-  BitmapFont font = new BitmapFont();
 
   @Inject
   public PlayScreen() {
@@ -63,14 +65,6 @@ public class PlayScreen extends RetroManiaScreen {
           new Vector2(0, gameHeight * i / playPresenter.getSize()),
           new Vector2(gameWidth, gameHeight * i / playPresenter.getSize()),
           gamecam.combined);
-    }
-    for (int i = 0; i < playPresenter.getSize(); i++) {
-      for (int j = 0; j < playPresenter.getSize(); j++) {
-        batch.begin();
-        font.getData().setScale(5, 5);
-        font.draw(batch, String.valueOf(i) +" " + String.valueOf(j), gameWidth* i / playPresenter.getSize(), gameHeight * j / playPresenter.getSize());
-        batch.end();
-      }
     }
 
     if (Gdx.input.isTouched()) {

@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.tic_tac_toe.TicTacToeStarter;
-import com.retromania.game.tic_tac_toe.individuals.Cell;
 import com.retromania.game.tic_tac_toe.individuals.CellManager;
 import com.retromania.game.tic_tac_toe.individuals.TicTacToe;
 import com.retromania.game.tic_tac_toe.screens.GameOverScreen;
@@ -32,10 +31,6 @@ public class PlayPresenter{
 
     public String getWinner(){
         return ticTacToe.getWinner();
-    }
-
-    public Cell[][] getCells(){
-        return ticTacToe.getCellStates();
     }
 
     public String getCellState(int i, int j){
@@ -90,9 +85,9 @@ public class PlayPresenter{
     }
 
     public Texture convertCell(String string) {
-        if (string == "Cross") {
+        if (string.equals("Cross")) {
             return cross;
-        } else if (string == "Circle") {
+        } else if (string.equals("Circle")) {
             return circle;
         }
         return null;

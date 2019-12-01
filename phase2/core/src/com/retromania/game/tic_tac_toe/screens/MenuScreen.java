@@ -53,7 +53,7 @@ public class MenuScreen extends RetroManiaScreen {
         batch = new SpriteBatch();
 
         buildButtons();
-        playButton.setSize( 200, 200);
+        playButton.setSize(200, 200);
         playButton.setPosition(Gdx.graphics.getWidth() / 2 - 110, Gdx.graphics.getHeight() / 2 - 70);
         catButton.setSize(60, 60);
         catButton.setPosition(Gdx.graphics.getWidth() / 2 - 220, Gdx.graphics.getHeight() / 3);
@@ -80,18 +80,20 @@ public class MenuScreen extends RetroManiaScreen {
         }
     }
 
-    private void buildButtons(){
+    private void buildButtons() {
         buildPlayButton();
         buildCatButton();
         buildSizeButtons();
     }
 
-    private void buildPlayButton(){
+    private void buildPlayButton() {
         playButton = imageButtonBuilder.buildButton("play_tictactoe.png");
     }
 
-    /**Create cat buttons, tutorial from "https://alvinalexander.com/source-code/how-create-libgdx-scene2d-imagebutton" */
-    private void buildCatButton(){
+    /**
+     * Create cat buttons, tutorial from "https://alvinalexander.com/source-code/how-create-libgdx-scene2d-imagebutton"
+     */
+    private void buildCatButton() {
         catButton = imageButtonBuilder.buildOnOffButton("radio-off-button.png", "radio-on-button.png");
         catButton.addListener(new ClickListener() {
             @Override
@@ -106,7 +108,7 @@ public class MenuScreen extends RetroManiaScreen {
         });
     }
 
-    private void buildSizeButtons(){
+    private void buildSizeButtons() {
         upButton = imageButtonBuilder.buildButton("up.png");
         upButton.addListener(new ClickListener() {
                                  public void clicked(InputEvent event, float x, float y) {
