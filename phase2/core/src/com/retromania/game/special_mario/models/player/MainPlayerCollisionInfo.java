@@ -4,11 +4,11 @@ import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.special_mario.models.player.BodyPart;
 
 public class MainPlayerCollisionInfo {
-    private Character character;
+    private MainPlayer mainPlayer;
     private BodyPart bodyPart;
 
-    public MainPlayerCollisionInfo(Character character, BodyPart bodyPart){
-        this.character = character;
+    public MainPlayerCollisionInfo(MainPlayer mainPlayer, BodyPart bodyPart){
+        this.mainPlayer = mainPlayer;
         this.bodyPart = bodyPart;
     }
 
@@ -17,7 +17,7 @@ public class MainPlayerCollisionInfo {
         return bodyPart;
     }
 
-    public Character getCharacter() {
-        return character;
+    public MainPlayer getMainPlayer() {
+        return mainPlayer;
     }
 }

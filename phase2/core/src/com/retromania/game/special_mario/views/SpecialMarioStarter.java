@@ -3,7 +3,7 @@ package com.retromania.game.special_mario.views;
 import com.badlogic.gdx.Gdx;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
-import com.retromania.game.special_mario.models.map.MainPlayerInput;
+import com.retromania.game.special_mario.models.player.MainPlayerInput;
 import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 import com.retromania.game.special_mario.utils.MusicManager;
 import com.retromania.game.special_mario.views.menu.MenuScreen;
@@ -11,6 +11,8 @@ import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import static com.retromania.game.special_mario.SpecialMarioConfiguration.GAME_NAME;
 
 @Singleton
 public class SpecialMarioStarter extends RetroManiaInnerGame {
@@ -25,7 +27,7 @@ public class SpecialMarioStarter extends RetroManiaInnerGame {
       UserRenderPreference userRenderPreference,
       MenuScreen menuScreen,
       MusicManager musicManager) {
-    super("MarioSpec", RetroManiaGame.Orientation.HORIZONTAL);
+    super(GAME_NAME, RetroManiaGame.Orientation.HORIZONTAL);
     this.specialMarioStarterPresenter = specialMarioStarterPresenter;
     setUpMainWorldRenderer(userRenderPreference);
     this.menuScreen = menuScreen;

@@ -3,6 +3,7 @@ package com.retromania.game.special_mario.models.map;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
+import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
 public class FriezingBlock extends TiledMapIndividual {
@@ -12,9 +13,12 @@ public class FriezingBlock extends TiledMapIndividual {
 
     @Override
     public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
-        System.out.println("things are about to go down");
-        System.out.println(getFixtureDef().filter.categoryBits);
-        System.out.println(playerCollisionInfo.getCharacter().getFixtureDef().filter.maskBits);
+
+    }
+
+    @Override
+    public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {
+
     }
 
     @Override
@@ -23,13 +27,4 @@ public class FriezingBlock extends TiledMapIndividual {
     }
 
 
-    @Override
-    public short getDefaultMask() {
-        return 16;
-    }
-
-    @Override
-    public short getDefaultTarget() {
-        return 0;
-    }
 }

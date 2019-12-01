@@ -399,5 +399,11 @@ Code affected : All the package
 Menu completed, and the renderer and the levels are now orthogonal.
 
 
+# Step 39
+
+Code affected : All of the package
+
+Beta Version Completed
+
 
 

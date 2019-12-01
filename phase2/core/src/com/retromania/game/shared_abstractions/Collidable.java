@@ -1,5 +1,6 @@
 package com.retromania.game.shared_abstractions;
 
+import com.badlogic.gdx.physics.box2d.Filter;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 
 public interface Collidable {

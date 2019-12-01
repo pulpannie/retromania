@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 
 import java.util.ArrayList;
@@ -29,6 +30,11 @@ class TiledMapIndividualFactory {
 
   private World world;
 
+  private String currentLevel;
+  void reloadLevel(){
+    clearBodiesOfMap();
+    setUpTiledMap(currentLevel);
+  }
 
   @Inject
   TiledMapIndividualFactory(World world){
@@ -37,6 +43,7 @@ class TiledMapIndividualFactory {
   }
 
   private void setUpTiledMap(String mapAddress) {
+    currentLevel = mapAddress;
     TmxMapLoader mapLoader = new TmxMapLoader();
     tiledMap = mapLoader.load(mapAddress);
     getAllLayers();
@@ -53,7 +60,6 @@ class TiledMapIndividualFactory {
   }
 
   private void clearBodiesOfMap() {
-    System.out.println("this gets called");
     for(Body b : bodies){
       world.destroyBody(b);
     }
@@ -69,6 +75,7 @@ class TiledMapIndividualFactory {
     getLayer(Layers.REWARD, world);
     getLayer(Layers.WATER, world);
     getLayer(Layers.FIRE, world);
+    getLayer(Layers.GAME_FINISHER, world);
   }
 
   public TiledMap getTiledMap() {

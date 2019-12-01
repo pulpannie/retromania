@@ -9,6 +9,7 @@ import com.retromania.game.special_mario.views.SpecialMarioStarter;
 public class SpecialMarioConfiguration {
 
   public static final SpecialMarioStarter FINAL_GAME;
+  public static final String GAME_NAME = "SPEC MARIO";
 
   static {
     OrthographicCamera gameCam = new OrthographicCamera();
@@ -29,6 +30,7 @@ public class SpecialMarioConfiguration {
             .setScale(getPixelToMeterConversionRate())
             .setGameCam(gameCam)
             .setGamePort(gamePort)
+            .setGameName(GAME_NAME)
             .build()
             .getSpecialMarioStarter();
   }

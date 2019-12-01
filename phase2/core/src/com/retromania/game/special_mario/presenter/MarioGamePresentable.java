@@ -6,4 +6,5 @@ import com.retromania.game.shared_abstractions.Presentable;
 
 public interface MarioGamePresentable extends Presentable {
     TiledMap getTileMap();
+    void reloadLevel();
 }

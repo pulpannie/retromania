@@ -17,6 +17,8 @@ public interface LevelPreference {
 
     boolean isItFirstMission();
 
+    void reloadLevel();
+
 
 
 }

@@ -66,6 +66,11 @@ public class LevelPreferenceMario implements LevelPreference {
         return isItFirst;
     }
 
+    @Override
+    public void reloadLevel() {
+        tiledMapIndividualFactory.reloadLevel();
+    }
+
 
     void clearDisplay() {
         Gdx.gl.glClearColor(0, 0, 0, 1);

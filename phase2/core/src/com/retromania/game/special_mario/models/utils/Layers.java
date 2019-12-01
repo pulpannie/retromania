@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.map.Fire;
 import com.retromania.game.special_mario.models.map.FriezingBlock;
+import com.retromania.game.special_mario.models.map.GameFinisher;
 import com.retromania.game.special_mario.models.map.Obstacle;
 import com.retromania.game.special_mario.models.map.Reward;
 import com.retromania.game.special_mario.models.map.Water;
@@ -25,7 +26,8 @@ public enum Layers {
   FRIEZING_BLOCK(3, FriezingBlock.class),
   REWARD(4, Reward.class),
   WATER(5, Water.class),
-  FIRE(6, Fire.class);
+  FIRE(6, Fire.class),
+  GAME_FINISHER(7, GameFinisher.class);
 
   private final int id;
   private Class c;

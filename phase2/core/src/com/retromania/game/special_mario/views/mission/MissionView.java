@@ -1,21 +1,31 @@
 package com.retromania.game.special_mario.views.mission;
 
 import com.badlogic.gdx.Gdx;
+import com.retromania.game.GameLister;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.special_mario.models.map.MainPlayerInput;
+import com.retromania.game.special_mario.abstractions.DeathObserver;
+import com.retromania.game.special_mario.abstractions.FinisherObserver;
+import com.retromania.game.special_mario.models.player.MainPlayer;
+import com.retromania.game.special_mario.models.player.MainPlayerInput;
 import com.retromania.game.special_mario.presenter.MarioGamePresenter;
-import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 
-public abstract class MissionView extends RetroManiaScreen {
+public abstract class MissionView extends RetroManiaScreen implements DeathObserver, FinisherObserver {
     private UserRenderPreference userRenderPreference;
     private MarioGamePresenter marioGamePresenter;
-
+    MainPlayer mainPlayer;
     public MissionView(
             MarioGamePresenter marioGamePresenter,
-            UserRenderPreference userRenderPreference) {
+            UserRenderPreference userRenderPreference, MainPlayer mainPlayer) {
+//        This is to redo any position or state of the player for the game
+        mainPlayer.createMainPlayer();
+
         this.marioGamePresenter = marioGamePresenter;
+        this.marioGamePresenter.reloadLevel();
+        this.marioGamePresenter.addDeathObserver(this);
+        this.marioGamePresenter.addFinisherObserver(this);
+        this.mainPlayer = mainPlayer;
         setUpMainWorldRenderer(userRenderPreference);
     }
 
@@ -61,5 +71,22 @@ public abstract class MissionView extends RetroManiaScreen {
 
     private void setUpMainWorldRenderer(UserRenderPreference userRenderPreference) {
         this.userRenderPreference = userRenderPreference;
+    }
+
+    @Override
+    public void deathSeen() {
+        dispose();
+    }
+
+    @Override
+    public void finishSeen() {
+        dispose();
+    }
+
+    @Override
+    public void dispose() {
+//        This is to redo any position or state of the player for the next game
+        mainPlayer.createMainPlayer();
+        game.setScreen(new GameLister());
     }
 }

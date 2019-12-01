@@ -6,25 +6,33 @@ import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
-public class Fire extends TiledMapIndividual {
 
-    public Fire(MapObject object, World world) {
+public class GameFinisher extends TiledMapIndividual {
+    public GameFinisher(MapObject object, World world) {
         super(object, world);
     }
 
     @Override
     public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
-        setCategoryMask((short) 0);
-        setCollidableWith((short) 0);
     }
 
     @Override
     public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {
-
+        mainPlayer.setFinished(true);
     }
 
     @Override
     public void update(Object... args) {
+
     }
 
+    @Override
+    public short getDefaultMask() {
+        return 2;
+    }
+
+    @Override
+    public short getDefaultTarget() {
+        return -1;
+    }
 }

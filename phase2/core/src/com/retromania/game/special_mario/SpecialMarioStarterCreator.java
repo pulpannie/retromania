@@ -8,6 +8,7 @@ import com.retromania.game.special_mario.utils.TextureAtlasLoader;
 import com.retromania.game.special_mario.utils.WorldManager;
 import com.retromania.game.special_mario.views.SpecialMarioStarter;
 import com.retromania.game.special_mario.views.renderables.UserRenderPreferenceProvider;
+import com.retromania.game.tic_tac_toe.TicTacToeStarterComponent;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -56,6 +57,10 @@ public interface SpecialMarioStarterCreator {
 
     @BindsInstance
     Builder setGamePort(@Named("Super Mario Game Port") Viewport gamePort);
+
+
+    @BindsInstance
+    Builder setGameName(@Named("name Of Game") String nameOfGame);
 
     SpecialMarioStarterCreator build();
   }

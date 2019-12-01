@@ -5,12 +5,14 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Filter;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.Individual;
+import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
@@ -21,12 +23,12 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
 
   private Body body;
   private FixtureDef fixtureDef;
-
+  private Fixture fixture;
   public TiledMapIndividual(MapObject object, World world) {
     rectangleBound = setUpBound(object);
     body = setUpBodyDef(world);
     PolygonShape shape = setUpShape();
-    Fixture fixture = createFixture(shape);
+    fixture = createFixture(shape);
     fixture.setUserData(this);
   }
 
@@ -63,9 +65,19 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
     return fixtureDef;
   }
 
+
+
+  @Override
+  public void setCollidableWith(short othersCategory) {
+    Filter filter = new Filter();
+    filter.maskBits = othersCategory;
+    filter.categoryBits = fixture.getFilterData().categoryBits;
+    fixture.setFilterData(filter);
+  }
+
   @Override
   public short getDefaultMask() {
-    return 4;
+    return -1;
   }
 
   @Override
@@ -78,4 +90,8 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   }
 
   public abstract void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo);
+
+  //  TODO implement a method that can take in to sensors, because right now we can only have one
+  // character that moves
+  public abstract void hitWithBodyOfMainPlayer(MainPlayer mainPlayer);
 }

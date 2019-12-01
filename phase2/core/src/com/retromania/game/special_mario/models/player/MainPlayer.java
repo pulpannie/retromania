@@ -11,7 +11,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.RetroManiaModel;
-import com.retromania.game.special_mario.models.map.MainPlayerInput;
+import com.retromania.game.utils.GameSaver;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,6 +24,12 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
 
   private MainPlayerInput input;
   private BodyDef bodyDef;
+  private GameSaver gameSaver;
+
+
+
+  private boolean dead;
+  private boolean finished;
 
   private static TextureRegion getTextureRegion(String regionName, TextureAtlas textureAtlas) {
     return textureAtlas.findRegion(regionName);
@@ -37,7 +43,8 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
       @Named("Y") int y,
       World world,
       @Named("INIT X IN WORLD") int initialXInWorld,
-      @Named("INIT Y IN WORLD") int initialYInWorld) {
+      @Named("INIT Y IN WORLD") int initialYInWorld,
+      GameSaver gameSaver) {
     super(
         getTextureRegion(textureRegionName, textureAtlas),
         x,
@@ -48,6 +55,7 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
         world,
         initialXInWorld,
         initialYInWorld);
+    this.gameSaver = gameSaver;
   }
 
   public void handleInput() {
@@ -77,12 +85,12 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
 
   @Override
   public short getDefaultMask() {
-    return 2;
+    return -1;
   }
 
   @Override
   public short getDefaultTarget() {
-    return 4;
+    return -1;
   }
 
   @Override
@@ -92,6 +100,10 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
 
   @Override
   protected BodyDef setUpBodyDef() {
+
+    setDead(false);
+    setFinished(false);
+
     bodyDef = new BodyDef();
     bodyDef.position.set(
         convertPixelToMeter(getInitialXInTheWorld()), convertPixelToMeter(getInitialYInTheWorld()));
@@ -144,6 +156,12 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   @Override
   public void update() {
     handleInput();
+    if (getY()<0){
+      setDead(true);
+      if (getY()<-1){
+        createMainPlayer();
+      }
+    }
     setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
   }
 
@@ -155,5 +173,26 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   @Override
   public MainPlayerInput getOutput() {
     return input;
+  }
+
+  public void addReward(){
+    gameSaver.setScore(gameSaver.getCurrentUser().getScore()+1);
+  }
+
+  public boolean isDead() {
+    return dead;
+  }
+
+  public void setDead(boolean dead) {
+    this.dead = dead;
+  }
+
+
+  public boolean isFinished() {
+    return finished;
+  }
+
+  public void setFinished(boolean finished) {
+    this.finished = finished;
   }
 }
