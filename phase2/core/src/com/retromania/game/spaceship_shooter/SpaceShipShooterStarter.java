@@ -1,6 +1,5 @@
 package com.retromania.game.spaceship_shooter;
 
-import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
 import com.retromania.game.spaceship_shooter.Models.GameStats;
@@ -10,7 +9,7 @@ import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
 /**
  * Starter class of spaceship shooter game
  *
- * @author Umid, Thuy
+ * @author Thuy, Umid
  */
 public class SpaceShipShooterStarter extends RetroManiaInnerGame implements MainScreenInterface {
   /** presenter of starter */

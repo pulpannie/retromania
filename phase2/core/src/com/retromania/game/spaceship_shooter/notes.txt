@@ -370,22 +370,30 @@ Fix: Adding and updating java docs and comments to the above class.
 
 Code affected: PauseScreenPresenter, PlayScreenPresenter, Presenter, SettingsScreenPresenter, StarterPresenter, MenuScreenPresenter
 
-Flaw: code of these classes were not clearly formatted
+Flaw: code of these classes were not clearly formatted.
 
-Fix: code formatted by built in IDE shortcut
+Fix: code formatted by built in IDE shortcut.
 
 #Step 46:
 
 Code affected: MusicManager, SpaceShipShooterStarter
 
-Flaw: code of these classes were not clearly formatted and lacks javadoc
+Flaw: code of these classes were not clearly formatted and are lacks of javadoc.
 
-Fix: code formatted by built in IDE shortcut & comments and javadocs added
+Fix: code formatted by built in IDE shortcut & comments and javadoc added.
 
 #Step 47:
 
 Code affected: SpaceShipShooterStarter, GameLister
 
-Flaw: construct was not working in SpaceShipShooterStarter after deleting depreciated method
+Flaw: construct was not working in SpaceShipShooterStarter after deleting depreciated method.
 
-Fix: in GameLister class, we were calling depreciated constructor so after modifying it, program works
+Fix: in GameLister class, we were calling depreciated constructor so after modifying it, program works.
+
+#Step 48:
+
+Code affected: Views package, MenuScreenPresenter, PauseScreenPresenter, StaterPresenter, SpaceShipShooterStarter
+
+Flaw: code of these classes were not clearly formatted and are lacks of javadoc.
+
+Fix: code formatted by built in IDE shortcut, add comments and javadoc.

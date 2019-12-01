@@ -22,7 +22,7 @@ public class MenuScreenPresenter extends Presenter {
   private Label highScoreLabel;
   /** Label that shows up latest score */
   private Label latestScoreLabel;
-  /** Stage that holds table of labels to print */
+    /** Stage that holds table of labels to print */
   private Stage stage;
 
   /**
@@ -85,7 +85,7 @@ public class MenuScreenPresenter extends Presenter {
     mainScreen.restart();
   }
 
-  /** update the highscore and the latest score. */
+  /** update the highScore and the latest score. */
   public void updateTable() {
     highScoreLabel.setText(
         String.format(Locale.US, "%03d", SpaceShipShooterStarter.getGameStats().getHighScore()));

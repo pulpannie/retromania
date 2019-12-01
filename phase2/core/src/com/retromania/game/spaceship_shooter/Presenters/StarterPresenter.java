@@ -82,7 +82,7 @@ public class StarterPresenter {
   /**
    * Creates new play screen and sets screen to new play screen
    *
-   * @param mainScreen
+   * @param mainScreen access to viewport of starter class through interface
    */
   public void restart(MainScreenInterface mainScreen) {
     playScreen = new PlayScreen(mainScreen);
