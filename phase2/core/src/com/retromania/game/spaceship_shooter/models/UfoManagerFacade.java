@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.Models;
+package com.retromania.game.spaceship_shooter.models;
 
 /**
  * The UFO Manager Facade responsible for managing the list of UFOs through working with the UFO

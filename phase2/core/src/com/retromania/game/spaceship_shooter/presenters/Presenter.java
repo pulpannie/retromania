@@ -1,7 +1,7 @@
-package com.retromania.game.spaceship_shooter.Presenters;
+package com.retromania.game.spaceship_shooter.presenters;
 
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.spaceship_shooter.Models.Background;
+import com.retromania.game.spaceship_shooter.models.Background;
 
 /** Parent class for most of presenter classes. It updates background
  *

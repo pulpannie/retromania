@@ -10,8 +10,8 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.Presenters.PlayScreenPresenter;
+import com.retromania.game.spaceship_shooter.models.ImageButtonBuilder;
+import com.retromania.game.spaceship_shooter.presenters.PlayScreenPresenter;
 
 /**
  * View class of the play screen. It is responsible for rendering the play screen, and has access to

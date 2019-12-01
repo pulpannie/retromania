@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.Utils;
+package com.retromania.game.spaceship_shooter.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;

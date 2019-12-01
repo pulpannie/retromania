@@ -9,8 +9,8 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.Presenters.MenuScreenPresenter;
+import com.retromania.game.spaceship_shooter.models.ImageButtonBuilder;
+import com.retromania.game.spaceship_shooter.presenters.MenuScreenPresenter;
 
 /**
  * View class of the menu screen. It is responsible for rendering the menu screen, and has access to

@@ -14,9 +14,9 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.Models.LabelBuilder;
-import com.retromania.game.spaceship_shooter.Presenters.SettingsScreenPresenter;
+import com.retromania.game.spaceship_shooter.models.ImageButtonBuilder;
+import com.retromania.game.spaceship_shooter.models.LabelBuilder;
+import com.retromania.game.spaceship_shooter.presenters.SettingsScreenPresenter;
 
 /**
  * View class of the setting screen. It is responsible for rendering the setting screen, and has

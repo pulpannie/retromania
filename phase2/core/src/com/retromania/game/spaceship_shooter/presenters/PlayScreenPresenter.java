@@ -1,12 +1,12 @@
-package com.retromania.game.spaceship_shooter.Presenters;
+package com.retromania.game.spaceship_shooter.presenters;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.retromania.game.RetroMania;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.spaceship_shooter.Models.Car;
-import com.retromania.game.spaceship_shooter.Models.Hud;
-import com.retromania.game.spaceship_shooter.Models.UfoManager;
+import com.retromania.game.spaceship_shooter.models.Car;
+import com.retromania.game.spaceship_shooter.models.Hud;
+import com.retromania.game.spaceship_shooter.models.UfoManager;
 import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
 
 import java.util.ArrayList;

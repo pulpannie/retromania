@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.Presenters;
+package com.retromania.game.spaceship_shooter.presenters;
 
 import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
 
