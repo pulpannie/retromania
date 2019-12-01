@@ -81,8 +81,6 @@ public class Car extends Actor {
 
     /**
      * draw the Car.
-     * @param batch
-     * @param parentAlpha
      */
     @Override
     public void draw(Batch batch, float parentAlpha) {

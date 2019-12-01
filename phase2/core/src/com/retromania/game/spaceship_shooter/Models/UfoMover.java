@@ -24,7 +24,7 @@ class UfoMover {
      *
      * @param rocket   the rocket displayed on the screen.
      * @param ufos     the given list of UFOs.
-     * @param hud
+     * @param hud      the instance of a class that stores the current game's information and result.
      */
     void moveRocket(Rocket rocket, List<UFO> ufos, Hud hud){
 
