@@ -9,40 +9,35 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.Locale;
+
 public class Header {
     public Viewport viewport;
-
-    private Integer worldTimer;
-    private float timecount;
-    private Integer score;
-
-    private Label scoreText;
-     Label colourText;
-    private Label timeText;
     private Label colourTracker;
+    private Integer worldTimer;
+    private float timeCount;
     private Label timeTracker;
 
     public Header(Stage stage, float width, float height) {
-        Label scoreTracker;
-        worldTimer = 30;
-        timecount = 0;
-        score = 0;
+        Integer worldTimer = 30;
+        timeCount = 0;
+        Integer score = 0;
 
         viewport = new FillViewport(width, height, new OrthographicCamera());
         Table table = new Table();
         table.top();
         table.setFillParent(true);
 
-        scoreText = new Label(String.format("SCORE"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        colourText = new Label(String.format("COLOUR"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        timeText = new Label(String.format("TIME"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Label scoreText = new Label(String.format(Locale.US, "SCORE"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Label colourText = new Label(String.format(Locale.US,"COLOUR"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Label timeText = new Label(String.format("TIME"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
-        scoreTracker = new Label(String.format("%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Label scoreTracker = new Label(String.format(Locale.US,"%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
         colourTracker = new Label("NOT SET", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         setRandomColour();
 
-        timeTracker = new Label(String.format("%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Label timeTracker = new Label(String.format(Locale.US,"%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
 
 
@@ -56,6 +51,20 @@ public class Header {
 
         stage.addActor(table);
     }
+
+    public boolean countDown(float dt) {
+        timeCount += dt;
+        if (timeCount >= 1) {
+            worldTimer--;
+            timeTracker.setText(String.format(Locale.US, "%03d", worldTimer));
+            timeCount = 0;
+            if (worldTimer <= 10) {
+                timeTracker.setColor(Color.RED);
+            }
+        }
+        return worldTimer == 0;
+    }
+
 
     public void setRandomColour() {
         int randomNumber1 = (int) (Math.random() * 4);
