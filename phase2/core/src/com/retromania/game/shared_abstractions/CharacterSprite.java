@@ -15,7 +15,7 @@ class CharacterSprite extends Sprite {
             TextureRegion textureRegion, int x, int y, int width, int height, float pixelToMeterRate) {
         super(textureRegion);
         this.pixelToMeterRate = pixelToMeterRate;
-        createTexture(textureRegion.getRegionWidth(), textureRegion.getRegionHeight(), textureRegion.getRegionWidth(), textureRegion.getRegionHeight());
+        createTexture(x, y, width, height);
 
     }
 

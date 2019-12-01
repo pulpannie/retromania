@@ -158,3 +158,10 @@ Made a function move in BulletCharacter so that body doesn't have to be a public
 Code Affected: PlayScreen
 Flaw: square.png is not being displayed.
 Fix: not yet fixed.
+
+#Step 24:
+
+Code Affected: BulletCharacter, PlayScreen
+
+Flaw:
+Fix:

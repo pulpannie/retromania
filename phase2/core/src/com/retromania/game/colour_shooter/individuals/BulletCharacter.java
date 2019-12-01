@@ -5,17 +5,20 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
+import com.retromania.game.shared_abstractions.RetroManiaModel;
 
-public class BulletCharacter extends Character {
+public class BulletCharacter extends Character implements RetroManiaModel {
 
     private FixtureDef fixtureDef;
-    private float getRadius(){
-        return 6;
+    private static int getRadius(){
+        return 3;
     }
-    public BulletCharacter(World given_world, TextureRegion textureRegion, int x, int y, int radius) {
-        super(textureRegion, x, y, radius * 2, radius * 2, 1f, given_world, x, y);
+    public BulletCharacter(World given_world, TextureRegion textureRegion, int x, int y) {
+        super(textureRegion, x, y, getRadius() * 4, getRadius() * 4, 1f, given_world, x, y);
+
     }
 
     @Override
@@ -40,8 +43,10 @@ public class BulletCharacter extends Character {
 
     @Override
     protected void setUpFixture() {
-        CircleShape shape = new CircleShape();
-        shape.setRadius(getRadius());
+
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(getRadius() * 2, getRadius() * 2);
+
 
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
@@ -65,5 +70,21 @@ public class BulletCharacter extends Character {
 
     public void move(float speed_x, float speed_y) {
         this.body.setLinearVelocity(speed_x, speed_y);
+    }
+
+    @Override
+    public void update() {
+        setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+
+    }
+
+    @Override
+    public void setInput(Object input) {
+
+    }
+
+    @Override
+    public Object getOutput() {
+        return null;
     }
 }
