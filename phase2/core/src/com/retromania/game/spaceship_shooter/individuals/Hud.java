@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.util.Locale;
+
 /**
  * Class that stores information about instant score, time, and area
  *
@@ -19,11 +22,6 @@ public class Hud {
      * Stage that our table of labels added
      */
     public  Stage stage;
-
-    /**
-     * view screen
-     */
-    private Viewport viewport;
 
     /**
      * timer that counts down to 0
@@ -50,25 +48,6 @@ public class Hud {
      */
     private Label scoreLabel;
 
-    /**
-     * Label that draws "TIMER"
-     */
-    private Label timeLabel;
-
-    /**
-     * Label that draws name of specified world
-     */
-    private Label worldLabel;
-
-    /**
-     * Label that draws "SCORE"
-     */
-    private Label scoreNameLabel;
-
-    /**
-     * Label that draws "AREA"
-     */
-    private Label areaLabel;
 
     /**
      * GETTER METHOD FOR SCORE
@@ -82,6 +61,22 @@ public class Hud {
      * @param sb
      * */
     public Hud(SpriteBatch sb){
+
+        // view screen
+        Viewport viewport;
+
+        // Label that draws "TIMER"
+        Label timeLabel;
+
+        // Label that draws name of specified world
+        Label worldLabel;
+
+        // Label that draws "SCORE"
+        Label scoreNameLabel;
+
+        // Label that draws "AREA"
+        Label areaLabel;
+
         worldTimer = 60;
         timeCount = 0;
         score = 0;
@@ -96,8 +91,8 @@ public class Hud {
 
         LabelBuilder labelBuilder = new LabelBuilder();
         labelBuilder.buildFont(3.0f).buildColor().buildLabelStyle();
-        countDownLabel = labelBuilder.buildText(String.format("%03d", worldTimer)).buildLabel();
-        scoreLabel = labelBuilder.buildText(String.format("%06d", score)).buildLabel();
+        countDownLabel = labelBuilder.buildText(String.format(Locale.US,"%03d", worldTimer)).buildLabel();
+        scoreLabel = labelBuilder.buildText(String.format(Locale.US, "%06d", score)).buildLabel();
         timeLabel = labelBuilder.buildText("TIMER").buildLabel();
         worldLabel = labelBuilder.buildText("DESERT").buildLabel();
         scoreNameLabel = labelBuilder.buildText("SCORE").buildLabel();
@@ -122,7 +117,7 @@ public class Hud {
         timeCount += dt;
         if (timeCount >= 1){
             worldTimer--;
-            countDownLabel.setText(String.format("%03d", worldTimer));
+            countDownLabel.setText(String.format(Locale.US,"%03d", worldTimer));
             timeCount= 0;
             if (worldTimer <= 15) {
                 if (worldTimer % 2 == 0)
@@ -139,6 +134,6 @@ public class Hud {
      * */
     void addScore(int value) {
         score += value;
-        scoreLabel.setText(String.format("%06d", score));
+        scoreLabel.setText(String.format(Locale.US,"%06d", score));
     }
 }

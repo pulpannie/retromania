@@ -16,22 +16,22 @@ import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
 import com.retromania.game.spaceship_shooter.presenters.SettingsScreenPresenter;
 
 public class SettingScreen extends RetroManiaScreen {
-    Label gameModeLabel;
-    Table table;
+    private Table table;
     private SettingsScreenPresenter presenter;
 
     private ImageButton exitButton;
     private Stage stage;
-    SelectBox<String> gameModeBox;
-    CheckBox musicBox;
+    private SelectBox<String> gameModeBox;
+    private CheckBox musicBox;
 
     public SettingScreen(MainScreenInterface mainScreen){
+        Label gameModeLabel;
         presenter = new SettingsScreenPresenter("fill", mainScreen);
         stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
         Skin skin = new Skin(Gdx.files.internal("spaceship_shooter/glassy/skin/glassy-ui.json"));
 
         gameModeLabel = (new LabelBuilder()).buildFont(3f).buildColor().buildLabelStyle().buildText("Choose game mode").buildLabel();
-        gameModeBox = new SelectBox<String>(skin);
+        gameModeBox = new SelectBox<>(skin);
         gameModeBox.setItems("Independence day", "Halloween", "Christmas");
         gameModeBox.getStyle().font.getData().setScale(3f, 2f);
 
@@ -101,10 +101,6 @@ public class SettingScreen extends RetroManiaScreen {
 
     @Override
     public void resume() {
-
-    }
-
-    public void restart(){
 
     }
 

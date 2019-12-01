@@ -38,8 +38,8 @@ class UfoManagerFacadeBuilder {
      * @param numOfUfos   the number of UFOs instantiated in the UFO repo.
      */
     UfoManagerFacadeBuilder buildRepo(int numOfUfos){
-        List<UFO> ufos = new  ArrayList<UFO>();
-        double tempy = 0;
+        List<UFO> ufos = new  ArrayList<>();
+        double tempy;
         int height = Gdx.graphics.getHeight();
         for(int i = 0; i< numOfUfos; i++){
             tempy = Math.random() * (height/2 + 1) + height/4;

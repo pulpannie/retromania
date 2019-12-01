@@ -49,14 +49,14 @@ public class Car extends Actor {
     /**
      * getter for iRocket
      * */
-    public Rocket getiRocket() {
-        return iRocket;
+    public Rocket getRocket() {
+        return rocket;
     }
 
     /**
      * iRocket: rocket that can be used to shoot UFOs
      */
-    private Rocket iRocket = null;
+    private Rocket rocket = null;
 
 
     /**
@@ -113,8 +113,8 @@ public class Car extends Actor {
      * Create/shoot the rocket
      * */
     public void shoot(){
-        if ((iRocket == null) || (iRocket.reach_top())){
-            this.iRocket = new Rocket(x, y);
+        if ((rocket == null) || (rocket.reach_top())){
+            this.rocket = new Rocket(x, y);
         }
     }
     /**
@@ -122,7 +122,7 @@ public class Car extends Actor {
      * @return true if the rocket is shot, false if vice versa.
      */
     public boolean shot(){
-        return iRocket != null && !iRocket.reach_top();
+        return rocket != null && !rocket.reach_top();
     }
 
 

@@ -94,7 +94,7 @@ public class PauseScreen extends RetroManiaScreen {
         presenter.resume();
     }
 
-    public void restart(){
+    private void restart(){
         dispose();
         presenter.restart();
     }

@@ -7,20 +7,24 @@ import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
 import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
 import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
 
+import java.util.Locale;
 
 
 public class MenuScreenPresenter extends Presenter {
 
     private MainScreenInterface mainScreen;
-    private Label highScoreTextLabel;
-    private Label latestScoreTextLabel;
     private Label highScoreLabel;
     private Label latestScoreLabel;
-    private Table table;
     private Stage stage;
 
     public MenuScreenPresenter(String screenType, MainScreenInterface mainScreen){
         super(screenType);
+
+        Label highScoreTextLabel;
+        Label latestScoreTextLabel;
+
+        Table table;
+
         this.mainScreen = mainScreen;
 
         LabelBuilder labelBuilder = new LabelBuilder();
@@ -28,8 +32,8 @@ public class MenuScreenPresenter extends Presenter {
 
         highScoreTextLabel = labelBuilder.buildText("High Score").buildLabel();
         latestScoreTextLabel = labelBuilder.buildText("Latest Score").buildLabel();
-        highScoreLabel = labelBuilder.buildText(String.format("%03d", SpaceShipShooterStarter.getGameStats().getHighScore())).buildLabel();
-        latestScoreLabel = labelBuilder.buildText(String.format("%06d", SpaceShipShooterStarter.getGameStats().getLatestScore())).buildLabel();
+        highScoreLabel = labelBuilder.buildText(String.format(Locale.US,"%03d", SpaceShipShooterStarter.getGameStats().getHighScore())).buildLabel();
+        latestScoreLabel = labelBuilder.buildText(String.format(Locale.US,"%06d", SpaceShipShooterStarter.getGameStats().getLatestScore())).buildLabel();
 
 
         table = new Table();
@@ -57,8 +61,8 @@ public class MenuScreenPresenter extends Presenter {
         mainScreen.restart();
     }
     public void updateTable(){
-        highScoreLabel.setText(String.format("%03d", SpaceShipShooterStarter.getGameStats().getHighScore()));
-        latestScoreLabel.setText(String.format("%03d", SpaceShipShooterStarter.getGameStats().getLatestScore()));
+        highScoreLabel.setText(String.format(Locale.US,"%03d", SpaceShipShooterStarter.getGameStats().getHighScore()));
+        latestScoreLabel.setText(String.format(Locale.US,"%03d", SpaceShipShooterStarter.getGameStats().getLatestScore()));
     }
     public Stage getStage(){return stage;}
 

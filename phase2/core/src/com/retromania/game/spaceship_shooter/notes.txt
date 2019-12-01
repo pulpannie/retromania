@@ -308,3 +308,11 @@ Code affected: SpaceShipShooterStarter, StarterPresenter
 Flaw: game saving actions was done in view which is against the rule of MVP pattern
 
 Fix: added setScore method and GameSaver instance to presenter. And called it in View
+
+#Step 38:
+
+Code affected: Car, GameStats, Hud, UfoManagerFacadeBuilder, MenuScreenPresenter, PlayScreenPresenter, MenuScreen, PauseScreen, SettingScreen
+
+Flaw: The code hasn't been fully cleaned.
+
+Fix: remove unused methods, variables and import statements, convert some instance variables that should be changed to local variables, fix codes follows IDE instructions.

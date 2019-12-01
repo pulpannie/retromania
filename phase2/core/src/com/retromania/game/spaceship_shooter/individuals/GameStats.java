@@ -26,7 +26,7 @@ public class GameStats {
      * Initializer of GameStats class
      * */
     public GameStats() {
-        scoreboard = new ArrayList<Integer>();
+        scoreboard = new ArrayList<>();
     }
     /**
      * getter for high score

@@ -53,7 +53,7 @@ public class PlayScreenPresenter extends Presenter{
         RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(hud.stage.getCamera().combined);
         if (hud.countDown(dt))
             finished = true;
-        ufoManager.update(car.getiRocket(), hud);
+        ufoManager.update(car.getRocket(), hud);
 
 
     }
@@ -64,11 +64,11 @@ public class PlayScreenPresenter extends Presenter{
     public Stage getHudStage(){return hud.stage;}
 
     public ArrayList<Actor> getRenderableActors(){
-        ArrayList<Actor> list = new ArrayList<Actor>();
+        ArrayList<Actor> list = new ArrayList<>();
         list.add(ufoManager);
         list.add(car);
         if (car.shot())
-            list.add(car.getiRocket());
+            list.add(car.getRocket());
         return list;
     }
 
