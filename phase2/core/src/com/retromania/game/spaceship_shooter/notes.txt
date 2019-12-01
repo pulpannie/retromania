@@ -235,7 +235,7 @@ Code affected: SpaceShipShooterStarter, PlayScreen
 Flaw: MVP design still creating couplings and wrong dependency flow.
 
 Fix: Created Presenter classes and implemented "Presenter", "StarterPresenter", "PlayScreenPresenter".
-#TODO: implement rest of presenter classes
+#TODO: implement rest of presenter classes (solved)
 
 #Step 29:
 
@@ -324,3 +324,11 @@ Code affected: all classes
 Flaw: the names of the packages haven't been changed to fit with the MVP pattern.
 
 Fix: change the names of the packages to fit with the MVP pattern.
+
+#Step 40:
+
+Code affected: all classes in Presenter and Views packages, except StarterPresenter, MainScreenInterface and StateFactory
+
+Flaw: ViewPort and gameCam, which is necessary for the rendering task, are being instantiated in the Presenter instead of the Views.
+
+Fix: Move ViewPort and gameCam, along with their functionalities, to the Views.

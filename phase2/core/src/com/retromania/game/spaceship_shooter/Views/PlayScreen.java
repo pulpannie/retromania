@@ -2,9 +2,12 @@ package com.retromania.game.spaceship_shooter.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
@@ -12,6 +15,10 @@ import com.retromania.game.spaceship_shooter.Presenters.PlayScreenPresenter;
 
 
 public class PlayScreen extends RetroManiaScreen {
+
+    private Viewport gamePort;
+    private OrthographicCamera gameCam;
+
     private Stage stage;
     private ImageButton leftButton;
     private ImageButton rightButton;
@@ -19,8 +26,12 @@ public class PlayScreen extends RetroManiaScreen {
     private PlayScreenPresenter presenter;
 
     public PlayScreen(MainScreenInterface mainScreen) {
-        presenter = new PlayScreenPresenter("stretch", 4, mainScreen);
-        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+        presenter = new PlayScreenPresenter(4, mainScreen);
+
+        gameCam = new OrthographicCamera();
+        gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
+
+        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
 
 
         leftButton = (new ImageButtonBuilder()).buildTexture("left_button_big.png").buildButton();
@@ -65,6 +76,7 @@ public class PlayScreen extends RetroManiaScreen {
     }
 
     public void update(float dt){
+        gameCam.update();
         handleInput();
         stage.act();
         presenter.update(dt);
@@ -91,7 +103,7 @@ public class PlayScreen extends RetroManiaScreen {
 
     @Override
     public void resize(int width, int height) {
-        presenter.resize(width, height);
+        gamePort.update(width, height);
     }
 
     @Override

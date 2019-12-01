@@ -17,8 +17,8 @@ public class MenuScreenPresenter extends Presenter {
     private Label latestScoreLabel;
     private Stage stage;
 
-    public MenuScreenPresenter(String screenType, MainScreenInterface mainScreen){
-        super(screenType);
+    public MenuScreenPresenter(MainScreenInterface mainScreen){
+        super();
 
         Label highScoreTextLabel;
         Label latestScoreTextLabel;

@@ -6,8 +6,8 @@ public class SettingsScreenPresenter extends Presenter {
 
     private MainScreenInterface mainScreen;
 
-    public SettingsScreenPresenter(String screenType, MainScreenInterface mainScreen){
-        super(screenType);
+    public SettingsScreenPresenter(MainScreenInterface mainScreen){
+        super();
         this.mainScreen = mainScreen;
     }
 

@@ -2,8 +2,11 @@ package com.retromania.game.spaceship_shooter.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
@@ -12,13 +15,20 @@ import com.retromania.game.spaceship_shooter.Presenters.MenuScreenPresenter;
 
 public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
+    private Viewport gamePort;
+    private OrthographicCamera gameCam;
+
     private ImageButton startButton;
     private MenuScreenPresenter presenter;
 
 
     public MenuScreen(MainScreenInterface mainScreen){
-        presenter = new MenuScreenPresenter("stretch", mainScreen);
-        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+        presenter = new MenuScreenPresenter(mainScreen);
+
+        gameCam = new OrthographicCamera();
+        gamePort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
+
+        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
         startButton = (new ImageButtonBuilder()).buildTexture("start_button.png").buildButton();
         startButton.setPosition(Gdx.graphics.getWidth()/2-400, Gdx.graphics.getHeight()/2 - 600);
         startButton.setSize(800, 800);
@@ -40,6 +50,7 @@ public class MenuScreen extends RetroManiaScreen {
     }
 
     public void update(float dt){
+        gameCam.update();
         handleInput();
 
         stage.act();
@@ -61,7 +72,7 @@ public class MenuScreen extends RetroManiaScreen {
     }
 
     @Override
-    public void resize(int width, int height) { presenter.resize(width, height); }
+    public void resize(int width, int height) { gamePort.update(width, height); }
 
     @Override
     public void pause() {

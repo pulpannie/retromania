@@ -6,8 +6,8 @@ public class PauseScreenPresenter extends Presenter {
 
     private MainScreenInterface mainScreen;
 
-    public PauseScreenPresenter(String screenType, MainScreenInterface mainScreen){
-        super(screenType);
+    public PauseScreenPresenter(MainScreenInterface mainScreen){
+        super();
         this.mainScreen = mainScreen;
     }
 

@@ -2,8 +2,11 @@ package com.retromania.game.spaceship_shooter.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
@@ -11,6 +14,10 @@ import com.retromania.game.spaceship_shooter.Presenters.PauseScreenPresenter;
 
 
 public class PauseScreen extends RetroManiaScreen {
+
+    private Viewport gamePort;
+    private OrthographicCamera gameCam;
+
     private ImageButton resumeButton;
     private ImageButton restartButton;
     private ImageButton settingButton;
@@ -18,8 +25,12 @@ public class PauseScreen extends RetroManiaScreen {
     private PauseScreenPresenter presenter;
 
     public PauseScreen(MainScreenInterface mainScreen){
-        presenter = new PauseScreenPresenter("fill", mainScreen);
-        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+        presenter = new PauseScreenPresenter(mainScreen);
+
+        gameCam = new OrthographicCamera();
+        gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
+
+        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
 
         resumeButton = (new ImageButtonBuilder()).buildTexture("resume.png").buildButton();
         resumeButton.setPosition(Gdx.graphics.getWidth()/2-150, Gdx.graphics.getHeight()/2 + 100);
@@ -59,6 +70,7 @@ public class PauseScreen extends RetroManiaScreen {
     }
 
     public void update(float dt){
+        gameCam.update();
         handleInput();
         stage.act();
         presenter.update(dt);
@@ -80,7 +92,7 @@ public class PauseScreen extends RetroManiaScreen {
 
     @Override
     public void resize(int width, int height) {
-        presenter.resize(width, height);
+        gamePort.update(width, height);
     }
 
     @Override

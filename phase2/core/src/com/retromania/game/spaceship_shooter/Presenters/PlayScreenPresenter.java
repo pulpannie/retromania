@@ -19,8 +19,8 @@ public class PlayScreenPresenter extends Presenter{
     private MainScreenInterface mainScreen;
     private boolean finished = false;
 
-    public PlayScreenPresenter(String screenType, int numOfUfos, MainScreenInterface mainScreen){
-        super(screenType);
+    public PlayScreenPresenter(int numOfUfos, MainScreenInterface mainScreen){
+        super();
         hud = new Hud(RetroMania.getRetroManiaInstance().sb);
         car = new Car();
         ufoManager = new UfoManager(numOfUfos);

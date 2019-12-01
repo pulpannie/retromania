@@ -2,6 +2,7 @@ package com.retromania.game.spaceship_shooter.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -9,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
@@ -19,6 +22,9 @@ public class SettingScreen extends RetroManiaScreen {
     private Table table;
     private SettingsScreenPresenter presenter;
 
+    private Viewport gamePort;
+    private OrthographicCamera gameCam;
+
     private ImageButton exitButton;
     private Stage stage;
     private SelectBox<String> gameModeBox;
@@ -26,8 +32,12 @@ public class SettingScreen extends RetroManiaScreen {
 
     public SettingScreen(MainScreenInterface mainScreen){
         Label gameModeLabel;
-        presenter = new SettingsScreenPresenter("fill", mainScreen);
-        stage = new Stage(presenter.getGamePort(), RetroMania.getRetroManiaInstance().sb);
+        presenter = new SettingsScreenPresenter(mainScreen);
+
+        gameCam = new OrthographicCamera();
+        gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
+
+        stage = new Stage(gamePort, RetroMania.getRetroManiaInstance().sb);
         Skin skin = new Skin(Gdx.files.internal("spaceship_shooter/glassy/skin/glassy-ui.json"));
 
         gameModeLabel = (new LabelBuilder()).buildFont(3f).buildColor().buildLabelStyle().buildText("Choose game mode").buildLabel();
@@ -69,6 +79,7 @@ public class SettingScreen extends RetroManiaScreen {
     }
 
     public void update(float dt){
+        gameCam.update();
         handleInput();
 
         stage.act();
@@ -91,7 +102,7 @@ public class SettingScreen extends RetroManiaScreen {
 
     @Override
     public void resize(int width, int height) {
-        presenter.resize(width, height);
+        gamePort.update(width, height);
     }
 
     @Override
