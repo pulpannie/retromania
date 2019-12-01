@@ -373,3 +373,11 @@ Code affected: PauseScreenPresenter, PlayScreenPresenter, Presenter, SettingsScr
 Flaw: code of these classes were not clearly formatted
 
 Fix: code formatted by built in IDE shortcut
+
+#Step 46:
+
+Code affected: MusicManager, SpaceShipShooterStarter
+
+Flaw: code of these classes were not clearly formatted and lacks javadoc
+
+Fix: code formatted by built in IDE shortcut & comments and javadocs added
