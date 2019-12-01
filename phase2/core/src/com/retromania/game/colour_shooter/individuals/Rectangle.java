@@ -13,9 +13,17 @@ import com.retromania.game.shared_abstractions.Individual;
 
 public class Rectangle extends Character implements Individual {
 
+    private short cBits;
+    private short mBits;
+    private short gIndexs;
+
     public Rectangle(TextureRegion textureRegion, int x, int y, int width,
-                     int height, float pixelToMeterRate, World world) {
+                     int height, float pixelToMeterRate, World world, short cBit, short mBit,
+                     short gIndex) {
         super(textureRegion, x, y, width, height, pixelToMeterRate, world);
+        this.cBits = cBit;
+        this.mBits = mBit;
+        this.gIndexs = gIndex;
     }
 
     @Override
@@ -60,9 +68,9 @@ public class Rectangle extends Character implements Individual {
     @Override
     protected void setUpFixture() {
         fixtureDef = new FixtureDef();
-        setDefaultCategoryMask();
-        setDefaultCollidableWith();
-//        setUpFixtureDefShapes(15, 15);
+        fixtureDef.filter.categoryBits = cBits;
+        fixtureDef.filter.maskBits = mBits;
+        fixtureDef.filter.groupIndex = gIndexs;
     }
 
     @Override

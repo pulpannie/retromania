@@ -131,3 +131,11 @@ Code Affected: PlayScreen
 Flaw: Wrong positioning of red and blue rectangle in Colour Shooter Playscreen
 
 Fix: Changed red and blue position by subtracting square.width / 2 from original value
+
+#Step 20:
+
+Code Affected: PlayScreen, SquareCharacter
+
+Flaw: Not using shared abstract class Character
+
+Fix: Extended abstract class Character to make SquareCharacter
