@@ -235,7 +235,7 @@ Code affected: SpaceShipShooterStarter, PlayScreen
 Flaw: MVP design still creating couplings and wrong dependency flow.
 
 Fix: Created Presenter classes and implemented "Presenter", "StarterPresenter", "PlayScreenPresenter".
-#TODO: implement rest of presenter classes
+#TODO: implement rest of presenter classes (solved)
 
 #Step 29:
 
@@ -284,3 +284,51 @@ Code affected: all classes in the screens and presenters packages
 Flaw: the name of mainscreen and gamecam variables don't follow the Java naming convention.
 
 Fix: change the name of mainscreen and gamecam variables to mainScreen and gameCam.
+
+#Step 35:
+
+Code affected: SpaceShipShooterStarter, MainScreenInterface, PlayScreen
+
+Flaw: algorithm was not saving best score of user
+
+Fix: used GameSaver class in order to save score
+
+#Step 36:
+
+Code affected: MenuScreen, MenuScreenPresenter
+
+Flaw: current MVP structure of the menu screen had some dependencies and the view is handling a task that the presenter should be responsible to.
+
+Fix: let the MenuScreenPresenter handle the task of initializing and update the scoreLabel instead of the MenuScreen.
+
+#Step 37:
+
+Code affected: SpaceShipShooterStarter, StarterPresenter
+
+Flaw: game saving actions was done in view which is against the rule of MVP pattern.
+
+Fix: added setScore method and GameSaver instance to presenter. And called it in View.
+
+#Step 38:
+
+Code affected: Car, GameStats, Hud, UfoManagerFacadeBuilder, MenuScreenPresenter, PlayScreenPresenter, MenuScreen, PauseScreen, SettingScreen
+
+Flaw: The code hasn't been fully cleaned.
+
+Fix: remove unused methods, variables and import statements, convert some instance variables that should be changed to local variables, fix codes follows IDE instructions.
+
+#Step 39:
+
+Code affected: all classes
+
+Flaw: the names of the packages haven't been changed to fit with the MVP pattern.
+
+Fix: change the names of the packages to fit with the MVP pattern.
+
+#Step 40:
+
+Code affected: all classes in Presenter and Views packages, except StarterPresenter, MainScreenInterface and StateFactory
+
+Flaw: ViewPort and gameCam, which is necessary for the rendering task, are being instantiated in the Presenter instead of the Views.
+
+Fix: Move ViewPort and gameCam, along with their functionalities, to the Views.

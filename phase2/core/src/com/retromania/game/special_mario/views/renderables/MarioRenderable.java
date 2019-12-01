@@ -7,5 +7,6 @@ import com.retromania.game.shared_abstractions.Renderable;
 public interface MarioRenderable extends Renderable {
     Viewport getGamePort();
     void resize(int width, int height);
+    boolean checkTiledMap();
     void resetWorldRenderTiles();
 }

@@ -10,28 +10,28 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-import com.retromania.game.special_mario.views.SpecialMarioStarter;
 import com.retromania.game.special_mario.utils.MainPageUtilsTable;
-import com.retromania.game.special_mario.utils.TiledMapIndividualFactory;
 import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class IntroductoryScreen extends MenuOptionScreen {
 
   private Stage stage;
   private Table table;
-  TiledMapIndividualFactory tiledMapIndividualFactory;
+  Skin skin;
   Viewport viewport2 =
       new FitViewport(RetroManiaGame.V_WIDTH, RetroManiaGame.V_HEIGHT, new OrthographicCamera());
   UserRenderPreference userRenderPreference;
 
   @Inject
   IntroductoryScreen(
-      TiledMapIndividualFactory tiledMapIndividualFactory,
+//      TiledMapIndividualFactory tiledMapIndividualFactory,
       UserRenderPreference userRenderPreference) {
     this.userRenderPreference = userRenderPreference;
-    this.tiledMapIndividualFactory = tiledMapIndividualFactory;
+//    this.tiledMapIndividualFactory = tiledMapIndividualFactory;
   }
 
   @Override
@@ -39,34 +39,53 @@ public class IntroductoryScreen extends MenuOptionScreen {
 
   @Override
   public void show() {
+    setUpStage();
+    setUpSkin();
+    setUpTable();
+    setUpBrand();
+    setUpSettingOptions();
+    stage.addActor(table);
+    Gdx.input.setInputProcessor(stage);
+  }
 
-    stage = new Stage(viewport2, game.sb);
-    table = new Table();
-    table.setFillParent(true);
-    Skin skin = new Skin(Gdx.files.internal("special_mario/ScaleFont.json"));
-    Label brand = new Label("Our Special Mario", skin);
-    brand.setFontScaleY(.4f);
-    brand.setFontScaleX(.4f);
-    brand.setColor(Color.RED);
-    table.pack();
-    table.top();
-    table.setFillParent(true);
-    table.padTop(10);
-    table.add(brand).expandX().row();
+  private void setUpSettingOptions() {
     table.padTop(30);
     table
         .add(
             new MainPageUtilsTable(
-                    tiledMapIndividualFactory,
                     "Play Game",
                     "Settings",
-                    menuScreen, userRenderPreference)
+                    menuScreen,
+                    userRenderPreference)
                 .getTable())
         .expandX()
         .expandY()
         .row();
-    stage.addActor(table);
-    Gdx.input.setInputProcessor(stage);
+  }
+
+  private void setUpBrand() {
+    Label brand = new Label("Our Special Mario", skin);
+    brand.setFontScaleY(.4f);
+    brand.setFontScaleX(.4f);
+    brand.setColor(Color.RED);
+    table.add(brand).expandX().row();
+  }
+
+  private void setUpTable() {
+    table = new Table();
+    table.setFillParent(true);
+    table.pack();
+    table.top();
+    table.setFillParent(true);
+    table.padTop(10);
+  }
+
+  private void setUpSkin() {
+    skin = new Skin(Gdx.files.internal("special_mario/ScaleFont.json"));
+  }
+
+  private void setUpStage() {
+    stage = new Stage(viewport2, game.sb);
   }
 
   @Override

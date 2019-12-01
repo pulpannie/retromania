@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
+import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
 public class MarioWorldListener implements ContactListener {
 

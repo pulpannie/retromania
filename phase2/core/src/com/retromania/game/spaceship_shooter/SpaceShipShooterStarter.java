@@ -2,10 +2,9 @@ package com.retromania.game.spaceship_shooter;
 
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
-import com.retromania.game.shared_abstractions.User;
-import com.retromania.game.spaceship_shooter.individuals.GameStats;
-import com.retromania.game.spaceship_shooter.presenters.StarterPresenter;
-import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
+import com.retromania.game.spaceship_shooter.Models.GameStats;
+import com.retromania.game.spaceship_shooter.Presenters.StarterPresenter;
+import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
 
 public class SpaceShipShooterStarter extends RetroManiaInnerGame implements MainScreenInterface {
 
@@ -14,6 +13,7 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     public SpaceShipShooterStarter(RetroManiaGame game){
         super("Spaceship shooter", RetroManiaGame.Orientation.VERTICAL);
         presenter = new StarterPresenter(this);
+
     }
 
 
@@ -70,11 +70,10 @@ public class SpaceShipShooterStarter extends RetroManiaInnerGame implements Main
     public void restart(){
         presenter.restart(this);
     }
-
-    public User getUser(){return currentUser;}
-
     public static void playMusic(){StarterPresenter.playMusic();}
     public static String getTheme(){return StarterPresenter.getTheme();}
     public static GameStats getGameStats(){return StarterPresenter.getGameStats();}
+    public void saveScore(int score){presenter.setScore(score);
+    }
 
 }

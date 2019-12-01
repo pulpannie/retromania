@@ -27,6 +27,9 @@ public class MenuScreen extends RetroManiaScreen {
   }
 
   private void changeScreen(MenuOptionScreen newScreen) {
+    if (selectedScreen != null){
+      selectedScreen.dispose();
+    }
     selectedScreen = newScreen;
     selectedScreen.setMenuPage(this);
     selectedScreen.show();

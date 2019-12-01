@@ -11,7 +11,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.Individual;
-import com.retromania.game.special_mario.utils.MainPlayerCollisionInfo;
+import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.convertPixelToMeter;
 

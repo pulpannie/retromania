@@ -183,3 +183,9 @@ itself is the glue that holds all of them together.
 Code affected: GameSaver
 
 Added a way to get current game user.
+
+# Step 18
+
+Code affected: GameSaver
+
+Made GameSaver Injectable, with using maps as the part that holds current users.

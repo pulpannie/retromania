@@ -106,3 +106,13 @@ Fix: Dagger was used to inject dependencies.
 Code Affected: PlayScreen, Cell, CellManager, TicTacToe
 Flaw: TicTacToe logic in Cell, CellManager, TicTacToe all depend on the device screen width and height.
 Fix: Moved logic that depends on width and height to PlayScreen, which is the presenter.
+
+#Step 21
+Code Affected: All classes within presenters package, TicTacToeStarter, MenuScreen, PlayScreen
+Flaw: need to implement MVP
+Fix: Created presenters and separated logical concerns from screens to presenters.
+
+#Step 22
+Code Affected: MenuPresenter, PlayPresenter, MenuScreen, PlayScreen, TicTacToeStarter
+Flaw: Need to implement save method again with GameSaver class
+Fix: created GameSaver instance in PlayPresenter class, then update score logic accordingly.

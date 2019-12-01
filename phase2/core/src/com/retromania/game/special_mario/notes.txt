@@ -378,5 +378,17 @@ Fix : We changed the project in a way that there views are passed to explicit pr
 are the ones that talk with the models.
 
 
+# Step 38
+
+Code affected : views and presenters
+
+Flaw : TiledMaps are part of our models, that are made in the tile map maker and they should not
+depend on the view and also not on the presenter. (TiledMap is kind of like our data base of levels).
+
+Fix : We changed the position of the tiled map factory to the models were it is actually being  used
+to instantiate different models. We also injected the value of the tile map to the presenter using
+the levelProvider and that value of tileMap will be given to the renderer.
+
+
 
 

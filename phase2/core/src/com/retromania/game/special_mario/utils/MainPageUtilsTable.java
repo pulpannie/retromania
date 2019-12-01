@@ -14,18 +14,15 @@ public class MainPageUtilsTable {
   private Button gameStartButton;
   private Button settingButton;
   private MenuScreen menuScreen;
-  private TiledMapIndividualFactory tiledMapIndividualFactory;
   private UserRenderPreference userRenderPreference;
 
   public MainPageUtilsTable(
-          TiledMapIndividualFactory tiledMapIndividualFactory,
           String gameStartString,
           String settingString,
           MenuScreen menuScreen,
           UserRenderPreference userRenderPreference) {
     this.userRenderPreference = userRenderPreference;
     this.menuScreen = menuScreen;
-    this.tiledMapIndividualFactory = tiledMapIndividualFactory;
     makeGameStartButton(gameStartString);
     makeSettingButton(settingString);
     makeTable();
@@ -40,8 +37,7 @@ public class MainPageUtilsTable {
     return new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
-        tiledMapIndividualFactory.setUpSecondWorldTileMap();
-        userRenderPreference.getRenderable().resetWorldRenderTiles();
+
       }
     };
   }

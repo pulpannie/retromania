@@ -24,6 +24,10 @@ public interface TicTacToeStarterComponent {
         @BindsInstance
         Builder setGameHeight(@Named("Game Height") int gameHeight);
 
+        @BindsInstance
+        Builder setGameName(@Named("name Of Game") String nameOfGame);
+
+
         TicTacToeStarterComponent build();
     }
 }
