@@ -161,7 +161,10 @@ Fix: not yet fixed.
 
 #Step 24:
 
-Code Affected: BulletCharacter, PlayScreen
+Code Affected: BulletCharacter, PlayScreen, Square
 
-Flaw:
-Fix:
+Flaw: The square was not rotating and was not in sync with the box 2D frame.
+
+Fix: Fixed the rotation of the square (the 4 coloured square) and the synchronization with the box 2D. Adjusted the position
+of the bullet and square so that they are not null objects. 
+

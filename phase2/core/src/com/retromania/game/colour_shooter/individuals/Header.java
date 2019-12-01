@@ -17,13 +17,13 @@ public class Header {
     private Integer score;
 
     private Label scoreText;
-    private Label colourText;
+     Label colourText;
     private Label timeText;
-    private Label scoreTracker;
     private Label colourTracker;
     private Label timeTracker;
 
     public Header(Stage stage, float width, float height) {
+        Label scoreTracker;
         worldTimer = 30;
         timecount = 0;
         score = 0;
@@ -33,9 +33,9 @@ public class Header {
         table.top();
         table.setFillParent(true);
 
-        scoreText = new Label("SCORE", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        colourText = new Label("COLOUR", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-        timeText = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        scoreText = new Label(String.format("SCORE"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        colourText = new Label(String.format("COLOUR"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        timeText = new Label(String.format("TIME"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
         scoreTracker = new Label(String.format("%03d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
@@ -45,9 +45,10 @@ public class Header {
         timeTracker = new Label(String.format("%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
 
-        table.add(scoreText).expandX().padTop(10);;
-        table.add(colourText).expandX().padTop(10);;
-        table.add(timeText).expandX().padTop(10);;
+
+        table.add(scoreText).expandX().padTop(10);
+        table.add(colourText).expandX().padTop(10);
+        table.add(timeText).expandX().padTop(10);
         table.row();
         table.add(scoreTracker).expandX();
         table.add(colourTracker).expandX();

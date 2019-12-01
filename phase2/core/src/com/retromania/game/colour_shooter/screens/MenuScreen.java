@@ -15,7 +15,9 @@ import com.retromania.game.colour_shooter.individuals.Background;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-
+/**
+ * T
+ */
 public class MenuScreen implements Screen {
     private RetroManiaGame game;
     private static Stage stage;
@@ -80,10 +82,6 @@ public class MenuScreen implements Screen {
         skins.setPosition((float)(width / 2) - (title.getWidth() / 2), (float) (height * 0.2));
         stage.addActor(skins);
 
-//        Image back = new Image(new Texture(Gdx.files.internal("colour_shooter/back_wth_txt.png")));
-//        skins.setSize((float) (width * 0.4), (float) (height * 0.18));
-//        skins.setPosition((float)(width / 2) - (title.getWidth() / 2), (float) (height * 0.25));
-//        stage.addActor(back);
         Gdx.input.setInputProcessor(stage);
     }
 
