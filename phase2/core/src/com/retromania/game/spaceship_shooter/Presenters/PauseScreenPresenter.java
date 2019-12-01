@@ -13,7 +13,7 @@ public class PauseScreenPresenter extends Presenter {
   private MainScreenInterface mainScreen;
 
   /**
-   * Constructor class for presenter
+   * Constructor for the presenter
    *
    * @param mainScreen access to viewport of starter class through interface
    */
