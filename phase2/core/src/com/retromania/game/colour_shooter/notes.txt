@@ -157,6 +157,7 @@ Made a function move in BulletCharacter so that body doesn't have to be a public
 
 Code Affected: PlayScreen
 Flaw: square.png is not being displayed.
+
 Fix: not yet fixed.
 
 #Step 24:
@@ -173,5 +174,6 @@ of the bullet and square so that they are not null objects.
 Code Affected: removed the States package
 
 Flaw: Unnecessary states package
+
 Fix: Not using states anymore, DELETED STATES PACKAGE.
 
