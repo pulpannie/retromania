@@ -45,8 +45,6 @@ public class Background extends Actor {
 
     /**
      * Method that draws background with shapeRenderer
-     * @param batch
-     * @param parentAlpha
      */
     @Override
     public void draw(Batch batch, float parentAlpha) {

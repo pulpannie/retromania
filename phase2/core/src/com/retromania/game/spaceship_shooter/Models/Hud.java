@@ -58,7 +58,6 @@ public class Hud {
 
     /**
      * CONSTRUCTOR CALL FOR Hud class
-     * @param sb
      * */
     public Hud(SpriteBatch sb){
 

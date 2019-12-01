@@ -40,7 +40,8 @@ public interface MainScreenInterface {
 
     /**
      * saves score of current user
-     * @param score
+     *
+     * @param score   the score of the current user
      */
     void saveScore(int score);
 }

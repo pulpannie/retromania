@@ -18,7 +18,7 @@ public class UfoManager extends Actor {
      * Initialize this UFO Manager by initialize its facade through a builder with
      * numOfUfos UFOs.
      *
-     * @param numOfUfos
+     * @param numOfUfos  the numbers of UFOs that this UFO Manager manages.
      */
     public UfoManager(int numOfUfos){
         facade = (new UfoManagerFacadeBuilder()).buildMover().buildRepo(numOfUfos).buildDrawer().buildFacade();
@@ -28,7 +28,7 @@ public class UfoManager extends Actor {
      * Update all the UFOs that this UFO Manager manages, and also update the rocket.
      *
      * @param rocket the rocket in the screen that is fired by the car.
-     * @param hud
+     * @param hud  an instance of the class that stores current game's information and result.
      */
     public void update(Rocket rocket, Hud hud){
         facade.mover.moveUfos(facade.repo.getUfos());
@@ -37,9 +37,6 @@ public class UfoManager extends Actor {
 
     /**
      * draw the list of UFOs that this UFO Manager manages.
-     *
-     * @param batch
-     * @param delta
      */
     @Override
     public void draw(Batch batch, float delta){

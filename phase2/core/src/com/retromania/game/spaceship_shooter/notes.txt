@@ -332,3 +332,11 @@ Code affected: all classes in Presenter and Views packages, except StarterPresen
 Flaw: ViewPort and gameCam, which is necessary for the rendering task, are being instantiated in the Presenter instead of the Views.
 
 Fix: Move ViewPort and gameCam, along with their functionalities, to the Views.
+
+#Step 41:
+
+Code affected: Background, Car, Hud, Rocket, UFo, UfoDrawer, UfoManager, UfoMover, MainScreenInterface
+
+Flaw: the parameters java docs are not fully described.
+
+Fix: Add missing parameters description java docs to necessary methods, and delete unnecessary parameters for built-in functions.
