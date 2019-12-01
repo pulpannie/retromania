@@ -66,6 +66,7 @@ public class PlayPresenter{
         int x = (int)((tmpx * userPreference.getGameSize())/Gdx.graphics.getWidth());
         int y = (int)((tmpy * userPreference.getGameSize())/Gdx.graphics.getHeight());
         ticTacToe.touchCell(x, y);
+        System.out.println("XY" + Integer.toString(x) + Integer.toString(y));
     }
 
 

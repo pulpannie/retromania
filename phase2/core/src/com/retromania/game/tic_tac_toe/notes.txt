@@ -126,3 +126,8 @@ Fix: made size static in UserPreference class.
 Code Affected: All classes within tic_tac_toe module except Presenter, TicTacToeConfiguration, TicTacToeStarterComponent
 Flaw: MVP not implemented correctly
 Fix: Moved everything related to UI to the screens (View)
+
+#Step 25
+Code Affected: PlayScreen, PlayPresenter, CellManager
+Flaw: TicTacToe has a bug when checking for winners diagonally, when the game is bigger than size 4.
+Fix: Fixed checkDiagLeft checkDiagRight logic in CellManager class.
