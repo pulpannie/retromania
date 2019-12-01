@@ -11,18 +11,24 @@ import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.RetroManiaModel;
 
-public class BulletCharacter extends Character implements RetroManiaModel, Collidable {
+public class Bullet extends Character implements RetroManiaModel, Collidable {
 
     private boolean isFinished = false;
+    private float angleSquare;
     private static int getRadius(){
         return 3;
     }
-    public BulletCharacter(World given_world, TextureRegion textureRegion, int x, int y) {
+    public Bullet(World given_world, TextureRegion textureRegion, int x, int y) {
         super(textureRegion, x, y, getRadius() * 4, getRadius() * 4, 1f, given_world, x, y);
     }
 
-    public void setIsFinished(boolean isFinished){
+    public void setBulletCollided(boolean isFinished, float angle){
         this.isFinished = isFinished;
+        this.angleSquare = (float) Math.toDegrees(angle) % 360;
+    }
+
+    public float getAngleFinished() {
+        return angleSquare;
     }
 
     public boolean getIsFinished(){
