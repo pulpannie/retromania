@@ -340,3 +340,20 @@ Code affected: Background, Car, Hud, Rocket, UFo, UfoDrawer, UfoManager, UfoMove
 Flaw: the parameters java docs are not fully described.
 
 Fix: Add missing parameters description java docs to necessary methods, and delete unnecessary parameters for built-in functions.
+
+#Step 42:
+
+Code affected: BackGround, Car, GameStats, Hud, ImageButtonBuilder, LabelBuilder, Rocket, UFO, UfoDrawer, UfoManager,
+UfoManagerFacade, UfoManagerFacadeBuilder, UfoMover, UfoRepo
+
+Flaw: code of these classes were not clearly formatted
+
+Fix: code formatted by built in IDE shortcut
+
+#Step 43:
+
+Code affected: MenuScreenPresenter
+
+Flaw: lack of java docs and comments throughout the code.
+
+Fix: Adding and updating java docs and comments to the above class.
