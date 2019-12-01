@@ -152,3 +152,9 @@ Character was extended on the BulletCharacter
 Code Affected: PlayScreen, BulletCharacter
 
 Made a function move in BulletCharacter so that body doesn't have to be a public class
+
+#Step 23:
+
+Code Affected: PlayScreen
+Flaw: square.png is not being displayed.
+Fix: not yet fixed.

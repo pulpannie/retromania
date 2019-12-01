@@ -1,20 +1,22 @@
 package com.retromania.game.colour_shooter.individuals;
-
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.shared_abstractions.Character;
 
-public class BulletCharacter extends Character {
+public class Square extends Character {
 
     private FixtureDef fixtureDef;
+
     private float getRadius(){
-        return 6;
+        return 16;
     }
-    public BulletCharacter(World given_world, TextureRegion textureRegion, int x, int y, int radius) {
+
+    public Square(World given_world, TextureRegion textureRegion, int x, int y, int radius) {
         super(textureRegion, x, y, radius * 2, radius * 2, 1f, given_world, x, y);
     }
 
@@ -40,8 +42,8 @@ public class BulletCharacter extends Character {
 
     @Override
     protected void setUpFixture() {
-        CircleShape shape = new CircleShape();
-        shape.setRadius(getRadius());
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(getRadius() * 2, getRadius() * 2);
 
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
@@ -63,7 +65,11 @@ public class BulletCharacter extends Character {
         return 0;
     }
 
-    public void move(float speed_x, float speed_y) {
-        this.body.setLinearVelocity(speed_x, speed_y);
+    public void rotateSquare(float velocity) {
+        this.body.setAngularVelocity(velocity);
+    }
+
+    public void increaseWeight(float num) {
+        this.body.setLinearDamping(num);
     }
 }

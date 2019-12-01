@@ -20,6 +20,7 @@ import com.retromania.game.colour_shooter.individuals.BulletCharacter;
 import com.retromania.game.colour_shooter.individuals.Header;
 import com.retromania.game.colour_shooter.individuals.Rectangle;
 import com.retromania.game.colour_shooter.individuals.Tank;
+import com.retromania.game.colour_shooter.individuals.Square;
 import com.retromania.game.colour_shooter.utils.ColourShooterListener;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
@@ -28,8 +29,7 @@ public class PlayScreen implements Screen {
   ColourShooterStarter mainscreen;
   private World world;
   private Box2DDebugRenderer b2ddr;
-  private Rectangle square;
-  private Rectangle blue, green, red, yellow;
+  private Square square;
   private Header header;
   private float bullet_starting_pos;
   private boolean bullet_in_motion = false;
@@ -63,16 +63,19 @@ public class PlayScreen implements Screen {
     bullet_starting_pos = tank_img.getHeight();
     header = new Header(stage, Gdx.graphics.getHeight(), Gdx.graphics.getWidth());
 
-    Square rotating_square =
-        new Square(
-            world,
-            "SQUARE",
-            viewport.getWorldWidth() / 2,
-            (float) (viewport.getWorldHeight() * 0.6),
-            32,
-            32);
-    rotating_square.body.setAngularVelocity(1.5f);
-    rotating_square.body.setLinearDamping(1000f);
+    square = makeSquare();
+//    square.rotateSquare(1.5f);
+//    square.increaseWeight(1000f);
+//    Square rotating_square =
+//        new Square(
+//            world,
+//            "SQUARE",
+//            viewport.getWorldWidth() / 2,
+//            (float) (viewport.getWorldHeight() * 0.6),
+//            32,
+//            32);
+//    rotating_square.body.setAngularVelocity(1.5f);
+//    rotating_square.body.setLinearDamping(1000f);
 
     // THE OLD SQUARE LEAVE IT COMMENTED
 
@@ -140,6 +143,16 @@ public class PlayScreen implements Screen {
     return bullet;
   }
 
+  private Square makeSquare() {
+    TextureRegion squareRegion =
+            new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/square.png")));
+
+    int n_x = Math.round(viewport.getWorldWidth()/2 - 4);
+    int n_y = Math.round((float) (viewport.getWorldHeight() * 0.6));
+    square = new Square(world, squareRegion, n_x, n_y, 16);
+    return square;
+  }
+
   //    private Bullet makeBullet() {
   //        TextureRegion bulletRegion = new TextureRegion(new
   // Texture(Gdx.files.internal("colour_shooter/bullet.png")));
@@ -165,6 +178,7 @@ public class PlayScreen implements Screen {
     //        green.update();
     //        blue.update();
     //        yellow.update();
+    square.setPosition(square.body.getPosition().x - square.getWidth() / 2, square.body.getPosition().y - square.getHeight() / 2);
 
 
   }
@@ -201,6 +215,8 @@ public class PlayScreen implements Screen {
     //            bullet.setPosition(bullet.getX(), bullet.getY() + 2);
     //            bullet.draw(RetroMania.getRetroManiaInstance().sb);
     //        }
+
+    square.draw(RetroMania.getRetroManiaInstance().sb);
     RetroMania.getRetroManiaInstance().sb.end();
 
     b2ddr.render(world, viewport.getCamera().combined);

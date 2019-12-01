@@ -1,14 +1,11 @@
 package com.retromania.game.colour_shooter.utils;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import com.retromania.game.colour_shooter.individuals.Bullet;
+import com.retromania.game.colour_shooter.individuals.BulletCharacter;
 import com.retromania.game.colour_shooter.screens.Square;
 
 public class ColourShooterListener implements ContactListener {
@@ -21,10 +18,10 @@ public class ColourShooterListener implements ContactListener {
         if (fa == null || fb == null ) return;
         if (fa.getFilterData() == null || fb.getFilterData() == null) return;
 
-        if (fa.getUserData() instanceof Bullet & fb.getUserData() instanceof Square) {
+        if (fa.getUserData() instanceof BulletCharacter & fb.getUserData() instanceof Square) {
             contact.getFixtureB().getBody().destroyFixture(fa);
         }
-        else if (fa.getUserData() instanceof Square & fb.getUserData() instanceof Bullet) {
+        else if (fa.getUserData() instanceof Square & fb.getUserData() instanceof BulletCharacter) {
             contact.getFixtureB().getBody().destroyFixture(fb);
         }
     }
