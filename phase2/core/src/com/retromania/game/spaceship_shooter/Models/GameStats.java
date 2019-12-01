@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.individuals;
+package com.retromania.game.spaceship_shooter.Models;
 
 import java.util.ArrayList;
 import java.util.List;

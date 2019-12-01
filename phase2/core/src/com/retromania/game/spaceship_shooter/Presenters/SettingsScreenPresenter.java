@@ -1,6 +1,6 @@
-package com.retromania.game.spaceship_shooter.presenters;
+package com.retromania.game.spaceship_shooter.Presenters;
 
-import com.retromania.game.spaceship_shooter.screens.MainScreenInterface;
+import com.retromania.game.spaceship_shooter.Views.MainScreenInterface;
 
 public class SettingsScreenPresenter extends Presenter {
 

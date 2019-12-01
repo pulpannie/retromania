@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.screens;
+package com.retromania.game.spaceship_shooter.Views;
 
 import com.badlogic.gdx.Screen;
 

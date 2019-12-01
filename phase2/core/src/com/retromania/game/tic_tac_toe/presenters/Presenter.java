@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.retromania.game.shared_abstractions.Presentable;
-import com.retromania.game.spaceship_shooter.individuals.Background;
 
 public class Presenter{
     protected Viewport gamePort;

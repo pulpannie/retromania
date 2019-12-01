@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.presenters;
+package com.retromania.game.spaceship_shooter.Presenters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.spaceship_shooter.SpaceShipShooterStarter;
-import com.retromania.game.spaceship_shooter.individuals.Background;
+import com.retromania.game.spaceship_shooter.Models.Background;
 
 public class Presenter {
     private Viewport gamePort;

@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.screens;
+package com.retromania.game.spaceship_shooter.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,9 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
-import com.retromania.game.spaceship_shooter.individuals.LabelBuilder;
-import com.retromania.game.spaceship_shooter.presenters.SettingsScreenPresenter;
+import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
+import com.retromania.game.spaceship_shooter.Models.LabelBuilder;
+import com.retromania.game.spaceship_shooter.Presenters.SettingsScreenPresenter;
 
 public class SettingScreen extends RetroManiaScreen {
     private Table table;

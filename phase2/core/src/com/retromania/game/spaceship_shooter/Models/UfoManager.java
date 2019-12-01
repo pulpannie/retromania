@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.individuals;
+package com.retromania.game.spaceship_shooter.Models;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;

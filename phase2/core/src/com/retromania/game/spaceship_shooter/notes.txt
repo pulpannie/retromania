@@ -305,9 +305,9 @@ Fix: let the MenuScreenPresenter handle the task of initializing and update the 
 
 Code affected: SpaceShipShooterStarter, StarterPresenter
 
-Flaw: game saving actions was done in view which is against the rule of MVP pattern
+Flaw: game saving actions was done in view which is against the rule of MVP pattern.
 
-Fix: added setScore method and GameSaver instance to presenter. And called it in View
+Fix: added setScore method and GameSaver instance to presenter. And called it in View.
 
 #Step 38:
 
@@ -316,3 +316,11 @@ Code affected: Car, GameStats, Hud, UfoManagerFacadeBuilder, MenuScreenPresenter
 Flaw: The code hasn't been fully cleaned.
 
 Fix: remove unused methods, variables and import statements, convert some instance variables that should be changed to local variables, fix codes follows IDE instructions.
+
+#Step 39:
+
+Code affected: all classes
+
+Flaw: the names of the packages haven't been changed to fit with the MVP pattern.
+
+Fix: change the names of the packages to fit with the MVP pattern.

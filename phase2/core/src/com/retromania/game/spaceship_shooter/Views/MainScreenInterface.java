@@ -1,6 +1,4 @@
-package com.retromania.game.spaceship_shooter.screens;
-
-import com.retromania.game.shared_abstractions.User;
+package com.retromania.game.spaceship_shooter.Views;
 
 /**
  * The MainScreenInterface is created to reduce coupling between

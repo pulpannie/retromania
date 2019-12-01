@@ -1,4 +1,4 @@
-package com.retromania.game.spaceship_shooter.screens;
+package com.retromania.game.spaceship_shooter.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -6,9 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
-import com.retromania.game.spaceship_shooter.individuals.ImageButtonBuilder;
+import com.retromania.game.spaceship_shooter.Models.ImageButtonBuilder;
 
-import com.retromania.game.spaceship_shooter.presenters.MenuScreenPresenter;
+import com.retromania.game.spaceship_shooter.Presenters.MenuScreenPresenter;
 
 public class MenuScreen extends RetroManiaScreen {
     public Stage stage;
