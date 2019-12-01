@@ -185,6 +185,11 @@ public class PlayScreen implements Screen {
 //    square.rotateSquare();
     square.rotateSquare();
 
+    header.update(dt);
+    if (header.checkGameOver()) {
+      endGame();
+    }
+
     if (bullet != null) {
       bullet.update();
       if(bullet.getIsFinished()){
@@ -243,8 +248,6 @@ public class PlayScreen implements Screen {
 
     b2ddr.render(world, viewport.getCamera().combined);
 
-
-
   }
 
   @Override
@@ -258,7 +261,9 @@ public class PlayScreen implements Screen {
   @Override
   public void resume() {}
 
-  public void endGame() {}
+  public void endGame() {
+
+  }
 
   @Override
   public void hide() {}
