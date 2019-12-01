@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -34,6 +35,7 @@ public class MenuScreen extends RetroManiaScreen {
     private PlayScreen playScreen;
     private MenuPresenter menuPresenter;
     private ImageButtonBuilder imageButtonBuilder;
+    private Texture title;
 
     @Inject
     public MenuScreen(OrthographicCamera gamecam, PlayScreen playScreen) {
@@ -53,15 +55,9 @@ public class MenuScreen extends RetroManiaScreen {
         batch = new SpriteBatch();
 
         buildButtons();
-        playButton.setSize(200, 200);
-        playButton.setPosition(Gdx.graphics.getWidth() / 2 - 110, Gdx.graphics.getHeight() / 2 - 70);
-        catButton.setSize(60, 60);
-        catButton.setPosition(Gdx.graphics.getWidth() / 2 - 220, Gdx.graphics.getHeight() / 3);
-        upButton.setSize(50, 50);
-        upButton.setPosition(Gdx.graphics.getWidth() / 2 - 50, Gdx.graphics.getHeight() / 3 + 40);
-        downButton.setSize(50, 50);
-        downButton.setPosition(Gdx.graphics.getWidth() / 2 - 50, Gdx.graphics.getHeight() / 3 - 40);
+        configureButtons();
 
+        title = new Texture(Gdx.files.internal("tic_tac_toe/title.png"));
 
         stage = new Stage(viewport, game.sb);
         stage.addActor(catButton);
@@ -73,17 +69,65 @@ public class MenuScreen extends RetroManiaScreen {
 
     }
 
-
     public void handleInput() {
         if (playButton.isPressed()) {
             RetroMania.getRetroManiaInstance().setScreen(playScreen);
         }
     }
 
+    @Override
+    public void render(float delta) {
+        handleInput();
+        Gdx.gl.glClearColor(1, 1, 1, 0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        stage.act(delta);
+        game.sb.setProjectionMatrix(stage.getCamera().combined);
+        stage.draw();
+        batch.setProjectionMatrix(gamecam.combined);
+        drawTitle();
+        writeCats();
+        writeSize();
+
+    }
+
+    private void drawTitle(){
+        batch.begin();
+        batch.draw(
+                title,
+                gameWidth*2/6+40,
+                gameHeight*2/3, 500, 150);
+        batch.end();
+    }
+
+    private void writeCats(){
+        batch.begin();
+        font.setColor(Color.BLACK);
+        font.getData().setScale(2, 2);
+        font.draw(batch, "CATS!", gameWidth / 2 - 120, gameHeight / 4- 70);
+        batch.end();
+    }
+
+    private void writeSize(){
+        batch.begin();
+        font.draw(batch, Integer.toString(menuPresenter.getGameSize()), gameWidth / 2 + 65, gameHeight / 4 - 20);
+        batch.end();
+    }
+
     private void buildButtons() {
         buildPlayButton();
         buildCatButton();
         buildSizeButtons();
+    }
+
+    private void configureButtons(){
+        playButton.setSize(250, 250);
+        playButton.setPosition(Gdx.graphics.getWidth() / 2 - 130, Gdx.graphics.getHeight() / 3 + 30);
+        catButton.setSize(60, 60);
+        catButton.setPosition(Gdx.graphics.getWidth() / 2 - 120, Gdx.graphics.getHeight() / 4 - 50);
+        upButton.setSize(50, 50);
+        upButton.setPosition(Gdx.graphics.getWidth() / 2 + 50, Gdx.graphics.getHeight() / 4);
+        downButton.setSize(50, 50);
+        downButton.setPosition(Gdx.graphics.getWidth() / 2 + 50, Gdx.graphics.getHeight() / 4 - 100);
     }
 
     private void buildPlayButton() {
@@ -126,27 +170,6 @@ public class MenuScreen extends RetroManiaScreen {
                                    }
                                }
         );
-    }
-
-
-    @Override
-    public void render(float delta) {
-        handleInput();
-        Gdx.gl.glClearColor(1, 1, 1, 0);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stage.act(delta);
-        game.sb.setProjectionMatrix(stage.getCamera().combined);
-        stage.draw();
-        batch.setProjectionMatrix(gamecam.combined);
-        batch.begin();
-        font.setColor(Color.BLACK);
-        font.getData().setScale(2, 2);
-        font.draw(batch, "CATS!", gameWidth / 2 - 210, gameHeight / 3 - 30);
-        batch.end();
-        batch.begin();
-        font.draw(batch, Integer.toString(menuPresenter.getGameSize()), gameWidth / 2 - 50, gameHeight / 3 + 30);
-        batch.end();
-
     }
 
     @Override

@@ -56,38 +56,40 @@ public class PlayScreen extends RetroManiaScreen {
     RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(stage.getCamera().combined);
     stage.act(delta);
     stage.draw();
-    for (int i = 1; i < playPresenter.getSize(); i++) {
-      DrawBoardLine(
-          new Vector2(gameWidth * i / playPresenter.getSize(), 0),
-          new Vector2(gameWidth * i / playPresenter.getSize(), gameHeight),
-          gamecam.combined);
-      DrawBoardLine(
-          new Vector2(0, gameHeight * i / playPresenter.getSize()),
-          new Vector2(gameWidth, gameHeight * i / playPresenter.getSize()),
-          gamecam.combined);
-    }
+    drawBoard();
+    handleInput();
+    drawContents();
+    playPresenter.checkEnd();
+  }
 
-    if (Gdx.input.isTouched()) {
-      Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-      Vector3 worldCoordinates = gamecam.unproject(mousePos);
-      playPresenter.touchCells(worldCoordinates.x, worldCoordinates.y);
-    }
-
+  private void drawContents(){
     for (int i = 0; i < playPresenter.getSize(); i++) {
       for (int j = 0; j < playPresenter.getSize(); j++) {
         if (playPresenter.isCellTouched(i, j)) {
           batch.begin();
           batch.draw(
-              playPresenter.convertCell(playPresenter.getCellState(i,j)),
-              gameWidth * i / playPresenter.getSize(),
-              gameHeight * j / playPresenter.getSize(),
-              gameWidth / playPresenter.getSize(),
-              gameHeight / playPresenter.getSize());
+                  playPresenter.convertCell(playPresenter.getCellState(i, j)),
+                  gameWidth * i / playPresenter.getSize(),
+                  gameHeight * j / playPresenter.getSize(),
+                  gameWidth / playPresenter.getSize(),
+                  gameHeight / playPresenter.getSize());
           batch.end();
         }
       }
     }
-    playPresenter.checkEnd();
+  }
+
+  private void drawBoard(){
+    for (int i = 1; i < playPresenter.getSize(); i++) {
+      DrawBoardLine(
+              new Vector2(gameWidth * i / playPresenter.getSize(), 0),
+              new Vector2(gameWidth * i / playPresenter.getSize(), gameHeight),
+              gamecam.combined);
+      DrawBoardLine(
+              new Vector2(0, gameHeight * i / playPresenter.getSize()),
+              new Vector2(gameWidth, gameHeight * i / playPresenter.getSize()),
+              gamecam.combined);
+    }
   }
 
   public static void DrawBoardLine(Vector2 start, Vector2 end, Matrix4 projectionMatrix) {
@@ -99,12 +101,17 @@ public class PlayScreen extends RetroManiaScreen {
     boardRenderer.end();
   }
 
-
   @Override
   public void resize(int width, int height) {}
 
   @Override
-  public void handleInput() {}
+  public void handleInput() {
+    if (Gdx.input.isTouched()) {
+      Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+      Vector3 worldCoordinates = gamecam.unproject(mousePos);
+      playPresenter.touchCells(worldCoordinates.x, worldCoordinates.y);
+    }
+  }
 
   @Override
   public void pause() {}
