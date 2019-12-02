@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
@@ -28,6 +29,7 @@ public class PlayScreen extends RetroManiaScreen {
   private OrthographicCamera gamecam;
   private float gameWidth, gameHeight;
   private PlayPresenter playPresenter;
+  private Texture cross, circle;
 
   @Inject
   public PlayScreen() {
@@ -36,7 +38,7 @@ public class PlayScreen extends RetroManiaScreen {
 
   @Override
   public void show() {
-    playPresenter.setTextures();
+    setTextures();
     gameWidth = Gdx.graphics.getWidth();
     gameHeight = Gdx.graphics.getHeight();
     playPresenter.createTicTacToe();
@@ -68,7 +70,7 @@ public class PlayScreen extends RetroManiaScreen {
         if (playPresenter.isCellTouched(i, j)) {
           batch.begin();
           batch.draw(
-                  playPresenter.convertCell(playPresenter.getCellState(i, j)),
+                  convertCell(playPresenter.getCellState(i, j)),
                   gameWidth * i / playPresenter.getSize(),
                   gameHeight * j / playPresenter.getSize(),
                   gameWidth / playPresenter.getSize(),
@@ -112,6 +114,26 @@ public class PlayScreen extends RetroManiaScreen {
       playPresenter.touchCells(worldCoordinates.x, worldCoordinates.y);
     }
   }
+
+  public void setTextures(){
+    if (playPresenter.isCat()) {
+      cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
+      circle = new Texture(Gdx.files.internal("tic_tac_toe/cat3.png"));
+    } else {
+      cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
+      circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
+    }
+  }
+
+  public Texture convertCell(String string) {
+    if (string.equals("Cross")) {
+      return cross;
+    } else if (string.equals("Circle")) {
+      return circle;
+    }
+    return null;
+}
+
 
   @Override
   public void pause() {}

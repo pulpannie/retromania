@@ -1,21 +1,18 @@
 package com.retromania.game.tic_tac_toe.presenters;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.User;
 import com.retromania.game.tic_tac_toe.TicTacToeStarter;
-import com.retromania.game.tic_tac_toe.individuals.CellManager;
 import com.retromania.game.tic_tac_toe.individuals.TicTacToe;
 import com.retromania.game.tic_tac_toe.screens.GameOverScreen;
 import com.retromania.game.tic_tac_toe.utils.UserPreference;
 import com.retromania.game.utils.GameSaver;
 
+
 public class PlayPresenter{
-    private Texture cross, circle;
     private UserPreference userPreference;
     private TicTacToe ticTacToe;
-    private CellManager cellManager;
     private GameSaver gameSaver;
     private User currentUser;
 
@@ -74,22 +71,7 @@ public class PlayPresenter{
         return ticTacToe.isCellTouched(i, j);
     }
 
-    public void setTextures(){
-        if (userPreference.getCat()) {
-            cross = new Texture(Gdx.files.internal("tic_tac_toe/cat2.png"));
-            circle = new Texture(Gdx.files.internal("tic_tac_toe/cat3.png"));
-        } else {
-            cross = new Texture(Gdx.files.internal("tic_tac_toe/cross.jpg"));
-            circle = new Texture(Gdx.files.internal("tic_tac_toe/circle.png"));
-        }
-    }
-
-    public Texture convertCell(String string) {
-        if (string.equals("Cross")) {
-            return cross;
-        } else if (string.equals("Circle")) {
-            return circle;
-        }
-        return null;
+    public boolean isCat() {
+        return userPreference.getCat();
     }
 }
