@@ -37,3 +37,5 @@ MAINTAINERS
 * Umid Targuliyev
 
 
+REQ :
+your user name can have only 3 chars and it can not be empty
