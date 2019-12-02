@@ -10,15 +10,26 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * View for starting the TicTacToe game.
+ * @author Hyokyung Kim.
+ */
 @Singleton
 public class TicTacToeStarter extends RetroManiaInnerGame {
     static final String NAME_OF_GAME = "Tic Tac Toe";
-    MenuScreen menuScreen;
+    private MenuScreen menuScreen;
 
+    /**
+     * getter for the NameOfGame.
+     * @return NameOfGame.
+     */
     public static String getNameOfGame(){
         return NAME_OF_GAME;
     }
 
+    /**
+     * @param menuScreen injected through dagger.
+     */
     @Inject
     public TicTacToeStarter(MenuScreen menuScreen) {
         super(NAME_OF_GAME, RetroManiaGame.Orientation.VERTICAL);
@@ -30,6 +41,9 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
 
     }
 
+    /**
+     * shows the screen.
+     */
     @Override
     public void show() { RetroMania.getRetroManiaInstance().setScreen(menuScreen);}
 

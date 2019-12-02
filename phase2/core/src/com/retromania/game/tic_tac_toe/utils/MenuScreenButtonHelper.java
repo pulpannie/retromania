@@ -8,32 +8,53 @@ import com.retromania.game.tic_tac_toe.presenters.MenuPresenter;
 
 import java.util.ArrayList;
 
+/**
+ * creates and configures all of the MenuScreen's ImageButtons.
+ * @author Hyokyung Kim.
+ */
 public class MenuScreenButtonHelper {
     private ArrayList<ImageButton> imageButtons = new ArrayList<>();
     private ImageButton playButton, catButton, upButton, downButton;
     private ImageButtonBuilder imageButtonBuilder = new ImageButtonBuilder();
     MenuPresenter menuPresenter;
 
+    /**
+     * @param menuPresenter MenuPresenter instance from the MenuScreen.
+     */
     public MenuScreenButtonHelper(MenuPresenter menuPresenter){
         this.menuPresenter = menuPresenter;
     }
 
+    /**
+     * makes and configures all the neccessary ImageButtons.
+     * @return an ArrayList of created ImageButton instances.
+     */
     public ArrayList<ImageButton> makeButtons(){
         buildButtons();
         configureButtons();
         return imageButtons;
     }
 
+    /**
+     * getter for the playButton.
+     * @return playButton.
+     */
     public ImageButton getPlayButton(){
         return playButton;
     }
 
+    /**
+     * builds all the Buttons.
+     */
     private void buildButtons() {
         buildPlayButton();
         buildCatButton();
         buildSizeButtons();
     }
 
+    /**
+     * configures the size and position of all the Buttons.
+     */
     private void configureButtons(){
         playButton.setSize(250, 250);
         playButton.setPosition(Gdx.graphics.getWidth() / 2 - 130, Gdx.graphics.getHeight() / 3 + 30);
@@ -45,13 +66,16 @@ public class MenuScreenButtonHelper {
         downButton.setPosition(Gdx.graphics.getWidth() / 2 + 50, Gdx.graphics.getHeight() / 4 - 100);
     }
 
+    /**
+     * builds the playButton.
+     */
     private void buildPlayButton() {
         playButton = imageButtonBuilder.buildButton("play_tictactoe.png");
         imageButtons.add(playButton);
     }
 
     /**
-     * Create cat buttons, tutorial from "https://alvinalexander.com/source-code/how-create-libgdx-scene2d-imagebutton"
+     * builds the catButton, tutorial from "https://alvinalexander.com/source-code/how-create-libgdx-scene2d-imagebutton"
      */
     private void buildCatButton() {
         catButton = imageButtonBuilder.buildOnOffButton("radio-off-button.png", "radio-on-button.png");
@@ -69,6 +93,9 @@ public class MenuScreenButtonHelper {
         imageButtons.add(catButton);
     }
 
+    /**
+     * builds the two size buttons, upButton and downButton.
+     */
     private void buildSizeButtons() {
         upButton = imageButtonBuilder.buildButton("up.png");
         upButton.addListener(new ClickListener() {

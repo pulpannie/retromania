@@ -151,3 +151,13 @@ Fix: split the class into MenuScreenButtonHelper to make and configure ImageButt
 Code Affected: PlayPresenter, PlayScreen
 Flaw: PlayPresenter handles Texture, which should be in the view - PlayScreen.
 Fix: Moved all handling of Textures into PlayScreen.
+
+#Step 30
+Code Affected: PlayScreen, PlayPresenter
+Flaw: PlayPresenter handles setting the GameOverScreen, which should be handled in the view.
+Fix: Moved all handling into PlayScreen.
+
+#Step 31
+Code Affected: all files in tic_tac_toe package.
+Flaw: Unfinished Javadocs.
+Fix: Finished Javadocs.

@@ -16,6 +16,10 @@ import com.retromania.game.GameLister;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
+/**
+ * implements the view when the game is over.
+ * @author Hyokyung Kim
+ */
 public class GameOverScreen extends RetroManiaScreen {
     public SpriteBatch batch;
     public float gameWidth, gameHeight;
@@ -25,12 +29,17 @@ public class GameOverScreen extends RetroManiaScreen {
     private OrthographicCamera gamecam;
     private Texture gameOver;
 
-
-    public GameOverScreen(RetroManiaGame game, String winner) {
-        super(game);
+    /**
+     * @param winner the winner of the game passed from PlayPresenter.
+     */
+    public GameOverScreen(String winner) {
         this.winner = winner;
     }
 
+    /**
+     * shows the screen.
+     * Creates instances of classes responsible for the interface.
+     */
     @Override
     public void show() {
         gamecam = new OrthographicCamera();
@@ -46,6 +55,11 @@ public class GameOverScreen extends RetroManiaScreen {
 
     }
 
+    /**
+     * Renders the screen.
+     * @param delta time between the last frame and this frame.
+     * displays all variables needed to be displayed.
+     */
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 0);
@@ -57,6 +71,9 @@ public class GameOverScreen extends RetroManiaScreen {
 
     }
 
+    /**
+     * draws the gameOver texture on screen.
+     */
     private void drawGameOver(){
 
         batch.begin();
@@ -67,6 +84,9 @@ public class GameOverScreen extends RetroManiaScreen {
         batch.end();
     }
 
+    /**
+     * writes the winner of the game on screen.
+     */
     private void writeWinner(){
         batch.begin();
         font.setColor(Color.BLACK);
@@ -100,8 +120,11 @@ public class GameOverScreen extends RetroManiaScreen {
 
     }
 
+    /**
+     * disposes a variable after its usage.
+     */
     @Override
     public void dispose() {
-
+    stage.dispose();
     }
 }
