@@ -16,4 +16,5 @@ public interface MarioGamePresentable extends Presentable, FinisherObservable, D
     float getXMainPlayer();
     float getYMainPlayer();
     void letMainPlayerShow(SpriteBatch sb);
+    void resetPlayer();
 }

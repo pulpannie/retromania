@@ -16,8 +16,8 @@ public class SecondMissionView extends MissionView {
     @Inject
     SecondMissionView(
             SecondMissionPresenter secondMissionPresenter,
-            UserRenderPreference userRenderPreference, MainPlayer mainPlayer) {
-        super(secondMissionPresenter, userRenderPreference, mainPlayer);
+            UserRenderPreference userRenderPreference) {
+        super(secondMissionPresenter, userRenderPreference);
     }
 
 }

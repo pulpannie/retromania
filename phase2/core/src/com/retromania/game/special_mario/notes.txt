@@ -426,3 +426,10 @@ Code affected : Models
 
 Doc updated
 
+
+# Step 44
+
+Code affected : Views, MissionViews
+
+All Direct Access to Models (MainPlayer) were removed
+
