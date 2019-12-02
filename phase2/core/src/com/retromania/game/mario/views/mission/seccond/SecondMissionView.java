@@ -6,17 +6,11 @@ import com.retromania.game.mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
 
-/**
- *
- * The view responsible for showing the second mission
- *
- * */
+/** The view responsible for showing the second mission */
 public class SecondMissionView extends MissionView {
-    @Inject
-    SecondMissionView(
-            SecondMissionPresenter secondMissionPresenter,
-            UserRenderPreference userRenderPreference) {
-        super(secondMissionPresenter, userRenderPreference);
-    }
-
+  @Inject
+  SecondMissionView(
+      SecondMissionPresenter secondMissionPresenter, UserRenderPreference userRenderPreference) {
+    super(secondMissionPresenter, userRenderPreference);
+  }
 }

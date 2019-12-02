@@ -57,7 +57,6 @@ public interface SpecialMarioStarterCreator {
     @BindsInstance
     Builder setGamePort(@Named("Super Mario Game Port") Viewport gamePort);
 
-
     @BindsInstance
     Builder setGameName(@Named("name Of Game") String nameOfGame);
 

@@ -29,7 +29,7 @@ class NormalRenderer extends MarioRenderable {
   public void start() {
     reloadLevel();
     marioGamePresentable.createPlayerFromScratch();
-      handleInput();
+    handleInput();
   }
 
   private void handleInput() {
@@ -52,7 +52,6 @@ class NormalRenderer extends MarioRenderable {
     displayWorld();
     displayMainPlayer();
   }
-
 
   private void displayMainPlayer() {
     game.sb.begin();

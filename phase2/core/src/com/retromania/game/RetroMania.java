@@ -12,19 +12,18 @@ public class RetroMania extends RetroManiaGame {
 
   private static RetroMania retroManiaInstance = new RetroMania();
 
-  private Creatable <RetroMania> creatable = new Creatable<RetroMania>() {
-    @Override
-    public void create(RetroMania r) {
-    }
-  };
+  private Creatable<RetroMania> creatable =
+      new Creatable<RetroMania>() {
+        @Override
+        public void create(RetroMania r) {}
+      };
 
   @Override
   public void create() {
     creatable.create(retroManiaInstance);
   }
 
-  private RetroMania() {
-  }
+  private RetroMania() {}
 
   @Override
   public void render() {
@@ -35,8 +34,7 @@ public class RetroMania extends RetroManiaGame {
   @Override
   public void dispose() {
     sb.dispose();
-    if (img != null)
-    img.dispose();
+    if (img != null) img.dispose();
   }
 
   @Override

@@ -7,8 +7,8 @@ import dagger.Provides;
 
 @Module
 public class TextureAtlasLoader {
-    @Provides
-    public TextureAtlas getTextureAtlas(){
-        return new TextureAtlas("special_mario/mario_small.pack");
-    }
+  @Provides
+  TextureAtlas getTextureAtlas() {
+    return new TextureAtlas("special_mario/mario_small.pack");
+  }
 }

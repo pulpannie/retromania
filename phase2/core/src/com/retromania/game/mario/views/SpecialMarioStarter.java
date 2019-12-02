@@ -92,7 +92,6 @@ public class SpecialMarioStarter extends MarioView implements RestartableObserve
     this.userRenderPreference.getRenderable().setPresenter(specialMarioStarterPresenter);
   }
 
-
   @Override
   public void restart() {
     userRenderPreference.start();

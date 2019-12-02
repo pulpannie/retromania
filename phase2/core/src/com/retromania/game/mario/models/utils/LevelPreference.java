@@ -6,24 +6,21 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- *
  * This interface is gonna be used in order to create tile maps for different levels
  *
- * **/
+ * <p>*
+ */
 public interface LevelPreference {
 
-    Map<Supplier<TiledMap>, String> getLevelModeFunctions();
+  Map<Supplier<TiledMap>, String> getLevelModeFunctions();
 
-    TiledMap setGameLevelToFirst();
+  TiledMap setGameLevelToFirst();
 
-    TiledMap setGameLevelToSecond();
+  TiledMap setGameLevelToSecond();
 
-    TiledMap getCurrentTileMap();
+  TiledMap getCurrentTileMap();
 
-    boolean isItFirstMission();
+  boolean isItFirstMission();
 
-    void reloadLevel();
-
-
-
+  void reloadLevel();
 }

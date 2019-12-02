@@ -24,6 +24,7 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   private Body body;
   private FixtureDef fixtureDef;
   private Fixture fixture;
+
   public TiledMapIndividual(MapObject object, World world) {
     rectangleBound = setUpBound(object);
     body = setUpBodyDef(world);
@@ -64,8 +65,6 @@ public abstract class TiledMapIndividual implements Individual, Collidable {
   public FixtureDef getFixtureDef() {
     return fixtureDef;
   }
-
-
 
   @Override
   public void setCollidableWith(short othersCategory) {

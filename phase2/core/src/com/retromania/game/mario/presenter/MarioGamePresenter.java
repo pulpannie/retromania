@@ -13,7 +13,7 @@ import com.retromania.game.mario.utils.MarioWorldListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MarioGamePresenter implements MarioGamePresentable {
+public abstract class   MarioGamePresenter implements MarioGamePresentable {
 
   MainPlayer mainPlayer;
   private World world;
@@ -22,7 +22,11 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
   private List<DeathObserver> deathObservers = new ArrayList<>();
   private List<FinisherObserver> finishObservers = new ArrayList<>();
 
-  public MarioGamePresenter(MainPlayer mainPlayer, World world, LevelPreference levelPreference, MarioWorldListener marioWorldListener) {
+  public MarioGamePresenter(
+      MainPlayer mainPlayer,
+      World world,
+      LevelPreference levelPreference,
+      MarioWorldListener marioWorldListener) {
     this.mainPlayer = mainPlayer;
     this.world = world;
     this.levelPreference = levelPreference;
@@ -33,11 +37,11 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
   public void present() {
     world.step(1 / 60f, 6, 2);
     mainPlayer.update();
-    if(mainPlayer.isFinished()){
+    if (mainPlayer.isFinished()) {
       updateFinisherObservers();
       resetPlayer();
     }
-    if (mainPlayer.isDead()){
+    if (mainPlayer.isDead()) {
       updateDeathObservers();
       resetPlayer();
     }
@@ -58,10 +62,9 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
     levelPreference.reloadLevel();
   }
 
-
   @Override
   public void updateDeathObservers() {
-    for(DeathObserver d : deathObservers){
+    for (DeathObserver d : deathObservers) {
       d.deathSeen();
     }
   }
@@ -73,7 +76,7 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
 
   @Override
   public void updateFinisherObservers() {
-    for(FinisherObserver f : finishObservers){
+    for (FinisherObserver f : finishObservers) {
       f.finishSeen();
     }
   }
@@ -82,7 +85,6 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
   public void addFinisherObserver(FinisherObserver finisherObserver) {
     finishObservers.add(finisherObserver);
   }
-
 
   @Override
   public void createPlayerFromScratch() {
@@ -118,12 +120,11 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
 
   @Override
   public float getPlayerWidth() {
-    return 32/100f;
+    return 32 / 100f;
   }
+
   @Override
   public float getPlayerDefaultX() {
     return mainPlayer.getInitialXInTheWorld();
   }
-
-
 }

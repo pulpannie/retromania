@@ -35,7 +35,7 @@ public class MenuScreen extends RetroManiaScreen {
   private float gameWidth;
   private float gameHeight;
   private ImageButton playButton;
-  private Viewport viewport;
+  private Viewport viewPort;
   private PlayScreen playScreen;
   private MenuPresenter menuPresenter;
   private Texture title;
@@ -61,10 +61,10 @@ public class MenuScreen extends RetroManiaScreen {
 
     gameWidth = Gdx.graphics.getWidth();
     gameHeight = Gdx.graphics.getHeight();
-    viewport = new FillViewport(gameWidth, gameHeight, gameCam);
+    viewPort = new FillViewport(gameWidth, gameHeight, gameCam);
     batch = new SpriteBatch();
     title = new Texture(Gdx.files.internal("tic_tac_toe/title.png"));
-    stage = new Stage(viewport, game.sb);
+    stage = new Stage(viewPort, game.sb);
 
     imageButtons = menuScreenButtonHelper.makeButtons();
     for (int i = 0; i < imageButtons.size(); i++) {
@@ -136,7 +136,7 @@ public class MenuScreen extends RetroManiaScreen {
    */
   @Override
   public void resize(int width, int height) {
-    viewport.update(width, height);
+    viewPort.update(width, height);
   }
 
   /** disposes a variable after its usage. */

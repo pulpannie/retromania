@@ -35,9 +35,6 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
     this.menuScreen = menuScreen;
   }
 
-  @Override
-  public void handleInput() {}
-
   /** shows the screen. */
   @Override
   public void show() {
@@ -45,12 +42,7 @@ public class TicTacToeStarter extends RetroManiaInnerGame {
   }
 
   @Override
-  public void render(float delta) {}
-
-  @Override
-  public List<Object> retrieve() {
-    return null;
-  }
+  public void handleInput() {}
 
   @Override
   public void resize(int width, int height) {}
