@@ -7,6 +7,7 @@ import static com.retromania.game.tic_tac_toe.views.TicTacToeStarter.NAME_OF_GAM
 
 /**
  * Configuration for the TicTacToe game.
+ *
  * @author pooria
  */
 public class TicTacToeConfiguration {

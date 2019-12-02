@@ -3,10 +3,7 @@ package com.retromania.game.tic_tac_toe.utils;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-/**
- * stores the currentUser's preference for the TicTacToe game.
- * author Hyokyung Kim
- */
+/** stores the currentUser's preference for the TicTacToe game. author Hyokyung Kim */
 @Singleton
 public class UserPreference {
 
@@ -16,22 +13,19 @@ public class UserPreference {
   @Inject
   public UserPreference() {}
 
-  /**
-   * increases gameSize.
-   */
+  /** increases gameSize. */
   public void addSize() {
     gameSize++;
   }
 
-  /**
-   * decreases gameSize.
-   */
+  /** decreases gameSize. */
   public void decreaseSize() {
     gameSize--;
   }
 
   /**
    * getter for the gameSize.
+   *
    * @return gameSize.
    */
   public int getGameSize() {
@@ -40,7 +34,8 @@ public class UserPreference {
 
   /**
    * sets the preference as to whether the cat wants cat icons in the game.
-   * @param cat
+   *
+   * @param cat whether or not the user like to have cat or normal tic tac toe.
    */
   public void setCat(boolean cat) {
     this.cat = cat;
@@ -48,7 +43,8 @@ public class UserPreference {
 
   /**
    * getter for the cat preference.
-   * @return cat
+   *
+   * @return cat whether or not the user like to have cat or normal tic tac toe.
    */
   public boolean getCat() {
     return cat;
