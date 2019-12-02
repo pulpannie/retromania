@@ -405,3 +405,11 @@ Code affected: all classes
 Flaw: the names of the packages haven't been changed to follow the Java naming convention.
 
 Fix: change the names of the packages to follow the Java naming convention.
+
+#Step 50:
+
+Code affected: StarterPresenter, SpaceShipShooterStarter
+
+Flaw: presenter had instance of views, which is against rules of MVP.
+
+Fix: moved all view class instances into SpaceShipShooterStarter class.
