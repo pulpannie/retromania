@@ -36,7 +36,6 @@ abstract class MarioRenderable implements Renderable, MarioShowable {
     setUpOrthogRenderer();
   }
 
-
   private void setUpOrthogRenderer() {
     orthogRenderer.setMap(currTiledMap);
   }
@@ -76,7 +75,12 @@ abstract class MarioRenderable implements Renderable, MarioShowable {
   }
 
   @Override
-  public void setPresenter(MarioGamePresentable marioGamePresentable){
+  public void setPresenter(MarioGamePresentable marioGamePresentable) {
     this.marioGamePresentable = marioGamePresentable;
+  }
+
+  @Override
+  public void reloadLevel() {
+    marioGamePresentable.reloadLevel();
   }
 }

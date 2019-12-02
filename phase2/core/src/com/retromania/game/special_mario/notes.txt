@@ -420,3 +420,9 @@ All instances of the models were deleted in the views and they are now notified 
 the presenter.
 
 
+# Step 43
+
+Code affected : Models
+
+Doc updated
+

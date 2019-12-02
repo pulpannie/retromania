@@ -25,6 +25,12 @@ import java.util.function.Supplier;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+
+/**
+ *
+ * The setting screen inside our menu screen
+ *
+ * */
 @Singleton
 public class SettingScreen extends MenuOptionScreen {
   private Stage stage;

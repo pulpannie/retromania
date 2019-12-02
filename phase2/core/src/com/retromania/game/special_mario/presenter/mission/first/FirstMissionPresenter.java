@@ -7,7 +7,9 @@ import com.retromania.game.special_mario.presenter.MarioGamePresenter;
 import com.retromania.game.special_mario.utils.MarioWorldListener;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class FirstMissionPresenter extends MarioGamePresenter {
     @Inject
     public FirstMissionPresenter(

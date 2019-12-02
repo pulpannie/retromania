@@ -27,6 +27,7 @@ class SurvivalRenderer extends MarioRenderable {
 
   @Override
   public void start() {
+    reloadLevel();
     marioGamePresentable.createPlayerFromScratch();
     gameCam.position.x =
         gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()

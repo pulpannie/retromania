@@ -4,6 +4,11 @@ import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 import javax.inject.Inject;
 
+/**
+ *
+ * The implementation of the menu screen
+ *
+ * */
 public class MenuScreen extends RetroManiaScreen {
 
   private MenuOptionScreen selectedScreen;

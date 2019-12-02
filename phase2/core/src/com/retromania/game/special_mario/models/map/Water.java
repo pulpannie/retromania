@@ -6,6 +6,9 @@ import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
+/**
+ * The logic and tile for waters in the game
+ * **/
 public class Water extends TiledMapIndividual {
 
 

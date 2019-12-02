@@ -1,8 +1,10 @@
 package com.retromania.game.special_mario.models.player;
 
-import com.retromania.game.shared_abstractions.Character;
-import com.retromania.game.special_mario.models.player.BodyPart;
-
+/**
+ *
+ * A wrapper for the information given about the main player in collisions
+ *
+ * **/
 public class MainPlayerCollisionInfo {
     private MainPlayer mainPlayer;
     private BodyPart bodyPart;

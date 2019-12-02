@@ -6,7 +6,11 @@ import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
-
+/**
+ *
+ * The logic and tile for the invisible object that finishes the game
+ *
+ * **/
 public class GameFinisher extends TiledMapIndividual {
     public GameFinisher(MapObject object, World world) {
         super(object, world);

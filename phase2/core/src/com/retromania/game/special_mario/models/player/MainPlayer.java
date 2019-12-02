@@ -19,12 +19,19 @@ import javax.inject.Singleton;
 
 import static com.retromania.game.special_mario.SpecialMarioConfiguration.getPixelToMeterConversionRate;
 
+
+/**
+ *
+ *  The logic and tiles for our main player : mario
+ *
+ * **/
 @Singleton
 public class MainPlayer extends Character implements RetroManiaModel<MainPlayerInput> {
 
   private MainPlayerInput input;
   private BodyDef bodyDef;
   private GameSaver gameSaver;
+
 
 
 
@@ -56,26 +63,6 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
         initialXInWorld,
         initialYInWorld);
     this.gameSaver = gameSaver;
-  }
-
-  public void handleInput() {
-    updateX(input.getWorldWidth(), input.getX(), input.hasBeenHeldDown());
-    updateY(input.getWorldHeight(), input.getY(), input.hasBeenTouched());
-  }
-
-  private void updateX(float worldWidth, int X, boolean hasBeenHeldDown) {
-    if (hasBeenHeldDown && Math.abs(body.getLinearVelocity().x) < 2) {
-      if (X <= worldWidth / 2)
-        body.applyLinearImpulse(new Vector2(-.1f, 0), body.getWorldCenter(), true);
-      else body.applyLinearImpulse(new Vector2(.1f, 0), body.getWorldCenter(), true);
-    }
-  }
-
-  private void updateY(float worldHeight, int Y, boolean hasBeenTouched) {
-    if (hasBeenTouched) {
-      if (Y <= worldHeight / 2)
-        body.applyLinearImpulse(new Vector2(0, 4f), body.getWorldCenter(), true);
-    }
   }
 
   @Override
@@ -130,28 +117,6 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
     setUpFixtureDefShapes(7, 4);
   }
 
-  private void setUpFixtureDefShapes(float circleShapeRadius, float headLength) {
-    fixtureDef.shape = setUpCircleBody(circleShapeRadius);
-    body.createFixture(fixtureDef);
-    fixtureDef.shape = setUpEdgeShapeBody(circleShapeRadius, headLength);
-    fixtureDef.isSensor = true;
-    body.createFixture(fixtureDef);
-
-  }
-
-  private CircleShape setUpCircleBody(float circleShapeRadius) {
-    CircleShape circleShape = new CircleShape();
-    circleShape.setRadius(convertPixelToMeter(circleShapeRadius));
-    return circleShape;
-  }
-
-  private EdgeShape setUpEdgeShapeBody(float circleShapeRadius, float headLength) {
-    EdgeShape head = new EdgeShape();
-    head.set(
-        new Vector2(convertPixelToMeter(-headLength / 2), convertPixelToMeter(circleShapeRadius)),
-        new Vector2(convertPixelToMeter(headLength / 2), convertPixelToMeter(circleShapeRadius)));
-    return head;
-  }
 
   @Override
   public void update() {
@@ -174,6 +139,52 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   public MainPlayerInput getOutput() {
     return input;
   }
+
+
+  public void handleInput() {
+    updateX(input.getWorldWidth(), input.getX(), input.hasBeenHeldDown());
+    updateY(input.getWorldHeight(), input.getY(), input.hasBeenTouched());
+  }
+
+  private void updateX(float worldWidth, int X, boolean hasBeenHeldDown) {
+    if (hasBeenHeldDown && Math.abs(body.getLinearVelocity().x) < 2) {
+      if (X <= worldWidth / 2)
+        body.applyLinearImpulse(new Vector2(-.1f, 0), body.getWorldCenter(), true);
+      else body.applyLinearImpulse(new Vector2(.1f, 0), body.getWorldCenter(), true);
+    }
+  }
+
+  private void updateY(float worldHeight, int Y, boolean hasBeenTouched) {
+    if (hasBeenTouched) {
+      if (Y <= worldHeight / 2)
+        body.applyLinearImpulse(new Vector2(0, 4f), body.getWorldCenter(), true);
+    }
+  }
+
+
+  private void setUpFixtureDefShapes(float circleShapeRadius, float headLength) {
+    fixtureDef.shape = setUpCircleBody(circleShapeRadius);
+    body.createFixture(fixtureDef);
+    fixtureDef.shape = setUpEdgeShapeBody(circleShapeRadius, headLength);
+    fixtureDef.isSensor = true;
+    body.createFixture(fixtureDef);
+
+  }
+
+  private CircleShape setUpCircleBody(float circleShapeRadius) {
+    CircleShape circleShape = new CircleShape();
+    circleShape.setRadius(convertPixelToMeter(circleShapeRadius));
+    return circleShape;
+  }
+
+  private EdgeShape setUpEdgeShapeBody(float circleShapeRadius, float headLength) {
+    EdgeShape head = new EdgeShape();
+    head.set(
+            new Vector2(convertPixelToMeter(-headLength / 2), convertPixelToMeter(circleShapeRadius)),
+            new Vector2(convertPixelToMeter(headLength / 2), convertPixelToMeter(circleShapeRadius)));
+    return head;
+  }
+
 
   public void addReward(){
     gameSaver.setScore(gameSaver.getCurrentUser().getScore()+1);

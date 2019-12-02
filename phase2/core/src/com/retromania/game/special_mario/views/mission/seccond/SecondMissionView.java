@@ -7,6 +7,11 @@ import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
 
+/**
+ *
+ * The view responsible for showing the second mission
+ *
+ * */
 public class SecondMissionView extends MissionView {
     @Inject
     SecondMissionView(

@@ -11,8 +11,15 @@ import java.util.function.Supplier;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+
+
+/**
+ *
+ * A concrete implementation of the levelPreference
+ *
+ * **/
 @Singleton
-public class LevelPreferenceMario implements LevelPreference {
+class LevelPreferenceMario implements LevelPreference {
 
     private boolean isItFirst = true;
     private Map<Supplier<TiledMap>, String> functionOfLevelMap = new HashMap<>();

@@ -17,7 +17,12 @@ import javax.inject.Singleton;
 
 
 
-
+/**
+ *
+ * This class is responsible to use layers to manage bodies inside the map (Everything but the
+ * characters) and to be able to change those levels and delete the previous level
+ *
+ * **/
 @Singleton
 class TiledMapIndividualFactory {
 

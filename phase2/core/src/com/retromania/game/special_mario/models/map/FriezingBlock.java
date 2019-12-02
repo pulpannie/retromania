@@ -6,6 +6,11 @@ import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
+/**
+ *
+ * The logic and tiles for friezing blocks
+ *
+ * **/
 public class FriezingBlock extends TiledMapIndividual {
     public FriezingBlock(MapObject object, World world) {
         super(object, world);
@@ -18,7 +23,7 @@ public class FriezingBlock extends TiledMapIndividual {
 
     @Override
     public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {
-
+        mainPlayer.setDead(true);
     }
 
     @Override

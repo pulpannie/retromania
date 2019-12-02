@@ -1,5 +1,9 @@
 package com.retromania.game.special_mario.models.player;
-
+/**
+ *
+ * A wrapper for the information the main player needs before it can be updated
+ *
+ * **/
 public class MainPlayerInput {
 
     private int worldWidth;

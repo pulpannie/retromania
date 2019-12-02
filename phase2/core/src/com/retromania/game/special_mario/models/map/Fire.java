@@ -5,7 +5,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
-
+/**
+ *
+ * The logic and Tiles for see of fire
+ *
+ * **/
 public class Fire extends TiledMapIndividual {
 
     public Fire(MapObject object, World world) {
@@ -20,7 +24,7 @@ public class Fire extends TiledMapIndividual {
 
     @Override
     public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {
-
+        mainPlayer.setDead(true);
     }
 
     @Override
