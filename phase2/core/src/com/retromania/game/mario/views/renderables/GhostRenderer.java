@@ -38,10 +38,15 @@ class GhostRenderer extends MarioRenderable {
   }
 
   private void handleInput() {
-    if (Gdx.input.isTouched()) {
-      if (Gdx.input.getX() > getGamePort().getScreenWidth() / 2) gameCam.position.x += .1;
-      else gameCam.position.x -= .1;
-    }
+//    if (Gdx.input.isTouched()) {
+//      if (Gdx.input.getX() > getGamePort().getScreenWidth() / 2) gameCam.position.x += .1;
+//      else gameCam.position.x -= .1;
+//    }
+
+    gameCam.position.x =
+            gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()
+                    ? gamePort.getWorldWidth() / 2
+                    : marioGamePresentable.getXMainPlayer();
   }
 
   void update() {
