@@ -22,5 +22,7 @@ public interface MarioShowable extends Renderable {
 
     void setPresenter(MarioGamePresentable marioGamePresentable);
 
+    void reloadLevel();
+
 
 }

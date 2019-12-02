@@ -15,18 +15,16 @@ import com.retromania.game.special_mario.views.renderables.UserRenderPreference;
 public abstract class MissionView extends RetroManiaScreen implements DeathObserver, FinisherObserver {
     private UserRenderPreference userRenderPreference;
     private MarioGamePresentable marioGamePresentable;
-    MainPlayer mainPlayer;
     public MissionView(
             MarioGamePresenter marioGamePresenter,
-            UserRenderPreference userRenderPreference, MainPlayer mainPlayer) {
+            UserRenderPreference userRenderPreference) {
 //        This is to redo any position or state of the player for the game
-        mainPlayer.createMainPlayer();
+        marioGamePresenter.resetPlayer();
 
         this.marioGamePresentable = marioGamePresenter;
         this.marioGamePresentable.reloadLevel();
         this.marioGamePresentable.addDeathObserver(this);
         this.marioGamePresentable.addFinisherObserver(this);
-        this.mainPlayer = mainPlayer;
         setUpMainWorldRenderer(userRenderPreference);
         this.userRenderPreference.getRenderable().setPresenter(marioGamePresenter);
     }
@@ -88,7 +86,7 @@ public abstract class MissionView extends RetroManiaScreen implements DeathObser
     @Override
     public void dispose() {
 //        This is to redo any position or state of the player for the next game
-        mainPlayer.createMainPlayer();
+        marioGamePresentable.resetPlayer();
         game.setScreen(new GameLister());
     }
 }

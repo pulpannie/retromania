@@ -6,6 +6,11 @@ import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
+/**
+ *
+ * The logic for the tile that gives the player rewards
+ *
+ * **/
 public class Reward extends TiledMapIndividual {
 
     public Reward(MapObject object, World world) {
@@ -14,7 +19,6 @@ public class Reward extends TiledMapIndividual {
 
     @Override
     public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
-        System.out.println("Called");
         setCategoryMask((short)0);
         setCollidableWith((short) 0);
         playerCollisionInfo.getMainPlayer().addReward();

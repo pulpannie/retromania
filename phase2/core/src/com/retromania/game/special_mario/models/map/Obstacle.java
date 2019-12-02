@@ -6,6 +6,10 @@ import com.retromania.game.special_mario.abstractions.TiledMapIndividual;
 import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.models.player.MainPlayerCollisionInfo;
 
+/**
+ * The tile and logic for obstacles that the main player can stand on
+ *
+ * **/
 public class Obstacle extends TiledMapIndividual {
     public Obstacle(MapObject object, World world) {
         super(object, world);

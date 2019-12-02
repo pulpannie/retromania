@@ -35,13 +35,11 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
     mainPlayer.update();
     if(mainPlayer.isFinished()){
       updateFinisherObservers();
-      mainPlayer.setFinished(false);
-      mainPlayer.createMainPlayer();
+      resetPlayer();
     }
     if (mainPlayer.isDead()){
       updateDeathObservers();
-      mainPlayer.setDead(false);
-      mainPlayer.createMainPlayer();
+      resetPlayer();
     }
   }
 
@@ -104,5 +102,12 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
   @Override
   public void letMainPlayerShow(SpriteBatch sb) {
     mainPlayer.draw(sb);
+  }
+
+  @Override
+  public void resetPlayer() {
+    mainPlayer.setFinished(false);
+    mainPlayer.setDead(false);
+    mainPlayer.createMainPlayer();
   }
 }

@@ -28,7 +28,8 @@ class NormalRenderer extends MarioRenderable {
 
   @Override
   public void start() {
-      marioGamePresentable.createPlayerFromScratch();
+    reloadLevel();
+    marioGamePresentable.createPlayerFromScratch();
       handleInput();
   }
 

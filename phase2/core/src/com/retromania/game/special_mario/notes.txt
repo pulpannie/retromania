@@ -420,3 +420,16 @@ All instances of the models were deleted in the views and they are now notified 
 the presenter.
 
 
+# Step 43
+
+Code affected : Models
+
+Doc updated
+
+
+# Step 44
+
+Code affected : Views, MissionViews
+
+All Direct Access to Models (MainPlayer) were removed
+
