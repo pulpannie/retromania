@@ -4,11 +4,7 @@ import com.retromania.game.shared_abstractions.RetroManiaScreen;
 
 import javax.inject.Inject;
 
-/**
- *
- * The implementation of the menu screen
- *
- * */
+/** The implementation of the menu screen */
 public class MenuScreen extends RetroManiaScreen {
 
   private MenuOptionScreen selectedScreen;
@@ -16,8 +12,7 @@ public class MenuScreen extends RetroManiaScreen {
   private final SettingScreen settingScreen;
 
   @Inject
-  public MenuScreen(
-      IntroductoryScreen introductoryScreen, SettingScreen settingScreen) {
+  public MenuScreen(IntroductoryScreen introductoryScreen, SettingScreen settingScreen) {
     this.introductoryScreen = introductoryScreen;
     this.settingScreen = settingScreen;
   }
@@ -32,7 +27,7 @@ public class MenuScreen extends RetroManiaScreen {
   }
 
   private void changeScreen(MenuOptionScreen newScreen) {
-    if (selectedScreen != null){
+    if (selectedScreen != null) {
       selectedScreen.dispose();
     }
     selectedScreen = newScreen;
@@ -40,7 +35,7 @@ public class MenuScreen extends RetroManiaScreen {
     selectedScreen.show();
   }
 
-  public void gotoIntroductoryScreen() {
+  private void gotoIntroductoryScreen() {
     changeScreen(introductoryScreen);
   }
 

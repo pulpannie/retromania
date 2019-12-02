@@ -19,21 +19,17 @@ import javax.inject.Singleton;
 
 import static com.retromania.game.mario.SpecialMarioConfiguration.getPixelToMeterConversionRate;
 
-
 /**
+ * The logic and tiles for our main player : mario
  *
- *  The logic and tiles for our main player : mario
- *
- * **/
+ * <p>*
+ */
 @Singleton
 public class MainPlayer extends Character implements RetroManiaModel<MainPlayerInput> {
 
   private MainPlayerInput input;
   private BodyDef bodyDef;
   private GameSaver gameSaver;
-
-
-
 
   private boolean dead;
   private boolean finished;
@@ -88,8 +84,8 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   @Override
   protected BodyDef setUpBodyDef() {
 
-//    setDead(false);
-//    setFinished(false);
+    //    setDead(false);
+    //    setFinished(false);
 
     bodyDef = new BodyDef();
     bodyDef.position.set(
@@ -98,14 +94,13 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
     return bodyDef;
   }
 
-  public BodyDef getBodyDef(){
+  public BodyDef getBodyDef() {
     return bodyDef;
   }
 
   @Override
   public Body setUpBody(BodyDef bodyDef) {
-    if(body!=null)
-      getWorld().destroyBody(body);
+    if (body != null) getWorld().destroyBody(body);
     return body = getWorld().createBody(bodyDef);
   }
 
@@ -117,13 +112,12 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
     setUpFixtureDefShapes(7, 4);
   }
 
-
   @Override
   public void update() {
     handleInput();
-    if (getY()<0){
+    if (getY() < 0) {
       setDead(true);
-      if (getY()<-1){
+      if (getY() < -1) {
         createMainPlayer();
       }
     }
@@ -139,7 +133,6 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   public MainPlayerInput getOutput() {
     return input;
   }
-
 
   public void handleInput() {
     updateX(input.getWorldWidth(), input.getX(), input.hasBeenHeldDown());
@@ -161,14 +154,12 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
     }
   }
 
-
   private void setUpFixtureDefShapes(float circleShapeRadius, float headLength) {
     fixtureDef.shape = setUpCircleBody(circleShapeRadius);
     body.createFixture(fixtureDef);
     fixtureDef.shape = setUpEdgeShapeBody(circleShapeRadius, headLength);
     fixtureDef.isSensor = true;
     body.createFixture(fixtureDef);
-
   }
 
   private CircleShape setUpCircleBody(float circleShapeRadius) {
@@ -180,14 +171,13 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   private EdgeShape setUpEdgeShapeBody(float circleShapeRadius, float headLength) {
     EdgeShape head = new EdgeShape();
     head.set(
-            new Vector2(convertPixelToMeter(-headLength / 2), convertPixelToMeter(circleShapeRadius)),
-            new Vector2(convertPixelToMeter(headLength / 2), convertPixelToMeter(circleShapeRadius)));
+        new Vector2(convertPixelToMeter(-headLength / 2), convertPixelToMeter(circleShapeRadius)),
+        new Vector2(convertPixelToMeter(headLength / 2), convertPixelToMeter(circleShapeRadius)));
     return head;
   }
 
-
-  public void addReward(){
-    gameSaver.setScore(gameSaver.getCurrentUser().getScore()+1);
+  public void addReward() {
+    gameSaver.setScore(gameSaver.getCurrentUser().getScore() + 1);
   }
 
   public boolean isDead() {
@@ -197,7 +187,6 @@ public class MainPlayer extends Character implements RetroManiaModel<MainPlayerI
   public void setDead(boolean dead) {
     this.dead = dead;
   }
-
 
   public boolean isFinished() {
     return finished;

@@ -14,37 +14,38 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class SpecialMarioStarterPresenter extends MarioGamePresenter implements RestartableObservable {
+public class SpecialMarioStarterPresenter extends MarioGamePresenter
+    implements RestartableObservable {
 
+  @Inject
+  SpecialMarioStarterPresenter(
+      MainPlayer mainPlayer,
+      World world,
+      LevelPreference levelPreference,
+      MarioWorldListener marioWorldListener) {
+    super(mainPlayer, world, levelPreference, marioWorldListener);
+  }
 
-    @Inject
-    SpecialMarioStarterPresenter(
-            MainPlayer mainPlayer,
-            World world,
-            LevelPreference levelPreference, MarioWorldListener marioWorldListener){
-        super(mainPlayer, world, levelPreference, marioWorldListener);
+  @Override
+  public void present() {
+    if (mainPlayer.isDead() || mainPlayer.isFinished()) {
+      resetPlayer();
+      updateRestartableObservers();
     }
+    super.present();
+  }
 
-    @Override
-    public void present() {
-        if (mainPlayer.isDead()||mainPlayer.isFinished()){
-            resetPlayer();
-            updateRestartableObservers();
-        }
-        super.present();
+  private List<RestartableObserver> observers = new ArrayList<>();
+
+  @Override
+  public void updateRestartableObservers() {
+    for (RestartableObserver r : observers) {
+      r.restart();
     }
+  }
 
-    private List<RestartableObserver> observers = new ArrayList<>();
-
-    @Override
-    public void updateRestartableObservers() {
-        for (RestartableObserver r : observers){
-            r.restart();
-        }
-    }
-
-    @Override
-    public void addRestartableObserver(RestartableObserver restartableObserver) {
-        observers.add(restartableObserver);
-    }
+  @Override
+  public void addRestartableObserver(RestartableObserver restartableObserver) {
+    observers.add(restartableObserver);
+  }
 }

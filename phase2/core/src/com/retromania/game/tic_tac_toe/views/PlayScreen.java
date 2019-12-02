@@ -27,7 +27,7 @@ public class PlayScreen extends RetroManiaScreen {
   private Stage stage;
   private static ShapeRenderer boardRenderer = new ShapeRenderer();
   private SpriteBatch batch;
-  private OrthographicCamera gamecam;
+  private OrthographicCamera gameCam;
   private float gameWidth, gameHeight;
   private PlayPresenter playPresenter;
   private Texture cross, circle;
@@ -46,12 +46,12 @@ public class PlayScreen extends RetroManiaScreen {
     gameHeight = Gdx.graphics.getHeight();
     playPresenter.createTicTacToe();
 
-    gamecam = new OrthographicCamera();
-    gamecam.setToOrtho(false, gameWidth, gameHeight);
-    stage = new Stage(new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam));
+    gameCam = new OrthographicCamera();
+    gameCam.setToOrtho(false, gameWidth, gameHeight);
+    stage = new Stage(new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam));
     Gdx.input.setInputProcessor(stage);
     batch = new SpriteBatch();
-    batch.setProjectionMatrix(gamecam.combined);
+    batch.setProjectionMatrix(gameCam.combined);
   }
 
   /**
@@ -101,11 +101,11 @@ public class PlayScreen extends RetroManiaScreen {
       DrawBoardLine(
           new Vector2(gameWidth * i / playPresenter.getSize(), 0),
           new Vector2(gameWidth * i / playPresenter.getSize(), gameHeight),
-          gamecam.combined);
+          gameCam.combined);
       DrawBoardLine(
           new Vector2(0, gameHeight * i / playPresenter.getSize()),
           new Vector2(gameWidth, gameHeight * i / playPresenter.getSize()),
-          gamecam.combined);
+          gameCam.combined);
     }
   }
 
@@ -134,7 +134,7 @@ public class PlayScreen extends RetroManiaScreen {
   public void handleInput() {
     if (Gdx.input.isTouched()) {
       Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-      Vector3 worldCoordinates = gamecam.unproject(mousePos);
+      Vector3 worldCoordinates = gameCam.unproject(mousePos);
       playPresenter.touchCells(worldCoordinates.x, worldCoordinates.y);
     }
   }
@@ -166,16 +166,9 @@ public class PlayScreen extends RetroManiaScreen {
   }
 
   @Override
-  public void resize(int width, int height) {}
+  public void resize(int width, int height) {
+  }
 
-  @Override
-  public void pause() {}
-
-  @Override
-  public void resume() {}
-
-  @Override
-  public void hide() {}
 
   /** disposes a variable after its usage. */
   @Override

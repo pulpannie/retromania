@@ -3,7 +3,6 @@ package com.retromania.game.shared_abstractions;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -56,15 +55,14 @@ public abstract class Character extends CharacterSprite implements Collidable {
   protected abstract BodyDef setUpBodyDef();
 
   /**
+   * Should be able to make the body, and it should be able to make it multiple times so the body
+   * needs to be deleted from the world, if needed.
    *
-   * Should be able to make the body, and it should be able to make it multiple times so
-   * the body needs to be deleted from the world, if needed.
-   *
-   * **/
+   * <p>*
+   */
   protected abstract Body setUpBody(BodyDef bodyDef);
 
   protected abstract void setUpFixture();
-
 
   protected World getWorld() {
     return this.world;

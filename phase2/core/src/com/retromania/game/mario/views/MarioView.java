@@ -14,5 +14,4 @@ public abstract class MarioView extends RetroManiaInnerGame {
     super(name, orientation);
     userRenderPreference.getRenderable().setPresenter(marioGamePresentable);
   }
-
 }

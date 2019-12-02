@@ -18,7 +18,7 @@ public class MarioWorldListener implements ContactListener {
   private MainPlayer mainPlayer;
 
   @Inject
-  public MarioWorldListener(MainPlayer mainPlayer){
+  public MarioWorldListener(MainPlayer mainPlayer) {
     this.mainPlayer = mainPlayer;
   }
 

@@ -66,9 +66,6 @@ public class PlayScreenPresenter extends Presenter {
     mainScreen.save();
   }
 
-  /** Disposes disposables */
-  public void dispose() {}
-
   /** Does request hud/model to countdown, check if game finished, and updates ufoManager */
   public void update(float dt) {
     super.update(dt);

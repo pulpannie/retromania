@@ -413,3 +413,11 @@ Code affected: StarterPresenter, SpaceShipShooterStarter
 Flaw: presenter had instance of views, which is against rules of MVP.
 
 Fix: moved all view class instances into SpaceShipShooterStarter class.
+
+#Step 51:
+
+Code affected: all presenters and views classes except Presenter, Starter Presenter, MainScreenInterface and StateFactory
+
+Flaw: there are still unimplemented and unnecessary Override methods, flaws in Java docs.
+
+Fix: Remove unimplemented and unnecessary Override methods, fix flaws in Java docs.

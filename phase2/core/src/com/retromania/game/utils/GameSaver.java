@@ -11,33 +11,31 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 public class GameSaver {
 
   public User getCurrentUser() {
     return currentUsers.get(nameOfGame);
   }
-  private void setCurrentUser(User user){
+
+  private void setCurrentUser(User user) {
     currentUsers.put(nameOfGame, user);
   }
 
   private static final Map<String, Preferences> preferences;
   private static final Map<String, User> currentUsers;
+
   static {
     preferences = new HashMap<>();
     currentUsers = new HashMap<>();
   }
 
-
-
-//  private User currentUser;
-//  private Preferences preferences;
+  //  private User currentUser;
+  //  private Preferences preferences;
   public static final String BEST_USER_USER_NAME_KEY = "$BEST_USER$NAME$";
   private static final String BEST_USER_SCORE_KEY = "$BEST_USER$SCORE$";
 
   private final String nameOfGame;
   private Preferences preference;
-
 
   public GameSaver(String nameOfGame, String nameOfUser) {
     this.nameOfGame = nameOfGame;
@@ -45,8 +43,8 @@ public class GameSaver {
     setCurrentUser(nameOfUser);
   }
 
-  private void setUpPreference(){
-    if(!preferences.keySet().contains(nameOfGame))
+  private void setUpPreference() {
+    if (!preferences.keySet().contains(nameOfGame))
       preferences.put(nameOfGame, getPrefrences(nameOfGame));
     preference = preferences.get(nameOfGame);
   }
@@ -56,12 +54,12 @@ public class GameSaver {
     this(nameOfGame, "");
   }
 
-  public void saveNormalUser(User user) {
+  private void saveNormalUser(User user) {
     preference.putInteger(user.getUserName(), user.getScore());
     preference.flush();
   }
 
-  public void saveBestUser(User user) {
+  private void saveBestUser(User user) {
     preference.putString(BEST_USER_USER_NAME_KEY, user.getUserName());
     preference.putInteger(BEST_USER_SCORE_KEY, user.getScore());
     preference.flush();
@@ -93,7 +91,7 @@ public class GameSaver {
     }
   }
 
-  static private Preferences getPrefrences(String name){
+  private static Preferences getPrefrences(String name) {
     return Gdx.app.getPreferences(name);
   }
 }

@@ -17,6 +17,7 @@ import javax.inject.Singleton;
 @Singleton
 class SurvivalRenderer extends MarioRenderable {
   private boolean canUpdateCam = false;
+
   @Inject
   SurvivalRenderer(
       SpecialMarioStarterPresenter marioGamePresenter,
@@ -32,21 +33,22 @@ class SurvivalRenderer extends MarioRenderable {
     reloadLevel();
     marioGamePresentable.createPlayerFromScratch();
     gameCam.position.x =
-            gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()
-                    ? gamePort.getWorldWidth() / 2
-                    : marioGamePresentable.getXMainPlayer();
-    Timer.schedule(new Timer.Task() {
-      @Override
-      public void run() {
-        canUpdateCam = true;
-      }
-    }, 1);
+        gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()
+            ? gamePort.getWorldWidth() / 2
+            : marioGamePresentable.getXMainPlayer();
+    Timer.schedule(
+        new Timer.Task() {
+          @Override
+          public void run() {
+            canUpdateCam = true;
+          }
+        },
+        1);
     gameCam.update();
   }
 
   private void handleInput() {
-    if (canUpdateCam)
-    gameCam.position.x += .01f;
+    if (canUpdateCam) gameCam.position.x += .01f;
   }
 
   public void update() {

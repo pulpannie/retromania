@@ -6,16 +6,12 @@ import com.retromania.game.mario.views.renderables.UserRenderPreference;
 
 import javax.inject.Inject;
 
-/**
- * The view responsible for the output of first of mission
- *
- * */
+/** The view responsible for the output of first of mission */
 public class FirstMissionView extends MissionView {
 
-    @Inject
-    FirstMissionView(
-            FirstMissionPresenter firstMissionPresenter,
-            UserRenderPreference userRenderPreference) {
-        super(firstMissionPresenter, userRenderPreference);
-    }
+  @Inject
+  FirstMissionView(
+      FirstMissionPresenter firstMissionPresenter, UserRenderPreference userRenderPreference) {
+    super(firstMissionPresenter, userRenderPreference);
+  }
 }

@@ -115,7 +115,8 @@ public class GameLister extends RetroManiaScreen {
           public void clicked(InputEvent event, float x, float y) {
             UserNameTextInputListener userNameTextInputListener =
                 new UserNameTextInputListener(game, selectedGame);
-            Gdx.input.getTextInput(userNameTextInputListener, "User Name (Has to be 3 chars exactly)", "", "");
+            Gdx.input.getTextInput(
+                userNameTextInputListener, "User Name (Has to be 3 chars exactly)", "", "");
           }
         });
     table2.add(button).expandX().center().row();

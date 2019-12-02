@@ -22,9 +22,6 @@ public class SettingsScreenPresenter extends Presenter {
     this.mainScreen = mainScreen;
   }
 
-  /** Disposes the disposable objects */
-  public void dispose() {}
-
   /** updates the models */
   public void update(float dt) {
     super.update(dt);
@@ -32,6 +29,7 @@ public class SettingsScreenPresenter extends Presenter {
 
   /**
    * Changes screen from Settings to Menu
+   *
    * @param theme chosen type of theme for game
    * @param isMusic boolean that keeps whether music should play or not
    */

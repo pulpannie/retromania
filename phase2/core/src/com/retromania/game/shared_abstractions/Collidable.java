@@ -1,32 +1,27 @@
 package com.retromania.game.shared_abstractions;
 
-import com.badlogic.gdx.physics.box2d.Filter;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 
 public interface Collidable {
-    FixtureDef getFixtureDef();
+  FixtureDef getFixtureDef();
 
-    short getDefaultMask();
-    short getDefaultTarget();
+  short getDefaultMask();
 
+  short getDefaultTarget();
 
+  default void setCollidableWith(short othersCategory) {
+    getFixtureDef().filter.maskBits = othersCategory;
+  }
 
-    default void setCollidableWith(short othersCategory){
-        getFixtureDef().filter.maskBits = othersCategory;
-    }
+  default void setDefaultCollidableWith() {
+    setCollidableWith(getDefaultTarget());
+  }
 
-    default void setDefaultCollidableWith(){
-        setCollidableWith(getDefaultTarget());
-    }
+  default void setCategoryMask(short selfCategory) {
+    getFixtureDef().filter.categoryBits = selfCategory;
+  }
 
-
-    default void setCategoryMask(short selfCategory){
-        getFixtureDef().filter.categoryBits = selfCategory;
-    }
-
-    default void setDefaultCategoryMask(){
-        setCategoryMask(getDefaultMask());
-    }
-
-
+  default void setDefaultCategoryMask() {
+    setCategoryMask(getDefaultMask());
+  }
 }

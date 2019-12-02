@@ -14,34 +14,31 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-
-
 /**
- *
  * This class is responsible to use layers to manage bodies inside the map (Everything but the
  * characters) and to be able to change those levels and delete the previous level
  *
- * **/
+ * <p>*
+ */
 @Singleton
 class TiledMapIndividualFactory {
-
 
   private static final String FIRST_WORLD = "special_mario/firstLevel.tmx";
   private static final String SECOND_WORLD = "special_mario/PlayableOption1.tmx";
 
   private TiledMap tiledMap;
 
-
   private World world;
 
   private String currentLevel;
-  void reloadLevel(){
+
+  void reloadLevel() {
     clearBodiesOfMap();
     setUpTiledMap(currentLevel);
   }
 
   @Inject
-  TiledMapIndividualFactory(World world){
+  TiledMapIndividualFactory(World world) {
     this.world = world;
     setUpFirstWorldTileMap();
   }
@@ -53,25 +50,24 @@ class TiledMapIndividualFactory {
     getAllLayers();
   }
 
-  public void setUpFirstWorldTileMap() {
+  void setUpFirstWorldTileMap() {
     clearBodiesOfMap();
     setUpTiledMap(FIRST_WORLD);
   }
 
-  public void setUpSecondWorldTileMap() {
+  void setUpSecondWorldTileMap() {
     clearBodiesOfMap();
     setUpTiledMap(SECOND_WORLD);
   }
 
   private void clearBodiesOfMap() {
-    for(Body b : bodies){
+    for (Body b : bodies) {
       world.destroyBody(b);
     }
     bodies.clear();
   }
 
-
-  private List<Body> bodies= new ArrayList<>();
+  private List<Body> bodies = new ArrayList<>();
 
   private void getAllLayers() {
     getLayer(Layers.OBSTACLE, world);
@@ -82,12 +78,11 @@ class TiledMapIndividualFactory {
     getLayer(Layers.GAME_FINISHER, world);
   }
 
-  public TiledMap getTiledMap() {
+  TiledMap getTiledMap() {
     return tiledMap;
   }
 
-
-  private void getLayer(Layers l,World world) {
+  private void getLayer(Layers l, World world) {
     for (MapObject object :
         tiledMap.getLayers().get(l.getValue()).getObjects().getByType(RectangleMapObject.class)) {
       try {

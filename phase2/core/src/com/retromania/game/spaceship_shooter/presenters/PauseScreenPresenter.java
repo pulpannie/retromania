@@ -37,9 +37,6 @@ public class PauseScreenPresenter extends Presenter {
     mainScreen.modify();
   }
 
-  /** Disposes disposable objects */
-  public void dispose() {}
-
   /** Updates models by request of View/MenuScreen */
   public void update(float dt) {
     super.update(dt);

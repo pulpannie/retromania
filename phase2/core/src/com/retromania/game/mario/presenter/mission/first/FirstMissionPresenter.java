@@ -11,11 +11,12 @@ import javax.inject.Singleton;
 
 @Singleton
 public class FirstMissionPresenter extends MarioGamePresenter {
-    @Inject
-    FirstMissionPresenter(
-            MainPlayer mainPlayer,
-            World world,
-            LevelPreference levelPreference, MarioWorldListener marioWorldListener){
-        super(mainPlayer, world, levelPreference, marioWorldListener);
-    }
+  @Inject
+  FirstMissionPresenter(
+      MainPlayer mainPlayer,
+      World world,
+      LevelPreference levelPreference,
+      MarioWorldListener marioWorldListener) {
+    super(mainPlayer, world, levelPreference, marioWorldListener);
+  }
 }

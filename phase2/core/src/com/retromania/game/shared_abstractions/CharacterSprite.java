@@ -5,23 +5,22 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 class CharacterSprite extends Sprite {
 
-    private float pixelToMeterRate;
+  private float pixelToMeterRate;
 
-    protected float convertPixelToMeter(float pixel) {
-        return pixelToMeterRate * pixel;
-    }
+  protected float convertPixelToMeter(float pixel) {
+    return pixelToMeterRate * pixel;
+  }
 
-    CharacterSprite(
-            TextureRegion textureRegion, int x, int y, int width, int height, float pixelToMeterRate) {
-        super(textureRegion);
-        this.pixelToMeterRate = pixelToMeterRate;
-        createTexture(x, y, width, height);
+  CharacterSprite(
+      TextureRegion textureRegion, int x, int y, int width, int height, float pixelToMeterRate) {
+    super(textureRegion);
+    this.pixelToMeterRate = pixelToMeterRate;
+    createTexture(x, y, width, height);
+  }
 
-    }
-
-    private void createTexture(int x, int y, int width, int height) {
-        TextureRegion playerIdle = new TextureRegion(getTexture(), x, y, width, height);
-        setBounds(x, y, convertPixelToMeter(width), convertPixelToMeter(height));
-        setRegion(playerIdle);
-    }
+  private void createTexture(int x, int y, int width, int height) {
+    TextureRegion playerIdle = new TextureRegion(getTexture(), x, y, width, height);
+    setBounds(x, y, convertPixelToMeter(width), convertPixelToMeter(height));
+    setRegion(playerIdle);
+  }
 }

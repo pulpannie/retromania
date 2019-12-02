@@ -9,24 +9,19 @@ import com.retromania.game.mario.models.player.MainPlayerCollisionInfo;
 /**
  * The tile and logic for obstacles that the main player can stand on
  *
- * **/
+ * <p>*
+ */
 public class Obstacle extends TiledMapIndividual {
-    public Obstacle(MapObject object, World world) {
-        super(object, world);
-    }
+  public Obstacle(MapObject object, World world) {
+    super(object, world);
+  }
 
-    @Override
-    public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
+  @Override
+  public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {}
 
-    }
+  @Override
+  public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {}
 
-    @Override
-    public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {
-
-    }
-
-    @Override
-    public void update(Object... args) {
-
-    }
+  @Override
+  public void update(Object... args) {}
 }

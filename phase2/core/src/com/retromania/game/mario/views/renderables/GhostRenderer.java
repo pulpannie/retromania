@@ -1,6 +1,5 @@
 package com.retromania.game.mario.views.renderables;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -38,18 +37,18 @@ class GhostRenderer extends MarioRenderable {
   }
 
   private void handleInput() {
-//    if (Gdx.input.isTouched()) {
-//      if (Gdx.input.getX() > getGamePort().getScreenWidth() / 2) gameCam.position.x += .1;
-//      else gameCam.position.x -= .1;
-//    }
+    //    if (Gdx.input.isTouched()) {
+    //      if (Gdx.input.getX() > getGamePort().getScreenWidth() / 2) gameCam.position.x += .1;
+    //      else gameCam.position.x -= .1;
+    //    }
 
     gameCam.position.x =
-            gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()
-                    ? gamePort.getWorldWidth() / 2
-                    : marioGamePresentable.getXMainPlayer();
+        gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()
+            ? gamePort.getWorldWidth() / 2
+            : marioGamePresentable.getXMainPlayer();
   }
 
-  void update() {
+  private void update() {
     handleInput();
     gameCam.update();
     checkTiledMap();
@@ -61,5 +60,4 @@ class GhostRenderer extends MarioRenderable {
     clearDisplay();
     displayWorld();
   }
-
 }

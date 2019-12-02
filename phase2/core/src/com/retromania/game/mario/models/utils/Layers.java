@@ -13,15 +13,11 @@ import com.retromania.game.mario.models.map.Water;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-
 /**
- *
- * This class is responsible for creating different types of TiledMapIndividual and
- * making sure that it has the same setup as the tmx file in our assets folder
- *
- * */
+ * This class is responsible for creating different types of TiledMapIndividual and making sure that
+ * it has the same setup as the tmx file in our assets folder
+ */
 public enum Layers {
-
   OBSTACLE(2, Obstacle.class),
   FRIEZING_BLOCK(3, FriezingBlock.class),
   REWARD(4, Reward.class),
@@ -45,11 +41,8 @@ public enum Layers {
       throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
           InstantiationException {
 
-
-    Class cls[] = new Class[] {MapObject.class, World.class};
+    Class[] cls = new Class[] {MapObject.class, World.class};
     Constructor constructor = c.getConstructor(cls);
-    return (TiledMapIndividual)constructor.newInstance(m, world);
-
-
+    return (TiledMapIndividual) constructor.newInstance(m, world);
   }
 }

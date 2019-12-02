@@ -1,23 +1,19 @@
 package com.retromania.game.mario.views.renderables;
 
-
 import java.util.Map;
 import java.util.function.Supplier;
 
-
 public interface UserRenderPreference {
 
-    Map<Supplier<MarioShowable>, String> getRenderModeFunctions();
+  Map<Supplier<MarioShowable>, String> getRenderModeFunctions();
 
+  MarioShowable setGameRenderNormal();
 
-    MarioShowable setGameRenderNormal();
+  MarioShowable setGameRenderSurvival();
 
-    MarioShowable setGameRenderSurvival();
+  MarioShowable setGameRenderGhost();
 
-    MarioShowable setGameRenderGhost();
+  MarioShowable getRenderable();
 
-    MarioShowable getRenderable();
-
-    void start();
-
+  void start();
 }

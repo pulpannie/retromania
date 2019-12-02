@@ -7,36 +7,33 @@ import com.retromania.game.mario.models.player.MainPlayer;
 import com.retromania.game.mario.models.player.MainPlayerCollisionInfo;
 
 /**
- *
  * The logic and tile for the invisible object that finishes the game
  *
- * **/
+ * <p>*
+ */
 public class GameFinisher extends TiledMapIndividual {
-    public GameFinisher(MapObject object, World world) {
-        super(object, world);
-    }
+  public GameFinisher(MapObject object, World world) {
+    super(object, world);
+  }
 
-    @Override
-    public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {
-    }
+  @Override
+  public void hitWithPlayer(MainPlayerCollisionInfo playerCollisionInfo) {}
 
-    @Override
-    public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {
-        mainPlayer.setFinished(true);
-    }
+  @Override
+  public void hitWithBodyOfMainPlayer(MainPlayer mainPlayer) {
+    mainPlayer.setFinished(true);
+  }
 
-    @Override
-    public void update(Object... args) {
+  @Override
+  public void update(Object... args) {}
 
-    }
+  @Override
+  public short getDefaultMask() {
+    return 2;
+  }
 
-    @Override
-    public short getDefaultMask() {
-        return 2;
-    }
-
-    @Override
-    public short getDefaultTarget() {
-        return -1;
-    }
+  @Override
+  public short getDefaultTarget() {
+    return -1;
+  }
 }

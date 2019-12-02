@@ -30,15 +30,15 @@ public class MainPageUtilsTable {
   private SecondMissionView secondMissionView;
 
   public MainPageUtilsTable(
-          String gameStartString,
-          String settingString,
-          MenuScreen menuScreen,
-          IntroductoryScreen introductoryScreen,
-          LevelPreference levelPreference,
-          UserRenderPreference userRenderPreference,
-          RetroManiaGame game,
-          FirstMissionView firstMissionView,
-          SecondMissionView secondMissionView) {
+      String gameStartString,
+      String settingString,
+      MenuScreen menuScreen,
+      IntroductoryScreen introductoryScreen,
+      LevelPreference levelPreference,
+      UserRenderPreference userRenderPreference,
+      RetroManiaGame game,
+      FirstMissionView firstMissionView,
+      SecondMissionView secondMissionView) {
     this.levelPreference = levelPreference;
     this.userRenderPreference = userRenderPreference;
     this.menuScreen = menuScreen;

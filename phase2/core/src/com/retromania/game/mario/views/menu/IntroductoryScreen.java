@@ -19,12 +19,7 @@ import com.retromania.game.mario.views.renderables.UserRenderPreference;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-
-/**
- *
- * The first menu screen that the user sees
- *
- * */
+/** The first menu screen that the user sees */
 @Singleton
 public class IntroductoryScreen extends MenuOptionScreen {
 
