@@ -23,10 +23,21 @@ public class Bullet extends Character implements RetroManiaModel, Collidable {
         return 3;
     }
 
+    /**
+     * @param given_world:   the world
+     * @param textureRegion: our texture region of the bullet
+     * @param x:             position x
+     * @param y:             position y
+     */
     public Bullet(World given_world, TextureRegion textureRegion, int x, int y) {
         super(textureRegion, x, y, getRadius() * 4, getRadius() * 4, 1f, given_world, x, y);
     }
 
+    /**
+     *
+     * @param isFinished: if bullet collides
+     * @param angle: the angle of the square
+     */
     public void setBulletCollided(boolean isFinished, float angle){
         this.isFinished = isFinished;
         this.angleSquare = (float) Math.toDegrees(angle) % 360;
@@ -45,6 +56,11 @@ public class Bullet extends Character implements RetroManiaModel, Collidable {
         return this;
     }
 
+    /**
+     *
+     * @return: setup the body, make the Dynamic Body
+     * Setup the rotation, create the body definition.
+     */
     @Override
     protected BodyDef setUpBodyDef() {
         BodyDef bDef = new BodyDef();
@@ -54,12 +70,21 @@ public class Bullet extends Character implements RetroManiaModel, Collidable {
         return bDef;
     }
 
+    /**
+     *
+     * @param bDef: creating a body definition
+     * @return: then return the body
+     */
     @Override
     protected Body setUpBody(BodyDef bDef) {
         this.body = getWorld().createBody(bDef);
         return body;
     }
 
+    /**
+     * Setting up the fixture, which is the polygon
+     * shape.
+     */
     @Override
     protected void setUpFixture() {
 

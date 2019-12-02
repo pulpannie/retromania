@@ -189,6 +189,7 @@ Fix: By adding the world.destroyBody. It destroys the Texture and the bullet whe
 Code Affected: PlayScreen, Header
 
 Flaw: The countdown wasn't working
+
 Fix: By adding the method countDown in header class and calling it in update method of playScreen, we fixed the problem.
 
 #Step 28
@@ -196,6 +197,7 @@ Fix: By adding the method countDown in header class and calling it in update met
 Code Affected: PlayScreen, Header
 
 Flaw: The score wasn't working
+
 Fix: By adding the method addScore in header class and called it when bullet made contact with square.
 We added variable angleSquare in bullet which keeps track of angle of square when bullet made contact
 with square. In update method of playScreen, we simply called updateScore method which updated the score
@@ -203,12 +205,20 @@ based on the angle of the square.
 
 #STEP 29
 
-CODE AFFECTED: ALL FILES
+Code Affected: ALL FILES
 
 Flaw: Reformatting code.
 Fix: Cleaned up code, loose access modifiers, fixed the unused imports.
 
-#Step FINAL
+#Step 30
+
+Code Affected: Bullet
+
+Flaw: Unnecessary code, and lack of descriptions.
+
+Fix: removed all the loose access modifiers, added more descriptions to methods.
+
+#Step Final
 
 Code Affected:
 
@@ -217,5 +227,5 @@ SINCE DIDNT HAVE ENOUGH TIME TO COMPLETE THE FINAL TOUCHES OF THE MVP,
 ATTACHED IS THE .zip file for the MVP design for the main PlayScreen
 responsible for all actions of the game.
 
-MAKING SWITCH ____
+
 
