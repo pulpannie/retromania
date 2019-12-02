@@ -3,7 +3,6 @@ package com.retromania.game.colour_shooter.individuals;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
@@ -11,13 +10,19 @@ import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Collidable;
 import com.retromania.game.shared_abstractions.RetroManiaModel;
 
+/**
+ * THIS CLASS IS RESPONSIBLE FOR MAKING THE BULLET.
+ * IT has the various features of shooting the bullet, collision.
+ */
 public class Bullet extends Character implements RetroManiaModel, Collidable {
 
     private boolean isFinished = false;
     private float angleSquare;
+
     private static int getRadius(){
         return 3;
     }
+
     public Bullet(World given_world, TextureRegion textureRegion, int x, int y) {
         super(textureRegion, x, y, getRadius() * 4, getRadius() * 4, 1f, given_world, x, y);
     }
@@ -95,7 +100,6 @@ public class Bullet extends Character implements RetroManiaModel, Collidable {
 
     @Override
     public void setInput(Object input) {
-
     }
 
     @Override

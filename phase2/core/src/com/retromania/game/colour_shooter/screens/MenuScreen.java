@@ -16,21 +16,21 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
- * T
+ * THE MAIN MENU-SCREEN. This class is responsible for drawing
+ * our buttons such as the Play, Rules etc.
  */
 public class MenuScreen implements Screen {
     private RetroManiaGame game;
     private static Stage stage;
-    ColourShooterStarter mainscreen;
 
-    private OrthographicCamera camera;
+
     public SpriteBatch batch;
     private int width;
     private int height;
 
     public MenuScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
+        OrthographicCamera camera;
         this.game = game;
-        this.mainscreen = mainscreen;
         camera = new OrthographicCamera();
         batch = new SpriteBatch();
         stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(),
@@ -40,6 +40,10 @@ public class MenuScreen implements Screen {
     }
 
 
+    /**
+     * SHOWS THE VARIOUS BUTTONS.
+     * Draw the buttons on the main screen.
+     */
     @Override
     public void show() {
         Background background = new Background("menu screen");

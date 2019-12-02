@@ -1,0 +1,47 @@
+COLOUR SHOOTER
+
+
+GOAL OF THE GAME
+__________________
+The objective of the game is to shoot the bullet in the corresponding section (colour) of the Square
+based on the textual description of the colour (i.e name of the colour). The tricky component is that the text
+of the colour varies. For example, the word 'Blue' will have a text colour of red. This changes continuously,
+and must achieve the highest possible score within the time limit.
+
+
+INTRODUCTION
+______________
+This is a colour shooting game implementing a physics engine and the LibGDX library. We are using box2D and a kinematic body
+to continuously update the rotation of a square and using other the features of a 'World' and 'Body' to create an
+interactions between the rotating square and the bullet.
+
+DESIGN
+________
+
+Firstly, in our views package we are using factory design pattern.
+The class is created to encapsulate constructor calls to get instances of screen, ensuring
+the rest of the program does not know which constructor was called.
+And secondly, we have tried to implement the MVP pattern.
+Following the MVP pattern, the Model package is responsible for the logic of the Colour Shooter game.
+The view package is responsible for the implementation of the UI, with minimal logic being implemented.
+The utils provides service for the other classes.
+
+CONFIGURATION
+_______________
+
+It was difficult to implement different configurations for our game as rendering and implementing the physics
+engine alone and using the LibGDX library for Box 2D was quite the task itself since detecting the collision
+was not as simple as just as just see if the y-value of one of the components intersects
+with another body. Since, the body is continuously rotating, the y-value is always varying
+so using the body edge collision detections and determining the relative angle formed by the rotating
+square, once the bullet is within range of the angle and also see's that the colour the bullet collided
+with is the same, then it will add + 10 points and if its not correct then it will - 5 points.
+However, some major changes from Phase 1 is that the
+
+
+MAINTAINERS
+_____________
+
+Jain, Rohan
+Khera, Abhinav
+

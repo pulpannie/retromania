@@ -3,18 +3,24 @@ package com.retromania.game.colour_shooter.individuals;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * THIS CLASS IS RESPONSIBLE FOR MAKING THE
+ * TANK WHICH SHOOTS THE BULLET AT THE BOTTOM OF THE SCREEN.
+ */
 public class Tank {
 
-  private Texture correctTank;
+    private Texture correctTank;
 
-  public Tank(int tankPref) {
-    StringBuilder strPath = new StringBuilder("colour_shooter/cannon");
-    strPath.append(tankPref);
-    strPath.append(".png");
-    correctTank = new Texture(Gdx.files.internal(strPath.toString()));
-  }
+    /**
+     * @param tankPref: GETS THE INITIAL TANK PREFERENCE
+     */
+    public Tank(int tankPref) {
+        String strPath = "colour_shooter/cannon" + tankPref +
+                ".png";
+        correctTank = new Texture(Gdx.files.internal(strPath));
+    }
 
-  public Texture getTankTexture() {
-    return correctTank;
-  }
+    public Texture getTankTexture() {
+        return correctTank;
+    }
 }

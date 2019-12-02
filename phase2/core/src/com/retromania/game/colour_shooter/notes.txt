@@ -201,3 +201,21 @@ We added variable angleSquare in bullet which keeps track of angle of square whe
 with square. In update method of playScreen, we simply called updateScore method which updated the score
 based on the angle of the square.
 
+#STEP 29
+
+CODE AFFECTED: ALL FILES
+
+Flaw: Reformatting code.
+Fix: Cleaned up code, loose access modifiers, fixed the unused imports.
+
+#Step FINAL
+
+Code Affected:
+
+Implementing the MVP for the PlayScreen.
+SINCE DIDNT HAVE ENOUGH TIME TO COMPLETE THE FINAL TOUCHES OF THE MVP,
+ATTACHED IS THE .zip file for the MVP design for the main PlayScreen
+responsible for all actions of the game.
+
+MAKING SWITCH ____
+

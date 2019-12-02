@@ -23,291 +23,213 @@ import com.retromania.game.colour_shooter.individuals.Square;
 import com.retromania.game.colour_shooter.utils.ColourShooterListener;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
+/**
+ * THIS CLASS IS RESPONSIBLE FOR MAKING THE PLAY SCREEN. THIS
+ * CLASS IS MAKING THE VARIOUS FEATURES OF THE GAME SUCH AS DRAWING
+ * NECESSARY COMPONENTS OF THE GAME SUCH AS THE ROTATING SQUARE, BULLET, ETC.
+ */
 public class PlayScreen implements Screen {
-  static Stage stage;
-  ColourShooterStarter mainscreen;
-  private World world;
-  private Box2DDebugRenderer b2ddr;
-  private Square square;
-  private Header header;
-  private float bullet_starting_pos;
-  private boolean bullet_in_motion = false;
-  public static Viewport viewport =
-      new FitViewport(RetroManiaGame.V_HEIGHT, RetroManiaGame.V_WIDTH, new OrthographicCamera());
-  Bullet bullet = null;
+    private static Stage stage;
+    private ColourShooterStarter mainscreen;
+    private World world;
+    private Box2DDebugRenderer b2ddr;
+    private Square square;
+    private Header header;
+    private float bullet_starting_pos;
+    private boolean bullet_in_motion = false;
+    public static Viewport viewport =
+            new FitViewport(RetroManiaGame.V_HEIGHT, RetroManiaGame.V_WIDTH, new OrthographicCamera());
+    private Bullet bullet = null;
 
-  public PlayScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
-    this.mainscreen = mainscreen;
-    stage = new Stage(viewport, game.sb);
-    Gdx.input.setInputProcessor(stage);
+    /**
+     * Constructor of play screen.
+     *
+     * @param game:       a retromania game instance
+     * @param mainscreen: instance from Colour Shooter Starter
+     */
+    public PlayScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
+        this.mainscreen = mainscreen;
+        stage = new Stage(viewport, game.sb);
+        Gdx.input.setInputProcessor(stage);
 
-    Background background = new Background("play_screen");
-    Image back_img = new Image(background.getBackgroundTexture());
-    back_img.setSize(RetroMania.V_HEIGHT, RetroMania.V_WIDTH);
-    back_img.setFillParent(true);
-    stage.addActor(back_img);
+        Background background = new Background("play_screen");
+        Image back_img = new Image(background.getBackgroundTexture());
+        back_img.setSize(RetroMania.V_HEIGHT, RetroMania.V_WIDTH);
+        back_img.setFillParent(true);
+        stage.addActor(back_img);
 
-    this.world = new World(new Vector2(0, 0), true);
-    this.world.setContactListener(new ColourShooterListener());
-    this.b2ddr = new Box2DDebugRenderer();
-  }
-
-  @Override
-  public void show() {
-
-    Tank tank = new Tank(mainscreen.getTankPreference());
-    Image tank_img = new Image(tank.getTankTexture());
-    tank_img.setSize((float) (RetroMania.V_HEIGHT * 0.3), (float) (RetroMania.V_WIDTH * 0.2));
-    tank_img.setPosition((float) (RetroMania.V_HEIGHT / 2) - (tank_img.getWidth() / 2), 0);
-    stage.addActor(tank_img);
-    bullet_starting_pos = tank_img.getHeight();
-    header = new Header(stage, Gdx.graphics.getHeight(), Gdx.graphics.getWidth());
-
-    square = makeSquare();
-//    square.rotateSquare(1.5f);
-//    square.increaseWeight(1000f);
-//    Square rotating_square =
-//        new Square(
-//            world,
-//            "SQUARE",
-//            viewport.getWorldWidth() / 2,
-//            (float) (viewport.getWorldHeight() * 0.6),
-//            32,
-//            32);
-//    rotating_square.body.setAngularVelocity(1.5f);
-//    rotating_square.body.setLinearDamping(1000f);
-
-    // THE OLD SQUARE LEAVE IT COMMENTED
-
-    //        square = new Image(new Texture(Gdx.files.internal("colour_shooter/square.png")));
-    //        square.setSize((float) (width* 0.6), (float) (height * 0.3));
-    //        square.setPosition((float) (width / 2) - square.getWidth() / 2,
-    //                (float) (height * 0.6) - square.getHeight() / 2);
-    //        square.setScaling(Scaling.fit);
-    //        square.setOrigin(Align.center);
-    //        stage.addActor(square);
-
-    //        world = new World(new Vector2(0, 0), true);
-    //        world.setContactListener(new ColourShooterListener());
-    //        TextureRegion squareRegion = new TextureRegion(new Texture(
-    // Gdx.files.internal("colour_shooter/square.png")));
-    //        square = new Rectangle(squareRegion, 0, 0, 64, 64, 1, world,
-    //                Constants.BIT_SQUARE, Constants.BIT_BULLET, (short) 0);
-    //        square.setPosition(viewport.getWorldWidth()/2 - square.getWidth()/2,
-    //                (float) (viewport.getWorldHeight() * 0.6));
-    //
-    //        TextureRegion blueRegion = new TextureRegion(new Texture(
-    // Gdx.files.internal("colour_shooter/blueEdge.png")));
-    //        blue = new Rectangle(blueRegion, 0, 0, 64, 10, 1, world,
-    //                Constants.BIT_BLUE, Constants.BIT_BULLET, (short) 0);
-    //        blue.setPosition(viewport.getWorldWidth()/2 - blue.getWidth()/2,
-    //                (float) (viewport.getWorldHeight() * 0.6));
-    //
-    //        TextureRegion yellowRegion = new TextureRegion(new Texture(
-    // Gdx.files.internal("colour_shooter/yellowEdge.png")));
-    //        yellow = new Rectangle(yellowRegion, 0, 0, 64, 10, 1, world,
-    //                Constants.BIT_YELLOW, Constants.BIT_BULLET, (short) 0);
-    //        yellow.setPosition(viewport.getWorldWidth()/2 - yellow.getWidth()/2,
-    //                (float) (viewport.getWorldHeight() * 0.6) + square.getHeight() -
-    // yellow.getHeight());
-    //
-    //        TextureRegion redRegion = new TextureRegion(new Texture(
-    // Gdx.files.internal("colour_shooter/redEdge.png")));
-    //        red = new Rectangle(redRegion, 0, 0, 10, 64, 1, world,
-    //                Constants.BIT_RED, Constants.BIT_BULLET, (short) 0);
-    //        red.setPosition(viewport.getWorldWidth()/2 - square.getWidth()/2,
-    //                (float) (viewport.getWorldHeight() * 0.6));
-    //
-    //        TextureRegion greenRegion = new TextureRegion(new Texture(
-    // Gdx.files.internal("colour_shooter/greenEdge.png")));
-    //        green = new Rectangle(greenRegion, 0, 0, 10, 64, 1, world,
-    //                Constants.BIT_GREEN, Constants.BIT_BULLET, (short) 0);
-    //        green.setPosition(viewport.getWorldWidth()/2 + square.getWidth()/2 - green.getWidth(),
-    //                (float) (viewport.getWorldHeight() * 0.6));;
-    //        red.setOrigin(square.getWidth() / 2,square.getHeight() / 2);
-    //        green.setOrigin(-square.getWidth() / 2 + green.getWidth(),square.getHeight() / 2);
-    //        blue.setOrigin(square.getWidth() / 2,square.getHeight() / 2);
-    //        yellow.setOrigin(square.getWidth() / 2,-square.getHeight() / 2 + yellow.getHeight());
-
-    //        b2ddr =  new Box2DDebugRenderer();
-  }
-
-  private Bullet makeBullet() {
-    TextureRegion bulletRegion =
-        new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/newBullet.png")));
-
-    int n_x = Math.round((viewport.getWorldWidth() / 2));
-    int n_y = Math.round(bullet_starting_pos);
-
-    Bullet bullet = new Bullet(world, bulletRegion, n_x, n_y);
-    return bullet;
-  }
-
-  private Square makeSquare() {
-    TextureRegion squareRegion =
-            new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/square.png")));
-
-    int n_x = Math.round(viewport.getWorldWidth()/2 - 4);
-    int n_y = Math.round((float) (viewport.getWorldHeight() * 0.6));
-    square = new Square(world, squareRegion, n_x, n_y, 16);
-    square.setPosition(square.body.getPosition().x - square.getWidth() / 2, square.body.getPosition().y - square.getHeight() / 2);
-    return square;
-  }
-
-  //    private Bullet makeBullet() {
-  //        TextureRegion bulletRegion = new TextureRegion(new
-  // Texture(Gdx.files.internal("colour_shooter/bullet.png")));
-  //
-  //        int n_x = Math.round((viewport.getWorldWidth() / 2));
-  //        int n_y = Math.round(bullet_starting_pos);
-  //
-  //        Bullet bullet = new Bullet(world, "BULLET", n_x, n_y, 6);
-  //        return bullet;
-  //    }
-
-  public void update(float dt) {
-    stage.act(dt);
-
-    if (Gdx.input.isTouched() & !bullet_in_motion) {
-      bullet_in_motion = true;
-      bullet = makeBullet();
-      bullet.move(0, 300);
-    }
-    world.step(1 / 60f, 6, 2);
-    //        square.update();
-    //        red.update();
-    //        green.update();
-    //        blue.update();
-    //        yellow.update();
-//    square.setRotation(square.body.getAngle());
-//    square.setOriginCenter();
-//    square.rotateSquare();
-    square.rotateSquare();
-
-    header.update(dt);
-    if (header.checkGameOver()) {
-      endGame();
+        this.world = new World(new Vector2(0, 0), true);
+        this.world.setContactListener(new ColourShooterListener());
+        this.b2ddr = new Box2DDebugRenderer();
     }
 
-    if (bullet != null) {
-      bullet.update();
-      if(bullet.getIsFinished()){
-        bulletCollided();
-      }
+    /**
+     * DISPLAYS THE TANK AND SETS UP THE INITIAL POSITION OF THE BULLET.
+     */
+    @Override
+    public void show() {
+
+        Tank tank = new Tank(mainscreen.getTankPreference());
+        Image tank_img = new Image(tank.getTankTexture());
+        tank_img.setSize((float) (RetroMania.V_HEIGHT * 0.3), (float) (RetroMania.V_WIDTH * 0.2));
+        tank_img.setPosition((float) (RetroMania.V_HEIGHT / 2) - (tank_img.getWidth() / 2), 0);
+        stage.addActor(tank_img);
+        bullet_starting_pos = tank_img.getHeight();
+        header = new Header(stage, Gdx.graphics.getHeight(), Gdx.graphics.getWidth());
+        square = makeSquare();
+
     }
 
-  }
-  private void updateScore(float angle) {
-    String colour = header.getColour();
-    if (angle == 45 || angle == 135 || angle == 225 || angle == 315 ) {
-      header.addScore(0);
+    private Bullet makeBullet() {
+        TextureRegion bulletRegion =
+                new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/newBullet.png")));
+
+        int n_x = Math.round((viewport.getWorldWidth() / 2));
+        int n_y = Math.round(bullet_starting_pos);
+
+        bullet = new Bullet(world, bulletRegion, n_x, n_y);
+        return bullet;
     }
-    else if ((315 < angle & angle < 360) || (0 < angle & angle < 45)) {
-      if (colour.equalsIgnoreCase("BLUE")) {
-        header.addScore(10);
-      }
-      else {
-        header.addScore(-5);
-      }
+
+    private Square makeSquare() {
+        TextureRegion squareRegion =
+                new TextureRegion(new Texture(Gdx.files.internal("colour_shooter/square.png")));
+
+        int n_x = Math.round(viewport.getWorldWidth()/2 - 4);
+        int n_y = Math.round((float) (viewport.getWorldHeight() * 0.6));
+        square = new Square(world, squareRegion, n_x, n_y, 16);
+        square.setPosition(square.body.getPosition().x - square.getWidth() / 2, square.body.getPosition().y - square.getHeight() / 2);
+        return square;
     }
-    else if (45 < angle & angle < 135) {
-      if (colour.equalsIgnoreCase("RED")) {
-        header.addScore(10);
-      }
-      else {
-        header.addScore(-5);
-      }
+
+    /**
+     * UPDATING the STAGE AND rotates the square and shoots the bullet
+     * when screen is touched and the bullet collides.
+     * @param dt
+     */
+    public void update(float dt) {
+        stage.act(dt);
+
+        if (Gdx.input.isTouched() & !bullet_in_motion) {
+            bullet_in_motion = true;
+            bullet = makeBullet();
+            bullet.move(0, 300);
+        }
+        world.step(1 / 60f, 6, 2);
+
+        square.rotateSquare();
+
+        header.update(dt);
+        if (header.checkGameOver()) {
+            endGame();
+        }
+
+        if (bullet != null) {
+            bullet.update();
+            if(bullet.getIsFinished()){
+                bulletCollided();
+            }
+        }
+
     }
-    else if (135 < angle & angle < 225) {
-      if (colour.equalsIgnoreCase("YELLOW")) {
-        header.addScore(10);
-      }
-      else {
-        header.addScore(-5);
-      }
+
+    /**
+     * This class is responsible for updating the score when the bullet
+     * collides with the proper section of the square.
+     * @param angle: angle formed of the rotating square.
+     *
+     */
+    private void updateScore(float angle) {
+        String colour = header.getColour();
+        if (angle == 45 || angle == 135 || angle == 225 || angle == 315 ) {
+            header.addScore(0);
+        } else if ((315 < angle & angle < 360) || (0 < angle & angle < 45)) {
+            if (colour.equalsIgnoreCase("BLUE")) {
+                header.addScore(10);
+            } else {
+                header.addScore(-5);
+            }
+        } else if (45 < angle & angle < 135) {
+            if (colour.equalsIgnoreCase("RED")) {
+                header.addScore(10);
+            } else {
+                header.addScore(-5);
+            }
+        } else if (135 < angle & angle < 225) {
+            if (colour.equalsIgnoreCase("YELLOW")) {
+                header.addScore(10);
+            } else {
+                header.addScore(-5);
+            }
+        } else if (225 < angle & angle < 315) {
+            if (colour.equalsIgnoreCase("GREEN")) {
+                header.addScore(10);
+            } else {
+                header.addScore(-5);
+            }
+        }
     }
-    else if (225 < angle & angle < 315) {
-      if (colour.equalsIgnoreCase("GREEN")) {
-        header.addScore(10);
-      }
-      else {
-        header.addScore(-5);
-      }
+
+    /**
+     * Bullet collisions.
+     */
+    private void bulletCollided() {
+        float angle = bullet.getAngleFinished();
+        updateScore(angle);
+        world.destroyBody(bullet.body);
+        bullet = null;
+        bullet_in_motion = false;
+        header.setRandomColour();
     }
-  }
-  private void bulletCollided() {
-    float angle = bullet.getAngleFinished();
-    updateScore(angle);
-    world.destroyBody(bullet.body);
-    bullet = null;
-    bullet_in_motion = false;
-    header.setRandomColour();
-  }
 
-  @Override
-  public void render(final float delta) {
-    update(delta);
+    /**
+     * RENDERING BULLET COLLISIONS.
+     * @param delta
+     */
+    @Override
+    public void render(final float delta) {
+        update(delta);
 
-    //        float curr = square.getRotation();
-    //        curr  = curr >= 360 ? 0 : curr + 1.5f;
-    //        square.setOriginCenter();
-    //        square.setRotation(curr);
-    //        red.setRotation(curr);
-    //        green.setRotation(curr);
-    //        blue.setRotation(curr);
-    //        yellow.setRotation(curr);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        stage.draw();
+        RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(viewport.getCamera().combined);
 
-    Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    stage.draw();
-    //        b2ddr.render(world, viewport.getCamera().combined);
-    RetroMania.getRetroManiaInstance().sb.setProjectionMatrix(viewport.getCamera().combined);
-    //        square.draw(RetroMania.getRetroManiaInstance().sb);
-    //        blue.draw(RetroMania.getRetroManiaInstance().sb);
-    //        red.draw(RetroMania.getRetroManiaInstance().sb);
-    //        green.draw(RetroMania.getRetroManiaInstance().sb);
-    //        yellow.draw(RetroMania.getRetroManiaInstance().sb);
-    //        if (bullet_in_motion) {
-    //            bullet.setPosition(bullet.getX(), bullet.getY() + 2);
-    //            bullet.draw(RetroMania.getRetroManiaInstance().sb);
-    //        }
+        RetroMania.getRetroManiaInstance().sb.begin();
 
-    RetroMania.getRetroManiaInstance().sb.begin();
+        square.draw(RetroMania.getRetroManiaInstance().sb);
 
-    square.draw(RetroMania.getRetroManiaInstance().sb);
+        RetroMania.getRetroManiaInstance().sb.end();
 
-    RetroMania.getRetroManiaInstance().sb.end();
+        RetroMania.getRetroManiaInstance().sb.begin();
+        if (bullet!=null)
+            bullet.draw(RetroMania.getRetroManiaInstance().sb);
 
-    RetroMania.getRetroManiaInstance().sb.begin();
-    if (bullet!=null)
-    bullet.draw(RetroMania.getRetroManiaInstance().sb);
+        RetroMania.getRetroManiaInstance().sb.end();
 
-    RetroMania.getRetroManiaInstance().sb.end();
+        b2ddr.render(world, viewport.getCamera().combined);
 
-    b2ddr.render(world, viewport.getCamera().combined);
+    }
 
-  }
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width, height);
+    }
 
-  @Override
-  public void resize(int width, int height) {
-    viewport.update(width, height);
-  }
+    @Override
+    public void pause() {}
 
-  @Override
-  public void pause() {}
+    @Override
+    public void resume() {
+    }
 
-  @Override
-  public void resume() {}
+    private void endGame() {}
 
-  public void endGame() {
+    @Override
+    public void hide() {}
 
-  }
-
-  @Override
-  public void hide() {}
-
-  @Override
-  public void dispose() {
-    stage.dispose();
-  }
+    @Override
+    public void dispose() {
+        stage.dispose();
+    }
 }

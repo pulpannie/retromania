@@ -22,19 +22,14 @@ public class PauseScreen implements Screen {
   private ImageButton restartButton;
 
   public Stage stage;
-  ColourShooterStarter mainscreen;
+    private ColourShooterStarter mainscreen;
 
   public PauseScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
     this.game = game;
     gameCam = new OrthographicCamera();
     gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
     this.mainscreen = mainscreen;
-    // stage = new Stage(gamePort, game.sb);
     background = new Background("pause_screen");
-
-    // Add the buttons
-
-    // Gdx.input.setInputProcessor(stage);
 
   }
 
@@ -42,7 +37,6 @@ public class PauseScreen implements Screen {
   public void show() {}
 
   public void handleInput(float dt) {
-    // What happens when button is pressed
   }
 
   public void update(float dt) {}

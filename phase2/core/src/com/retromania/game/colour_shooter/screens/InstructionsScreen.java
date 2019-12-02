@@ -16,9 +16,6 @@ import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 
-/**
- *
- */
 public class InstructionsScreen implements Screen {
 
     private RetroManiaGame game;

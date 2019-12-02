@@ -90,6 +90,5 @@ public class Rectangle extends Character implements Individual {
 
     @Override
     public void update(Object... args) {
-//        body.getPosition().set(10000, 100000);
     }
 }
