@@ -131,9 +131,6 @@ public class PauseScreen extends RetroManiaScreen {
     gamePort.update(width, height);
   }
 
-  @Override
-  public void pause() {}
-
   /** Resume the game. */
   @Override
   public void resume() {
@@ -152,9 +149,6 @@ public class PauseScreen extends RetroManiaScreen {
     dispose();
     presenter.modify();
   }
-
-  @Override
-  public void hide() {}
 
   /** Dispose the stage. */
   @Override

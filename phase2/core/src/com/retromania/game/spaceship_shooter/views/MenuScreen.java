@@ -105,9 +105,6 @@ public class MenuScreen extends RetroManiaScreen {
   }
 
   @Override
-  public void pause() {}
-
-  @Override
   public void resume() {}
 
   /** Start the game. */
@@ -115,9 +112,6 @@ public class MenuScreen extends RetroManiaScreen {
     dispose();
     presenter.start();
   }
-
-  @Override
-  public void hide() {}
 
   /** Dispose the stage. */
   @Override

@@ -22,7 +22,7 @@ public class MenuScreenPresenter extends Presenter {
   private Label highScoreLabel;
   /** Label that shows up latest score */
   private Label latestScoreLabel;
-    /** Stage that holds table of labels to print */
+  /** Stage that holds table of labels to print */
   private Stage stage;
 
   /**
@@ -71,9 +71,6 @@ public class MenuScreenPresenter extends Presenter {
     stage = new Stage();
     stage.addActor(table);
   }
-
-  /** dispose the menu screen */
-  public void dispose() {}
 
   /** update the menu screen */
   public void update(float dt) {

@@ -146,12 +146,6 @@ public class SettingScreen extends RetroManiaScreen {
     gamePort.update(width, height);
   }
 
-  @Override
-  public void pause() {}
-
-  @Override
-  public void resume() {}
-
   /**
    * Return to the menu screen with the string represents the theme of the game and a boolean
    * represent whether the user choose to play music.
@@ -160,9 +154,6 @@ public class SettingScreen extends RetroManiaScreen {
     dispose();
     presenter.returnMenu(gameModeBox.getSelected(), musicBox.isChecked());
   }
-
-  @Override
-  public void hide() {}
 
   /** Dispose the stage. */
   @Override

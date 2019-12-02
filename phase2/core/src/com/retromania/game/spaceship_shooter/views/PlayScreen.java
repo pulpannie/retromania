@@ -133,24 +133,18 @@ public class PlayScreen extends RetroManiaScreen {
     gamePort.update(width, height);
   }
 
-  /** Start the game. */
+  /** pause the game. */
   @Override
   public void pause() {
     dispose();
     presenter.pause();
   }
 
-  @Override
-  public void resume() {}
-
   /** End the game and return to the menu screen. */
   private void endGame() {
     dispose();
     presenter.endGame();
   }
-
-  @Override
-  public void hide() {}
 
   /** Dispose the stage. */
   @Override
