@@ -29,5 +29,6 @@ MAINTAINERS
 * Rohan Jain
 * Abhinav Khera
 * Thuy Le Quang Tuong
+* Umid Targuliyev
 
 
