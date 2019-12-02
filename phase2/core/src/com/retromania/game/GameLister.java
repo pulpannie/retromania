@@ -28,7 +28,7 @@ import com.retromania.game.tic_tac_toe.TicTacToeConfiguration;
 
 import java.util.ArrayList;
 
-import static com.retromania.game.special_mario.SpecialMarioConfiguration.FINAL_GAME;
+import static com.retromania.game.mario.SpecialMarioConfiguration.FINAL_GAME;
 
 public class GameLister extends RetroManiaScreen {
 

@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.retromania.game.shared_abstractions.Creatable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 
-import static com.retromania.game.special_mario.SpecialMarioConfiguration.FINAL_GAME;
+import static com.retromania.game.mario.SpecialMarioConfiguration.FINAL_GAME;
 
 
 @android.annotation.TargetApi(Build.VERSION_CODES.N)

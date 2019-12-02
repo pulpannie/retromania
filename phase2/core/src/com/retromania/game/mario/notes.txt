@@ -1,0 +1,441 @@
+# Step 1
+
+Code affected: SpecialMarioStarter
+
+The environment of the first level Of the game was made, added, and shown on the device
+
+
+# Step 2
+
+Code affected: SpecialMarioStarter
+
+Flaw : The code used to use the old constructors of RetroManiaInnerGame which required the use of
+RetroManiaInnerGame, but we didn't need that instance in our code.
+Fix: Used the new
+
+
+# Step 3
+
+Code affected: SpecialMarioStarter
+
+Flaw : There only needs to be one instance of the inner game, therefore it is best to use the
+singleton design pattern, this also helps with removing the passing around of the value of the inner
+game.
+Fix: Used Singleton design pattern for the said class.
+
+
+# Step 4
+
+Code affected: MainPlayer
+
+MainPlayer class added. This class is going to be responsible for the behaviour, posture and
+presentation of the main player. TODO : Use Facade design pattern in the future inorder to,
+divide these responsibilities.
+
+# Step 5
+
+Code affected: MainPlayer
+
+MainPlayer View And Figure are now attached to each other.
+
+
+# Step 6
+
+Code affected: MainPlayer, SpecialMarioStarter
+
+Basic movement was added to the main player, it can move along the x axis and also jump,
+also the gameCam now follows the mario around.
+
+
+# Step 7
+
+Code affected: MainPlayer
+
+A Hat was added to the player that acts as a sensor for allowing us to recognise collisions with the
+top of our character.
+
+
+# Step 8
+
+Code affected: MainPlayer, SpecialMarioStarter
+
+Flaw : Even though that SpecialMarioStarter was using the singleton design pattern, we still had to
+pass it around to MainPlayer because it was being instantiated in our constructor.
+
+Fix: We made use of our "show" method, which is called by Libgdx whenever the screen is about to be
+shown for the first time. We instantiated the value of SpecialMarioStarter here, because by here
+our singleton object is initialized and the constructor of MainPlayer has been already called,
+so we can use our singleton design pattern.
+
+
+
+# Step 9
+
+Code affected: SpecialMarioStarter, Obstacle, TiledMapIndividual
+
+Flaw : SpecialMarioStarter had the responsibility to make individuals from the tile map, while that
+is not on of it's concerns, this broke the single responsibility rule.
+
+Fix: An abstract class, called TiledMapIndividual was made in order to take care of any type of
+initialization that all tiled map individuals need. Obstacle, was added as it's first subclass,
+which includes barriers, such as walls, ground and etc.
+
+
+# Step 10
+
+Code affected: Layers
+
+Made an enum that encapsulates the process of making the objects of a layer and retrieving the
+information of the layer from the tmx file. This enum uses java reflection in order to grab the
+right constructor and class for each type of layer.
+
+
+# Step 11
+
+Code affected: TiledMapIndividualFactory, Fire, FriezingBlock, Obstacle, Reward, Water
+
+Made a factory class that uses the Layers to class inorder to construct all the different types of
+layers from the ground up.
+
+
+# Step 12
+
+Code affected: MainPlayer, MainPlayer.BodyPart, MainPlayer.MainPlayerCollisionInfo,
+MarioWorldListener
+
+MainPlayer.BodyPart : Made an enum for giving info about the part of the fixture of the mainPlayers
+body which was in contact.
+
+MainPlayer.MainPlayerCollisionInfo : This class incorporates both MainPlayer.BodyPart, and
+MainPlayer for the use of the other object that has been in contact with the player.
+
+MarioWorldListener : beginContact was implemented.
+
+# Step 13
+
+Code affected: SpecialMarioStarter
+
+Music added to the level of the game.
+
+# Step 14
+
+Code affected: Collidable
+
+
+Made an interface that takes care of setting up what can collide with a fixture and what is the
+mask of the fixture.
+
+
+# Step 15
+
+Code affected: TiledMapIndividual
+
+Flaw : Constructor of the class had more than one concern and there fore it was becoming a
+behemoth.
+
+Fix: Four helper functions were made inside the class to help preserve the rules introduced by
+Uncle Bob about functions in https://youtu.be/QedpQjxBPMA?list=PLlu0CT-JnSasQzGrGzddSczJQQU7295D2.
+
+
+
+# Step 16
+
+Code affected: MainPlayer
+
+Flaw : createMainPlayer function of the class had more than one concern and there fore it was
+becoming a behemoth.
+
+Fix: six helper functions were made inside the class to help preserve the rules introduced by
+Uncle Bob about functions in https://youtu.be/QedpQjxBPMA?list=PLlu0CT-JnSasQzGrGzddSczJQQU7295D2.
+TODO the number of helper functions is growing so much that maybe this class is not responsible
+for only one concern, try to fix in future.
+
+
+# Step 17
+
+Code affected: MainPlayer, MainPlayerCollisionInfo, BodyPart, Character, CharacterSprite
+
+Flaw : As Described in step 16 the class for MainPlayer was becoming to big and it had different
+concerns such as Creating the texture, handling box2d and the logic of the MainPlayer at the
+same time.
+
+Fix: Class CharacterSprite was made for handling the concern of showing each character, with the
+goal of using it in future for enemies as well. Class Character was made inorder to handle box2d.
+Also the Class BodyPart and MainPlayerCollisionInfo are now classes outside MainPlayer because they
+can be used in the future for other classes such as enemies.
+
+
+
+
+# Step 18
+
+Code affected: SpecialMarioStarter, WorldInformation
+
+Flaw : There was too many functions in SpecialMarioStarter because there is more than one thing
+that this class is trying to implement.
+
+Fix: Added WorldInformation class, which has the box2d world, the tiles that are loaded into the
+world, and also the atlas that will be used in the world to show things and anything that might be
+used to initialize the whole world.
+
+
+# Step 19
+
+Code affected: SpecialMarioStarter, GameRenderer
+
+Flaw : There was too many functions in SpecialMarioStarter because there is more than one thing
+that this class is trying to implement.
+
+Fix: Added GameRenderer class, which has the responsibility to render our game, this includes having
+the necessary members and game cams inorder to be able to show all of the game.
+
+
+# Step 20
+
+Code affected: MusicManager, SpecialMarioStarter
+
+Flaw : The SpecialStarter was managing songs while it only has the duty of starting the innerGame
+and save information about it.
+
+Fix: Added MusicManager class that manages the music.
+
+
+# Step 21
+
+Code affected: MainPageUtilsTable, MenuScreen
+
+Made the basic classes that help show the first page : MenuScreen is responsible for showing the
+info about games name and the basic button for navigating game, and MainPageUtilsTable is the class
+that makes the table that holds the buttons that contain the button for navigating the first menu.
+
+
+# Step 22
+
+Code affected: MainPageUtilsTable
+
+Functionality added to menu buttons.
+
+
+# Step 23
+
+Code affected: MenuScreen, SettingScreen, IntroductoryScreen
+
+Flaw : It was hard to do navigation of the menu with one class.
+
+Fix : From now on MenuScreen will have many choices for the screen that it's showing. This class is
+gonna act as the Controller and there will be views that can be plugged in selectedScreen member.
+This is very like the MVC architecture. when a something is clicked, this Controller is called and
+the new view is gonna be set in selectedScreen. The values that selectedScreen can take right now are
+instances from the classes : SettingScreen, IntroductoryScreen which are the settings screen and
+the main menu screen.
+
+
+# Step 24
+
+Code affected: SpecialMarioStarter, GameRenderer, MainPlayer
+
+Flaw : MainPlayer was dependant on the gamePort which is something that should be in the view
+and not in the models, therefore it would have been impossible to test MainPlayer as a stand alone
+model, also gamePort was instantiated in the SpecialMarioGameStarter, which is like our facade.
+
+Fix : First of all we moved our gamePort to gameRenderer and then changed the update method in
+our mainPlayer to take in the values it needs for updating the player so that it doesn't call the
+gamePort or Gdx directly for the values, now the model is independent from the view.
+
+
+
+
+
+# Step 25
+
+Code affected: SpecialMarioStarter, WorldInformation -> WorldLoader
+
+Flaw : WorldInformation was having the the responsibility of both giving render information and
+loading the game assets.
+
+Fix : All the codes were refactored so that WorldLoader is the only class responsible for
+loading the information for loading the assets and also has this sole responsibility.
+
+
+
+# Step 26
+
+Code affected: MainPlayer
+
+Flaw : MainPlayer was implementing Individuals which is deprecated.
+
+Fix : MainPlayer is implementing RetroManiaModel instead.
+
+
+# Step 27
+
+Code affected: GameRenderer, SpecialMarioStarter
+
+Flaw : GameRenderer was setting up the input for SpecialMarioStarter which is not it's responsibility
+that is the responsibility of the controller/presenter.
+
+Fix : The code was reformatted into SpecialMarioStarter.
+
+# Step 28
+
+Code affected : SpecialMarioStarterCreator, WorldLoader, SpecialMarioStarter
+
+Flaw : We were injecting WorldLoader by hard coding it in the class, which causes dependency.
+
+Fix : We used dagger 2 do inject an instance of WorldLoader to SpecialMarioStarter.
+
+
+# Step 29
+
+Code affected : SpecialMarioStarter, MenuScreen, GameRenderer
+
+Flaw : We were injecting MenuScreen and GameRenderer by hard coding it in the class,
+which causes dependency.
+
+Fix : We used dagger 2 do inject an instance of MenuScreen and GameRenderer to SpecialMarioStarter.
+
+# Step 30
+
+Code affected : PlayableOption1.tmx
+
+Added new map
+
+# Step 31
+
+Code affected : MenuScreen, SettingScreen, IntroductoryScreen
+
+Flaw : We were injecting SettingScreen and IntroductoryScreen by hard coding it in the class,
+which causes dependency.
+
+Fix : We used dagger 2 do inject an instance of SettingScreen and IntroductoryScreen to
+SpecialMarioStarter.
+
+
+# Step 32
+
+Code affected : TiledMapIndividualFactory, WorldLoader, TileMapLoader
+
+Flaw : There was a dependency cycle between TiledMapIndividualFactory and WorldLoader, which was
+detected using dagger 2.
+
+Fix : Used dagger 2 to remove the dependency cycle and also TileMapLoader was created to do the
+loading of tiles instead of leaving that responsibility with rest of the responsibilities with
+worldLoader.
+
+
+
+# Step 33
+
+Code affected : GameRenderer, TileLoader
+
+Added the base code for changing the levels.
+
+TODO : Refactor the code into the appropriate classes.
+
+
+# Step 34
+
+Code affected : WorldLoader, MainPlayer, SpecialMarioStarter
+
+Flaw : We are using dagger 2 inorder to avoid righting Factory and Builders our self but the whole
+purpose of WorldLoader was exactly that, this was because we were not able to make instances of
+the mainPlayer using simple @Inject.
+
+Fix : We used Builders provided by dagger 2 to provide the values for MainPlayers constructor and
+make workLoader even smaller. TODO try to destroy WorkLoader completely in the next steps.
+
+# Step 35
+
+Code affected : MusicManager, SpecialMarioStarter, WorldLoader
+
+Flaw : AS explained in step 34 WorldLoader use was redundant in the presence of dagger 2.
+
+Fix : We injected the MusicManager using dagger builder and destroyed WorldLoader.
+
+
+# Step 36
+
+Code affected : TileMapLoader, TiledMapIndividualFactory
+
+Flaw : The two aforementioned classes had a dependency cycle between one another, this wasn't
+discovered until the use of dagger 2.
+
+Fix : Because both of the classes had similar responsibilities we destroyed the first class and
+reformatted the code to the latter class.
+
+
+# Step 37
+
+Code affected : All the package
+
+Flaw : After extensive talks and consideration we figured out there is no way we can implement the
+MVP Project Architecture and have the Screens be the presenters at the same time, because in that
+scenario we will have to pass the value of the presenter to the view and the value of the view
+to the presenter and that creates a cycle in our directed dependency graph which will make the
+dagger break.
+
+Fix : We changed the project in a way that there views are passed to explicit presenters and they
+are the ones that talk with the models.
+
+
+# Step 38
+
+Code affected : views and presenters
+
+Flaw : TiledMaps are part of our models, that are made in the tile map maker and they should not
+depend on the view and also not on the presenter. (TiledMap is kind of like our data base of levels).
+
+Fix : We changed the position of the tiled map factory to the models were it is actually being  used
+to instantiate different models. We also injected the value of the tile map to the presenter using
+the levelProvider and that value of tileMap will be given to the renderer.
+
+
+
+# Step 39
+
+Code affected : All the package
+
+
+Menu completed, and the renderer and the levels are now orthogonal.
+
+
+# Step 40
+
+Code affected : All of the package
+
+Beta Version Completed
+
+# Step 41
+
+Code affected : views
+
+all renderables are now private but the interfaces and the providers
+
+
+# Step 42
+
+Code affected : views
+
+All instances of the models were deleted in the views and they are now notified or accessed through
+the presenter.
+
+
+# Step 43
+
+Code affected : Models
+
+Doc updated
+
+
+# Step 44
+
+Code affected : Views, MissionViews
+
+All Direct Access to Models (MainPlayer) were removed
+
+
+# Step 45
+
+Code affected : SurvivorRenderer
+
+Reloader Bug fixed
