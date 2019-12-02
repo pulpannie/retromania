@@ -1,33 +1,38 @@
 package com.retromania.game.tic_tac_toe.presenters;
 
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.retromania.game.tic_tac_toe.utils.ImageButtonBuilder;
-import com.retromania.game.tic_tac_toe.screens.PlayScreen;
 import com.retromania.game.tic_tac_toe.utils.UserPreference;
 
+/**
+ * presenter for the MenuScreen class.
+ * @author Hyokyung Kim
+ */
 public class MenuPresenter{
-    PlayScreen playScreen;
-    ImageButtonBuilder imageButtonBuilder;
-    static UserPreference userPreference = new UserPreference();
+    protected static UserPreference userPreference = new UserPreference();
 
-
-    public MenuPresenter(PlayScreen playScreen) {
-        this.playScreen = playScreen;
-        imageButtonBuilder = new ImageButtonBuilder();
-    }
-
+    /**
+     * sets the user's cat preference to the opposite original preference.
+     */
     public void reverseCat(){
         userPreference.setCat(!userPreference.getCat());
     }
 
+    /**
+     * increments the size of the game.
+     */
     public void addSize(){
         userPreference.addSize();
     }
 
+    /**
+     * decrements the size of the game.
+     */
     public void decreaseSize(){
         userPreference.decreaseSize();
     }
 
+    /**
+     * @return gets the game size.
+     */
     public int getGameSize(){
         return userPreference.getGameSize();
     }

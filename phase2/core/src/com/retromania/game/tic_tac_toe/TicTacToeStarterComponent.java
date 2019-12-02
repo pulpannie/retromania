@@ -10,6 +10,10 @@ import dagger.BindsInstance;
 import dagger.Component;
 
 
+/**
+ * dagger configuration for TicTacToeStarter class.
+ * @author Pooria.
+ */
 @Singleton
 @Component(modules = {GameCamProvider.class})
 public interface TicTacToeStarterComponent {

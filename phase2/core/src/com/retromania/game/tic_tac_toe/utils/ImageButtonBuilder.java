@@ -10,9 +10,17 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import dagger.Component;
 
+/**
+ * builds instances of ImageButton class.
+ * @author Hyokyung Kim.
+ */
 public class ImageButtonBuilder {
     private ImageButton imageButton;
 
+    /**
+     * @param path the name of the file
+     * @return the constructed ImageButton.
+     */
     public ImageButton buildButton(String path) {
         path = "tic_tac_toe/" + path;
         imageButton = new ImageButton(
@@ -20,6 +28,11 @@ public class ImageButtonBuilder {
         return imageButton;
     }
 
+    /**
+     * @param path1 the name of the first file.
+     * @param path2 the name of the second file.
+     * @return the constructed ImageButton.
+     */
     public ImageButton buildOnOffButton(String path1, String path2) {
         path1 = "tic_tac_toe/" + path1;
         path2 = "tic_tac_toe/" + path2;

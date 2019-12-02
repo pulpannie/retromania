@@ -21,11 +21,15 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * implements the view during the menu screen.
+ * @author Hyokyung Kim.
+ */
 @Singleton
 public class MenuScreen extends RetroManiaScreen {
     private Stage stage;
     private SpriteBatch batch;
-    private OrthographicCamera gamecam;
+    private OrthographicCamera gameCam;
     private BitmapFont font = new BitmapFont();
     private float gameWidth;
     private float gameHeight;
@@ -37,20 +41,30 @@ public class MenuScreen extends RetroManiaScreen {
     private MenuScreenButtonHelper menuScreenButtonHelper;
     private ArrayList<ImageButton> imageButtons;
 
+    /**
+     *
+     * @param gameCam new OrthographicCamera instantiated through dagger.
+     * @param playScreen new PlayScreen instantiated through dagger.
+     * creates a new instance of menuPresenter, menuScreenButtonHelper.
+     */
     @Inject
-    public MenuScreen(OrthographicCamera gamecam, PlayScreen playScreen) {
-        this.menuPresenter = new MenuPresenter(playScreen);
+    public MenuScreen(OrthographicCamera gameCam, PlayScreen playScreen) {
+        this.menuPresenter = new MenuPresenter();
         this.playScreen = playScreen;
-        this.gamecam = gamecam;
+        this.gameCam = gameCam;
         this.menuScreenButtonHelper = new MenuScreenButtonHelper(menuPresenter);
     }
 
+    /**
+     * shows the screen.
+     * instantiates all variables needed for the interface.
+     */
     @Override
     public void show() {
 
         gameWidth = Gdx.graphics.getWidth();
         gameHeight = Gdx.graphics.getHeight();
-        viewport = new FillViewport(gameWidth, gameHeight, gamecam);
+        viewport = new FillViewport(gameWidth, gameHeight, gameCam);
         batch = new SpriteBatch();
         title = new Texture(Gdx.files.internal("tic_tac_toe/title.png"));
         stage = new Stage(viewport, game.sb);
@@ -66,12 +80,20 @@ public class MenuScreen extends RetroManiaScreen {
 
     }
 
+    /**
+     * handles user input.
+     */
     public void handleInput() {
         if (playButton.isPressed()) {
             RetroMania.getRetroManiaInstance().setScreen(playScreen);
         }
     }
 
+    /**
+     * Renders the screen.
+     * @param delta time between the last frame and this frame.
+     * displays all variables needed to be displayed.
+     */
     @Override
     public void render(float delta) {
         handleInput();
@@ -80,13 +102,16 @@ public class MenuScreen extends RetroManiaScreen {
         stage.act(delta);
         game.sb.setProjectionMatrix(stage.getCamera().combined);
         stage.draw();
-        batch.setProjectionMatrix(gamecam.combined);
+        batch.setProjectionMatrix(gameCam.combined);
         drawTitle();
         writeCats();
         writeSize();
 
     }
 
+    /**
+     * draws the Title of the game on the screen.
+     */
     private void drawTitle(){
         batch.begin();
         batch.draw(
@@ -96,6 +121,9 @@ public class MenuScreen extends RetroManiaScreen {
         batch.end();
     }
 
+    /**
+     * writes the label for the catButton on the screen.
+     */
     private void writeCats(){
         batch.begin();
         font.setColor(Color.BLACK);
@@ -104,18 +132,28 @@ public class MenuScreen extends RetroManiaScreen {
         batch.end();
     }
 
+    /**
+     * writes the size of the game on the screen.
+     */
     private void writeSize(){
         batch.begin();
         font.draw(batch, Integer.toString(menuPresenter.getGameSize()), gameWidth / 2 + 65, gameHeight / 4 - 20);
         batch.end();
     }
 
-
+    /**
+     *
+     * @param width resize the screen to this width
+     * @param height resize the screen to this height
+     */
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
     }
 
+    /**
+     * disposes a variable after its usage.
+     */
     public void dispose() {
         stage.dispose();
     }

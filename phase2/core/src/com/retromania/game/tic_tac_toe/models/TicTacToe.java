@@ -1,4 +1,4 @@
-package com.retromania.game.tic_tac_toe.individuals;
+package com.retromania.game.tic_tac_toe.models;
 
 import com.retromania.game.tic_tac_toe.utils.UserPreference;
 
