@@ -11,6 +11,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.Locale;
 
+/**
+ * THIS IS THE HEADER CLASS. Makes the header for the PlayScreen.
+ * It makes the Table which holds the score, timer, and colour, and also updates each
+ * of these components.
+ */
 public class Header {
     public Viewport viewport;
     private Integer worldTimer = 30;
@@ -44,8 +49,6 @@ public class Header {
 
         timeTracker = new Label(String.format(Locale.US,"%02d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
-
-
         table.add(scoreText).expandX().padTop(10);
         table.add(colourText).expandX().padTop(10);
         table.add(timeText).expandX().padTop(10);
@@ -57,7 +60,10 @@ public class Header {
         stage.addActor(table);
     }
 
-    public void countDown(float dt) {
+    /**
+     * @param dt: delta time. This makes the timer and counts down.
+     */
+    private void countDown(float dt) {
         timeCount += dt;
         if (timeCount >= 1 & worldTimer > 0) {
             worldTimer--;
@@ -71,11 +77,14 @@ public class Header {
         }
     }
 
+    /**
+     *
+     * @param addToScore: returning the score.
+     */
     public void addScore(int addToScore){
         if (score + addToScore >= 0) {
             score = score + addToScore;
-        }
-        else {
+        } else {
             score = 0;
         }
         scoreTracker.setText(String.format(Locale.US, "%03d", score));
@@ -93,6 +102,9 @@ public class Header {
         return colour;
     }
 
+    /**
+     * Creating the random colour and changing the text of the word.
+     */
     public void setRandomColour() {
         int randomNumber1 = (int) (Math.random() * 4);
         String[] arrayColorText = {"RED", "GREEN", "BLUE", "YELLOW"};

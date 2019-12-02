@@ -22,7 +22,7 @@ public class PauseScreen implements Screen {
   private ImageButton restartButton;
 
   public Stage stage;
-    private ColourShooterStarter mainscreen;
+  private ColourShooterStarter mainscreen;
 
   public PauseScreen(RetroManiaGame game, ColourShooterStarter mainscreen) {
     this.game = game;
@@ -30,7 +30,6 @@ public class PauseScreen implements Screen {
     gamePort = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gameCam);
     this.mainscreen = mainscreen;
     background = new Background("pause_screen");
-
   }
 
   @Override

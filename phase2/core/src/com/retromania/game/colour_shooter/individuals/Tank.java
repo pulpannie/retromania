@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * THIS CLASS IS RESPONSIBLE FOR MAKING THE
- * TANK WHICH SHOOTS THE BULLET AT THE BOTTOM OF THE SCREEN.
+ * THIS CLASS IS RESPONSIBLE FOR MAKING THE TANK WHICH SHOOTS THE BULLET AT THE BOTTOM OF THE
+ * SCREEN.
  */
 public class Tank {
 
@@ -15,8 +15,7 @@ public class Tank {
      * @param tankPref: GETS THE INITIAL TANK PREFERENCE
      */
     public Tank(int tankPref) {
-        String strPath = "colour_shooter/cannon" + tankPref +
-                ".png";
+        String strPath = "colour_shooter/cannon" + tankPref + ".png";
         correctTank = new Texture(Gdx.files.internal(strPath));
     }
 

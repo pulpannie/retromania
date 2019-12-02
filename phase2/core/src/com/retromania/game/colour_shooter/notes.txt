@@ -218,6 +218,14 @@ Flaw: Unnecessary code, and lack of descriptions.
 
 Fix: removed all the loose access modifiers, added more descriptions to methods.
 
+#Step 31
+
+Code Affected: ALL
+
+Flaw: not cleaned up
+
+Fix: reformatted code, and cleaned up. 
+
 #Step Final
 
 Code Affected:

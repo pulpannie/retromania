@@ -10,17 +10,22 @@ import com.retromania.game.shared_abstractions.Character;
 import com.retromania.game.shared_abstractions.Collidable;
 
 /**
- * THIS CLASS IS RESPONSIBLE FOR MAKING THE
- * SQUARE WHICH IS THE ROTATING SQUARE.
+ * THIS CLASS IS RESPONSIBLE FOR MAKING THE SQUARE WHICH IS THE ROTATING SQUARE.
  */
 public class Square extends Character implements Collidable {
-    private BodyDef bDef;
     private FixtureDef fixtureDef;
 
     private float getRadius() {
         return 16;
     }
 
+    /**
+     * @param given_world:   creating world
+     * @param textureRegion: creating textureRegion
+     * @param x:             position x
+     * @param y:             position y
+     * @param radius:        radius of the square.
+     */
     public Square(World given_world, TextureRegion textureRegion, int x, int y, int radius) {
         super(
                 textureRegion,
@@ -39,9 +44,12 @@ public class Square extends Character implements Collidable {
         return this;
     }
 
+    /**
+     * @return: return of type BodyDef. This method sets up the body.
+     */
     @Override
     protected BodyDef setUpBodyDef() {
-        bDef = new BodyDef();
+        BodyDef bDef = new BodyDef();
         bDef.position.set(getInitialXInTheWorld(), getInitialYInTheWorld());
         bDef.fixedRotation = true;
         bDef.type = BodyDef.BodyType.KinematicBody;
@@ -59,7 +67,6 @@ public class Square extends Character implements Collidable {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(getRadius() * 2, getRadius() * 2);
         fixtureDef = new FixtureDef();
-
 
         setDefaultCategoryMask();
         setDefaultCollidableWith();
@@ -83,12 +90,13 @@ public class Square extends Character implements Collidable {
         return -1;
     }
 
-    public void rotateSquare(){
+    /**
+     * This method is responsible for setting up the rotation of the square.
+     */
+    public void rotateSquare() {
         this.body.setAngularVelocity(1.5f);
         float curr = this.body.getAngle();
-        setRotation(curr*(180f/(float) Math.PI));
+        setRotation(curr * (180f / (float) Math.PI));
         setOriginCenter();
-
-    }
-
+  }
 }
