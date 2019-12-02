@@ -1,10 +1,9 @@
 package com.retromania.game.special_mario.presenter;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.World;
-import com.retromania.game.special_mario.abstractions.DeathObservable;
 import com.retromania.game.special_mario.abstractions.DeathObserver;
-import com.retromania.game.special_mario.abstractions.FinisherObservable;
 import com.retromania.game.special_mario.abstractions.FinisherObserver;
 import com.retromania.game.special_mario.models.player.MainPlayerInput;
 import com.retromania.game.special_mario.models.player.MainPlayer;
@@ -14,7 +13,7 @@ import com.retromania.game.special_mario.utils.MarioWorldListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MarioGamePresenter implements MarioGamePresentable, FinisherObservable, DeathObservable {
+public abstract class MarioGamePresenter implements MarioGamePresentable {
 
   private MainPlayer mainPlayer;
   private World world;
@@ -51,6 +50,7 @@ public abstract class MarioGamePresenter implements MarioGamePresentable, Finish
     return levelPreference.getCurrentTileMap();
   }
 
+  @Override
   public void setMainPlayerInput(MainPlayerInput mainPlayerInput) {
     mainPlayer.setInput(mainPlayerInput);
   }
@@ -83,5 +83,26 @@ public abstract class MarioGamePresenter implements MarioGamePresentable, Finish
   @Override
   public void addFinisherObserver(FinisherObserver finisherObserver) {
     finishObservers.add(finisherObserver);
+  }
+
+
+  @Override
+  public void createPlayerFromScratch() {
+    mainPlayer.createMainPlayer();
+  }
+
+  @Override
+  public float getXMainPlayer() {
+    return mainPlayer.getX();
+  }
+
+  @Override
+  public float getYMainPlayer() {
+    return mainPlayer.getY();
+  }
+
+  @Override
+  public void letMainPlayerShow(SpriteBatch sb) {
+    mainPlayer.draw(sb);
   }
 }

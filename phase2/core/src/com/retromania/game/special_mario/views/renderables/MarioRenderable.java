@@ -5,46 +5,35 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.Renderable;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
-import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.presenter.MarioGamePresentable;
-import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 
-public abstract class MarioRenderable implements Renderable, MarioShowable {
+abstract class MarioRenderable implements Renderable, MarioShowable {
 
-  private MarioGamePresentable marioGamePresentable;
+  MarioGamePresentable marioGamePresentable;
+
   private TiledMap currTiledMap;
 
   private OrthogonalTiledMapRenderer orthogRenderer;
   RetroManiaGame game = RetroMania.getRetroManiaInstance();
-  Box2DDebugRenderer b2ddr;
   OrthographicCamera gameCam;
 
   Viewport gamePort;
-  MainPlayer mainPlayer;
-  World world;
 
   MarioRenderable(
-      MainPlayer mainPlayer,
-      World world,
-      SpecialMarioStarterPresenter marioGamePresenter,
+      MarioGamePresentable marioGamePresentable,
       OrthogonalTiledMapRenderer orthogRendererr,
       OrthographicCamera gameCam,
       Viewport gamePort) {
+    this.marioGamePresentable = marioGamePresentable;
+    this.currTiledMap = this.marioGamePresentable.getTileMap();
     this.gamePort = gamePort;
     this.gameCam = gameCam;
-    this.marioGamePresentable = marioGamePresenter;
-    this.currTiledMap = this.marioGamePresentable.getTileMap();
-    this.world = world;
-    this.mainPlayer = mainPlayer;
     this.orthogRenderer = orthogRendererr;
     setUpOrthogRenderer();
-    b2ddr = new Box2DDebugRenderer();
   }
 
 
@@ -84,6 +73,10 @@ public abstract class MarioRenderable implements Renderable, MarioShowable {
   @Override
   public void dispose() {
     orthogRenderer.dispose();
-    b2ddr.dispose();
+  }
+
+  @Override
+  public void setPresenter(MarioGamePresentable marioGamePresentable){
+    this.marioGamePresentable = marioGamePresentable;
   }
 }

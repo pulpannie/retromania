@@ -14,7 +14,7 @@ class UserRenderPreferenceMario implements UserRenderPreference {
   private GhostRenderer ghostRenderer;
   private MarioRenderable selectedRenderer;
   private SurvivalRenderer survivalRenderer;
-  private Map<Supplier<MarioRenderable>, String> functionOfRenderModeMap = new HashMap<>();
+  private Map<Supplier<MarioShowable>, String> functionOfRenderModeMap = new HashMap<>();
 
   @Inject
   UserRenderPreferenceMario(
@@ -34,33 +34,33 @@ class UserRenderPreferenceMario implements UserRenderPreference {
   }
 
   @Override
-  public Map<Supplier<MarioRenderable>, String> getRenderModeFunctions() {
+  public Map<Supplier<MarioShowable>, String> getRenderModeFunctions() {
     return functionOfRenderModeMap;
   }
 
   @Override
-  public MarioRenderable setGameRenderNormal() {
+  public MarioShowable setGameRenderNormal() {
     this.selectedRenderer = gameRenderer;
     start();
     return selectedRenderer;
   }
 
   @Override
-  public MarioRenderable setGameRenderSurvival() {
+  public MarioShowable setGameRenderSurvival() {
     this.selectedRenderer = survivalRenderer;
     start();
     return selectedRenderer;
   }
 
   @Override
-  public MarioRenderable setGameRenderGhost() {
+  public MarioShowable setGameRenderGhost() {
     this.selectedRenderer = ghostRenderer;
     start();
     return selectedRenderer;
   }
 
   @Override
-  public MarioRenderable getRenderable() {
+  public MarioShowable getRenderable() {
     return selectedRenderer;
   }
 }
