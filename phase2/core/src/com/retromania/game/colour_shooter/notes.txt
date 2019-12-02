@@ -224,16 +224,23 @@ Code Affected: ALL
 
 Flaw: not cleaned up
 
-Fix: reformatted code, and cleaned up. 
+Fix: reformatted code, and cleaned up.
+
+#Step 32
+
+Code Affected: All classes
+
+Flaw: not cleaned up
+
+Fix: continued to reformat and fix code.
 
 #Step Final
 
 Code Affected:
 
-Implementing the MVP for the PlayScreen.
-SINCE DIDNT HAVE ENOUGH TIME TO COMPLETE THE FINAL TOUCHES OF THE MVP,
-ATTACHED IS THE .zip file for the MVP design for the main PlayScreen
-responsible for all actions of the game.
+Implementing the MVP for the PlayScreen. This required us to change around the code
+for all of our classes and changed the structure of our packages as individuals is now "models"
+and screens to "views".
 
 
 

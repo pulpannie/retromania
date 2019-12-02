@@ -25,6 +25,7 @@ And secondly, we have tried to implement the MVP pattern.
 Following the MVP pattern, the Model package is responsible for the logic of the Colour Shooter game.
 The view package is responsible for the implementation of the UI, with minimal logic being implemented.
 The utils provides service for the other classes.
+IN SUMMARY, WE IMPLEMENTED THE MVP FOR OUR MAIN PlayScreen.java class.
 
 CONFIGURATION
 _______________

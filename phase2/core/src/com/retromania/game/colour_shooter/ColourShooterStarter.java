@@ -38,9 +38,6 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
     tankPrefrence = 1;
   }
 
-  public static ColourShootGameStats getGameStats() {
-    return gameStats;
-  }
 
   public void changeTankPreference(int tankPref) {
     tankPrefrence = tankPref;
@@ -64,9 +61,6 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
 
   public static Screen getInstructionsScreen() {return instructionsScreen;}
 
-  public static void setGameStats(ColourShootGameStats gameStats) {
-    ColourShooterStarter.gameStats = gameStats;
-  }
 
   public static void setPlayScreen(PlayScreen playScreen) {
     ColourShooterStarter.playScreen = playScreen;
