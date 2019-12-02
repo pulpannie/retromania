@@ -1,5 +1,6 @@
 package com.retromania.game.special_mario.presenter;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.World;
 import com.retromania.game.special_mario.abstractions.DeathObserver;
@@ -82,5 +83,26 @@ public abstract class MarioGamePresenter implements MarioGamePresentable {
   @Override
   public void addFinisherObserver(FinisherObserver finisherObserver) {
     finishObservers.add(finisherObserver);
+  }
+
+
+  @Override
+  public void createPlayerFromScratch() {
+    mainPlayer.createMainPlayer();
+  }
+
+  @Override
+  public float getXMainPlayer() {
+    return mainPlayer.getX();
+  }
+
+  @Override
+  public float getYMainPlayer() {
+    return mainPlayer.getY();
+  }
+
+  @Override
+  public void letMainPlayerShow(SpriteBatch sb) {
+    mainPlayer.draw(sb);
   }
 }

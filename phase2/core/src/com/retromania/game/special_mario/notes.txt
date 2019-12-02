@@ -412,3 +412,11 @@ Code affected : views
 all renderables are now private but the interfaces and the providers
 
 
+# Step 42
+
+Code affected : views
+
+All instances of the models were deleted in the views and they are now notified or accessed through
+the presenter.
+
+

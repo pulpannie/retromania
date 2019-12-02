@@ -5,42 +5,36 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.retromania.game.special_mario.models.player.MainPlayer;
 import com.retromania.game.special_mario.presenter.SpecialMarioStarterPresenter;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-
-
 /**
- *
- * A Concrete implementation of MarioRenderable, this renderable will not show the main player,
- * and make the said player, a ghost(invisible), but at the same it will give it its information back
- * to the presenter and from there to the main player, so you will play but you won't see your player.
- * */
-
+ * A Concrete implementation of MarioRenderable, this renderable will not show the main player, and
+ * make the said player, a ghost(invisible), but at the same it will give it its information back to
+ * the presenter and from there to the main player, so you will play but you won't see your player.
+ */
 @Singleton
 class GhostRenderer extends MarioRenderable {
 
   @Inject
   GhostRenderer(
-      MainPlayer mainPlayer,
-      World world,
       SpecialMarioStarterPresenter marioGamePresenter,
       OrthogonalTiledMapRenderer orthogonalTiledMapRenderer,
       @Named("Super Mario Game Cam") OrthographicCamera gameCam,
       @Named("Super Mario Game Port") Viewport gamePort) {
-    super(mainPlayer, world, marioGamePresenter, orthogonalTiledMapRenderer, gameCam, gamePort);
+    super(marioGamePresenter, orthogonalTiledMapRenderer, gameCam, gamePort);
   }
-
 
   @Override
   public void start() {
-    mainPlayer.createMainPlayer();
+    marioGamePresentable.createPlayerFromScratch();
     gameCam.position.x =
-            gamePort.getWorldWidth() / 2 > mainPlayer.getX() ? gamePort.getWorldWidth() / 2 : mainPlayer.getX();
+        gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()
+            ? gamePort.getWorldWidth() / 2
+            : marioGamePresentable.getXMainPlayer();
   }
 
   private void handleInput() {
@@ -61,10 +55,6 @@ class GhostRenderer extends MarioRenderable {
     update();
     clearDisplay();
     displayWorld();
-    displayDebugLines();
   }
 
-  private void displayDebugLines() {
-    b2ddr.render(world, gameCam.combined);
-  }
 }

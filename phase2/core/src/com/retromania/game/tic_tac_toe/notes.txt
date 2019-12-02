@@ -141,3 +141,13 @@ Fix: Added some Javadoc to individuals
 Code Affected: PlayScreen, MenuScreen, GameOverScreen
 Flaw: Methods too long
 Fix: split them into smaller methods.
+
+#Step 28
+Code Affected: MenuScreen, MenuScreenButtonHelper
+Flaw: MenuScreen has too many methods.
+Fix: split the class into MenuScreenButtonHelper to make and configure ImageButtons.
+
+#Step 29
+Code Affected: PlayPresenter, PlayScreen
+Flaw: PlayPresenter handles Texture, which should be in the view - PlayScreen.
+Fix: Moved all handling of Textures into PlayScreen.
