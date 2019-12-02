@@ -11,56 +11,50 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
  * A Concrete implementation of MarioRenderable, this renderable is will not care about your player,
  * and will leave it by if you let it.
- * */
+ */
 class SurvivalRenderer extends MarioRenderable {
 
   @Inject
   SurvivalRenderer(
-      MainPlayer mainPlayer,
-      World world,
       SpecialMarioStarterPresenter marioGamePresenter,
       OrthogonalTiledMapRenderer orthogRendererr,
-      @Named("Super Mario Game Cam")OrthographicCamera gameCam,
+      @Named("Super Mario Game Cam") OrthographicCamera gameCam,
       @Named("Super Mario Game Port") Viewport gamePort) {
-    super(mainPlayer, world, marioGamePresenter, orthogRendererr, gameCam, gamePort);
+    super(marioGamePresenter, orthogRendererr, gameCam, gamePort);
   }
 
-    @Override
-    public void start() {
-        mainPlayer.createMainPlayer();
-        gameCam.position.x =
-                gamePort.getWorldWidth() / 2 > mainPlayer.getX() ? gamePort.getWorldWidth() / 2 : mainPlayer.getX();
-    }
+  @Override
+  public void start() {
+    marioGamePresentable.createPlayerFromScratch();
+    gameCam.position.x =
+        gamePort.getWorldWidth() / 2 > marioGamePresentable.getXMainPlayer()
+            ? gamePort.getWorldWidth() / 2
+            : marioGamePresentable.getXMainPlayer();
+  }
 
-    private void handleInput() {
-        gameCam.position.x += .005f;
-    }
+  private void handleInput() {
+    gameCam.position.x += .005f;
+  }
 
-    public void update() {
-        handleInput();
-        gameCam.update();
-        checkTiledMap();
-    }
+  public void update() {
+    handleInput();
+    gameCam.update();
+    checkTiledMap();
+  }
 
-    @Override
-    public void render(float delta) {
-        update();
-        clearDisplay();
-        displayWorld();
-        displayDebugLines();
-        displayMainPlayer();
-    }
+  @Override
+  public void render(float delta) {
+    update();
+    clearDisplay();
+    displayWorld();
+    displayMainPlayer();
+  }
 
-    private void displayDebugLines() {
-        b2ddr.render(world, gameCam.combined);
-    }
-
-    private void displayMainPlayer() {
-        game.sb.begin();
-        mainPlayer.draw(game.sb);
-        game.sb.end();
-    }
+  private void displayMainPlayer() {
+    game.sb.begin();
+    marioGamePresentable.letMainPlayerShow(game.sb);
+    game.sb.end();
+  }
 }
