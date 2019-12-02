@@ -2,13 +2,13 @@ package com.retromania.game.colour_shooter;
 
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
-import com.retromania.game.colour_shooter.individuals.ColourShootGameStats;
-import com.retromania.game.colour_shooter.screens.InstructionsScreen;
-import com.retromania.game.colour_shooter.screens.MainScreenInterface;
-import com.retromania.game.colour_shooter.screens.MenuScreen;
-import com.retromania.game.colour_shooter.screens.PauseScreen;
-import com.retromania.game.colour_shooter.screens.PlayScreen;
-import com.retromania.game.colour_shooter.screens.StateFactory;
+import com.retromania.game.colour_shooter.models.ColourShootGameStats;
+import com.retromania.game.colour_shooter.views.InstructionsScreen;
+import com.retromania.game.colour_shooter.views.MainScreenInterface;
+import com.retromania.game.colour_shooter.views.MenuScreen;
+import com.retromania.game.colour_shooter.views.PauseScreen;
+import com.retromania.game.colour_shooter.views.PlayScreenRetro;
+import com.retromania.game.colour_shooter.views.StateFactory;
 import com.retromania.game.shared_abstractions.Configuration;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaGeneralUser;
@@ -62,7 +62,7 @@ public class ColourShooterStarter extends RetroManiaInnerGame implements MainScr
   public static Screen getInstructionsScreen() {return instructionsScreen;}
 
 
-  public static void setPlayScreen(PlayScreen playScreen) {
+  public static void setPlayScreen(PlayScreenRetro playScreen) {
     ColourShooterStarter.playScreen = playScreen;
   }
 

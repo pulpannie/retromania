@@ -1,4 +1,4 @@
-package com.retromania.game.colour_shooter.screens;
+package com.retromania.game.colour_shooter.views;
 
 import com.retromania.game.shared_abstractions.User;
 

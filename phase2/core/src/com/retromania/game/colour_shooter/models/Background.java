@@ -1,4 +1,4 @@
-package com.retromania.game.colour_shooter.individuals;
+package com.retromania.game.colour_shooter.models;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

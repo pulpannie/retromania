@@ -1,4 +1,4 @@
-package com.retromania.game.colour_shooter.individuals;
+package com.retromania.game.colour_shooter.models;
 
 /**
  * NOT ENOUGH TIME TO IMPLEMENT. BEGAN IMPLEMENTATION

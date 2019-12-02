@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.retromania.game.colour_shooter.individuals.Background;
+import com.retromania.game.colour_shooter.models.Background;
 
 public class Presenter {
     private Viewport gamePort;

@@ -1,4 +1,4 @@
-package com.retromania.game.colour_shooter.screens;
+package com.retromania.game.colour_shooter.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.retromania.game.colour_shooter.ColourShooterStarter;
-import com.retromania.game.colour_shooter.individuals.Background;
+import com.retromania.game.colour_shooter.models.Background;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 

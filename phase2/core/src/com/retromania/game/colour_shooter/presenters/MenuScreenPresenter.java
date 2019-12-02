@@ -1,6 +1,6 @@
 package com.retromania.game.colour_shooter.presenters;
 
-import com.retromania.game.colour_shooter.screens.MainScreenInterface;
+import com.retromania.game.colour_shooter.views.MainScreenInterface;
 
 public class MenuScreenPresenter extends Presenter{
     private MainScreenInterface mainScreen;
