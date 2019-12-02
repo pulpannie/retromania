@@ -163,3 +163,6 @@ Flaw: Unfinished Javadocs.
 Fix: Finished Javadocs.
 
 #Step 32
+Code Affected: PlayPresenter, MenuScreenButtonHelper, GameOverScreen, MenuScreen, PlayScreen, TicTacToeStarter, TicTacToeConfiguration, TicTacToeStarterComponent. TicTacToeUML.pdf
+Flaw: Unfinished Javadocs and flaws in access modifiers.
+Fix: Add Javadocs and access modifiers. Added TicTacToe UML.
