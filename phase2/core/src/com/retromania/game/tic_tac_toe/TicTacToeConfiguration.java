@@ -1,8 +1,9 @@
 package com.retromania.game.tic_tac_toe;
 
 import com.badlogic.gdx.Gdx;
+import com.retromania.game.tic_tac_toe.views.TicTacToeStarter;
 
-import static com.retromania.game.tic_tac_toe.TicTacToeStarter.NAME_OF_GAME;
+import static com.retromania.game.tic_tac_toe.views.TicTacToeStarter.NAME_OF_GAME;
 
 /**
  * Configuration for the TicTacToe game.

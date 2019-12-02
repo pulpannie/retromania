@@ -2,7 +2,7 @@ package com.retromania.game.tic_tac_toe.presenters;
 
 import com.badlogic.gdx.Gdx;
 import com.retromania.game.shared_abstractions.User;
-import com.retromania.game.tic_tac_toe.TicTacToeStarter;
+import com.retromania.game.tic_tac_toe.views.TicTacToeStarter;
 import com.retromania.game.tic_tac_toe.models.TicTacToe;
 import com.retromania.game.tic_tac_toe.utils.UserPreference;
 import com.retromania.game.utils.GameSaver;

@@ -1,6 +1,7 @@
 package com.retromania.game.tic_tac_toe;
 
 
+import com.retromania.game.tic_tac_toe.views.TicTacToeStarter;
 import com.retromania.game.utils.GameCamProvider;
 
 import javax.inject.Named;

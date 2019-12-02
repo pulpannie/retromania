@@ -16,7 +16,7 @@ public class MenuScreenButtonHelper {
     private ArrayList<ImageButton> imageButtons = new ArrayList<>();
     private ImageButton playButton, catButton, upButton, downButton;
     private ImageButtonBuilder imageButtonBuilder = new ImageButtonBuilder();
-    MenuPresenter menuPresenter;
+    private MenuPresenter menuPresenter;
 
     /**
      * @param menuPresenter MenuPresenter instance from the MenuScreen.

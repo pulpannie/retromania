@@ -1,9 +1,8 @@
-package com.retromania.game.tic_tac_toe;
+package com.retromania.game.tic_tac_toe.views;
 
 import com.retromania.game.RetroMania;
 import com.retromania.game.shared_abstractions.RetroManiaGame;
 import com.retromania.game.shared_abstractions.RetroManiaInnerGame;
-import com.retromania.game.tic_tac_toe.screens.MenuScreen;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class TicTacToeStarter extends RetroManiaInnerGame {
-    static final String NAME_OF_GAME = "Tic Tac Toe";
+    public static final String NAME_OF_GAME = "Tic Tac Toe";
     private MenuScreen menuScreen;
 
     /**
