@@ -25,7 +25,7 @@ public class CellManager {
    * Instantiates all the Cells in the TicTacToe game, saves it in a two-dimensional array, with the
    * size specified in userPreference.
    */
-  void makeCells() {
+  private void makeCells() {
     cellArray = new Cell[userPreference.getGameSize()][userPreference.getGameSize()];
     for (int i = 0; i < userPreference.getGameSize(); i++) {
       for (int j = 0; j < userPreference.getGameSize(); j++) {
