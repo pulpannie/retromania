@@ -1,0 +1,33 @@
+Dear group_0619
+
+This semester, we talked about MVP, the Model-View-Presenter architecture. It has many advantages, particularly when working with Android. As you can see from your project, your activity classes have methods that are specific to Android. If you encapsulate the rest of your code sufficiently, it is possible to port it to another platform simply by creating a new UI (for example, a website).
+
+Encapsulation can take on many forms. You can package your View classes together. You can ensure that your dependencies go one-way, towards the inner more abstract layers. You can incorporate SOLID principles as much as possible and design patterns where they make sense.
+Here is feedback that is specific to your project:
+
+You made good use of…
++ Factory design pattern in the StateFactory class
++ Good attempt in using MVP design for the color shooting game and the TicTacToe game
++ Appreciated the addition of music to the color shooting game
++ Great commenting and javadoc in the TicTacToe game as well as the SpaceshipShooter game 
++ Good attempt at creating a consistent base structure for all of the games with the RetroManiaGame and RetroManiaInnerGame
+
+The user sees…
++ Different orientation for each of the game, but will find 4 games which were a TicTacToe, PhysicsEngine game, shooting game and a super mario game. 
++ A horizontally orientated menu but vertically orientated games. This made navigating the menu quite difficult. 
++ No way to exit the games without restarting the emulator or closing the app. 
+
+A good next step would be to...
++ Create and reuse more shared abstractions. For example, both ColorShooter and SpaceshipShooter have almost identical StateFactory classes. This could’ve been abstracted into a more general StateFactory class. There are other instances of missed opportunities to reuse helpful code: there are three classes in the project named PauseScreen and only one of them actually implements a PauseScreen. It would’ve been worthwhile to make the PauseScreen a shared abstraction so that it can be reused in all of the games. 
++ Prepare a stricter schedule for the presentation. Group members were interrupting one another frequently, making it difficult to understand any part of the code
++ Add more javadoc and comments to your code. There is no helpful JavaDoc, for instance, in TiledMapIndividual even though it has non-trivial methods such as ‘setCollidableWith’. It would be difficult to onboard a new member onto this project since there doesn’t seem to be a consistent structure to the games nor consistent javadoc to explain the methods and classes in each game.  
++ Refrain from spending excessive time discussing external packages such as Dagger and libgdq. It was impossible to understand how using those external packages exemplified your understanding of design patterns, SOLID principles, abstract classes, interfaces, and other concepts that were taught in CSC207. Since you insisted on speaking about those packages for so long, we were unable to collect positive (or negative) comments regarding your understanding of the aforementioned concepts. 
++ Make it possible to exit a game and play a new game without having to close the app. A considerable amount of time was used in restarting the app every time we wanted to switch to a different game. 
++ There are a lot of methods that are overridden but don’t have any implementation which is rather confusing and indicates that an abstract class or an interface needs some rethinking. See Water.java as an example of this issue. 
++ Dagger was not used consistently throughout the project. It seems to only have been used in the Mario and the TicTacToe game. This makes the structure of the project very confusing since Mario and TicTacToe are instantiated very differently in comparison to the other games. TicTacToe and Mario use a builder pattern in their constructor while the other games do not. This is perhaps indicative of a deeper problem that these games were developed independently instead of collaboratively. 
+
+We hope that you enjoyed working on this project and found it a useful learning experience.
+
+Cheers,
+The CSC207 Instructional Team
+
